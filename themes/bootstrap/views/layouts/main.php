@@ -97,7 +97,7 @@ float: none;
 }
 
 .navbar .btn, .navbar .btn-group {
-    margin-top: 15px;
+   /*margin-top: 15px;*/
 }
 .navbar .nav  > li > a:hover, .nav > li > a:focus {
     float: none;
@@ -260,55 +260,21 @@ table tr .tr_white {
 if(!Yii::app()->user->isGuest)
 {
   
-  Yii::import('application.controllers.NotifyController');
-  $num = notify::model()->getNotify();
-  
-  //$obj =new NotifyController(); // preparing object
-  //$obj->getNotify();
- $badge= '';
- ///$num = 0;
- if($num>0) 
-  $badge=$this->widget('bootstrap.widgets.TbBadge', array(
-    'type'=>'warning',
-    'label'=>$num,
-  ), true);
+ 
 
    $this->widget('bootstrap.widgets.TbNavbar',array(
     'fixed'=>'top',
     'collapse'=>true,    
     'htmlOptions'=>array('class'=>'noPrint'),
-    'brand' =>  CHtml::image(Yii::app()->getBaseUrl() . '../images/pea_logo.png', 'Logo', array('width' => '220', 'height' => '30')),
+    //'brand' =>  CHtml::image(Yii::app()->getBaseUrl() . '../images/pea_logo.png', 'Logo', array('width' => '220', 'height' => '30')),
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
             'encodeLabel'=>false,
             'items'=>array(
-                array('label'=>'หน้าแรก','icon'=>'home', 'url'=>array('/site/index')),
-                // array('label'=>'โครงการ','icon'=>'flag', 'url'=>array('/project/index')),
-                array('label'=>'โครงการ ','icon'=>'flag', 'url'=>'#','items'=>array(
-                     array('label'=>'ข้อมูลโครงการ', 'url'=>array('/project/index')),
-                     array('label'=>'บันทึกค่าบริหารโครงการ', 'url'=>array('/managementCost/index'),'visible'=>!Yii::app()->user->isExecutive()),
-                     array('label'=>'บันทึกความก้าวหน้าสัญญาหลัก', 'url'=>array('/paymentProjectContract/index'),'visible'=>!Yii::app()->user->isExecutive()),
-                     array('label'=>'บันทึกความก้าวหน้าสัญญาจ้างช่วง/ซื้อ', 'url'=>array('/paymentOutsourceContract/index'),'visible'=>!Yii::app()->user->isExecutive()),
-                     
-                    ),
-                ),
-                array('label'=>'รายงาน ','icon'=>'list-alt', 'url'=>'#','items'=>array(
-                     array('label'=>'project progress report', 'url'=>array('/report/progress')),
-                     array('label'=>'project summary report', 'url'=>array('/report/summary')),
-                     array('label'=>'รายงานสรุปรายได้/ค่าใช้จ่าย', 'url'=>array('/report/cashflow')),
-                     array('label'=>'รายงานสรุปรายได้ ค่าใช้จ่ายงานบริการวิศวกรรม', 'url'=>array('/report/service')),
-                     array('label'=>'สรุปงานรายรับ-รายจ่ายงานโครงการ', 'url'=>array('/report/summaryCashflow')),
-                
-                                                                 
-
-                    ),
-                ),
-                array('label'=>'แจ้งเตือน '.$badge,'icon'=>'comment', 'url'=>array('/notify/index'), 'visible'=>!Yii::app()->user->isExecutive()),
-                array('label'=>'คู่สัญญา','icon'=>'briefcase', 'url'=>array('/vendor/admin'), 'visible'=>Yii::app()->user->isAdmin()),
-                array('label'=>'ประเภทงาน','icon'=>'briefcase', 'url'=>array('/workcategory/admin'), 'visible'=>Yii::app()->user->isAdmin()),
-                array('label'=>'ผู้ใช้งาน','icon'=>'user', 'url'=>array('/user/index'), 'visible'=>Yii::app()->user->isAdmin()),
-            ),
+                //array('label'=>'หน้าแรก','icon'=>'home', 'url'=>array('/site/index')),
+               
+              ),
         ),    
         array(
             'class'=>'bootstrap.widgets.TbButtonGroup',           
@@ -367,7 +333,7 @@ else{
     'fixed'=>'top',
     'collapse'=>true,    
     'htmlOptions'=>array('class'=>'noprint'),
-    'brand' =>  CHtml::image(Yii::app()->getBaseUrl() . '../images/pea_logo.png', 'Logo', array('width' => '260', 'height' => '30')),
+    //'brand' =>  CHtml::image(Yii::app()->getBaseUrl() . '../images/pea_logo.png', 'Logo', array('width' => '260', 'height' => '30')),
    
     ));
 }   

@@ -11,7 +11,7 @@ Yii::setPathOfAlias('editable', dirname(__FILE__).'/../extensions/x-editable');
 return array(
     'theme'=>'bootstrap',
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Project Tracking',
+	'name'=>'Equipment Specification Certification System - ESCS',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -94,7 +94,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=pea_proj_tracking',
+			'connectionString' => 'mysql:host=localhost;dbname=engstd',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => 'meroot',
