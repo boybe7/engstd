@@ -5,7 +5,7 @@ class SiteController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
-	public $layout='//layouts/column2';
+	//public $layout='//layouts/column2';
 	public function actions()
 	{
 		return array(
@@ -35,7 +35,10 @@ class SiteController extends Controller
             if(Yii::app()->user->getId()===null)
                 $this->redirect(array('site/login'));
             else
-		$this->render('index');
+            {
+            	$this->layout='//layouts/column2';
+				$this->render('index');
+            }
 	}
 
 	/**

@@ -5,9 +5,7 @@
 
 	<?php echo $form->textFieldRow($model,'id',array('class'=>'span5')); ?>
 
-	<?php echo $form->textFieldRow($model,'menu_id',array('class'=>'span5')); ?>
-
-	<?php echo $form->textFieldRow($model,'group_id',array('class'=>'span5')); ?>
+	<?php echo $form->textFieldRow($model,'title',array('class'=>'span5','maxlength'=>500)); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

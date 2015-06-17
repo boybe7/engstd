@@ -1,6 +1,6 @@
 <?php
 
-class AuthenController extends Controller
+class UserGroupController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -31,7 +31,7 @@ class AuthenController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','getGroup'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -61,14 +61,14 @@ class AuthenController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Authen;
+		$model=new UserGroup;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Authen']))
+		if(isset($_POST['UserGroup']))
 		{
-			$model->attributes=$_POST['Authen'];
+			$model->attributes=$_POST['UserGroup'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -90,9 +90,9 @@ class AuthenController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Authen']))
+		if(isset($_POST['UserGroup']))
 		{
-			$model->attributes=$_POST['Authen'];
+			$model->attributes=$_POST['UserGroup'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -127,9 +127,9 @@ class AuthenController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Authen("search");
+		$dataProvider=new CActiveDataProvider('UserGroup');
 		$this->render('index',array(
-			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -138,10 +138,10 @@ class AuthenController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Authen('search');
+		$model=new UserGroup('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Authen']))
-			$model->attributes=$_GET['Authen'];
+		if(isset($_GET['UserGroup']))
+			$model->attributes=$_GET['UserGroup'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -155,7 +155,7 @@ class AuthenController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Authen::model()->findByPk($id);
+		$model=UserGroup::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -167,10 +167,29 @@ class AuthenController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='authen-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='user-group-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
+
+	public function actionGetGroup(){
+            $request=trim($_GET['term']);
+                    
+            $models=UserGroup::model()->findAll(array("condition"=>"name like '%$request%'"));
+            $data=array();
+            foreach($models as $model){
+                //$data[]["label"]=$get->v_name;
+                //$data[]["id"]=$get->v_id;
+                $data[] = array(
+                        'id'=>$model['id'],
+                        'label'=>$model['name'],
+                );
+
+            }
+            $this->layout='empty';
+            echo json_encode($data);
+        
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class AuthenController extends Controller
+class MenuGroupController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -61,14 +61,14 @@ class AuthenController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Authen;
+		$model=new MenuGroup;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Authen']))
+		if(isset($_POST['MenuGroup']))
 		{
-			$model->attributes=$_POST['Authen'];
+			$model->attributes=$_POST['MenuGroup'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -90,9 +90,9 @@ class AuthenController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Authen']))
+		if(isset($_POST['MenuGroup']))
 		{
-			$model->attributes=$_POST['Authen'];
+			$model->attributes=$_POST['MenuGroup'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -127,9 +127,9 @@ class AuthenController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Authen("search");
+		$dataProvider=new CActiveDataProvider('MenuGroup');
 		$this->render('index',array(
-			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -138,10 +138,10 @@ class AuthenController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Authen('search');
+		$model=new MenuGroup('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Authen']))
-			$model->attributes=$_GET['Authen'];
+		if(isset($_GET['MenuGroup']))
+			$model->attributes=$_GET['MenuGroup'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -155,7 +155,7 @@ class AuthenController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Authen::model()->findByPk($id);
+		$model=MenuGroup::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -167,10 +167,12 @@ class AuthenController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='authen-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='menu-group-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
+
+	
 }

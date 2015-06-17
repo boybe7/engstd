@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Authens'=>array('index'),
+	'Menu Groups'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Authen','url'=>array('index')),
-	array('label'=>'Create Authen','url'=>array('create')),
+	array('label'=>'List MenuGroup','url'=>array('index')),
+	array('label'=>'Create MenuGroup','url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -15,7 +15,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('authen-grid', {
+	$.fn.yiiGridView.update('menu-group-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Authens</h1>
+<h1>Manage Menu Groups</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -38,13 +38,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php $this->widget('bootstrap.widgets.TbGridView',array(
-	'id'=>'authen-grid',
+	'id'=>'menu-group-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		'menu_id',
-		'group_id',
+		'title',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 		),
