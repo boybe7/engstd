@@ -128,6 +128,17 @@ class AuthenController extends Controller
 	public function actionIndex()
 	{
 		$model=new Authen("search");
+
+		if(isset($_POST['user_group']))
+		{
+			$model->attributes=$_POST['Authen'];
+			
+			if($model->save())
+				$this->render('index',array(
+					'model'=>$model,
+				));
+		}
+
 		$this->render('index',array(
 			'model'=>$model,
 		));

@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 <script type="text/javascript">
 	$(function(){
         //autocomplete search on focus    	
-		    $("#pj_vendor_id").autocomplete({
+		    $("#user_group").autocomplete({
 	       
 	                minLength: 0
 	            }).bind('focus', function () {
@@ -17,16 +17,26 @@ $this->breadcrumbs=array(
 	 
 	  });
 </script>
+<div class="well">
+<h4>สิทธิการเข้าถึงข้อมูล</h4>
 
-<h3>สิทธิการเข้าถึงข้อมูล</h3>
+<?php
+        $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
+            'id'=>'project-form',
+            'enableAjaxValidation'=>false,
+            'type'=>'vertical',
+            'htmlOptions'=>  array('class'=>'','style'=>''),
+        )); ?>
+
 <div class="row-fluid">
 	<div class="span3">กลุ่มผู้ใช้งาน</div>
 	<div class="span9">
 		<?php
 
-						$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                            'name'=>'pj_vendor_id',
-                            'id'=>'pj_vendor_id',
+						echo $form->hiddenField($model,'id');
+                        $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                            'name'=>'user_group',
+                            'id'=>'user_group',
                            // 'value'=>$model->pj_name,
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
@@ -64,3 +74,39 @@ $this->breadcrumbs=array(
 		?>
 	</div>
 </div>
+<div class="row-fluid">
+    <div class="span3">เลือกสิทธิให้กลุ่มผู้ใช้งาน</div>
+    <div class="span9">
+    <?php
+       
+            $menugroups = MenuGroup::model()->findAll();
+            foreach ($menugroups as $key => $group) {
+                $menutrees = MenuTree::model()->findAll(array('order'=>'', 'condition'=>'parent_id=:gid', 'params'=>array(':gid'=>$group->id)));
+                echo  '<div class=""><b>'.$group->title.'</b></div>';
+             
+                foreach ($menutrees as $key => $menu) {
+                    
+                    echo '<label class="checkbox inline">';
+                        echo '<input type="checkbox" name="authen_rule[]" value="'.$menu->id.'">'.$menu->title;
+                    echo '</label>';
+                }
+
+                echo '<div style="padding-top:10px">&nbsp;</div>';
+                
+            }
+            
+       
+
+    ?>
+    </div>
+</div>
+
+            <div class="form-actions">
+                <?php $this->widget('bootstrap.widgets.TbButton', array(
+                    'buttonType'=>'submit',
+                    'type'=>'primary',
+                    'label'=>$model->isNewRecord ? 'บันทึก' : 'บันทึก',
+                )); ?>
+            </div>
+ </div>           
+  <?php $this->endWidget(); ?>

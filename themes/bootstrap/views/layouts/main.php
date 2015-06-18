@@ -340,7 +340,7 @@ else{
  
    ?>
 
-    <div class="container" id="page" style="padding-top: 70px">
+    <div class="container" id="page" >
 
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
