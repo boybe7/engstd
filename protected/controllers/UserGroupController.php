@@ -182,9 +182,16 @@ class UserGroupController extends Controller
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;
                 //$data[]["id"]=$get->v_id;
+
+            	$rules = Yii::app()->db->createCommand()
+                                                ->select('menu_id')
+                                                ->from('authen')
+                                                ->where('group_id=:id', array(':id'=>$model['id']))
+                                                ->queryAll();
                 $data[] = array(
                         'id'=>$model['id'],
                         'label'=>$model['name'],
+                        'rules'=>$rules
                 );
 
             }

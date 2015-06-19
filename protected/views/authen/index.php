@@ -58,9 +58,16 @@ $this->breadcrumbs=array(
                                      'showAnim'=>'fold',
                                      'minLength'=>0,
                                      'select'=>'js: function(event, ui) {
-                                        
-                                           //console.log(ui.item.id)
-                                            $("#Project_pj_vendor_id").val(ui.item.id);
+                                           $("#list :checkbox").removeAttr("checked");
+                                           $.each(ui.item.rules, function( index, value ) {
+                                              //console.log( index + ": " + value["menu_id"] );
+                                              mid = value["menu_id"];
+                                                $("#list :checkbox").filter(function () {
+                                                    
+                                                    return $.inArray(this.value, mid) >= 0;
+                                                }).prop("checked", true);
+                                            });
+                                           
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
                                      
@@ -76,7 +83,7 @@ $this->breadcrumbs=array(
 </div>
 <div class="row-fluid">
     <div class="span3">เลือกสิทธิให้กลุ่มผู้ใช้งาน</div>
-    <div class="span9">
+    <div class="span9" id="list">
     <?php
        
             $menugroups = MenuGroup::model()->findAll();
@@ -87,7 +94,7 @@ $this->breadcrumbs=array(
                 foreach ($menutrees as $key => $menu) {
                     
                     echo '<label class="checkbox inline">';
-                        echo '<input type="checkbox" name="authen_rule[]" value="'.$menu->id.'">'.$menu->title;
+                        echo '<input type="checkbox" id="authen_rule" name="authen_rule[]" value="'.$menu->id.'">'.$menu->title;
                     echo '</label>';
                 }
 
