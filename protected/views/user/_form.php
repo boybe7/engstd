@@ -2,7 +2,7 @@
 	'id'=>'user-form',
 	'enableAjaxValidation'=>false,
   'type'=>'horizontal',
-  'htmlOptions'=>  array('class'=>'well span5 offset3 text-center','style'=>''),
+  'htmlOptions'=>  array('class'=>'well span6 offset1','style'=>''),
 )); ?>
 
 	<?php echo $form->errorSummary($model); ?>
@@ -48,7 +48,14 @@
       <?php //echo $form->textFieldRow($model,'type_id',array('class'=>'span12','maxlength'=>1)); ?>
        <?php 
 
-        $data = array(array("value"=>"1","text"=>"Admin"),array("value"=>"2","text"=>"SuperUser"),array("value"=>"3","text"=>"User"),array("value"=>"4","text"=>"Executive")); 
+        $models=UserGroup::model()->findAll();
+        $data = array();
+        foreach ($models as $key => $value) {
+          $data[] = array(
+                          'value'=>$value['id'],
+                          'text'=>$value['name'],
+                       );
+        } 
         $typelist = CHtml::listData($data,'value','text');
         echo $form->dropDownListRow($model, 'u_group', $typelist,array('class'=>'span12','prompt'=>'--กรุณาเลือก--')); 
        ?>   

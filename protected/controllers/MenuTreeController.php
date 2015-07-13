@@ -1,6 +1,6 @@
 <?php
 
-class AuthenController extends Controller
+class MenuTreeController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -61,16 +61,19 @@ class AuthenController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Authen;
+		$model=new MenuTree;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Authen']))
+		if(isset($_POST['MenuTree']))
 		{
-			$model->attributes=$_POST['Authen'];
+			$model->attributes=$_POST['MenuTree'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			{
+				$this->redirect(array('admin'));
+			}
+
 		}
 
 		$this->render('create',array(
@@ -90,11 +93,14 @@ class AuthenController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Authen']))
+		if(isset($_POST['MenuTree']))
 		{
-			$model->attributes=$_POST['Authen'];
+			$model->attributes=$_POST['MenuTree'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			{
+				$this->redirect(array('admin'));
+			}
+
 		}
 
 		$this->render('update',array(
@@ -127,80 +133,12 @@ class AuthenController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Authen("search");
+		$model=new MenuTree('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['MenuTree']))
+			$model->attributes=$_GET['MenuTree'];
 
-		//header('Content-type: text/plain');
-        //    print_r($_POST['authen_rule']);                    
-        // exit;
-
-		if(isset($_POST['user_group']) && isset($_POST['authen_rule']))
-		{
-			
-		  $transaction=Yii::app()->db->beginTransaction();
-		  try {	
-				//case 1 : check exist user_group
-				$model_group = UserGroup::model()->findAll('name=:group', array(':group' =>$_POST['user_group'] )); 
-				
-				
-
-					if(!empty($model_group))
-					{
-							Yii::app()->db->createCommand('DELETE FROM authen WHERE group_id='.$model_group[0]->id)->execute();
-							$group_id = $model_group[0]->id;
-
-
-							foreach ($_POST['authen_rule'] as $key => $rule) {
-								$m_rule = new Authen("search");
-								$m_rule->group_id = $group_id;
-								$m_rule->menu_id = $rule;
-							
-
-								$m_rule->save();
-							}
-					}	
-					else
-					{
-						$model_group = new UserGroup("search");
-						$model_group->name = $_POST['user_group'];
-						if($model_group->save())
-						{
-							$group_id = $model_group->id;
-
-
-							foreach ($_POST['authen_rule'] as $key => $rule) {
-								$m_rule = new Authen("search");
-								$m_rule->group_id = $group_id;
-								$m_rule->menu_id = $rule;
-							
-
-								$m_rule->save();
-							}
-						}
-					}
-				
-					
-					
-				
-
-
-				$transaction->commit();
-		  }
-		  catch(Exception $e)
-	 	  {
-	 				$transaction->rollBack();	
-	 				$model->addError('Outsource', 'Error occured while saving outsorces.');
-	 				Yii::trace(CVarDumper::dumpAsString($e->getMessage()));
-	 	        	//you should do sth with this exception (at least log it or show on page)
-	 	        	Yii::log( 'Exception when saving data: ' . $e->getMessage(), CLogger::LEVEL_ERROR );
-	 
-	 	  }    	
-			if($model->save())
-				$this->render('index',array(
-					'model'=>$model,
-				));
-		}
-
-		$this->render('index',array(
+		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
@@ -210,10 +148,10 @@ class AuthenController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Authen('search');
+		$model=new MenuTree('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Authen']))
-			$model->attributes=$_GET['Authen'];
+		if(isset($_GET['MenuTree']))
+			$model->attributes=$_GET['MenuTree'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -227,7 +165,7 @@ class AuthenController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Authen::model()->findByPk($id);
+		$model=MenuTree::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -239,7 +177,7 @@ class AuthenController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='authen-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='menu-tree-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

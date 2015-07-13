@@ -1,13 +1,10 @@
 <?php
 $this->breadcrumbs=array(
-	'Menu Trees'=>array('index'),
+	'Vendors'=>array('index'),
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List MenuTree','url'=>array('index')),
-	array('label'=>'Create MenuTree','url'=>array('create')),
-);
+
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -15,7 +12,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('menu-tree-grid', {
+	$.fn.yiiGridView.update('vendor-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -23,16 +20,21 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h3>เมนู</h3>
+<h3>ผู้ผลิต/ผู้จัดส่ง</h3>
 
 
-<?php
+</div><!-- search-form -->
+
+<?php 
+
+
+
 
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
     
     'type'=>'success',
-    'label'=>'เพิ่มเมนู',
+    'label'=>'เพิ่มคู่สัญญา',
     'icon'=>'plus-sign',
     'url'=>array('create'),
     'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 10px 0px 10px;'),
@@ -40,33 +42,26 @@ $this->widget('bootstrap.widgets.TbButton', array(
 
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
-    
     'type'=>'danger',
-    'label'=>'ลบเมนู',
+    'label'=>'ลบคู่สัญญา',
     'icon'=>'minus-sign',
-    //'url'=>array('delAll'),
-    //'htmlOptions'=>array('id'=>"buttonDel2",'class'=>'pull-right'),
     'htmlOptions'=>array(
-        //'data-toggle'=>'modal',
-        //'data-target'=>'#myModal',
         'onclick'=>'      
-                       //console.log($.fn.yiiGridView.getSelection("menu-grid").length);
-                       if($.fn.yiiGridView.getSelection("menu-grid").length==0)
+                     
+                       if($.fn.yiiGridView.getSelection("vendor-grid").length==0)
                        		js:bootbox.alert("กรุณาเลือกแถวข้อมูลที่ต้องการลบ?","ตกลง");
                        else  
                           js:bootbox.confirm("คุณต้องการจะลบข้อมูล?","ยกเลิก","ตกลง",
 			                   function(confirmed){
-			                   	 	
-			                   	 //console.log("Confirmed: "+confirmed);
-			                   	 //console.log($.fn.yiiGridView.getSelection("user-grid"));
+			                
                                 if(confirmed)
 			                   	 $.ajax({
 										type: "POST",
 										url: "deleteSelected",
-										data: { selectedID: $.fn.yiiGridView.getSelection("menu-grid")}
+										data: { selectedID: $.fn.yiiGridView.getSelection("vendor-grid")}
 										})
 										.done(function( msg ) {
-											$("#menu-grid").yiiGridView("update",{});
+											$("#vendor-grid").yiiGridView("update",{});
 										});
 			                  })',
         'class'=>'pull-right'
@@ -74,8 +69,9 @@ $this->widget('bootstrap.widgets.TbButton', array(
 )); 
 
 
+
 $this->widget('bootstrap.widgets.TbGridView',array(
-	'id'=>'menu-grid',
+	'id'=>'vendor-grid',
 	'dataProvider'=>$model->search(),
 	'type'=>'bordered condensed',
 	'dataProvider'=>$model->search(),
@@ -90,37 +86,44 @@ $this->widget('bootstrap.widgets.TbGridView',array(
         	    'id'=>'selectedID',
             	'class'=>'CCheckBoxColumn',
             	//'selectableRows' => 2, 
-        		 'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #f5f5f5'),
+        		 'headerHtmlOptions' => array('style' => 'width:3%;text-align:center;background-color: #f5f5f5'),
 	  	         'htmlOptions'=>array(
 	  	            	  			'style'=>'text-align:center'
 
 	  	            	  		)   	  		
         ),
-		'title'=>array(
-			    'name' => 'title',
-			    'filter'=>CHtml::activeTextField($model, 'title',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("title"))),
+		'code'=>array(
+			    'name' => 'code',
+			    'filter'=>CHtml::activeTextField($model, 'code',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("code"))),
+				'headerHtmlOptions' => array('style' => 'width:7%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'htmlOptions'=>array('style'=>'text-align:center;padding-left:10px;')
+	  	),
+		'name'=>array(
+			    'name' => 'name',
+			    'filter'=>CHtml::activeTextField($model, 'name',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("name"))),
+				'headerHtmlOptions' => array('style' => 'width:33%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'htmlOptions'=>array('style'=>'text-align:left')
+	  	),
+	  	'address'=>array(
+			    'name' => 'address',
+			    'filter'=>CHtml::activeTextField($model, 'address',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("address"))),
 				'headerHtmlOptions' => array('style' => 'width:30%;text-align:center;background-color: #f5f5f5'),  	            	  	
-				'htmlOptions'=>array('style'=>'text-align:left;padding-left:10px;')
+				'htmlOptions'=>array('style'=>'text-align:left')
 	  	),
-		'url'=>array(
-			    'name' => 'url',
-			    'filter'=>CHtml::activeTextField($model, 'url',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("url"))),
-				'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #f5f5f5'),  	            	  	
-				'htmlOptions'=>array('style'=>'text-align:center')
-	  	),
-	  	'parent_id'=>array(
-			    'name' => 'parent_id',
-			    'filter'=>CHtml::activeTextField($model, 'parent_id',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("parent_id"))),
-				'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #f5f5f5'),  	            	  	
+	  	'type'=>array(
+			    'name' => 'type',
+			    'value' => array($this,'gridTypeName'),
+			    'filter'=>CHtml::activeDropDownList($model, 'type', array('0' => 'ผู้ผลิต', '1' => 'ผู้จัดส่ง'),array('empty'=>'')),
+				'headerHtmlOptions' => array('style' => 'width:13%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center')
 	  	),
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
-			'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #f5f5f5'),
+			'headerHtmlOptions' => array('style' => 'width:7%;text-align:center;background-color: #f5f5f5'),
 			'template' => '{view}  {update}',
 	
 		),
 	),
 ));
 
- ?>
+?>

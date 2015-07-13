@@ -6,7 +6,7 @@ class UserController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/main';
+	public $layout='//layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -70,7 +70,7 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			$model->department_id = Yii::app()->user->userdept;
+			//$model->department_id = Yii::app()->user->userdept;
 			if($model->save())
                             $this->redirect(array('index'));
 				//$this->redirect(array('view','id'=>$model->staff_id));
@@ -97,7 +97,7 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			$model->department_id = Yii::app()->user->userdept;
+			//$model->department_id = Yii::app()->user->userdept;
 
 			if($model->save())
 				$this->redirect(array('index'));
@@ -228,7 +228,18 @@ class UserController extends Controller
 
     public function actionGetUserGroup()
     {
-    	$data = array(array("value"=>"1","text"=>"Admin"),array("value"=>"2","text"=>"SuperUser"),array("value"=>"3","text"=>"User"),array("value"=>"4","text"=>"Executive"));
+    	
+    	$models=UserGroup::model()->findAll();
+    	$data = array();
+    	foreach ($models as $key => $value) {
+    		$data[] = array(
+                        'value'=>$value['id'],
+                        'text'=>$value['name'],
+                     );
+    	}
+    	//$data = array(array("value"=>"1","text"=>"Admin"),array("value"=>"2","text"=>"SuperUser"),array("value"=>"3","text"=>"User"),array("value"=>"4","text"=>"Executive"));
+       // $data = array(array("value"=>"1","text"=>"Admin"),array("value"=>"2","text"=>"user"),array("value"=>"3","text"=>"xxx"));
+       //$data = [{"value":"1","text":"admin"},{"value":"2","text":"user"},{"value":"6","text":"xxx"}];
         echo CJSON::encode($data);
     }
 

@@ -14,6 +14,12 @@ function getUsername(){
     return $user->username;
    // return $user->title." ".$user->firstname." ".$user->lastname;
 }
+
+function getGroup(){
+    $user = $this->loadUser(Yii::app()->user->id);
+    return $user->u_group;
+    
+}
 // access it by Yii::app()->user->title
 function getTitle(){
     $user = $this->loadUser(Yii::app()->user->id);

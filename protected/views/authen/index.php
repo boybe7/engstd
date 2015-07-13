@@ -29,7 +29,7 @@ $this->breadcrumbs=array(
         )); ?>
 
 <div class="row-fluid">
-	<div class="span3">กลุ่มผู้ใช้งาน</div>
+	<div class="span3" style="text-align:right;font-weight:bold;font-size:15px;font-family: 'Boon700',sans-serif;">กลุ่มผู้ใช้งาน :</div>
 	<div class="span9">
 		<?php
 
@@ -82,7 +82,7 @@ $this->breadcrumbs=array(
 	</div>
 </div>
 <div class="row-fluid">
-    <div class="span3">เลือกสิทธิให้กลุ่มผู้ใช้งาน</div>
+    <div class="span3" style="text-align:right;font-weight:bold;font-size:15px;font-family: 'Boon700',sans-serif;">เลือกสิทธิให้กลุ่มผู้ใช้งาน :</div>
     <div class="span9" id="list">
     <?php
        
@@ -112,6 +112,7 @@ $this->breadcrumbs=array(
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType'=>'submit',
                     'type'=>'primary',
+                    'htmlOptions'=>array('class'=>'pull-right'),
                     'label'=>$model->isNewRecord ? 'บันทึก' : 'บันทึก',
                 )); ?>
             </div>

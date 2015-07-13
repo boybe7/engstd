@@ -42,14 +42,29 @@ if(!Yii::app()->user->isGuest)
             //     'htmlOptions'=>array('class'=>'well'),
             // ));
             $menugroups = MenuGroup::model()->findAll();
+
+         
             foreach ($menugroups as $key => $group) {
                 $menutrees = MenuTree::model()->findAll(array('order'=>'', 'condition'=>'parent_id=:gid', 'params'=>array(':gid'=>$group->id)));
-                echo  '<li><label class="tree-toggle nav-header">'.$group->title.'</label>';
-                echo  '<ul class="nav nav-list tree">';
-                foreach ($menutrees as $key => $menu) {
-                    echo ' <li><a href="../'.$menu->url.'">'.$menu->title.'</a></li>';
+                
+                $menutrees = Yii::app()->db->createCommand()
+                                            ->select('*')
+                                            ->from('menu_tree')
+                                            ->join('authen','authen.menu_id=menu_tree.id')
+                                            ->where('parent_id=:gid AND group_id=:user', array(':gid'=>$group->id,':user'=>Yii::app()->user->group))
+                                            ->queryAll();
+               // print_r($menutrees);                            
+                if(!empty($menutrees))
+                {                            
+                    echo  '<li><label class="tree-toggle nav-header" style="color:black">'.$group->title.'</label>';
+                    echo  '<ul class="nav nav-list tree">';
+                    foreach ($menutrees as $key => $menu) {
+                        //echo ' <li><a href="'.$menu->url.'">'.$menu->title.'</a></li>';
+                        //echo '<li>'.CHtml::link($menu->title,array($menu->url)).'</li>';
+                        echo '<li>'.CHtml::link($menu["title"],array($menu["url"])).'</li>';
+                    }
+                    echo '</ul>';
                 }
-                echo '</ul>';
             }
             
            

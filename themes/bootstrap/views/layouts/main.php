@@ -8,7 +8,7 @@
 
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
-<script type="text/javascript" src="/pea_track/themes/bootstrap/js/jquery.yiigridview.js"></script>
+<script type="text/javascript" src="/engstd/themes/bootstrap/js/jquery.yiigridview.js"></script>
 	<?php 
        /* Yii::app()->getClientScript()->reset(); 
         Yii::app()->bootstrap->register();   */
@@ -19,7 +19,7 @@
         //$cs->registerScriptFile(Yii::app()->theme->getBaseUrl().'/js/jquery.yiigridview.js');
   ?>
 </head>
-<link rel="shortcut icon" href="/pea_track/favicon.ico">
+<link rel="shortcut icon" href="/engstd/favicon.ico">
 <style>
 
 .dropdown-menu {
@@ -101,7 +101,7 @@ float: none;
 }
 .navbar .nav  > li > a:hover, .nav > li > a:focus {
     float: none;
-    padding: 20px 15px 10px;
+    /*padding: 20px 15px 10px;*/
     color: #fff;
     text-decoration: none;
     text-shadow: 0 0 0 #ffffff;
@@ -198,28 +198,28 @@ nav .badge.red {
 
 @font-face {
     font-family: 'Boon400';
-    src: url('/pea_track/fonts/boon-400.eot');
-    src: url('/pea_track/fonts/boon-400.eot') format('embedded-opentype'),
-         url('/pea_track/fonts/boon-400.woff') format('woff'),
-         url('/pea_track/fonts/boon-400.ttf') format('truetype'),
-         url('/pea_track/fonts/boon-400.svg#Boon400') format('svg');
+    src: url('/engstd/fonts/boon-400.eot');
+    src: url('/engstd/fonts/boon-400.eot') format('embedded-opentype'),
+         url('/engstd/fonts/boon-400.woff') format('woff'),
+         url('/engstd/fonts/boon-400.ttf') format('truetype'),
+         url('/engstd/fonts/boon-400.svg#Boon400') format('svg');
 }
 
 @font-face {
     font-family: 'Boon700';
-    src: url('/pea_track/fonts/boon-700.eot');
-    src: url('/pea_track/fonts/boon-700.eot') format('embedded-opentype'),
-         url('/pea_track/fonts/boon-700.woff') format('woff'),
-         url('/pea_track/fonts/boon-700.ttf') format('truetype'),
-         url('/pea_track/fonts/boon-700.svg#Boon700') format('svg');
+    src: url('/engstd/fonts/boon-700.eot');
+    src: url('/engstd/fonts/boon-700.eot') format('embedded-opentype'),
+         url('/engstd/fonts/boon-700.woff') format('woff'),
+         url('/engstd/fonts/boon-700.ttf') format('truetype'),
+         url('/engstd/fonts/boon-700.svg#Boon700') format('svg');
 }
 
 @font-face {
     font-family: 'THSarabunPSK';
-    src: url('/pea_track/fonts/thsarabunnew-webfont.eot');
-    src: url('/pea_track/fonts/thsarabunnew-webfont.eot') format('embedded-opentype'),
-         url('/pea_track/fonts/thsarabunnew-webfont.woff') format('woff'),
-         url('/pea_track/fonts/thsarabunnew-webfont.ttf') format('truetype');
+    src: url('/engstd/fonts/thsarabunnew-webfont.eot');
+    src: url('/engstd/fonts/thsarabunnew-webfont.eot') format('embedded-opentype'),
+         url('/engstd/fonts/thsarabunnew-webfont.woff') format('woff'),
+         url('/engstd/fonts/thsarabunnew-webfont.ttf') format('truetype');
        
 }
 

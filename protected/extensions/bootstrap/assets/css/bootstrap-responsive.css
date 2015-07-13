@@ -133,8 +133,17 @@
   .navbar-fixed-bottom .container {
     width: 1170px;
   }
-  .breadcrumb {
+
+  .navbar-inner > .container {
+    margin-top: 0px;
+  }
+
+  .container {
     margin-top: 50px;
+  }
+
+  .breadcrumb {
+    /*margin-top: 50px;*/
   }
   .span12 {
     width: 1170px;
@@ -481,7 +490,7 @@
     margin-left: 20px;
   }
   .container {
-    padding-top: 0px;
+    padding-top: 30px;
   }
   .container,
   .navbar-static-top .container,
@@ -966,7 +975,7 @@
     padding-top: 0;
   }
   .container {
-    padding-top: 0px;
+    padding-top: 30px;
   }
   .navbar-fixed-top,
   .navbar-fixed-bottom {

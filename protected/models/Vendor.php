@@ -1,22 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "menu_tree".
+ * This is the model class for table "vendor".
  *
- * The followings are the available columns in table 'menu_tree':
+ * The followings are the available columns in table 'vendor':
  * @property integer $id
- * @property string $title
- * @property string $url
- * @property integer $parent_id
+ * @property string $name
+ * @property string $code
+ * @property string $address
  */
-class MenuTree extends CActiveRecord
+class Vendor extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'menu_tree';
+		return 'vendor';
 	}
 
 	/**
@@ -27,13 +27,13 @@ class MenuTree extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, parent_id', 'required'),
-			array('parent_id', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>300),
-			array('url', 'length', 'max'=>500),
+			array('name, code', 'required'),
+			array('name', 'length', 'max'=>500),
+			array('code', 'length', 'max'=>10),
+			array('address', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, url, parent_id', 'safe', 'on'=>'search'),
+			array('id, name, code, address,type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,9 +55,10 @@ class MenuTree extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'ชื่อเมนู',
-			'url' => 'link url',
-			'parent_id' => 'กลุ่มเมนู',
+			'name' => 'ชื่อผู้ผลิต/ผู้จัดส่ง',
+			'code' => 'รหัส',
+			'address' => 'ที่อยู่',
+			'type' => 'ประเภท',
 		);
 	}
 
@@ -80,20 +81,27 @@ class MenuTree extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('url',$this->url,true);
-		$criteria->compare('parent_id',$this->parent_id);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('code',$this->code,true);
+		$criteria->compare('address',$this->address,true);
+		$criteria->compare('type',$this->type,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
+	protected function afterFind(){
+
+		parent::afterFind();
+		//$this->type =  $this->type==0 ? "ผู้ผลิต" : "ผู้จัดส่ง";
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return MenuTree the static model class
+	 * @return Vendor the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

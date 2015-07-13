@@ -333,7 +333,10 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 										'source' => $this->createUrl('user/getUserGroup'),
 										'options' => array( //custom display
 											'display' => 'js: function(value, sourceData) {
-												var selected = $.grep(sourceData, function(o){ return value == o.value; }),
+
+												var selected = $.grep(sourceData, function(o){ return o.value == value; });
+												
+												
 												colors = {1: "green", 2: "blue", 3: "purple", 4: "gray"};
 												$(this).text(selected[0].text).css("color", colors[value]);
 												//$(this).attr( "title", "คลิกเพื่อแก้ไข");
@@ -343,7 +346,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 										),
 										//onsave event handler
 										'onSave' => 'js: function(e, params) {
-												console && console.log("saved value: "+params.newValue);
+												//console && console.log("saved value: "+params.newValue);
 											}',
 										//source url can depend on some parameters, then use js function:
 										/*
