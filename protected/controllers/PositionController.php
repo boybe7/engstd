@@ -1,6 +1,6 @@
 <?php
 
-class MenuTreeController extends Controller
+class PositionController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -31,7 +31,7 @@ class MenuTreeController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','deleteSelected'),
+				'actions'=>array('create','update','getPositionLevel'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -44,17 +44,15 @@ class MenuTreeController extends Controller
 		);
 	}
 
-	public function actionDeleteSelected()
+	public function actionGetPositionLevel()
     {
-    	$autoIdAll = $_POST['selectedID'];
-        if(count($autoIdAll)>0)
-        {
-            foreach($autoIdAll as $autoId)
-            {
-                $this->loadModel($autoId)->delete();
-            }
-        }    
+    	
+    
+    	$data = array(array("value"=>"1","text"=>"เจ้าหน้าที่"),array("value"=>"2","text"=>"หัวหน้าส่วน"),array("value"=>"3","text"=>"ผู้อำนวยการกอง"));
+       
+        echo CJSON::encode($data);
     }
+
 
 	/**
 	 * Displays a particular model.
@@ -73,24 +71,18 @@ class MenuTreeController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new MenuTree;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['MenuTree']))
+		$model=new Position("search");
+		if(isset($_POST['name']) && $_POST['name']!="")
 		{
-			$model->attributes=$_POST['MenuTree'];
+			$model->posi_name =$_POST['name'];
+		    $model->posi_level = $_POST['level'];
+		
 			if($model->save())
-			{
-				$this->redirect(array('index'));
-			}
-
+				echo "OK";//$this->redirect(array('admin'));
+			else
+				print_r($model);
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 
 	/**
@@ -98,26 +90,23 @@ class MenuTreeController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate()
 	{
-		$model=$this->loadModel($id);
+		$es = new EditableSaver('Position');
+		   // header('Content-type: text/plain');
+     //        print_r($es);                    
+     //     exit;
+	    try {
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['MenuTree']))
-		{
-			$model->attributes=$_POST['MenuTree'];
-			if($model->save())
-			{
-				$this->redirect(array('index'));
-			}
-
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+	    	$es->update();
+	    	   // header('Content-type: text/plain');
+         //     print_r($es);                    
+         //  exit;
+	    } catch(CException $e) {
+	    	echo CJSON::encode(array('success' => false, 'msg' => $e->getMessage()));
+	    	return;
+	    }
+	    echo CJSON::encode(array('success' => true));
 	}
 
 	/**
@@ -145,10 +134,10 @@ class MenuTreeController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new MenuTree('search');
+		$model=new Position('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['MenuTree']))
-			$model->attributes=$_GET['MenuTree'];
+		if(isset($_GET['Position']))
+			$model->attributes=$_GET['Position'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -160,10 +149,10 @@ class MenuTreeController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new MenuTree('search');
+		$model=new Position('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['MenuTree']))
-			$model->attributes=$_GET['MenuTree'];
+		if(isset($_GET['Position']))
+			$model->attributes=$_GET['Position'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -177,7 +166,7 @@ class MenuTreeController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=MenuTree::model()->findByPk($id);
+		$model=Position::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -189,7 +178,7 @@ class MenuTreeController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='menu-tree-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='position-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

@@ -35,7 +35,7 @@ class UserController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','updateuser','getusergroup','deleteSelected','resetPassword'),
+				'actions'=>array('admin','delete','updateuser','getusergroup','getuserposition','deleteSelected','resetPassword'),
 				//'expression'=>'Yii::app()->user->isAdmin()',
 				'expression'=>'Yii::app()->user->isAdmin()',
 			),
@@ -90,9 +90,7 @@ class UserController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-		
+
 
 		if(isset($_POST['User']))
 		{
@@ -102,6 +100,8 @@ class UserController extends Controller
 			if($model->save())
 				$this->redirect(array('index'));
 		}
+
+		$model->password =  "";
 
 		$this->render('update',array(
 			'model'=>$model,
@@ -217,8 +217,14 @@ class UserController extends Controller
 	public function actionUpdateUser()
     {
 	    $es = new EditableSaver('User');
+
+	 
 	    try {
+	    	   // header('Content-type: text/plain');
+         //    print_r($es);                    
+         // exit;
 	    	$es->update();
+
 	    } catch(CException $e) {
 	    	echo CJSON::encode(array('success' => false, 'msg' => $e->getMessage()));
 	    	return;
@@ -242,6 +248,24 @@ class UserController extends Controller
        //$data = [{"value":"1","text":"admin"},{"value":"2","text":"user"},{"value":"6","text":"xxx"}];
         echo CJSON::encode($data);
     }
+
+       public function actionGetUserPosition()
+    {
+    	
+    	$models=Position::model()->findAll();
+    	$data = array();
+    	foreach ($models as $key => $value) {
+    		$data[] = array(
+                        'value'=>$value['id'],
+                        'text'=>$value['posi_name'],
+                     );
+    	}
+    	//$data = array(array("value"=>"1","text"=>"Admin"),array("value"=>"2","text"=>"SuperUser"),array("value"=>"3","text"=>"User"),array("value"=>"4","text"=>"Executive"));
+       // $data = array(array("value"=>"1","text"=>"Admin"),array("value"=>"2","text"=>"user"),array("value"=>"3","text"=>"xxx"));
+       //$data = [{"value":"1","text":"admin"},{"value":"2","text":"user"},{"value":"6","text":"xxx"}];
+        echo CJSON::encode($data);
+    }
+
 
     public function actionDeleteSelected()
     {

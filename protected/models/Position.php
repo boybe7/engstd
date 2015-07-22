@@ -1,22 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "menu_tree".
+ * This is the model class for table "m_position".
  *
- * The followings are the available columns in table 'menu_tree':
- * @property integer $id
- * @property string $title
- * @property string $url
- * @property integer $parent_id
+ * The followings are the available columns in table 'm_position':
+ * @property integer $posi_id
+ * @property string $posi_name
+ * @property string $posi_status
  */
-class MenuTree extends CActiveRecord
+class Position extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'menu_tree';
+		return 'm_position';
 	}
 
 	/**
@@ -27,13 +26,12 @@ class MenuTree extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, parent_id', 'required'),
-			array('parent_id', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>300),
-			array('url', 'length', 'max'=>500),
+			array(' posi_name,posi_level', 'required'),
+			array('posi_name', 'length', 'max'=>100),
+			array('posi_level', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, url, parent_id', 'safe', 'on'=>'search'),
+			array('id, posi_name, posi_level', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,10 +52,9 @@ class MenuTree extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'title' => 'ชื่อเมนู',
-			'url' => 'link url',
-			'parent_id' => 'กลุ่มเมนู',
+			'id' => 'Posi',
+			'posi_name' => 'ชื่อตำแหน่ง',
+			'posi_level' => 'ระดับ',
 		);
 	}
 
@@ -80,11 +77,8 @@ class MenuTree extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('url',$this->url,true);
-		$criteria->compare('parent_id',$this->parent_id);
-
-		$criteria->order = 'parent_id ASC'; 
+		$criteria->compare('posi_name',$this->posi_name,true);
+		$criteria->compare('posi_level',$this->posi_level,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -95,7 +89,7 @@ class MenuTree extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return MenuTree the static model class
+	 * @return Position the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

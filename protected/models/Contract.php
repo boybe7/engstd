@@ -1,22 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "menu_tree".
+ * This is the model class for table "m_contract".
  *
- * The followings are the available columns in table 'menu_tree':
- * @property integer $id
- * @property string $title
- * @property string $url
- * @property integer $parent_id
+ * The followings are the available columns in table 'm_contract':
+ * @property integer $con_id
+ * @property string $con_number
+ * @property string $con_price
+ * @property string $con_budget
  */
-class MenuTree extends CActiveRecord
+class Contract extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'menu_tree';
+		return 'm_contract';
 	}
 
 	/**
@@ -27,13 +27,13 @@ class MenuTree extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, parent_id', 'required'),
-			array('parent_id', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>300),
-			array('url', 'length', 'max'=>500),
+			array('con_number, con_price, con_budget', 'required'),
+			array('con_id', 'numerical', 'integerOnly'=>true),
+			array('con_number', 'length', 'max'=>20),
+			array('con_price, con_budget', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, url, parent_id', 'safe', 'on'=>'search'),
+			array('con_id, con_number, con_price, con_budget', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,10 +54,10 @@ class MenuTree extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'title' => 'ชื่อเมนู',
-			'url' => 'link url',
-			'parent_id' => 'กลุ่มเมนู',
+			'con_id' => 'Con',
+			'con_number' => 'เลขที่สัญญา',
+			'con_price' => 'ค่างาน',
+			'con_budget' => 'งบประมาณโครงการ',
 		);
 	}
 
@@ -79,12 +79,10 @@ class MenuTree extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('url',$this->url,true);
-		$criteria->compare('parent_id',$this->parent_id);
-
-		$criteria->order = 'parent_id ASC'; 
+		$criteria->compare('con_id',$this->con_id);
+		$criteria->compare('con_number',$this->con_number,true);
+		$criteria->compare('con_price',$this->con_price,true);
+		$criteria->compare('con_budget',$this->con_budget,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -95,7 +93,7 @@ class MenuTree extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return MenuTree the static model class
+	 * @return Contract the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

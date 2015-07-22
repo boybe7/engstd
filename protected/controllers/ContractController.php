@@ -1,6 +1,6 @@
 <?php
 
-class MenuTreeController extends Controller
+class ContractController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -31,7 +31,7 @@ class MenuTreeController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','deleteSelected'),
+				'actions'=>array('create','update','DeleteSelected'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,18 +43,6 @@ class MenuTreeController extends Controller
 			),
 		);
 	}
-
-	public function actionDeleteSelected()
-    {
-    	$autoIdAll = $_POST['selectedID'];
-        if(count($autoIdAll)>0)
-        {
-            foreach($autoIdAll as $autoId)
-            {
-                $this->loadModel($autoId)->delete();
-            }
-        }    
-    }
 
 	/**
 	 * Displays a particular model.
@@ -73,19 +61,16 @@ class MenuTreeController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new MenuTree;
+		$model=new Contract;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['MenuTree']))
+		if(isset($_POST['Contract']))
 		{
-			$model->attributes=$_POST['MenuTree'];
+			$model->attributes=$_POST['Contract'];
 			if($model->save())
-			{
 				$this->redirect(array('index'));
-			}
-
 		}
 
 		$this->render('create',array(
@@ -105,14 +90,11 @@ class MenuTreeController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['MenuTree']))
+		if(isset($_POST['Contract']))
 		{
-			$model->attributes=$_POST['MenuTree'];
+			$model->attributes=$_POST['Contract'];
 			if($model->save())
-			{
 				$this->redirect(array('index'));
-			}
-
 		}
 
 		$this->render('update',array(
@@ -145,25 +127,37 @@ class MenuTreeController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new MenuTree('search');
+		$model=new Contract('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['MenuTree']))
-			$model->attributes=$_GET['MenuTree'];
+		if(isset($_GET['Contract']))
+			$model->attributes=$_GET['Contract'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
 
+	public function actionDeleteSelected()
+    {
+    	$autoIdAll = $_POST['selectedID'];
+        if(count($autoIdAll)>0)
+        {
+            foreach($autoIdAll as $autoId)
+            {
+                $this->loadModel($autoId)->delete();
+            }
+        }    
+    }
+
 	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
-		$model=new MenuTree('search');
+		$model=new Contract('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['MenuTree']))
-			$model->attributes=$_GET['MenuTree'];
+		if(isset($_GET['Contract']))
+			$model->attributes=$_GET['Contract'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -177,7 +171,7 @@ class MenuTreeController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=MenuTree::model()->findByPk($id);
+		$model=Contract::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -189,7 +183,7 @@ class MenuTreeController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='menu-tree-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='contract-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

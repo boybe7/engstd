@@ -21,23 +21,23 @@ function getGroup(){
     
 }
 // access it by Yii::app()->user->title
-function getTitle(){
-    $user = $this->loadUser(Yii::app()->user->id);
-    return $user->title;
+// function getTitle(){
+//     $user = $this->loadUser(Yii::app()->user->id);
+//     return $user->title;
     
-}
+// }
 // access it by Yii::app()->user->firstname
-function getFirstName(){
+function getName(){
     $user = $this->loadUser(Yii::app()->user->id);
-    return $user->firstname;
+    return $user->name;
     
 }
 // access it by Yii::app()->user->lastname
-function getLastName(){
-    $user = $this->loadUser(Yii::app()->user->id);
-    return $user->lastname;
+// function getLastName(){
+//     $user = $this->loadUser(Yii::app()->user->id);
+//     return $user->lastname;
     
-}
+// }
 
 function getUserDept(){
     $user = $this->loadUser(Yii::app()->user->id);
@@ -57,13 +57,7 @@ function getUsertype(){
          return "user";
 }
 
-// This is a function that checks the field 'role'
-// in the User model to be equal to 1, that means it's admin
-// Yii::app()->user->isGuest
-// Yii::app()->user->isAdmin()
-// Yii::app()->user->isDoctor()
-// Yii::app()->user->isNurse()
-// Yii::app()->user->isCashier()
+
  function isAdmin(){
     $user = $this->loadUser(Yii::app()->user->id);
     return $user->u_group == "1";

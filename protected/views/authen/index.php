@@ -63,8 +63,8 @@ $this->breadcrumbs=array(
                                               //console.log( index + ": " + value["menu_id"] );
                                               mid = value["menu_id"];
                                                 $("#list :checkbox").filter(function () {
-                                                    
-                                                    return $.inArray(this.value, mid) >= 0;
+                                                   // console.log(this.value+":"+mid+"="+$.inArray(this.value, mid));
+                                                    return this.value==mid;
                                                 }).prop("checked", true);
                                             });
                                            
@@ -84,27 +84,29 @@ $this->breadcrumbs=array(
 <div class="row-fluid">
     <div class="span3" style="text-align:right;font-weight:bold;font-size:15px;font-family: 'Boon700',sans-serif;">เลือกสิทธิให้กลุ่มผู้ใช้งาน :</div>
     <div class="span9" id="list">
+         
     <?php
        
             $menugroups = MenuGroup::model()->findAll();
             foreach ($menugroups as $key => $group) {
                 $menutrees = MenuTree::model()->findAll(array('order'=>'', 'condition'=>'parent_id=:gid', 'params'=>array(':gid'=>$group->id)));
-                echo  '<div class=""><b>'.$group->title.'</b></div>';
-             
+                echo  '<div class="row-fluid"><div class="span12"><b>'.$group->title.'</b></div>';
+                
                 foreach ($menutrees as $key => $menu) {
                     
-                    echo '<label class="checkbox inline">';
+                    echo '<label class="checkbox span5">';
                         echo '<input type="checkbox" id="authen_rule" name="authen_rule[]" value="'.$menu->id.'">'.$menu->title;
                     echo '</label>';
                 }
 
-                echo '<div style="padding-top:10px">&nbsp;</div>';
+                echo '<div style="padding-top:10px">&nbsp;</div></div>';
                 
             }
             
        
 
     ?>
+         
     </div>
 </div>
 

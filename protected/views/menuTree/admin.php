@@ -78,7 +78,6 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'menu-grid',
 	'dataProvider'=>$model->search(),
 	'type'=>'bordered condensed',
-	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'selectableRows' =>2,
 	'htmlOptions'=>array('style'=>'padding-top:40px'),

@@ -21,27 +21,15 @@
       
     </div>
   </div>
-  <div class="row-fluid">
-   
-    <div class="span8">
-      <?php echo $form->textFieldRow($model,'title',array('class'=>'span12','maxlength'=>10)); ?>
-    </div>
-    
-  </div>
+
   <div class="row-fluid">
    
     <div class="span12">
-      <?php echo $form->textFieldRow($model,'firstname',array('class'=>'span12','maxlength'=>100)); ?>
+      <?php echo $form->textFieldRow($model,'name',array('class'=>'span12','maxlength'=>100)); ?>
     </div>
     
   </div>
-  <div class="row-fluid">
-   
-    <div class="span12">
-      <?php echo $form->textFieldRow($model,'lastname',array('class'=>'span12','maxlength'=>100)); ?>
-    </div>
-    
-  </div>
+ 
   <div class="row-fluid">
     
     <div class="span12">
@@ -62,6 +50,59 @@
     </div>
    
   </div>	
+
+  <div class="row-fluid">
+   
+    <div class="span12">
+      <?php 
+
+       $models=Position::model()->findAll();
+        $data = array();
+        foreach ($models as $key => $value) {
+          $data[] = array(
+                          'value'=>$value['id'],
+                          'text'=>$value['posi_name'],
+                       );
+        } 
+        $typelist = CHtml::listData($data,'value','text');
+        echo $form->dropDownListRow($model, 'position', $typelist,array('class'=>'span12')); 
+      
+      //echo $form->textFieldRow($model,'position',array('class'=>'span12','maxlength'=>100));
+
+
+
+       ?>
+    </div>
+    
+  </div>
+
+  <div class="row-fluid">
+   
+    <div class="span12">
+      <?php 
+      $models = Yii::app()->db->createCommand()
+                        ->select('id,posi_name')
+                        ->from('m_position')
+                        ->where('posi_name LIKE  "%รักษาการแทน%"')
+                        ->queryAll();
+
+
+       //$models=Position::model()->findAll();
+        $data = array();
+        foreach ($models as $key => $value) {
+          $data[] = array(
+                          'value'=>$value['id'],
+                          'text'=>$value['posi_name'],
+                       );
+        } 
+        $typelist = CHtml::listData($data,'value','text');
+        echo $form->dropDownListRow($model, 'position2', $typelist,array('class'=>'span12','empty'=>"")); 
+     // echo $form->textFieldRow($model,'position2',array('class'=>'span12','maxlength'=>100)); 
+
+      ?>
+    </div>
+    
+  </div>
   
   <div class="row-fluid">
 	<div class="span12 form-actions ">
