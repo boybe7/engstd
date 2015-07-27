@@ -79,6 +79,8 @@ $this->widget('bootstrap.widgets.TbGridView',array(
     'htmlOptions'=>array('style'=>'padding-top:40px'),
     'enablePagination' => true,
     'summaryText'=>'แสดงผล {start} ถึง {end} จากทั้งหมด {count} ข้อมูล',
+    'template'=>"{items}<div class='row-fluid'><div class='span6'>{pager}</div><div class='span6'>{summary}</div></div>",
+	
 	'columns'=>array(
 		'checkbox'=> array(
         	    'id'=>'selectedID',

@@ -1,6 +1,6 @@
 <?php
 
-class PositionController extends Controller
+class ProductController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -31,7 +31,7 @@ class PositionController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','getPositionLevel','deleteSelected'),
+				'actions'=>array('create','update','DeleteSelected'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,7 @@ class PositionController extends Controller
 			),
 		);
 	}
+
 	public function actionDeleteSelected()
     {
     	$autoIdAll = $_POST['selectedID'];
@@ -54,16 +55,6 @@ class PositionController extends Controller
             }
         }    
     }
-
-	public function actionGetPositionLevel()
-    {
-    	
-    
-    	$data = array(array("value"=>"1","text"=>"เจ้าหน้าที่"),array("value"=>"2","text"=>"หัวหน้าส่วน"),array("value"=>"3","text"=>"ผู้อำนวยการกอง"));
-       
-        echo CJSON::encode($data);
-    }
-
 
 	/**
 	 * Displays a particular model.
@@ -82,18 +73,24 @@ class PositionController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Position("search");
-		if(isset($_POST['name']) && $_POST['name']!="")
+		$model=new Product;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Product']))
 		{
-			$model->posi_name =$_POST['name'];
-		    $model->posi_level = $_POST['level'];
-		
+			$model->attributes=$_POST['Product'];
+			$model->prod_size1 = $_POST['Product']['prod_size1'];
+			$model->prod_size2 = $_POST['Product']['prod_size2'];
+			$model->prod_size3 = $_POST['Product']['prod_size3'];
 			if($model->save())
-				echo "OK";//$this->redirect(array('admin'));
-			else
-				print_r($model);
+				$this->redirect(array('index'));
 		}
 
+		$this->render('create',array(
+			'model'=>$model,
+		));
 	}
 
 	/**
@@ -101,23 +98,26 @@ class PositionController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate()
+	public function actionUpdate($id)
 	{
-		$es = new EditableSaver('Position');
-		   // header('Content-type: text/plain');
-     //        print_r($es);                    
-     //     exit;
-	    try {
+		$model=$this->loadModel($id);
 
-	    	$es->update();
-	    	   // header('Content-type: text/plain');
-         //     print_r($es);                    
-         //  exit;
-	    } catch(CException $e) {
-	    	echo CJSON::encode(array('success' => false, 'msg' => $e->getMessage()));
-	    	return;
-	    }
-	    echo CJSON::encode(array('success' => true));
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Product']))
+		{
+			$model->attributes=$_POST['Product'];
+			$model->prod_size1 = $_POST['Product']['prod_size1'];
+			$model->prod_size2 = $_POST['Product']['prod_size2'];
+			$model->prod_size3 = $_POST['Product']['prod_size3'];
+			if($model->save())
+				$this->redirect(array('index'));
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+		));
 	}
 
 	/**
@@ -145,10 +145,10 @@ class PositionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Position('search');
+		$model=new Product('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Position']))
-			$model->attributes=$_GET['Position'];
+		if(isset($_GET['Product']))
+			$model->attributes=$_GET['Product'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -160,10 +160,10 @@ class PositionController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Position('search');
+		$model=new Product('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Position']))
-			$model->attributes=$_GET['Position'];
+		if(isset($_GET['Product']))
+			$model->attributes=$_GET['Product'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -177,7 +177,7 @@ class PositionController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Position::model()->findByPk($id);
+		$model=Product::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -189,7 +189,7 @@ class PositionController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='position-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='product-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
