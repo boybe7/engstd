@@ -1,6 +1,6 @@
 <?php
 
-class VendorController extends Controller
+class DeptorderController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -31,7 +31,7 @@ class VendorController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GetVendor'),
+				'actions'=>array('create','update','DeleteSelected','getdept'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,18 @@ class VendorController extends Controller
 			),
 		);
 	}
+
+	public function actionDeleteSelected()
+    {
+    	$autoIdAll = $_POST['selectedID'];
+        if(count($autoIdAll)>0)
+        {
+            foreach($autoIdAll as $autoId)
+            {
+                $this->loadModel($autoId)->delete();
+            }
+        }    
+    }
 
 	/**
 	 * Displays a particular model.
@@ -61,22 +73,18 @@ class VendorController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Vendor;
+		$model=new Deptorder;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Vendor']))
+		if(isset($_POST['name']))
 		{
-			$model->attributes=$_POST['Vendor'];
-			$model->type = $_POST['Vendor']['type'];
-			if($model->save())
-				$this->redirect(array('admin'));
+			$model->dept_name=$_POST['name'];
+			
+			$model->save();
+			
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 
 	/**
@@ -84,25 +92,39 @@ class VendorController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate()
 	{
-		$model=$this->loadModel($id);
+		$es = new EditableSaver('Deptorder');
+	
+	    try {
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Vendor']))
-		{
-			$model->attributes=$_POST['Vendor'];
-			$model->type = $_POST['Vendor']['type'];
-			if($model->save())
-				$this->redirect(array('admin'));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+	    	$es->update();
+	    
+	    } catch(CException $e) {
+	    	echo CJSON::encode(array('success' => false, 'msg' => $e->getMessage()));
+	    	return;
+	    }
+	    echo CJSON::encode(array('success' => true));
 	}
+
+	public function actionGetDept(){
+            $request=trim($_GET['term']);
+                    
+            $models=Deptorder::model()->findAll(array("condition"=>"dept_name like '%$request%' "));
+            $data=array();
+            foreach($models as $model){
+                //$data[]["label"]=$get->v_name;
+                //$data[]["id"]=$get->v_id;
+                $data[] = array(
+                        'id'=>$model['dept_id'],
+                        'label'=>$model['dept_name'],
+                );
+
+            }
+            $this->layout='empty';
+            echo json_encode($data);
+        
+    }
 
 	/**
 	 * Deletes a particular model.
@@ -129,51 +151,25 @@ class VendorController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Vendor('search');
+		$model=new Deptorder('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Vendor']))
-			$model->attributes=$_GET['Vendor'];
+		if(isset($_GET['Deptorder']))
+			$model->attributes=$_GET['Deptorder'];
 
-		$this->render('admin',array(
+		$this->render('index',array(
 			'model'=>$model,
 		));
 	}
-
-	protected function gridTypeName($data,$row) 
-    {
-        $data->type =  $data->type==0 ? "ผู้ผลิต" : "ผู้จัดส่ง";
-        return  CHtml::encode($data->type);
-    }
-
-    public function actionGetVendor(){
-            $request=trim($_GET['term']);
-                    
-            $models=Vendor::model()->findAll(array("condition"=>"name like '%$request%' "));
-            $data=array();
-            foreach($models as $model){
-                //$data[]["label"]=$get->v_name;
-                //$data[]["id"]=$get->v_id;
-                $data[] = array(
-                        'id'=>$model['name'],
-                        'label'=>$model['name'],
-                );
-
-            }
-            $this->layout='empty';
-            echo json_encode($data);
-        
-    }
- 
 
 	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
-		$model=new Vendor('search');
+		$model=new Deptorder('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Vendor']))
-			$model->attributes=$_GET['Vendor'];
+		if(isset($_GET['Deptorder']))
+			$model->attributes=$_GET['Deptorder'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -187,23 +183,11 @@ class VendorController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Vendor::model()->findByPk($id);
+		$model=Deptorder::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
-	public function actionDeleteSelected()
-    {
-    	$autoIdAll = $_POST['selectedID'];
-        if(count($autoIdAll)>0)
-        {
-            foreach($autoIdAll as $autoId)
-            {
-                $this->loadModel($autoId)->delete();
-            }
-        }
-    }
 
 	/**
 	 * Performs the AJAX validation.
@@ -211,7 +195,7 @@ class VendorController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='vendor-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='deptorder-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

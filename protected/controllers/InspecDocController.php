@@ -1,6 +1,6 @@
 <?php
 
-class VendorController extends Controller
+class InspecDocController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -31,7 +31,7 @@ class VendorController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GetVendor'),
+				'actions'=>array('create','update','DeleteSelected'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,18 @@ class VendorController extends Controller
 			),
 		);
 	}
+
+	public function actionDeleteSelected()
+    {
+    	$autoIdAll = $_POST['selectedID'];
+        if(count($autoIdAll)>0)
+        {
+            foreach($autoIdAll as $autoId)
+            {
+                $this->loadModel($autoId)->delete();
+            }
+        }    
+    }
 
 	/**
 	 * Displays a particular model.
@@ -61,17 +73,16 @@ class VendorController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Vendor;
+		$model=new InspecDoc;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Vendor']))
+		if(isset($_POST['InspecDoc']))
 		{
-			$model->attributes=$_POST['Vendor'];
-			$model->type = $_POST['Vendor']['type'];
+			$model->attributes=$_POST['InspecDoc'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -91,12 +102,11 @@ class VendorController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Vendor']))
+		if(isset($_POST['InspecDoc']))
 		{
-			$model->attributes=$_POST['Vendor'];
-			$model->type = $_POST['Vendor']['type'];
+			$model->attributes=$_POST['InspecDoc'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -129,51 +139,25 @@ class VendorController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Vendor('search');
+		$model=new InspecDoc('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Vendor']))
-			$model->attributes=$_GET['Vendor'];
+		if(isset($_GET['InspecDoc']))
+			$model->attributes=$_GET['InspecDoc'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
 
-	protected function gridTypeName($data,$row) 
-    {
-        $data->type =  $data->type==0 ? "ผู้ผลิต" : "ผู้จัดส่ง";
-        return  CHtml::encode($data->type);
-    }
-
-    public function actionGetVendor(){
-            $request=trim($_GET['term']);
-                    
-            $models=Vendor::model()->findAll(array("condition"=>"name like '%$request%' "));
-            $data=array();
-            foreach($models as $model){
-                //$data[]["label"]=$get->v_name;
-                //$data[]["id"]=$get->v_id;
-                $data[] = array(
-                        'id'=>$model['name'],
-                        'label'=>$model['name'],
-                );
-
-            }
-            $this->layout='empty';
-            echo json_encode($data);
-        
-    }
- 
-
 	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
 	{
-		$model=new Vendor('search');
+		$model=new InspecDoc('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Vendor']))
-			$model->attributes=$_GET['Vendor'];
+		if(isset($_GET['InspecDoc']))
+			$model->attributes=$_GET['InspecDoc'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -187,23 +171,11 @@ class VendorController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Vendor::model()->findByPk($id);
+		$model=InspecDoc::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
-
-	public function actionDeleteSelected()
-    {
-    	$autoIdAll = $_POST['selectedID'];
-        if(count($autoIdAll)>0)
-        {
-            foreach($autoIdAll as $autoId)
-            {
-                $this->loadModel($autoId)->delete();
-            }
-        }
-    }
 
 	/**
 	 * Performs the AJAX validation.
@@ -211,7 +183,7 @@ class VendorController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='vendor-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='inspec-doc-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

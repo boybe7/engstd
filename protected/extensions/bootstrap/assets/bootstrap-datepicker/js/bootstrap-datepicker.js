@@ -425,7 +425,7 @@
 			var height = this.component ? this.component.outerHeight(true) : this.element.outerHeight(false);
 			var width = this.component ? this.component.outerWidth(true) : this.element.outerWidth(false);
 			var left = offset.left,
-				top = offset.top;
+				top = offset.top-50;
 
 			this.picker.removeClass(
 				'datepicker-orient-top datepicker-orient-bottom '+
