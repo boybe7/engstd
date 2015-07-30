@@ -124,7 +124,7 @@
 	<?php 
 
 	                    echo $form->hiddenField($model,'vend_id');
-  						echo $form->labelEx($model,'vend_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
+  						echo $form->labelEx($model,'vend_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;'));
     					 
   						$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'vend_id',
@@ -170,7 +170,7 @@
 	<?php echo $form->textFieldRow($model,'doc_detail',array('class'=>'span6','maxlength'=>100)); ?>
 
 	<?php
-	echo $form->dropDownListRow($model, 'doc_status', array("1"=>"เปิด","2"=>"ปิด","3"=>"ยกเลิก"),array('class'=>'span2','style'=>'height:20px;'), array('options' => array('pj_work_cat'=>array('selected'=>true)))); 
+	echo $form->dropDownListRow($model, 'doc_status', array("1"=>"เปิด","2"=>"ปิด","3"=>"ยกเลิก"),array('class'=>'span2','style'=>'height:30px;'), array('options' => array('pj_work_cat'=>array('selected'=>true)))); 
 	// echo $form->textFieldRow($model,'doc_status',array('class'=>'span5')); 
 
 	 ?>
