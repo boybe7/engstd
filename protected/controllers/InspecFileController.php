@@ -31,7 +31,7 @@ class InspecFileController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','createTemp','download'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -78,6 +78,69 @@ class InspecFileController extends Controller
 		));
 	}
 
+	public function actionDownload($id)
+	{
+		$model = InspecFile::model()->findByPk($id);
+		$filename = $model->ins_file;
+
+		$file = $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/'.$filename;
+		if (file_exists($file)) {
+		    header('Content-Description: File Transfer');
+		    header('Content-Type: application/octet-stream');
+		    header('Content-Disposition: attachment; filename='.basename($file));
+		    header('Expires: 0');
+		    header('Cache-Control: must-revalidate');
+		    header('Pragma: public');
+		    header('Content-Length: ' . filesize($file));
+		    readfile($file);
+		    exit;
+		}
+
+	}
+
+	public function actionCreateTemp()
+	{
+		$model=new InspecFile;
+
+		 //header('Content-type: text/plain');
+         //print_r($_POST['InspecFile']);                    
+         //exit;
+
+
+		if(isset($_FILES['file_attach']))
+		{
+			
+			$file = $_FILES['file_attach'];
+			if (Yii::app()->request->isAjaxRequest)
+	        {
+	           
+	            $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/';
+	            if(move_uploaded_file($file['tmp_name'], $uploaddir .basename($file['name'])))
+		        {
+		            $model->ins_file = $file['name'];
+		            $model->doc_id = 1;
+		            $model->save();
+		             echo CJSON::encode(array(
+	                'status'=>'success'
+	                ));
+		        }
+		        else
+		        {
+		            echo CJSON::encode(array(
+	                'status'=>'failure'));
+	                
+		        }
+
+	           
+				        
+	        }
+	        else{
+	        	
+	        }		
+	
+		}
+
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

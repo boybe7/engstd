@@ -20,12 +20,12 @@
 
 
 </script>
-
+<div class="well">
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'inspec-doc-form',
 	'enableAjaxValidation'=>false,
 	 'type'=>'vertical',
-    'htmlOptions'=>  array('class'=>'well','style'=>''),
+    'htmlOptions'=>  array('class'=>'','style'=>''),
 )); ?>
 	<h4><?php echo($title);?></h4>
 	<hr style="margin-top:-10px;border-top: 1px solid #6F6E6E;">
@@ -175,6 +175,104 @@
 
 	 ?>
 
+
+<?php $this->endWidget(); ?>
+    
+<?php 
+
+echo '<form action="../inspecFile/createTemp/"  method="post" enctype="multipart/form-data" id="inspec-doc-form-upload">';
+echo '<input type="file" name="file-attach">';
+//echo CHtml::submitButton('Submit');  
+ $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType'=>'link',
+            'type'=>'primary',
+            'label'=>'upload',
+            'htmlOptions'=>array(
+                'onclick'=>'
+                    var formData = new FormData($("#inspec-doc-form-upload")[0]);
+                    formData.append("file_attach", $("input[name=file-attach]")[0].files[0]);
+                    console.log($("input[name=file-attach]")[0].files[0])
+                    $.ajax({
+                            type: "POST",
+                            processData : false,
+                            contentType : false,
+                            url: "../inspecFile/createTemp/",
+                            dataType:"json",
+                            data: formData
+                    })                                  
+                    .done(function( msg ) {
+                            console.log(msg)
+                    });
+
+                '
+            )    
+        )); 
+
+echo '</form>'; 
+
+$this->widget('bootstrap.widgets.TbGridView',array(
+                    'id'=>'upload-grid',
+                    
+                    'type'=>'bordered condensed',
+                    'dataProvider'=>InspecFile::model()->search(),
+                    //'filter'=>$model,
+                    'selectableRows' => 2,
+                    'enableSorting' => false,
+                    'rowCssClassExpression'=>'"tr_white"',
+                    'htmlOptions'=>array('style'=>'padding-bottom:10px;width:50%'),
+                    'enablePagination' => false,
+                    'summaryText'=>'',//'Displaying {start}-{end} of {count} results.',
+                    'columns'=>array(
+                            
+                            'detail'=>array(
+                                //'type'=>'raw',
+                                'header'=>'',
+                               // 'value'=>'CHtml::link($data->ins_file, "download", array("id"=>$data->ins_id)',
+
+                                'name' => 'ins_file',
+
+                                'headerHtmlOptions' => array('style' => 'width:87%;text-align:center;background-color: #eeeeee'),                           
+                                //'headerHtmlOptions' => array('style' => 'width: 110px'),
+                                'htmlOptions'=>array(
+                                                    'style'=>'text-align:left'
+
+                                )
+                            ),
+                            
+                            array(
+                                'class'=>'bootstrap.widgets.TbButtonColumn',
+                                'headerHtmlOptions' => array('style' => 'width:13%;text-align:center;background-color: #eeeeee'),
+                                'template' => '{view} {delete}',
+                                // 'deleteConfirmation'=>'js:bootbox.confirm("Are you sure to want to delete")',
+                                'buttons'=>array(
+                                        'delete'=>array(
+                                            'url'=>'Yii::app()->createUrl("InspecFile/deleteTemp", array("id"=>$data->ins_id))', 
+
+                                        ),
+                                        'view'=>array(
+                                            'url'=>'Yii::app()->createUrl("InspecFile/download", array("id"=>$data->ins_id))', 
+
+                                        )
+
+                                    )
+
+                                
+                            ),
+                        )
+
+                    ));
+
+
+// $formUpload = $form->beginWidget('bootstrap.widgets.TbActiveForm',array(
+//     'id'=>'inspec-doc-form-upload',
+//     'htmlOptions' => array('enctype' => 'multipart/form-data'),
+// ));
+
+//echo $formUpload->fileFieldRow($model2, 'ins_file'); 
+?>
+
+<?php //$form->endWidget(); ?>
+
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
@@ -183,4 +281,4 @@
 		)); ?>
 	</div>
 
-<?php $this->endWidget(); ?>
+</div>

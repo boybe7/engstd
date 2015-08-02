@@ -28,7 +28,7 @@ class InspecFile extends CActiveRecord
 		return array(
 			array('doc_id, ins_file', 'required'),
 			array('doc_id', 'numerical', 'integerOnly'=>true),
-			array('ins_file', 'file', 'types'=>'doc, docx, pdf, xls, xlsx', 'safe' => false),
+			//array('ins_file', 'file', 'types'=>'doc, docx, pdf, xls, xlsx', 'safe' => false),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('ins_id, doc_id, ins_file', 'safe', 'on'=>'search'),

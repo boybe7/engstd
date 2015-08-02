@@ -1,4 +1,4 @@
-2015/07/27 11:07:33 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
+2015/08/02 00:58:41 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
 Stack trace:
 #0 C:\xampp\htdocs\engstd\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
 #1 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -8,15 +8,15 @@ Stack trace:
 #5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
 #6 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
 #7 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('update')
-#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('prodtype/update')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('download')
+#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('InspecFile/down...')
 #10 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #11 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
 #12 {main}
-REQUEST_URI=/engstd/prodtype/update
-HTTP_REFERER=http://localhost:8080/engstd/prodtype/index
+REQUEST_URI=/engstd/InspecFile/download/shadowera.txt
+HTTP_REFERER=http://localhost/engstd/inspecDoc/create
 ---
-2015/07/27 11:07:37 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
+2015/08/02 01:00:03 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
 Stack trace:
 #0 C:\xampp\htdocs\engstd\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
 #1 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -26,15 +26,14 @@ Stack trace:
 #5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
 #6 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
 #7 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('update')
-#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('prodtype/update')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('download')
+#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('InspecFile/down...')
 #10 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #11 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
 #12 {main}
-REQUEST_URI=/engstd/prodtype/update
-HTTP_REFERER=http://localhost:8080/engstd/prodtype/index
+REQUEST_URI=/engstd/InspecFile/download/shadowera.txt
 ---
-2015/07/27 11:09:12 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
+2015/08/02 01:00:24 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
 Stack trace:
 #0 C:\xampp\htdocs\engstd\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
 #1 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -44,15 +43,14 @@ Stack trace:
 #5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
 #6 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
 #7 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('update')
-#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('prodtype/update')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('download')
+#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('InspecFile/down...')
 #10 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #11 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
 #12 {main}
-REQUEST_URI=/engstd/prodtype/update
-HTTP_REFERER=http://localhost:8080/engstd/prodtype/index
+REQUEST_URI=/engstd/InspecFile/download/
 ---
-2015/07/27 11:10:39 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
+2015/08/02 01:00:53 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
 Stack trace:
 #0 C:\xampp\htdocs\engstd\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
 #1 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -62,15 +60,14 @@ Stack trace:
 #5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
 #6 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
 #7 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('update')
-#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('prodtype/update')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('download')
+#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('inspecFile/down...')
 #10 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #11 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
 #12 {main}
-REQUEST_URI=/engstd/prodtype/update
-HTTP_REFERER=http://localhost:8080/engstd/prodtype/index
+REQUEST_URI=/engstd/inspecFile/download/
 ---
-2015/07/27 11:11:18 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
+2015/08/02 01:01:51 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
 Stack trace:
 #0 C:\xampp\htdocs\engstd\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
 #1 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -80,15 +77,14 @@ Stack trace:
 #5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
 #6 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
 #7 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('update')
-#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('prodtype/update')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('download')
+#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('inspecFile/down...')
 #10 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #11 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
 #12 {main}
-REQUEST_URI=/engstd/prodtype/update
-HTTP_REFERER=http://localhost:8080/engstd/prodtype/index
+REQUEST_URI=/engstd/inspecFile/download/
 ---
-2015/07/27 11:13:14 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
+2015/08/02 01:01:53 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
 Stack trace:
 #0 C:\xampp\htdocs\engstd\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
 #1 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -98,15 +94,14 @@ Stack trace:
 #5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
 #6 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
 #7 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('update')
-#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('prodtype/update')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('download')
+#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('inspecFile/down...')
 #10 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #11 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
 #12 {main}
-REQUEST_URI=/engstd/prodtype/update
-HTTP_REFERER=http://localhost:8080/engstd/prodtype/index
+REQUEST_URI=/engstd/inspecFile/download/
 ---
-2015/07/27 11:15:28 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
+2015/08/02 01:01:55 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
 Stack trace:
 #0 C:\xampp\htdocs\engstd\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
 #1 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
@@ -116,239 +111,66 @@ Stack trace:
 #5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
 #6 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
 #7 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('update')
-#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('prodtype/update')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('download')
+#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('inspecFile/down...')
 #10 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #11 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
 #12 {main}
-REQUEST_URI=/engstd/prodtype/update
-HTTP_REFERER=http://localhost:8080/engstd/prodtype/index
+REQUEST_URI=/engstd/inspecFile/download/
 ---
-2015/07/27 15:32:27 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (107)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:32:27 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (107)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:32:27 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (107)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:33:19 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (107)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:33:19 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (107)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:33:19 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (107)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:35:15 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:35:15 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:35:15 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:36:14 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:36:14 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:36:14 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:36:21 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:36:21 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:36:21 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/27 15:49:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "M4.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+2015/08/02 01:02:03 [error] [exception.CException] exception 'CException' with message 'InspecFileController ไม่สามารถค้นหา "view" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:878
 Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('M4.php')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('M4.php')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('product/M4.php')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/product/M4.php
-HTTP_REFERER=http://localhost:8080/engstd/product/index
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('view', Array, true)
+#1 C:\xampp\htdocs\engstd\protected\controllers\InspecFileController.php(55): CController->render('view', Array)
+#2 [internal function]: InspecFileController->actionView('1')
+#3 C:\xampp\htdocs\engstd\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(InspecFileController), Array)
+#4 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(InspecFileController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('view')
+#14 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('inspecFile/view')
+#15 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/engstd/inspecFile/view/1
 ---
-2015/07/29 15:20:44 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "InspecDoc.pj_name" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:130
+2015/08/02 01:04:17 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
 Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(145): CComponent->__get('pj_name')
-#1 C:\xampp\htdocs\engstd\protected\views\inspecDoc\_form.php(72): CActiveRecord->__get('pj_name')
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#4 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#5 C:\xampp\htdocs\engstd\protected\views\inspecDoc\create.php(11): CController->renderPartial('_form', Array)
-#6 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#7 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#8 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#10 C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php(90): CController->render('create', Array)
-#11 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): InspecDocController->actionCreate()
-#12 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#13 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#14 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#15 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#16 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#17 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#18 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#19 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#20 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('create')
-#21 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('inspecDoc/creat...')
-#22 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#23 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#24 {main}
-REQUEST_URI=/engstd/inspecDoc/create
-HTTP_REFERER=http://localhost:8080/engstd/inspecDoc/index
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('download')
+#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('InspecFile/down...')
+#10 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/engstd/InspecFile/download/
 ---
-2015/07/29 15:50:07 [error] [php] Undefined variable: dataProvider (C:\xampp\htdocs\engstd\protected\views\deptorder\index.php:11)
+2015/08/02 01:04:20 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\engstd\framework\web\CController.php:336
 Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): DeptorderController->renderFile()
-#1 C:\xampp\htdocs\engstd\framework\web\CController.php(782): DeptorderController->renderPartial()
-#2 C:\xampp\htdocs\engstd\protected\controllers\DeptorderController.php(149): DeptorderController->render()
-#3 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): DeptorderController->actionIndex()
-#4 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): DeptorderController->runAction()
-#6 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#7 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#8 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): DeptorderController->filterAccessControl()
-#9 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#10 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(265): DeptorderController->runActionWithFilters()
-#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): DeptorderController->run()
-#13 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#14 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#15 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/deptorder/index
-in C:\xampp\htdocs\engstd\protected\views\deptorder\index.php (11)
-in C:\xampp\htdocs\engstd\protected\controllers\DeptorderController.php (149)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/07/29 15:51:19 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "Deptorder.prot_code" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(145): CComponent->__get('prot_code')
-#1 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(2529): CActiveRecord->__get('prot_code')
-#2 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(2252): CHtml::resolveValue(Object(Deptorder), 'prot_code')
-#3 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(1434): CHtml::activeInputField('text', Object(Deptorder), 'prot_code', Array)
-#4 C:\xampp\htdocs\engstd\protected\views\deptorder\index.php(112): CHtml::activeTextField(Object(Deptorder), 'prot_code', Array)
-#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#6 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#7 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#8 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
-#9 C:\xampp\htdocs\engstd\protected\controllers\DeptorderController.php(149): CController->render('index', Array)
-#10 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): DeptorderController->actionIndex()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#12 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#13 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#16 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#19 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('index')
-#20 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('deptorder/index')
-#21 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#23 {main}
-REQUEST_URI=/engstd/deptorder/index
-HTTP_REFERER=http://localhost:8080/engstd/menuTree/index
----
-2015/07/29 16:13:42 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "InspecDoc.pj_name" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(145): CComponent->__get('pj_name')
-#1 C:\xampp\htdocs\engstd\protected\views\inspecDoc\_form.php(72): CActiveRecord->__get('pj_name')
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#4 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#5 C:\xampp\htdocs\engstd\protected\views\inspecDoc\create.php(11): CController->renderPartial('_form', Array)
-#6 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#7 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#8 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#10 C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php(90): CController->render('create', Array)
-#11 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): InspecDocController->actionCreate()
-#12 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#13 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#14 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#15 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#16 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#17 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#18 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#19 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#20 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('create')
-#21 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('inspecDoc/creat...')
-#22 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#23 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#24 {main}
-REQUEST_URI=/engstd/inspecDoc/create
-HTTP_REFERER=http://localhost:8080/engstd/inspecDoc/index
----
-2015/07/29 16:14:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "GetVendor" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('GetVendor')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GetVendor')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('Vendor/GetVendo...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/Vendor/GetVendor?term=
-HTTP_REFERER=http://localhost:8080/engstd/inspecDoc/create
----
-2015/07/29 16:15:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "GetVendor" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('GetVendor')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GetVendor')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('Vendor/GetVendo...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/Vendor/GetVendor?term=
-HTTP_REFERER=http://localhost:8080/engstd/inspecDoc/create
----
-2015/07/29 16:18:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "GetVendor" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('GetVendor')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GetVendor')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('Vendor/GetVendo...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/Vendor/GetVendor?term=
-HTTP_REFERER=http://localhost:8080/engstd/inspecDoc/create
----
-2015/07/29 16:20:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "GetVendor" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('GetVendor')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GetVendor')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('Vendor/GetVendo...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/Vendor/GetVendor?term=
-HTTP_REFERER=http://localhost:8080/engstd/inspecDoc/create
----
-2015/07/29 16:20:51 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '???????????????...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GetDept')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('Deptorder/GetDe...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/Deptorder/GetDept?term=
-HTTP_REFERER=http://localhost:8080/engstd/inspecDoc/create
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('download')
+#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('InspecFile/down...')
+#10 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/engstd/InspecFile/download/shadowera.txt
 ---
