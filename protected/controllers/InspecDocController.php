@@ -31,7 +31,7 @@ class InspecDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected'),
+				'actions'=>array('create','update','DeleteSelected','CancleSelected'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,20 @@ class InspecDocController extends Controller
 			),
 		);
 	}
+
+	public function actionCancleSelected()
+    {
+    	$autoIdAll = $_POST['selectedID'];
+        if(count($autoIdAll)>0)
+        {
+            foreach($autoIdAll as $autoId)
+            {
+                $pjModel = $this->loadModel($autoId);
+                $pjModel->doc_status = 3;
+                $pjModel->save();
+            }
+        }    
+    }
 
 	public function actionDeleteSelected()
     {
@@ -75,14 +89,59 @@ class InspecDocController extends Controller
 	{
 		$model=new InspecDoc;
 
+		$m = Yii::app()->db->createCommand()
+				->select('max(doc_no) as max')
+				->from('c_inspec_doc')						                   
+				->queryAll();
+
+		$model->doc_no = $m[0]['max']+1;		
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['InspecDoc']))
 		{
 			$model->attributes=$_POST['InspecDoc'];
+			$model->u_id = Yii::app()->user->ID;
+			$model->doc_date_add = (date("Y")+543).date("-m-d");
+
 			if($model->save())
+			{
+
+				$modelTemps = Yii::app()->db->createCommand()
+						                    ->select('*')
+						                    ->from('c_inspec_file_temp')
+						                    ->where('user_id=:user', array(':user'=>Yii::app()->user->ID))
+						                    ->queryAll();
+
+				foreach ($modelTemps as $key => $mTemp) {
+
+					
+
+					 $modelFile = new InspecFile("search");
+                     $modelFile->doc_id = $model->doc_id;
+                     $modelFile->ins_file = $mTemp["ins_file"];
+                   
+                     $modelFile->save();
+
+
+                     $uploaddirTemp = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/temp/';
+                     $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/';
+	                 rename($uploaddirTemp .$mTemp["ins_file"], $uploaddir .$mTemp["ins_file"]);
+		       
+                   	 
+
+				}
+
 				$this->redirect(array('index'));
+			}	
+				
+		}
+		else
+		{
+          if (!Yii::app()->request->isAjaxRequest)
+			Yii::app()->db->createCommand('DELETE FROM c_inspec_file_temp WHERE user_id='.Yii::app()->user->ID)->execute();
+			  
 		}
 
 		$this->render('create',array(
@@ -105,6 +164,8 @@ class InspecDocController extends Controller
 		if(isset($_POST['InspecDoc']))
 		{
 			$model->attributes=$_POST['InspecDoc'];
+			$model->dept_id = $_POST['InspecDoc']['dept_id'];
+			$model->vend_id = $_POST['InspecDoc']['vend_id'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}

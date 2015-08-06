@@ -31,7 +31,7 @@ class ContractorController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected'),
+				'actions'=>array('create','update','DeleteSelected','GetContractor'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -55,6 +55,25 @@ class ContractorController extends Controller
 		));
 	}
 
+	public function actionGetContractor(){
+            $request=trim($_GET['term']);
+                    
+            $models=Contractor::model()->findAll(array("condition"=>"name like '%$request%' OR code like '%$request%' "));
+            $data=array();
+            foreach($models as $model){
+                //$data[]["label"]=$get->v_name;
+                //$data[]["id"]=$get->v_id;
+                $data[] = array(
+                        'id'=>$model['id'],
+                        'label'=>$model['code']."-".$model['name'],
+                );
+
+            }
+            $this->layout='empty';
+            echo json_encode($data);
+        
+    }
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -70,7 +89,7 @@ class ContractorController extends Controller
 		{
 			$model->attributes=$_POST['Contractor'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -106,7 +125,7 @@ class ContractorController extends Controller
 		{
 			$model->attributes=$_POST['Contractor'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(

@@ -4,12 +4,8 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List Contractor','url'=>array('index')),
-	array('label'=>'Manage Contractor','url'=>array('admin')),
-);
 ?>
 
-<h1>Create Contractor</h1>
+<h3>เพิ่มคู่สัญญา</h3>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -1,21 +1,24 @@
 <?php
 
 /**
- * This is the model class for table "c_inspec_file".
+ * This is the model class for table "c_cer_detail_temp".
  *
- * The followings are the available columns in table 'c_inspec_file':
- * @property integer $ins_id
- * @property integer $doc_id
- * @property string $ins_file
+ * The followings are the available columns in table 'c_cer_detail_temp':
+ * @property integer $detail_id
+ * @property integer $cer_id
+ * @property string $prot_id
+ * @property integer $prod_size
+ * @property integer $quantity
+ * @property string $serialno
  */
-class InspecFile extends CActiveRecord
+class CerDetailTemp extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'c_inspec_file';
+		return 'c_cer_detail_temp';
 	}
 
 	/**
@@ -26,12 +29,12 @@ class InspecFile extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('doc_id, ins_file', 'required'),
-			array('doc_id', 'numerical', 'integerOnly'=>true),
-			//array('ins_file', 'file', 'types'=>'doc, docx, pdf, xls, xlsx', 'safe' => false),
+			array('cer_id, prot_id, prod_size, quantity, serialno', 'required'),
+			array('cer_id, prod_size, quantity', 'numerical', 'integerOnly'=>true),
+			array('serialno', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('ins_id, doc_id, ins_file', 'safe', 'on'=>'search'),
+			array('detail_id, cer_id, prot_id, prod_size, quantity, serialno', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,9 +55,12 @@ class InspecFile extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ins_id' => 'Ins',
-			'doc_id' => 'Doc',
-			'ins_file' => 'Ins File',
+			'detail_id' => 'Detail',
+			'cer_id' => 'Cer',
+			'prot_id' => 'Prot',
+			'prod_size' => 'Prod Size',
+			'quantity' => 'Quantity',
+			'serialno' => 'Serialno',
 		);
 	}
 
@@ -70,16 +76,18 @@ class InspecFile extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search($id)
+	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('ins_id',$this->ins_id);
-		$criteria->compare('doc_id',$this->doc_id);
-		$criteria->compare('ins_file',$this->ins_file,true);
-		$criteria->condition = "doc_id='$id'";
+		$criteria->compare('detail_id',$this->detail_id);
+		$criteria->compare('cer_id',$this->cer_id);
+		$criteria->compare('prot_id',$this->prot_id,true);
+		$criteria->compare('prod_size',$this->prod_size);
+		$criteria->compare('quantity',$this->quantity);
+		$criteria->compare('serialno',$this->serialno,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -90,7 +98,7 @@ class InspecFile extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return InspecFile the static model class
+	 * @return CerDetailTemp the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

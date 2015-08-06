@@ -1,21 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "c_inspec_file".
+ * This is the model class for table "c_inspec_file_temp".
  *
- * The followings are the available columns in table 'c_inspec_file':
+ * The followings are the available columns in table 'c_inspec_file_temp':
  * @property integer $ins_id
- * @property integer $doc_id
+ * @property string $doc_id
  * @property string $ins_file
  */
-class InspecFile extends CActiveRecord
+class InspecFileTemp extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'c_inspec_file';
+		return 'c_inspec_file_temp';
 	}
 
 	/**
@@ -27,8 +27,8 @@ class InspecFile extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('doc_id, ins_file', 'required'),
-			array('doc_id', 'numerical', 'integerOnly'=>true),
-			//array('ins_file', 'file', 'types'=>'doc, docx, pdf, xls, xlsx', 'safe' => false),
+			array('doc_id', 'length', 'max'=>20),
+			array('ins_file', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('ins_id, doc_id, ins_file', 'safe', 'on'=>'search'),
@@ -70,27 +70,38 @@ class InspecFile extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search($id)
+	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('ins_id',$this->ins_id);
-		$criteria->compare('doc_id',$this->doc_id);
+		$criteria->compare('doc_id',$this->doc_id,true);
 		$criteria->compare('ins_file',$this->ins_file,true);
-		$criteria->condition = "doc_id='$id'";
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
+	public function searchByUser($uid) {
+
+		$criteria=new CDbCriteria;
+		$criteria->select = '*';
+		$criteria->condition = "user_id='$uid'";
+		
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return InspecFile the static model class
+	 * @return InspecFileTemp the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

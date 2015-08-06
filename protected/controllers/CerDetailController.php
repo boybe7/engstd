@@ -1,6 +1,6 @@
 <?php
 
-class ProdtypeController extends Controller
+class CerDetailController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -31,7 +31,7 @@ class ProdtypeController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','deleteSelected','getType'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,36 +43,6 @@ class ProdtypeController extends Controller
 			),
 		);
 	}
-	public function actionDeleteSelected()
-    {
-    	$autoIdAll = $_POST['selectedID'];
-        if(count($autoIdAll)>0)
-        {
-            foreach($autoIdAll as $autoId)
-            {
-                $this->loadModel($autoId)->delete();
-            }
-        }    
-    }
-
-    public function actionGetType(){
-            $request=trim($_GET['term']);
-                    
-            $models=Prodtype::model()->findAll(array("condition"=>"prot_code like '%$request%' OR prot_name like '%$request%'  "));
-            $data=array();
-            foreach($models as $model){
-                //$data[]["label"]=$get->v_name;
-                //$data[]["id"]=$get->v_id;
-                $data[] = array(
-                        'id'=>$model['prot_id'],
-                        'label'=>$model['prot_code'].'-'.$model['prot_name'],
-                );
-
-            }
-            $this->layout='empty';
-            echo json_encode($data);
-        
-    }
 
 	/**
 	 * Displays a particular model.
@@ -91,21 +61,21 @@ class ProdtypeController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Prodtype;
+		$model=new CerDetail;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['name']))
+		if(isset($_POST['CerDetail']))
 		{
-			$model->prot_name=$_POST['name'];
-			$model->prot_code=$_POST['code'];
-
-			$model->save();
-			
+			$model->attributes=$_POST['CerDetail'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->detail_id));
 		}
 
-	
+		$this->render('create',array(
+			'model'=>$model,
+		));
 	}
 
 	/**
@@ -113,39 +83,23 @@ class ProdtypeController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate()
+	public function actionUpdate($id)
 	{
-		// $model=$this->loadModel($id);
+		$model=$this->loadModel($id);
 
-		// // Uncomment the following line if AJAX validation is needed
-		// // $this->performAjaxValidation($model);
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
 
-		// if(isset($_POST['Prodtype']))
-		// {
-		// 	$model->attributes=$_POST['Prodtype'];
-		// 	if($model->save())
-		// 		$this->redirect(array('index'));
-		// }
+		if(isset($_POST['CerDetail']))
+		{
+			$model->attributes=$_POST['CerDetail'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->detail_id));
+		}
 
-		// $this->render('update',array(
-		// 	'model'=>$model,
-		// ));
-
-			$es = new EditableSaver('Prodtype');
-		   // header('Content-type: text/plain');
-     //        print_r($es);                    
-     //     exit;
-	    try {
-
-	    	$es->update();
-	    	   // header('Content-type: text/plain');
-         //      print_r($es);                    
-         //   exit;
-	    } catch(CException $e) {
-	    	echo CJSON::encode(array('success' => false, 'msg' => $e->getMessage()));
-	    	return;
-	    }
-	    echo CJSON::encode(array('success' => true));
+		$this->render('update',array(
+			'model'=>$model,
+		));
 	}
 
 	/**
@@ -173,13 +127,9 @@ class ProdtypeController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Prodtype('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Prodtype']))
-			$model->attributes=$_GET['Prodtype'];
-
-		$this->render('admin',array(
-			'model'=>$model,
+		$dataProvider=new CActiveDataProvider('CerDetail');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -188,10 +138,10 @@ class ProdtypeController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Prodtype('search');
+		$model=new CerDetail('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Prodtype']))
-			$model->attributes=$_GET['Prodtype'];
+		if(isset($_GET['CerDetail']))
+			$model->attributes=$_GET['CerDetail'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -205,7 +155,7 @@ class ProdtypeController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Prodtype::model()->findByPk($id);
+		$model=CerDetail::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -217,7 +167,7 @@ class ProdtypeController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='prodtype-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='cer-detail-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

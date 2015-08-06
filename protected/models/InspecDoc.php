@@ -37,7 +37,7 @@ class InspecDoc extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('doc_no, doc_date, u_id, doc_date_add, doc_status', 'required'),
-			array('dept_id, con_id, cust_id, vend_id, prot_id, u_id, doc_status', 'numerical', 'integerOnly'=>true),
+			array('con_id, prot_id, u_id, doc_status', 'numerical', 'integerOnly'=>true),
 			array('doc_no', 'length', 'max'=>20),
 			array('doc_refer', 'length', 'max'=>200),
 			array('doc_detail', 'length', 'max'=>100),
@@ -80,6 +80,26 @@ class InspecDoc extends CActiveRecord
 		);
 	}
 
+	public function getStatus($m)
+    {
+        $status = '';
+        switch ($m->doc_status) {
+        	case 1:
+        		$status = "เปิด";
+        		break;
+        	case 2:
+        		$status = "ปิด";
+        		break;
+        	case 3:
+        		$status = "ยกเลิก";
+        		break;	
+        	default:
+        		# code...
+        		break;
+        }
+        return $status;
+    }
+
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
@@ -116,6 +136,60 @@ class InspecDoc extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public function beforeSave()
+    {
+      
+
+        $str_date = explode("/", $this->doc_date);
+        if(count($str_date)>1)
+        	$this->doc_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        $str_date = explode("/", $this->doc_date_add);
+        if(count($str_date)>1)
+        	$this->doc_date_add= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        return parent::beforeSave();
+   }
+
+	protected function afterSave(){
+            parent::afterSave();
+            $str_date = explode("-", $this->doc_date);
+            if(count($str_date)>1)
+            	$this->doc_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+             $str_date = explode("-", $this->doc_date_add);
+            if(count($str_date)>1)
+            	$this->doc_date_add = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            //$this->visit_date=date('Y/m/d', strtotime(str_replace("-", "", $this->visit_date)));       
+    }
+
+	public function beforeFind()
+    {
+          
+
+        $str_date = explode("/", $this->doc_date);
+        if(count($str_date)>1)
+        	$this->doc_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        $str_date = explode("/", $this->doc_date_add);
+        if(count($str_date)>1)
+        	$this->doc_date_add= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        return parent::beforeSave();
+   }
+
+	protected function afterFind(){
+            parent::afterFind();
+    
+
+            $str_date = explode("-", $this->doc_date);
+            if($this->doc_date=='0000-00-00')
+            	$this->doc_date = '';
+            else if(count($str_date)>1)
+            	$this->doc_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            
+            $str_date = explode("-", $this->doc_date_add);
+            if($this->doc_date_add=='0000-00-00')
+            	$this->doc_date_add = '';
+            else if(count($str_date)>1)
+            	$this->doc_date_add = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+     }
 
 	/**
 	 * Returns the static model of the specified AR class.

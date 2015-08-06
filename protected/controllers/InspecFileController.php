@@ -31,11 +31,11 @@ class InspecFileController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','createTemp','download'),
+				'actions'=>array('create','update','createTemp','deleteTemp','download','downloadTemp','delete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -66,16 +66,41 @@ class InspecFileController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['InspecFile']))
+		if(isset($_FILES['file_attach']))
 		{
-			$model->attributes=$_POST['InspecFile'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->ins_id));
-		}
+			
+			$file = $_FILES['file_attach'];
+			if (Yii::app()->request->isAjaxRequest)
+	        {
+	           
+	            $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/';
+	            if(move_uploaded_file($file['tmp_name'], $uploaddir .basename($file['name'])))
+		        {
+		            $model->ins_file = $file['name'];
+		            $model->doc_id = $_POST['doc_id'];
+		
+		            if($model->save())
+		            {	
+		             	echo CJSON::encode(array(
+		                'status'=>'success'
+		                ));
+		            }    
+		        }
+		        else
+		        {
+		            echo CJSON::encode(array(
+	                'status'=>'failure'));
+	                
+		        }
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+	           
+				        
+	        }
+	        else{
+	        	
+	        }		
+	
+		}
 	}
 
 	public function actionDownload($id)
@@ -98,9 +123,29 @@ class InspecFileController extends Controller
 
 	}
 
+	public function actionDownloadTemp($id)
+	{
+		$model = InspecFileTemp::model()->findByPk($id);
+		$filename = $model->ins_file;
+
+		$file = $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/temp/'.$filename;
+		if (file_exists($file)) {
+		    header('Content-Description: File Transfer');
+		    header('Content-Type: application/octet-stream');
+		    header('Content-Disposition: attachment; filename='.basename($file));
+		    header('Expires: 0');
+		    header('Cache-Control: must-revalidate');
+		    header('Pragma: public');
+		    header('Content-Length: ' . filesize($file));
+		    readfile($file);
+		    exit;
+		}
+
+	}
+
 	public function actionCreateTemp()
 	{
-		$model=new InspecFile;
+		$model=new InspecFileTemp;
 
 		 //header('Content-type: text/plain');
          //print_r($_POST['InspecFile']);                    
@@ -114,15 +159,22 @@ class InspecFileController extends Controller
 			if (Yii::app()->request->isAjaxRequest)
 	        {
 	           
-	            $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/';
+	            $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/temp/';
 	            if(move_uploaded_file($file['tmp_name'], $uploaddir .basename($file['name'])))
 		        {
 		            $model->ins_file = $file['name'];
 		            $model->doc_id = 1;
-		            $model->save();
-		             echo CJSON::encode(array(
-	                'status'=>'success'
-	                ));
+		            $model->user_id = Yii::app()->user->ID;
+		            
+		       //       header('Content-type: text/plain');
+         // print_r($model);                    
+         // exit;
+		            if($model->save())
+		            {	
+		             	echo CJSON::encode(array(
+		                'status'=>'success'
+		                ));
+		            }    
 		        }
 		        else
 		        {
@@ -141,6 +193,16 @@ class InspecFileController extends Controller
 		}
 
 	}
+
+	public function actionDeleteTemp($id)
+	{
+		$model = InspecFileTemp::model()->findByPk($id);
+		$file = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/temp/'.$model->ins_file;
+		unlink($file);
+		$model->delete();
+
+	}
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -156,6 +218,7 @@ class InspecFileController extends Controller
 		if(isset($_POST['InspecFile']))
 		{
 			$model->attributes=$_POST['InspecFile'];
+
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->ins_id));
 		}
@@ -172,17 +235,10 @@ class InspecFileController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
-
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		$model = InspecFile::model()->findByPk($id);
+		$file = $_SERVER['DOCUMENT_ROOT'].'/engstd/files/'.$model->ins_file;
+		unlink($file);
+		$model->delete();
 	}
 
 	/**

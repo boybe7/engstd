@@ -31,7 +31,7 @@ class ContractController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected'),
+				'actions'=>array('create','update','DeleteSelected','getContract'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -77,6 +77,25 @@ class ContractController extends Controller
 			'model'=>$model,
 		));
 	}
+
+	public function actionGetContract(){
+            $request=trim($_GET['term']);
+                    
+            $models=Contract::model()->findAll(array("condition"=>"con_number like '%$request%' "));
+            $data=array();
+            foreach($models as $model){
+                //$data[]["label"]=$get->v_name;
+                //$data[]["id"]=$get->v_id;
+                $data[] = array(
+                        'id'=>$model['con_id'],
+                        'label'=>$model['con_number'],
+                );
+
+            }
+            $this->layout='empty';
+            echo json_encode($data);
+        
+    }
 
 	/**
 	 * Updates a particular model.

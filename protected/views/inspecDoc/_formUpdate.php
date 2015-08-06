@@ -9,6 +9,7 @@
                 $(this).autocomplete("search");
       });
 
+ 
   });
 
 
@@ -31,7 +32,9 @@
 	<?php echo $form->errorSummary($model); ?>
 	<div class="row-fluid">
 		<div class="span6">
-				<?php echo $form->textFieldRow($model,'doc_no',array('class'=>'span12','maxlength'=>20)); ?>
+				<?php 
+        echo CHtml::activeHiddenField($model, 'doc_id'); 
+        echo $form->textFieldRow($model,'doc_no',array('class'=>'span12','maxlength'=>20)); ?>
 		</div>	
 
 		<div class="span6">
@@ -119,11 +122,12 @@
   //echo $form->textFieldRow($model,'con_id',array('class'=>'span3'));
               echo $form->hiddenField($model,'con_id');
               echo $form->labelEx($model,'con_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:0px'));
-               
+              $m =  Contract::model()->findByPk($model->con_id);
+              $contract = !empty($m) ?  $m->con_number : "" ;
               $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'con_id',
                             'id'=>'con_id',
-                            'value'=>$model->con_id,
+                            'value'=>$contract,
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
@@ -160,15 +164,16 @@
 
    ?>
 
-	<?php 
+  <?php 
     //echo $form->textFieldRow($model,'cust_id',array('class'=>'span6')); 
               echo $form->hiddenField($model,'cust_id');
               echo $form->labelEx($model,'cust_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:0px'));
-               
+              $m =  Contractor::model()->findByPk($model->cust_id);
+              $contract = !empty($m) ?  $m->name : "" ; 
               $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'cust_id',
                             'id'=>'cust_id',
-                            'value'=>$model->cust_id,
+                            'value'=>$contract, 
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
@@ -204,12 +209,13 @@
 
     ?>
 
-	<?php 
+  <?php 
 
-	                    echo $form->hiddenField($model,'vend_id');
-  						echo $form->labelEx($model,'vend_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;'));
-    					 
-  						$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+              echo $form->hiddenField($model,'vend_id');
+              echo $form->labelEx($model,'vend_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;'));
+              
+              //echo "v:".$model->vend_id;
+              $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'vend_id',
                             'id'=>'vend_id',
                             'value'=>$model->vend_id,
@@ -224,6 +230,7 @@
                                     },
                                     success: function (data) {
                                             response(data);
+                                           
 
                                     }
                                 })
@@ -246,19 +253,20 @@
                                   
                         ));
 
-	 ?>
+   ?>
 
-	<?php 
+  <?php 
 
   //echo $form->textFieldRow($model,'prot_id',array('class'=>'span6'));
 
               echo $form->hiddenField($model,'prot_id');
               echo $form->labelEx($model,'prot_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:0px'));
-               
+              $m = Prodtype::model()->findByPk($model->prot_id);   
+              $type = !empty($m) ? $m->prot_code."-".$m->prot_name: '';
               $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'prot_id',
                             'id'=>'prot_id',
-                            'value'=>$model->prot_id,
+                            'value'=>$type,
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
@@ -270,7 +278,7 @@
                                     },
                                     success: function (data) {
                                             response(data);
-
+                                           
                                     }
                                 })
                              }',
@@ -287,7 +295,8 @@
                                      
                             ),
                            'htmlOptions'=>array(
-                                'class'=>'span6'
+                                'class'=>'span6',
+                                'value'=>$model->prot_id,
                             ),
                                   
                         ));
@@ -309,7 +318,7 @@
     
 <?php 
 echo "เอกสารแนบ";
-echo '<form action="../inspecFile/createTemp/"  method="post" enctype="multipart/form-data" id="inspec-doc-form-upload">';
+echo '<form enctype="multipart/form-data" id="inspec-doc-form-upload">';
 echo '<input type="file" name="file-attach">';
 //echo CHtml::submitButton('Submit');  
  $this->widget('bootstrap.widgets.TbButton', array(
@@ -320,12 +329,13 @@ echo '<input type="file" name="file-attach">';
                 'onclick'=>'
                     var formData = new FormData($("#inspec-doc-form-upload")[0]);
                     formData.append("file_attach", $("input[name=file-attach]")[0].files[0]);
+                    formData.append("doc_id", $("#InspecDoc_doc_id").val());
                     //console.log($("input[name=file-attach]")[0].files[0])
                     $.ajax({
                             type: "POST",
                             processData : false,
                             contentType : false,
-                            url: "../inspecFile/createTemp/",
+                            url: "../../inspecFile/create/",
                             dataType:"json",
                             data: formData
                     })                                  
@@ -344,7 +354,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
                     'id'=>'upload-grid',
                     
                     'type'=>'bordered condensed',
-                    'dataProvider'=>InspecFileTemp::model()->searchByUser(Yii::app()->user->ID),
+                    'dataProvider'=>InspecFile::model()->search($model->doc_id),
                     //'filter'=>$model,
                     'selectableRows' => 2,
                     'enableSorting' => false,
@@ -376,11 +386,11 @@ $this->widget('bootstrap.widgets.TbGridView',array(
                                 // 'deleteConfirmation'=>'js:bootbox.confirm("Are you sure to want to delete")',
                                 'buttons'=>array(
                                         'delete'=>array(
-                                            'url'=>'Yii::app()->createUrl("InspecFile/deleteTemp", array("id"=>$data->ins_id))', 
+                                            'url'=>'Yii::app()->createUrl("InspecFile/delete", array("id"=>$data->ins_id))', 
 
                                         ),
                                         'view'=>array(
-                                            'url'=>'Yii::app()->createUrl("InspecFile/downloadTemp", array("id"=>$data->ins_id))', 
+                                            'url'=>'Yii::app()->createUrl("InspecFile/download", array("id"=>$data->ins_id))', 
 
                                         )
 

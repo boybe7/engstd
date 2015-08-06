@@ -116,7 +116,7 @@ class DeptorderController extends Controller
                 //$data[]["label"]=$get->v_name;
                 //$data[]["id"]=$get->v_id;
                 $data[] = array(
-                        'id'=>$model['dept_id'],
+                        'id'=>$model['dept_name'],
                         'label'=>$model['dept_name'],
                 );
 
