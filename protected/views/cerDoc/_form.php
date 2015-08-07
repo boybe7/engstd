@@ -1,15 +1,17 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'cer-doc-form',
 	'enableAjaxValidation'=>false,
+	'type'=>'vertical',
+    'htmlOptions'=>  array('class'=>'well','style'=>''),
 )); ?>
-
+	<h4><?php  echo($title);  ?></h4>
 	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
 	<?php echo $form->textFieldRow($model,'cer_no',array('class'=>'span5','maxlength'=>20)); ?>
 
-	<?php echo $form->textFieldRow($model,'doc_id',array('class'=>'span5')); ?>
+	<?php echo $form->textFieldRow($model,'deptorder',array('class'=>'span5')); ?>
 
 	<?php echo $form->textFieldRow($model,'vend_id',array('class'=>'span5')); ?>
 

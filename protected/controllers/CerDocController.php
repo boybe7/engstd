@@ -31,7 +31,7 @@ class CerDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','DeleteSelected'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,18 @@ class CerDocController extends Controller
 			),
 		);
 	}
+
+	public function actionDeleteSelected()
+    {
+    	$autoIdAll = $_POST['selectedID'];
+        if(count($autoIdAll)>0)
+        {
+            foreach($autoIdAll as $autoId)
+            {
+                $this->loadModel($autoId)->delete();
+            }
+        }    
+    }
 
 	/**
 	 * Displays a particular model.
@@ -70,7 +82,7 @@ class CerDocController extends Controller
 		{
 			$model->attributes=$_POST['CerDoc'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->cer_id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -94,7 +106,7 @@ class CerDocController extends Controller
 		{
 			$model->attributes=$_POST['CerDoc'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->cer_id));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -127,9 +139,13 @@ class CerDocController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('CerDoc');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+		$model=new CerDoc('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['CerDoc']))
+			$model->attributes=$_GET['CerDoc'];
+
+		$this->render('admin',array(
+			'model'=>$model,
 		));
 	}
 

@@ -74,7 +74,7 @@ function isUser(){
 }
 function isExecutive(){
     $user = $this->loadUser(Yii::app()->user->id);
-    return $user->u_group == "4";
+    return $user->position=="2";
 }
 
 // Load user model.

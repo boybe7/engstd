@@ -20,11 +20,7 @@
 	 'type'=>'vertical',
     'htmlOptions'=>  array('class'=>'','style'=>''),
 )); ?>
-	<h4><?php 
-      echo($title);
-
-
-  ?></h4>
+	<h4><?php  echo($title);  ?></h4>
 	<hr style="margin-top:-10px;border-top: 1px solid #6F6E6E;">
 	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
 

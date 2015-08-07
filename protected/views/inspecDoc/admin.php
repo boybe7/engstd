@@ -67,34 +67,39 @@ $this->widget('bootstrap.widgets.TbButton', array(
     ),
 )); 
 
-$this->widget('bootstrap.widgets.TbButton', array(
-    'buttonType'=>'link',
-    
-    'type'=>'warning',
-    'label'=>'ยกเลิก',
-    'icon'=>'bookmark',
-    //'url'=>array('close'),
-    'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 10px 0px 10px;',
+
+if(Yii::app()->user->isExecutive() || Yii::app()->user->isAdmin())
+{
+	$this->widget('bootstrap.widgets.TbButton', array(
+	    'buttonType'=>'link',
+	    
+	    'type'=>'warning',
+	    'label'=>'ยกเลิก',
+	    'icon'=>'remove-sign',
+	    //'url'=>array('close'),
+	    'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 10px 0px 10px;',
 
 
-				'onclick'=>'      
-                       if($.fn.yiiGridView.getSelection("inspec-doc-grid").length==0)
-                       	  js:bootbox.alert("กรุณาเลือกใบรับแจ้งที่ต้องการยกเลิก?","ตกลง");	
-                       else 
-                       {  
-                               	 $.ajax({
-										type: "POST",
-										url: "cancleSelected",
-										data: { selectedID: $.fn.yiiGridView.getSelection("inspec-doc-grid")}
-										})
-										.done(function( msg ) {
-											$("#inspec-doc-grid").yiiGridView("update",{});
-										});
-			            }',
+					'onclick'=>'      
+	                       if($.fn.yiiGridView.getSelection("inspec-doc-grid").length==0)
+	                       	  js:bootbox.alert("กรุณาเลือกใบรับแจ้งที่ต้องการยกเลิก?","ตกลง");	
+	                       else 
+	                       {  
+	                               	 $.ajax({
+											type: "POST",
+											url: "cancleSelected",
+											data: { selectedID: $.fn.yiiGridView.getSelection("inspec-doc-grid")}
+											})
+											.done(function( msg ) {
+												$("#inspec-doc-grid").yiiGridView("update",{});
+											});
+				            }',
 
 
-    	),
-)); 
+	    	),
+	)); 
+}
+
 
 
 $this->widget('bootstrap.widgets.TbGridView',array(
