@@ -89,12 +89,15 @@ class InspecDocController extends Controller
 	{
 		$model=new InspecDoc;
 
+		//auto gen doc_no
+		$fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
 		$m = Yii::app()->db->createCommand()
-				->select('max(doc_no) as max')
-				->from('c_inspec_doc')						                   
+				->select('max(strSplit(doc_no,"/", 1)) as max')
+				->from('c_inspec_doc')	
+				->where('strSplit(doc_no,"/", 2)='.$fiscalyear)					                   
 				->queryAll();
 
-		$model->doc_no = $m[0]['max']+1;		
+		$model->doc_no = ($m[0]['max']+1)."/".$fiscalyear;		
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);

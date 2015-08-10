@@ -75,8 +75,18 @@ class CerDocController extends Controller
 	{
 		$model=new CerDoc;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		//auto gen doc_no
+		$fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
+		$m = Yii::app()->db->createCommand()
+				->select('max(strSplit(cer_no,"/", 1)) as max')
+				->from('c_cer_doc')	
+				->where('strSplit(cer_no,"/", 2)='.$fiscalyear)					                   
+				->queryAll();
+
+		$model->cer_no = ($m[0]['max']+1)."/".$fiscalyear;		
+
+		$model->cer_date = date("d")."/".date("m")."/".(date("Y")+543);//"11/07/2526";
+
 
 		if(isset($_POST['CerDoc']))
 		{
