@@ -2,7 +2,7 @@
 	
 	$(function(){
         //autocomplete search on focus    	
-	    $("#dept_id,#vend_id,#cer_name,#cer_ct_name,#cer_di_name").autocomplete({
+	    $("#dept_id,#vend_id,#contract_no,#contractor,#prod_id").autocomplete({
        
                 minLength: 0
             }).bind('focus', function () {
@@ -24,9 +24,11 @@
 	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+
+    
 	<div class="row-fluid">
 		<div class="span3">
-			<?php echo $form->textFieldRow($model,'cer_no',array('class'=>'span12','maxlength'=>20)); ?>
+			<?php echo $form->textFieldRow($model,'cer_no',array('class'=>'span12','maxlength'=>20,'readonly'=>true)); ?>
 		</div>
 		<div class="span6">
 			 <?php echo $form->labelEx($model,'cer_date',array('class'=>'span12','style'=>'text-align:left;padding-right:10px;'));?>
@@ -55,6 +57,7 @@
 		      	?>
 		</div>
 	</div>	
+   
 	<div class="row-fluid">
 		<div class="span8">	
 			<?php 
@@ -97,19 +100,120 @@
                             ),
                                   
                         ));
-	
+	                
 
 			?>
 		</div>
 	</div>		
+     <div class="row-fluid">
+        <div class="span8"> 
+            <?php 
+                  
+                        echo $form->hiddenField($model,'contract_no');
+                        echo $form->labelEx($model,'contract_no',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
+                         
+                        $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                            'name'=>'contract_no',
+                            'id'=>'contract_no',
+                            'value'=>$model->contract_no,
+                           // 'source'=>$this->createUrl('Ajax/GetDrug'),
+                           'source'=>'js: function(request, response) {
+                                $.ajax({
+                                    url: "'.$this->createUrl('Contract/GetContract').'",
+                                    dataType: "json",
+                                    data: {
+                                        term: request.term,
+                                       
+                                    },
+                                    success: function (data) {
+                                            response(data);
 
-	<div class="row-fluid">
-		<div class="span8">	
-			<?php 
-						echo $form->hiddenField($model,'vend_id');
-  						echo $form->labelEx($model,'vend_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
-    					 
-  						$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                                    }
+                                })
+                             }',
+                            // additional javascript options for the autocomplete plugin
+                            'options'=>array(
+                                     'showAnim'=>'fold',
+                                     'minLength'=>0,
+                                     'select'=>'js: function(event, ui) {
+                                        
+                                           //console.log(ui.item.id)
+                                            $("#CerDoc_contract_no").val(ui.item.id);
+                                          
+                                     }',
+                                     //'close'=>'js:function(){$(this).val("");}',
+                                     
+                            ),
+                           'htmlOptions'=>array(
+                                'class'=>'span12'
+                            ),
+                                  
+                        ));
+    
+
+            ?>
+        </div>
+    </div>  
+     <div class="row-fluid">
+        <div class="span8"> 
+            <?php 
+                  
+                        echo $form->hiddenField($model,'contractor');
+                        echo $form->labelEx($model,'contractor',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
+                         
+                        $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                            'name'=>'contractor',
+                            'id'=>'contractor',
+                            'value'=>$model->contractor,
+                           // 'source'=>$this->createUrl('Ajax/GetDrug'),
+                           'source'=>'js: function(request, response) {
+                                $.ajax({
+                                    url: "'.$this->createUrl('Contractor/GetContractor').'",
+                                    dataType: "json",
+                                    data: {
+                                        term: request.term,
+                                       
+                                    },
+                                    success: function (data) {
+                                            response(data);
+
+                                    }
+                                })
+                             }',
+                            // additional javascript options for the autocomplete plugin
+                            'options'=>array(
+                                     'showAnim'=>'fold',
+                                     'minLength'=>0,
+                                     'select'=>'js: function(event, ui) {
+                                        
+                                           //console.log(ui.item.id)
+                                            $("#CerDoc_contractor").val(ui.item.id);
+                                          
+                                     }',
+                                     //'close'=>'js:function(){$(this).val("");}',
+                                     
+                            ),
+                           'htmlOptions'=>array(
+                                'class'=>'span12'
+                            ),
+                                  
+                        ));
+    
+
+            ?>
+        </div>
+    </div>  
+	 <div class="row-fluid">
+        <div class="span8"> 
+            <?php 
+                       // $code = explode(".", "จว.011");
+                        
+                       
+
+                        echo $form->hiddenField($model,'vend_id');
+                        echo $form->labelEx($model,'vend_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
+                         
+                        $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'vend_id',
                             'id'=>'vend_id',
                             'value'=>$model->vend_id,
@@ -136,6 +240,7 @@
                                         
                                            //console.log(ui.item.id)
                                             $("#CerDoc_vend_id").val(ui.item.id);
+                                          
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
                                      
@@ -145,12 +250,60 @@
                             ),
                                   
                         ));
-	
+    
 
-			?>
-		</div>
-	</div>	
+            ?>
+        </div>
+    </div>  
+     <div class="row-fluid">
+        <div class="span8"> 
+            <?php 
+                  
+                        echo $form->hiddenField($model,'prod_id');
+                        echo $form->labelEx($model,'prod_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
+                         
+                        $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                            'name'=>'prod_id',
+                            'id'=>'prod_id',
+                            'value'=>$model->prod_id,
+                           // 'source'=>$this->createUrl('Ajax/GetDrug'),
+                           'source'=>'js: function(request, response) {
+                                $.ajax({
+                                    url: "'.$this->createUrl('Prodtype/GetType').'",
+                                    dataType: "json",
+                                    data: {
+                                        term: request.term,
+                                       
+                                    },
+                                    success: function (data) {
+                                            response(data);
 
+                                    }
+                                })
+                             }',
+                            // additional javascript options for the autocomplete plugin
+                            'options'=>array(
+                                     'showAnim'=>'fold',
+                                     'minLength'=>0,
+                                     'select'=>'js: function(event, ui) {
+                                        
+                                           //console.log(ui.item.id)
+                                            $("#CerDoc_prod_id").val(ui.item.id);
+                                          
+                                     }',
+                                     //'close'=>'js:function(){$(this).val("");}',
+                                     
+                            ),
+                           'htmlOptions'=>array(
+                                'class'=>'span12'
+                            ),
+                                  
+                        ));
+    
+
+            ?>
+        </div>
+    </div>  
 	<div class="row-fluid">
 		<div class="span4">	
 	<?php 
@@ -182,49 +335,20 @@
 	<div class="row-fluid">
 		<div class="span8">	
 	<?php 
-						echo $form->hiddenField($model,'cer_name');
-  						echo $form->labelEx($model,'cer_name',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
-    					 
-  						$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                            'name'=>'cer_name',
-                            'id'=>'cer_name',
-                            'value'=>$model->cer_name,
-                           // 'source'=>$this->createUrl('Ajax/GetDrug'),
-                           'source'=>'js: function(request, response) {
-                                $.ajax({
-                                    url: "'.$this->createUrl('User/GetName/').'",
-                                    dataType: "json",
-                                    data: {
-                                        term: request.term,
-                                        level: 1
-                                       
-                                    },
-                                    success: function (data) {
-                                            response(data);
-
-                                    }
-                                })
-                             }',
-                            // additional javascript options for the autocomplete plugin
-                            'options'=>array(
-                                     'showAnim'=>'fold',
-                                     'minLength'=>0,
-                                     'select'=>'js: function(event, ui) {
-                                        
-                                           //console.log(ui.item.id)
-                                            $("#CerDoc_cer_name").val(ui.item.id);
-                                     }',
-                                     //'close'=>'js:function(){$(this).val("");}',
-                                     
-                            ),
-                           'htmlOptions'=>array(
-                                'class'=>'span12'
-                            ),
-                                  
-                        ));
+				
 	
 	
-
+                        $models=User::model()->findAll(array('order'=>'', 'condition'=>'position=1', 'params'=>array()));
+                        $data = array();
+                        foreach ($models as $key => $value) {
+                          $data[] = array(
+                                          'value'=>$value['name'],
+                                          'text'=>$value['name'],
+                                       );
+                        } 
+                        $typelist = CHtml::listData($data,'value','text');
+                        echo $form->dropDownListRow($model, 'cer_name', $typelist,array('class'=>'span12','prompt'=>'--กรุณาเลือก--')); 
+                          
 	 ?>
 	 </div>
 	</div>	
@@ -232,48 +356,25 @@
 	<div class="row-fluid">
 		<div class="span8">	
 	<?php 
-						echo $form->hiddenField($model,'cer_ct_name');
-  						echo $form->labelEx($model,'cer_ct_name',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
-    					 
-  						$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                            'name'=>'cer_ct_name',
-                            'id'=>'cer_ct_name',
-                            'value'=>$model->cer_ct_name,
-                           // 'source'=>$this->createUrl('Ajax/GetDrug'),
-                           'source'=>'js: function(request, response) {
-                                $.ajax({
-                                    url: "'.$this->createUrl('User/GetName/').'",
-                                    dataType: "json",
-                                    data: {
-                                        term: request.term,
-                                        level: 2
-                                       
-                                    },
-                                    success: function (data) {
-                                            response(data);
-
-                                    }
-                                })
-                             }',
-                            // additional javascript options for the autocomplete plugin
-                            'options'=>array(
-                                     'showAnim'=>'fold',
-                                     'minLength'=>0,
-                                     'select'=>'js: function(event, ui) {
-                                        
-                                           //console.log(ui.item.id)
-                                            $("#CerDoc_cer_ct_name").val(ui.item.id);
-                                     }',
-                                     //'close'=>'js:function(){$(this).val("");}',
-                                     
-                            ),
-                           'htmlOptions'=>array(
-                                'class'=>'span12'
-                            ),
-                                  
-                        ));
-	
-	
+						$models=User::model()->findAll(array('order'=>'', 'condition'=>'position=2', 'params'=>array()));
+                        $data = array();
+                        foreach ($models as $key => $value) {
+                          $data[] = array(
+                                          'value'=>$value['name'],
+                                          'text'=>$value['name'],
+                                       );
+                        } 
+                        $models=User::model()->findAll(array('order'=>'', 'condition'=>'position=3 OR position2=3', 'params'=>array()));
+        
+                        foreach ($models as $key => $value) {
+                          $data[] = array(
+                                          'value'=>$value['name'],
+                                          'text'=>$value['name']."(รักษาการแทน)",
+                                       );
+                        } 
+                        $typelist = CHtml::listData($data,'value','text');
+                        echo $form->dropDownListRow($model, 'cer_ct_name', $typelist,array('class'=>'span12','prompt'=>'--กรุณาเลือก--')); 
+                          
 
 	 ?>
 	 </div>
@@ -282,58 +383,37 @@
 	<div class="row-fluid">
 		<div class="span8">	
 	<?php 
-						echo $form->hiddenField($model,'cer_di_name');
-  						echo $form->labelEx($model,'cer_di_name',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
-    					 
-  						$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                            'name'=>'cer_di_name',
-                            'id'=>'cer_di_name',
-                            'value'=>$model->cer_di_name,
-                           // 'source'=>$this->createUrl('Ajax/GetDrug'),
-                           'source'=>'js: function(request, response) {
-                                $.ajax({
-                                    url: "'.$this->createUrl('User/GetName/').'",
-                                    dataType: "json",
-                                    data: {
-                                        term: request.term,
-                                        level: 3
-                                       
-                                    },
-                                    success: function (data) {
-                                            response(data);
+					    $models=User::model()->findAll(array('order'=>'', 'condition'=>'position=4', 'params'=>array()));
+                        $data = array();
+                        foreach ($models as $key => $value) {
+                          $data[] = array(
+                                          'value'=>$value['name'],
+                                          'text'=>$value['name'],
+                                       );
+                        } 
+                        $models=User::model()->findAll(array('order'=>'', 'condition'=>'position=5 OR position2=5', 'params'=>array()));
+        
+                        foreach ($models as $key => $value) {
+                          $data[] = array(
+                                          'value'=>$value['name']."(รักษาการแทน)",
+                                          'text'=>$value['name']."(รักษาการแทน)",
+                                       );
+                        } 
+                        $typelist = CHtml::listData($data,'value','text');
+                        echo $form->dropDownListRow($model, 'cer_di_name', $typelist,array('class'=>'span12','prompt'=>'--กรุณาเลือก--')); 
+                          
 
-                                    }
-                                })
-                             }',
-                            // additional javascript options for the autocomplete plugin
-                            'options'=>array(
-                                     'showAnim'=>'fold',
-                                     'minLength'=>0,
-                                     'select'=>'js: function(event, ui) {
-                                        
-                                           //console.log(ui.item.id)
-                                            $("#CerDoc_cer_di_name").val(ui.item.id);
-                                     }',
-                                     //'close'=>'js:function(){$(this).val("");}',
-                                     
-                            ),
-                           'htmlOptions'=>array(
-                                'class'=>'span12'
-                            ),
-                                  
-                        ));
-	
 	
 
 	 ?>
 	 </div>
 	</div>
+    <div class="row-fluid">
+        <div class="span8"> 
+	       <?php echo $form->textAreaRow($model,'cer_notes',array('class'=>'span12','rows'=>4)); ?>
+        </div>
+    </div>
 
-	<?php echo $form->textFieldRow($model,'cer_notes',array('class'=>'span5','maxlength'=>100)); ?>
-
-	<?php echo $form->textFieldRow($model,'cer_status',array('class'=>'span5')); ?>
-
-	<?php echo $form->textFieldRow($model,'cer_date_add',array('class'=>'span5')); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

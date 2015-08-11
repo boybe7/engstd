@@ -31,7 +31,7 @@ class CerDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected'),
+				'actions'=>array('create','update','DeleteSelected','GenCerNo'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,45 @@ class CerDocController extends Controller
 			),
 		);
 	}
+
+	 public function actionGenCerNo(){
+       
+            $id = $_GET['id'];        
+            $fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
+			$m = Yii::app()->db->createCommand()
+					->select('max(strSplit(cer_no,"/", 1)) as max')
+					->from('c_cer_doc')	
+					->where('strSplit(strSplit(cer_no,".", 2),"/",2)='.$fiscalyear.' AND vend_id="'.$id.'"')					                   
+					->queryAll();
+
+			
+
+			if(empty($m[0]['max']))
+			{
+				$v = Yii::app()->db->createCommand()
+					->select('shortname')
+					->from('vendor')	
+					->where('name="'.$id.'"')					                   
+					->queryAll();
+				$cerNo = $v[0]['shortname'].".001/".$fiscalyear;	
+			}
+			else
+			{
+				$code = explode(".", $m[0]['max']);
+				$num = intval($code[1])+1;
+                if(strlen($num)==2)
+                    $num = "0".$num;
+                else
+                    $num = "00".$num;
+
+                $cerNo = $code[0].".".$num."/".$fiscalyear;
+			}  				
+
+            $this->layout='empty';
+            echo json_encode($cerNo);
+        
+    }
+ 
 
 	public function actionDeleteSelected()
     {
@@ -83,7 +122,7 @@ class CerDocController extends Controller
 				->where('strSplit(cer_no,"/", 2)='.$fiscalyear)					                   
 				->queryAll();
 
-		$model->cer_no = ($m[0]['max']+1)."/".$fiscalyear;		
+		//$model->cer_no = ($m[0]['max']+1)."/".$fiscalyear;		
 
 		$model->cer_date = date("d")."/".date("m")."/".(date("Y")+543);//"11/07/2526";
 

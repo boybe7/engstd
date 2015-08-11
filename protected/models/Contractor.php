@@ -30,6 +30,7 @@ class Contractor extends CActiveRecord
 			array('name, code', 'required'),
 			array('name', 'length', 'max'=>500),
 			array('code', 'length', 'max'=>10),
+			array('code','unique', 'message'=>'code นี้มีผู้ใช้งานแล้ว'),
 			array('address', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

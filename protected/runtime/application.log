@@ -1346,3 +1346,186 @@ Stack trace:
 REQUEST_URI=/engstd/User/GetName?term=&group=1
 in C:\xampp\htdocs\engstd\protected\controllers\UserController.php (50)
 in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 10:28:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "GetName" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('GetName')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GetName')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('User/GetName')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/User/GetName?term=&level=3
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/create
+---
+2015/08/11 10:28:46 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "User.id" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(145): CComponent->__get('id')
+#1 C:\xampp\htdocs\engstd\framework\base\CModel.php(596): CActiveRecord->__get('id')
+#2 C:\xampp\htdocs\engstd\protected\views\cerDoc\_form.php(192): CModel->offsetGet('id')
+#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#6 C:\xampp\htdocs\engstd\protected\views\cerDoc\create.php(10): CController->renderPartial('_form', Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#8 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#10 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#11 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(100): CController->render('create', Array)
+#12 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionCreate()
+#13 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('create')
+#22 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/create')
+#23 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/engstd/cerDoc/create
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/index
+---
+2015/08/11 14:14:27 [warning] [application] Failed to set unsafe attribute "type" of "Vendor".
+in C:\xampp\htdocs\engstd\protected\controllers\VendorController.php (96)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 14:14:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '???????????????...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('admin')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('vendor/admin')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/vendor/admin
+HTTP_REFERER=http://localhost:8080/engstd/vendor/update/5
+---
+2015/08/11 14:32:31 [warning] [application] Failed to set unsafe attribute "type" of "Vendor".
+in C:\xampp\htdocs\engstd\protected\controllers\VendorController.php (96)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 14:32:44 [warning] [application] Failed to set unsafe attribute "type" of "Vendor".
+in C:\xampp\htdocs\engstd\protected\controllers\VendorController.php (71)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 14:53:28 [warning] [application] Failed to set unsafe attribute "type" of "Vendor".
+in C:\xampp\htdocs\engstd\protected\controllers\VendorController.php (96)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 15:41:48 [error] [php] Undefined variable: request (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:50)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/GenCerNo?id=%E0%B9%80%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%8D%E0%B8%A7%E0%B8%B1%E0%B8%92%E0%B8%99%E0%B8%B2+%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%8A%E0%B9%88%E0%B8%B2%E0%B8%87
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (50)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 15:42:35 [error] [php] Undefined variable: request (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:50)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/GenCerNo
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (50)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 15:44:30 [error] [php] Undefined variable: request (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:50)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/GenCerNo?id=1
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (50)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 15:44:42 [error] [php] Undefined variable: request (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:50)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/GenCerNo?id=5
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (50)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 16:34:15 [error] [php] Undefined offset: 1 (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:71)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/GenCerNo?id=%E0%B8%8A+%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%8A%E0%B9%88%E0%B8%B2%E0%B8%87
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (71)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 16:35:00 [error] [php] Undefined offset: 1 (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:71)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/GenCerNo?id=%E0%B8%8A+%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%8A%E0%B9%88%E0%B8%B2%E0%B8%87
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (71)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/11 16:35:13 [error] [php] Undefined offset: 1 (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:71)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/GenCerNo?id=%E0%B8%8A+%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%8A%E0%B9%88%E0%B8%B2%E0%B8%87
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (71)
+in C:\xampp\htdocs\engstd\index.php (13)

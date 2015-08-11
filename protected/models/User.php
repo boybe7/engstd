@@ -41,6 +41,7 @@ class User extends CActiveRecord
 			array('u_group,position,position2', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>200),
 			array('password', 'length', 'max'=>15),
+			array('username','unique', 'message'=>'username นี้มีผู้ใช้งานแล้ว'),
 			//array('title', 'length', 'max'=>10),
 			array('name', 'length', 'max'=>100),
 			//array('lastname', 'length', 'max'=>100),

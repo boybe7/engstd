@@ -31,7 +31,7 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','password','GetName'),
+				'actions'=>array('create','update','password'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -45,29 +45,6 @@ class UserController extends Controller
 		);
 	}
 
-	public function actionGetName(){
-            $request=trim($_GET['term']);
-            $level=trim($_GET['level']);
-            if($level==1)        
-                $models=User::model()->findAll(array("condition"=>"name like '%$request%' AND u_group=2 AND position='$level'"));
-            else if($level==2)
-            	$models=User::model()->findAll(array("condition"=>"name like '%$request%' AND u_group=2 AND (position=2 OR position=3) "));
-            else
-            	$models=User::model()->findAll(array("condition"=>"name like '%$request%' AND u_group=2 AND (position=4 OR position=5 or position2=4 OR position2=5)"));
-            $data=array();
-            foreach($models as $model){
-                //$data[]["label"]=$get->v_name;
-                //$data[]["id"]=$get->v_id;
-                $data[] = array(
-                        'id'=>$model['name'],
-                        'label'=>$model['name'],
-                );
-
-            }
-            $this->layout='empty';
-            echo json_encode($data);
-        
-    }
 
 	/**
 	 * Displays a particular model.

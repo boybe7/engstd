@@ -27,13 +27,15 @@ class Vendor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, code', 'required'),
+			array('name,shortname, code', 'required'),
 			array('name', 'length', 'max'=>500),
 			array('code', 'length', 'max'=>10),
+			array('shortname', 'length', 'max'=>5),
+			array('code','unique', 'message'=>'code นี้มีผู้ใช้งานแล้ว'),
 			array('address', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, code, address,type', 'safe', 'on'=>'search'),
+			array('id, name,shortname, code, address,type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,6 +59,7 @@ class Vendor extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'ชื่อผู้ผลิต/ผู้จัดส่ง',
 			'code' => 'รหัส',
+			'shortname'=>'ชื่อย่อ',
 			'address' => 'ที่อยู่',
 			'type' => 'ประเภท',
 		);
@@ -82,6 +85,7 @@ class Vendor extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
+		$criteria->compare('shortname',$this->shortname,true);
 		$criteria->compare('code',$this->code,true);
 		$criteria->compare('address',$this->address,true);
 		$criteria->compare('type',$this->type,true);

@@ -71,7 +71,7 @@ class VendorController extends Controller
 			$model->attributes=$_POST['Vendor'];
 			$model->type = $_POST['Vendor']['type'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('create',array(
@@ -96,7 +96,7 @@ class VendorController extends Controller
 			$model->attributes=$_POST['Vendor'];
 			$model->type = $_POST['Vendor']['type'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('index'));
 		}
 
 		$this->render('update',array(
@@ -156,6 +156,7 @@ class VendorController extends Controller
                 $data[] = array(
                         'id'=>$model['name'],
                         'label'=>$model['name'],
+                        'vid'=>$model['id'],
                 );
 
             }
