@@ -13,6 +13,28 @@
 
 
 </script>
+<style type="text/css">
+    
+.the-legend {
+    
+    font: 16px/1.6em 'Boon700',sans-serif;
+    font-weight: bold;
+    margin-bottom: 0;
+    width:inherit; /* Or auto */
+    padding:0 0px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+}
+.the-fieldset {
+    background-color: whiteSmoke;
+    border: 1px solid #E3E3E3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+</style>
 
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'cer-doc-form',
@@ -240,6 +262,18 @@
                                         
                                            //console.log(ui.item.id)
                                             $("#CerDoc_vend_id").val(ui.item.id);
+                                            $.ajax({
+                                                url: "'.$this->createUrl('cerDoc/GenCerNo').'",
+                                                dataType: "json",
+                                                data: {
+                                                    id: ui.item.id,
+                                                   
+                                                },
+                                                success: function (data) {
+                                                        $("#CerDoc_cer_no").val(data);
+
+                                                }
+                                            })
                                           
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
@@ -415,6 +449,191 @@
     </div>
 
 
+        <fieldset class="well the-fieldset">
+            <legend class="the-legend">รายละเอียดการอนุมัติ</legend>
+            <div class="row-fluid"> 
+            <?php   
+            $this->widget('bootstrap.widgets.TbButton', array(
+                  'buttonType'=>'link',
+                  
+                  'type'=>'success',
+                  'label'=>'เพิ่มการอนุมัติ',
+                  'icon'=>'plus-sign',
+                  
+                  'htmlOptions'=>array(
+                    'class'=>'pull-right',
+                    'style'=>'margin:0px 10px 10px 10px;',
+                    //'onclick'=>'createApprove(' . $index . ')'
+                 
+                     'onclick'=>'
+                             
+                                    js:bootbox.confirm($("#modal-body2").html(),"ยกเลิก","ตกลง",
+                                        function(confirmed){
+                                            //console.log("con:"+confirmed)
+                                                        
+                                            if(confirmed)
+                                            {
+
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "../contractapprovehistory/createTemp",
+                                                    dataType:"json",
+                                                    data: $(".modal-body #contract-approve-history-form").serialize()
+                                                    })                                  
+                                                    .done(function( msg ) {
+                                                     
+                                                        jQuery.fn.yiiGridView.update("approve-grid");
+                                                     
+                                                        if(msg.status=="failure")
+                                                        {
+                                                            $("#modal-body2").html(msg.div);
+                                                            js:bootbox.confirm($("#modal-body2").html(),"ยกเลิก","ตกลง",
+                                                            function(confirmed){
+                                                                
+                                                                
+                                                                if(confirmed)
+                                                                {
+                                                                    $.ajax({
+                                                                        type: "POST",
+                                                                        url: "../contractapprovehistory/createTemp",
+                                                                        dataType:"json",
+                                                                        data: $(".modal-body #contract-approve-history-form").serialize()
+                                                                        })
+                                                                        .done(function( msg ) {
+                                                                            if(msg.status=="failure")
+                                                                            {
+                                                                                js:bootbox.alert("<font color=red>!!!!บันทึกไม่สำเร็จ</font>","ตกลง");
+                                                                            }
+                                                                            else{
+                                                                                //js:bootbox.alert("บันทึกสำเร็จ","ตกลง");
+                                                                                jQuery.fn.yiiGridView.update("approve-grid");
+                                                                            }
+                                                                        });
+                                                                }
+                                                            })
+                                                        }
+                                                        else{
+                                                            //js:bootbox.alert("บันทึกสำเร็จ","ตกลง");
+
+                                                        }
+                                                    });
+                                                //$("#approve-grid").yiiGridView("update",{});
+                                            
+                                            }
+                                        })
+                                            
+                                        ',
+                            
+                  ),
+              ));
+
+                  
+                // $this->widget('bootstrap.widgets.TbGridView',array(
+                //     'id'=>'approve-grid'.$index,
+                    
+                //     'type'=>'bordered condensed',
+                //     'dataProvider'=>ContractApproveHistoryTemp::model()->searchByUser($index,1,Yii::app()->user->ID),
+                //     //'filter'=>$model,
+                //     'selectableRows' => 2,
+                //     'enableSorting' => false,
+                //     'rowCssClassExpression'=>'"tr_white"',
+
+                //     // 'template'=>"{summary}{items}{pager}",
+                //     'htmlOptions'=>array('style'=>'padding-top:40px;'),
+                //     'enablePagination' => false,
+                //     'summaryText'=>'',//'Displaying {start}-{end} of {count} results.',
+                //     'columns'=>array(
+                //             'No.'=>array(
+                //                 'header'=>'ลำดับ',
+                //                 'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),                            
+                //                 'htmlOptions'=>array(
+                //                     'style'=>'text-align:center'
+
+                //                 ),
+                //                 'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
+                //               ),
+                //             'detail'=>array(
+                //                 // 'header'=>'', 
+                                
+                //                 'name' => 'detail',
+
+                //                 'headerHtmlOptions' => array('style' => 'width:35%;text-align:center;background-color: #eeeeee'),                           
+                //                 //'headerHtmlOptions' => array('style' => 'width: 110px'),
+                //                 'htmlOptions'=>array(
+                //                                     'style'=>'text-align:left'
+
+                //                 )
+                //             ),
+                //             'approve by'=>array(
+                //                 // 'header'=>'', 
+                                
+                //                 'header' => 'อนุมัติโดย/<br>ลงวันที่',
+                //                 'type'=>'raw', //to use html tag
+                //                 'value'=> '$data->approveBy."<br>".$data->dateApprove', 
+                //                 'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #eeeeee'),                           
+                //                 //'headerHtmlOptions' => array('style' => 'width: 110px'),
+                //                 'htmlOptions'=>array(
+                //                                     'style'=>'text-align:center'
+
+                //                 )
+                //             ),
+                //             'cost'=>array(
+                //                 'header'=>'วงเงิน/<br>เป็นเงินเพิ่ม', 
+                                
+                //                 'name' => 'cost',
+                //                 // 'type'=>'raw', //to use html tag
+                //                 'value'=> function($data){
+                //                     return number_format($data->cost, 2);
+                //                 },  
+                //                 'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #eeeeee'),                           
+                //                 'htmlOptions'=>array(
+                //                                     'style'=>'text-align:right'
+
+                //                 )
+                //             ),
+                //             'time'=>array(
+                //                 'header'=>'ระยะเวลาแล้วเสร็จ/<br>ระยะเลาขอขยาย', 
+                                
+                //                 'name' => 'timeSpend',
+                //                 // 'type'=>'raw', //to use html tag
+                                    
+                //                 'headerHtmlOptions' => array('style' => 'width:20%;text-align:center;background-color: #eeeeee'),                           
+                //                 'htmlOptions'=>array(
+                //                                     'style'=>'text-align:left'
+
+                //                 )
+                //             ),  
+                //             array(
+                //                 'class'=>'bootstrap.widgets.TbButtonColumn',
+                //                 'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),
+                //                 'template' => '{update}   {delete}',
+                //                 // 'deleteConfirmation'=>'js:bootbox.confirm("Are you sure to want to delete")',
+                //                 'buttons'=>array(
+                //                         'delete'=>array(
+                //                             'url'=>'Yii::app()->createUrl("ContractApproveHistory/deleteTemp", array("id"=>$data->id))',    
+
+                //                         ),
+                //                         'update'=>array(
+
+                //                             'url'=>'Yii::app()->createUrl("ContractApproveHistory/updateTemp", array("id"=>$data->id))',
+                //                             //'click'=>'updateApprove($data->id)'   
+                                            
+                //                         )
+
+                //                     )
+
+                                
+                //             ),
+                //         )
+
+                //     ));
+
+             ?>
+            </div>
+           
+        </fieldset>
+
+
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
@@ -424,3 +643,13 @@
 	</div>
 
 <?php $this->endWidget(); ?>
+
+<div id="modal-content" class="hide">
+    <div id="modal-body2">
+    <?php
+        $model3=new CerDetailTemp;
+      
+        $this->renderPartial('/cerDetail/_form',array('model'=>$model3),false); 
+    ?>
+    </div>
+</div>

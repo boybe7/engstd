@@ -129,7 +129,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 	  	),
 	  	'cer_status'=>array(
 			    'name' => 'cer_status',
-			    'value' => array($model,'cer_status'),
+			    'value' => array($model,'getStatus'),
 			    'filter'=>CHtml::activeDropDownList($model, 'cer_status', array('1' => 'เปิด', '2' => 'ปิด','3'=>'ยกเลิก'),array('empty'=>'')),
 				'headerHtmlOptions' => array('style' => 'width:13%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center')

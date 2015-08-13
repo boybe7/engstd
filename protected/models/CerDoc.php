@@ -129,4 +129,24 @@ class CerDoc extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function getStatus($m)
+    {
+        $status = '';
+        switch ($m->cer_status) {
+        	case 1:
+        		$status = "เปิด";
+        		break;
+        	case 2:
+        		$status = "ปิด";
+        		break;
+        	case 3:
+        		$status = "ยกเลิก";
+        		break;	
+        	default:
+        		# code...
+        		break;
+        }
+        return $status;
+    }
 }
