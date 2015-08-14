@@ -31,7 +31,7 @@ class CerDetailController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','createTemp','updateTemp','deleteTemp'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -42,6 +42,91 @@ class CerDetailController extends Controller
 				'users'=>array('*'),
 			),
 		);
+	}
+
+	public function actionCreateTemp()
+	{
+	
+
+		 $model=new CerDetailTemp;
+
+		// Uncomment the following line if AJAX validation is needed
+		//$this->performAjaxValidation($model);
+		if(isset($_POST['CerDetailTemp']))
+		{
+			$model->attributes=$_POST['CerDetailTemp'];
+			$model->cer_id = 0;
+			$model->user_id = Yii::app()->user->ID;
+		
+			if (Yii::app()->request->isAjaxRequest)
+	        {
+	           
+	            if($model->save())
+	            	 echo CJSON::encode(array(
+	                'status'=>'success'
+	                ));
+	            else
+	                echo CJSON::encode(array(
+	                'status'=>'failure','div'=>$this->renderPartial('_form', array('model'=>$model), true)));
+	                
+	            exit;
+				        
+	        }		
+			else
+			  if($model->save())
+				$this->redirect(array('admin'));
+
+		}
+
+		if (Yii::app()->request->isAjaxRequest)
+        {
+            echo CJSON::encode(array(
+                'status'=>'failure', 
+                'div'=>$this->renderPartial('_form', array('model'=>$model), true)));
+            exit;               
+        }
+
+		$this->renderPartial('_form',array('model'=>$model));
+	}
+
+	public function actionUpdateTemp($id)
+	{
+		$model=CerDetailTemp::model()->findByPk($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['CerDetailTemp']))
+		{
+			$model->attributes=$_POST['CerDetailTemp'];
+            //$model->type = 1;
+			 if (Yii::app()->request->isAjaxRequest)
+	         {
+	           
+	            if($model->save())
+	            	 echo CJSON::encode(array(
+	                'status'=>'success'
+	                ));
+	            else
+	                echo CJSON::encode(array(
+	                'status'=>'failure','div'=>$this->renderPartial('_form', array('model'=>$model), true)));
+	                
+	            exit;
+			}	        
+	        	//$this->redirect(array('admin'));
+
+		}
+
+		$this->renderPartial('_form',array('model'=>$model));
+
+	}
+
+
+	public function actionDeleteTemp($id)
+	{
+		$model = CerDetailTemp::model()->findByPk($id);
+		$model->delete();
+
 	}
 
 	/**

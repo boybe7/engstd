@@ -130,8 +130,48 @@ class CerDocController extends Controller
 		if(isset($_POST['CerDoc']))
 		{
 			$model->attributes=$_POST['CerDoc'];
+
+			$model->user_update = Yii::app()->user->name;
+			$model->cer_status = 1;
+			$model->cer_date_add = (date("Y")+543).date("-m-d");
+			$model->contractor = $_POST['CerDoc']['contractor'];
+			$model->contract_no = $_POST['CerDoc']['contract_no'];
+			$model->dept_id = $_POST['CerDoc']['dept_id'];
+
 			if($model->save())
+			{	
+				$modelTemps = Yii::app()->db->createCommand()
+						                    ->select('*')
+						                    ->from('c_cer_detail_temp')
+						                    ->where('user_id=:user', array(':user'=>Yii::app()->user->ID))
+						                    ->queryAll();
+
+				foreach ($modelTemps as $key => $mTemp) {
+
+					 $modelDetail = new CerDetail("search");
+					 $modelDetail->detail = $mTemp['detail'];
+					 $modelDetail->prod_size = $mTemp['prod_size'];
+					 $modelDetail->quantity = $mTemp['quantity'];
+					 $modelDetail->serialno = $mTemp['serialno'];
+                     $modelDetail->cer_id = $model->cer_id;
+                    
+                     $modelDetail->save();
+      //                header('Content-type: text/plain');
+      //                   print_r($mTemp);
+					 // 	print_r($modelDetail);                    
+					 // exit;
+
+				}
+
 				$this->redirect(array('index'));
+			}	
+
+
+		}
+		else{
+			if (!Yii::app()->request->isAjaxRequest)
+			   Yii::app()->db->createCommand('DELETE FROM c_cer_detail_temp WHERE user_id='.Yii::app()->user->ID)->execute();
+			
 		}
 
 		$this->render('create',array(

@@ -6,11 +6,10 @@
  * The followings are the available columns in table 'c_cer_detail':
  * @property integer $detail_id
  * @property integer $cer_id
- * @property string $prot_id
+ * @property string $detail
  * @property integer $prod_size
  * @property integer $quantity
  * @property string $serialno
- * @property integer $user_id
  */
 class CerDetail extends CActiveRecord
 {
@@ -30,12 +29,13 @@ class CerDetail extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cer_id, prot_id, prod_size, quantity, serialno, user_id', 'required'),
-			array('cer_id, prod_size, quantity, user_id', 'numerical', 'integerOnly'=>true),
+			array('cer_id, detail, prod_size, quantity, serialno', 'required'),
+			array('cer_id, quantity', 'numerical', 'integerOnly'=>true),
+			array('detail', 'length', 'max'=>500),
 			array('serialno', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('detail_id, cer_id, prot_id, prod_size, quantity, serialno, user_id', 'safe', 'on'=>'search'),
+			array('detail_id, cer_id, detail, prod_size, quantity, serialno', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,11 +58,10 @@ class CerDetail extends CActiveRecord
 		return array(
 			'detail_id' => 'Detail',
 			'cer_id' => 'Cer',
-			'prot_id' => 'Prot',
+			'detail' => 'Detail',
 			'prod_size' => 'Prod Size',
 			'quantity' => 'Quantity',
 			'serialno' => 'Serialno',
-			'user_id' => 'User',
 		);
 	}
 
@@ -86,11 +85,10 @@ class CerDetail extends CActiveRecord
 
 		$criteria->compare('detail_id',$this->detail_id);
 		$criteria->compare('cer_id',$this->cer_id);
-		$criteria->compare('prot_id',$this->prot_id,true);
+		$criteria->compare('detail',$this->detail,true);
 		$criteria->compare('prod_size',$this->prod_size);
 		$criteria->compare('quantity',$this->quantity);
 		$criteria->compare('serialno',$this->serialno,true);
-		$criteria->compare('user_id',$this->user_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

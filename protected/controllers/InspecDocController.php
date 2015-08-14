@@ -106,6 +106,7 @@ class InspecDocController extends Controller
 		{
 			$model->attributes=$_POST['InspecDoc'];
 			$model->u_id = Yii::app()->user->ID;
+			$model->cust_id=$_POST['InspecDoc']['cust_id'];
 			$model->doc_date_add = (date("Y")+543).date("-m-d");
 
 			if($model->save())
@@ -168,6 +169,7 @@ class InspecDocController extends Controller
 		{
 			$model->attributes=$_POST['InspecDoc'];
 			$model->dept_id = $_POST['InspecDoc']['dept_id'];
+			$model->cust_id=$_POST['InspecDoc']['cust_id'];
 			$model->vend_id = $_POST['InspecDoc']['vend_id'];
 			if($model->save())
 				$this->redirect(array('index'));

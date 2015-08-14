@@ -66,6 +66,7 @@ class ContractorController extends Controller
                 $data[] = array(
                         'id'=>$model['id'],
                         'label'=>$model['code']."-".$model['name'],
+                        'name'=>$model['name'],
                 );
 
             }

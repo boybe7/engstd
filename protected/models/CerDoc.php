@@ -35,13 +35,13 @@ class CerDoc extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cer_no, vend_id, cer_date, cer_oper_date, cer_name, cer_ct_name, cer_di_name, cer_status, cer_date_add', 'required'),
+			array('cer_no, vend_id,user_update, cer_date, cer_oper_date, cer_name, cer_ct_name, cer_di_name, cer_status, cer_date_add', 'required'),
 			array('cer_status,prod_id', 'numerical', 'integerOnly'=>true),
 			array('cer_no', 'length', 'max'=>20),
 			array('cer_name, cer_ct_name, cer_di_name, cer_notes', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('cer_id, cer_no, dept_id, vend_id, cer_date, cer_oper_date, cer_name,contract_no,contractor,prod_id, cer_ct_name, cer_di_name, cer_notes, cer_status, cer_date_add', 'safe', 'on'=>'search'),
+			array('cer_id, cer_no,user_update, dept_id, vend_id, cer_date, cer_oper_date, cer_name,contract_no,contractor,prod_id, cer_ct_name, cer_di_name, cer_notes, cer_status, cer_date_add', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -149,4 +149,81 @@ class CerDoc extends CActiveRecord
         }
         return $status;
     }
+
+    public function beforeSave()
+    {
+      
+
+        $str_date = explode("/", $this->cer_date);
+        if(count($str_date)>1)
+        	$this->cer_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        
+        $str_date = explode("/", $this->cer_oper_date);
+        if(count($str_date)>1)
+        	$this->cer_oper_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+
+        $str_date = explode("/", $this->cer_date_add);
+        if(count($str_date)>1)
+        	$this->cer_date_add= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        
+        return parent::beforeSave();
+   }
+
+	protected function afterSave(){
+            parent::afterSave();
+            $str_date = explode("-", $this->cer_date);
+            if(count($str_date)>1)
+            	$this->cer_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            
+            $str_date = explode("-", $this->cer_oper_date);
+            if(count($str_date)>1)
+            	$this->cer_oper_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+
+            $str_date = explode("-", $this->cer_date_add);
+            if(count($str_date)>1)
+            	$this->cer_date_add = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            //$this->visit_date=date('Y/m/d', strtotime(str_replace("-", "", $this->visit_date)));       
+    }
+
+	public function beforeFind()
+    {
+          
+
+        $str_date = explode("/", $this->cer_date);
+        if(count($str_date)>1)
+        	$this->cer_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        
+        $str_date = explode("/", $this->cer_oper_date);
+        if(count($str_date)>1)
+        	$this->cer_oper_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        
+        $str_date = explode("/", $this->cer_date_add);
+        if(count($str_date)>1)
+        	$this->cer_date_add= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+
+        return parent::beforeSave();
+   }
+
+	protected function afterFind(){
+            parent::afterFind();
+    
+
+            $str_date = explode("-", $this->cer_date);
+            if($this->cer_date=='0000-00-00')
+            	$this->cer_date = '';
+            else if(count($str_date)>1)
+            	$this->cer_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            
+            $str_date = explode("-", $this->cer_oper_date);
+            if($this->cer_oper_date=='0000-00-00')
+            	$this->cer_oper_date = '';
+            else if(count($str_date)>1)
+            	$this->cer_oper_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+
+            $str_date = explode("-", $this->cer_date_add);
+            if($this->cer_date_add=='0000-00-00')
+            	$this->cer_date_add = '';
+            else if(count($str_date)>1)
+            	$this->cer_date_add = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+     }
 }

@@ -160,7 +160,7 @@
                                      'select'=>'js: function(event, ui) {
                                         
                                            //console.log(ui.item.id)
-                                            $("#CerDoc_contract_no").val(ui.item.id);
+                                            $("#CerDoc_contract_no").val(ui.item.label);
                                           
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
@@ -209,7 +209,7 @@
                                      'select'=>'js: function(event, ui) {
                                         
                                            //console.log(ui.item.id)
-                                            $("#CerDoc_contractor").val(ui.item.id);
+                                            $("#CerDoc_contractor").val(ui.item.name);
                                           
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
@@ -450,39 +450,39 @@
 
 
         <fieldset class="well the-fieldset">
-            <legend class="the-legend">รายละเอียดการอนุมัติ</legend>
+            <legend class="the-legend">รายละเอียดท่อ/อุปกรณ์</legend>
             <div class="row-fluid"> 
             <?php   
             $this->widget('bootstrap.widgets.TbButton', array(
                   'buttonType'=>'link',
                   
                   'type'=>'success',
-                  'label'=>'เพิ่มการอนุมัติ',
+                  'label'=>'เพิ่มข้อมูล',
                   'icon'=>'plus-sign',
                   
                   'htmlOptions'=>array(
                     'class'=>'pull-right',
-                    'style'=>'margin:0px 10px 10px 10px;',
+                    'style'=>'margin:-20px 10px 10px 10px;',
                     //'onclick'=>'createApprove(' . $index . ')'
                  
                      'onclick'=>'
                              
                                     js:bootbox.confirm($("#modal-body2").html(),"ยกเลิก","ตกลง",
                                         function(confirmed){
-                                            //console.log("con:"+confirmed)
+                                         
                                                         
                                             if(confirmed)
                                             {
 
                                                 $.ajax({
                                                     type: "POST",
-                                                    url: "../contractapprovehistory/createTemp",
+                                                    url: "../cerDetail/createTemp",
                                                     dataType:"json",
-                                                    data: $(".modal-body #contract-approve-history-form").serialize()
+                                                    data: $(".modal-body #cer-detail-form").serialize()
                                                     })                                  
                                                     .done(function( msg ) {
                                                      
-                                                        jQuery.fn.yiiGridView.update("approve-grid");
+                                                        jQuery.fn.yiiGridView.update("detail-grid");
                                                      
                                                         if(msg.status=="failure")
                                                         {
@@ -497,7 +497,7 @@
                                                                         type: "POST",
                                                                         url: "../contractapprovehistory/createTemp",
                                                                         dataType:"json",
-                                                                        data: $(".modal-body #contract-approve-history-form").serialize()
+                                                                        data: $(".modal-body #cer-detail-form").serialize()
                                                                         })
                                                                         .done(function( msg ) {
                                                                             if(msg.status=="failure")
@@ -506,7 +506,7 @@
                                                                             }
                                                                             else{
                                                                                 //js:bootbox.alert("บันทึกสำเร็จ","ตกลง");
-                                                                                jQuery.fn.yiiGridView.update("approve-grid");
+                                                                                jQuery.fn.yiiGridView.update("detail-grid");
                                                                             }
                                                                         });
                                                                 }
@@ -517,7 +517,7 @@
 
                                                         }
                                                     });
-                                                //$("#approve-grid").yiiGridView("update",{});
+                                             
                                             
                                             }
                                         })
@@ -528,105 +528,104 @@
               ));
 
                   
-                // $this->widget('bootstrap.widgets.TbGridView',array(
-                //     'id'=>'approve-grid'.$index,
+                $this->widget('bootstrap.widgets.TbGridView',array(
+                    'id'=>'detail-grid',
                     
-                //     'type'=>'bordered condensed',
-                //     'dataProvider'=>ContractApproveHistoryTemp::model()->searchByUser($index,1,Yii::app()->user->ID),
-                //     //'filter'=>$model,
-                //     'selectableRows' => 2,
-                //     'enableSorting' => false,
-                //     'rowCssClassExpression'=>'"tr_white"',
+                    'type'=>'bordered condensed',
+                    'dataProvider'=>CerDetailTemp::model()->searchByUser(Yii::app()->user->ID),
+                    //'filter'=>$model,
+                    'selectableRows' => 2,
+                    'enableSorting' => false,
+                    'rowCssClassExpression'=>'"tr_white"',
 
-                //     // 'template'=>"{summary}{items}{pager}",
-                //     'htmlOptions'=>array('style'=>'padding-top:40px;'),
-                //     'enablePagination' => false,
-                //     'summaryText'=>'',//'Displaying {start}-{end} of {count} results.',
-                //     'columns'=>array(
-                //             'No.'=>array(
-                //                 'header'=>'ลำดับ',
-                //                 'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),                            
-                //                 'htmlOptions'=>array(
-                //                     'style'=>'text-align:center'
+                    // 'template'=>"{summary}{items}{pager}",
+                    'htmlOptions'=>array('style'=>'padding-top:0px;'),
+                    'enablePagination' => false,
+                    'summaryText'=>'',//'Displaying {start}-{end} of {count} results.',
+                    'columns'=>array(
+                            'No.'=>array(
+                                'header'=>'ลำดับ',
+                                'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),                            
+                                'htmlOptions'=>array(
+                                    'style'=>'text-align:center'
 
-                //                 ),
-                //                 'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
-                //               ),
-                //             'detail'=>array(
-                //                 // 'header'=>'', 
+                                ),
+                                'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
+                              ),
+                            'detail'=>array(
+                                // 'header'=>'', 
                                 
-                //                 'name' => 'detail',
+                                'name' => 'detail',
 
-                //                 'headerHtmlOptions' => array('style' => 'width:35%;text-align:center;background-color: #eeeeee'),                           
-                //                 //'headerHtmlOptions' => array('style' => 'width: 110px'),
-                //                 'htmlOptions'=>array(
-                //                                     'style'=>'text-align:left'
+                                'headerHtmlOptions' => array('style' => 'width:40%;text-align:center;background-color: #eeeeee'),                           
+                                //'headerHtmlOptions' => array('style' => 'width: 110px'),
+                                'htmlOptions'=>array(
+                                                    'style'=>'text-align:left'
 
-                //                 )
-                //             ),
-                //             'approve by'=>array(
-                //                 // 'header'=>'', 
+                                )
+                            ),
+                            'quantity'=>array(
+                                // 'header'=>'', 
                                 
-                //                 'header' => 'อนุมัติโดย/<br>ลงวันที่',
-                //                 'type'=>'raw', //to use html tag
-                //                 'value'=> '$data->approveBy."<br>".$data->dateApprove', 
-                //                 'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #eeeeee'),                           
-                //                 //'headerHtmlOptions' => array('style' => 'width: 110px'),
-                //                 'htmlOptions'=>array(
-                //                                     'style'=>'text-align:center'
+                                'name' => 'quantity',
 
-                //                 )
-                //             ),
-                //             'cost'=>array(
-                //                 'header'=>'วงเงิน/<br>เป็นเงินเพิ่ม', 
+                                'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #eeeeee'),                           
+                                //'headerHtmlOptions' => array('style' => 'width: 110px'),
+                                'htmlOptions'=>array(
+                                                    'style'=>'text-align:center'
+
+                                )
+                            ),
+                            'serialno'=>array(
+                                // 'header'=>'', 
                                 
-                //                 'name' => 'cost',
-                //                 // 'type'=>'raw', //to use html tag
-                //                 'value'=> function($data){
-                //                     return number_format($data->cost, 2);
-                //                 },  
-                //                 'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #eeeeee'),                           
-                //                 'htmlOptions'=>array(
-                //                                     'style'=>'text-align:right'
+                                'name' => 'serialno',
 
-                //                 )
-                //             ),
-                //             'time'=>array(
-                //                 'header'=>'ระยะเวลาแล้วเสร็จ/<br>ระยะเลาขอขยาย', 
+                                'headerHtmlOptions' => array('style' => 'width:20%;text-align:center;background-color: #eeeeee'),                           
+                                //'headerHtmlOptions' => array('style' => 'width: 110px'),
+                                'htmlOptions'=>array(
+                                                    'style'=>'text-align:center'
+
+                                )
+                            ),
+                            'prod_size'=>array(
+                                 'header'=>'ขนาด &#8709 มม.', 
                                 
-                //                 'name' => 'timeSpend',
-                //                 // 'type'=>'raw', //to use html tag
-                                    
-                //                 'headerHtmlOptions' => array('style' => 'width:20%;text-align:center;background-color: #eeeeee'),                           
-                //                 'htmlOptions'=>array(
-                //                                     'style'=>'text-align:left'
+                                'name' => 'prod_size',
 
-                //                 )
-                //             ),  
-                //             array(
-                //                 'class'=>'bootstrap.widgets.TbButtonColumn',
-                //                 'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),
-                //                 'template' => '{update}   {delete}',
-                //                 // 'deleteConfirmation'=>'js:bootbox.confirm("Are you sure to want to delete")',
-                //                 'buttons'=>array(
-                //                         'delete'=>array(
-                //                             'url'=>'Yii::app()->createUrl("ContractApproveHistory/deleteTemp", array("id"=>$data->id))',    
 
-                //                         ),
-                //                         'update'=>array(
+                                'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #eeeeee'),                           
+                                //'headerHtmlOptions' => array('style' => 'width: 110px'),
+                                'htmlOptions'=>array(
+                                                    'style'=>'text-align:center'
 
-                //                             'url'=>'Yii::app()->createUrl("ContractApproveHistory/updateTemp", array("id"=>$data->id))',
-                //                             //'click'=>'updateApprove($data->id)'   
+                                )
+                            ),
+                            
+                            array(
+                                'class'=>'bootstrap.widgets.TbButtonColumn',
+                                'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),
+                                'template' => '{update}   {delete}',
+                                // 'deleteConfirmation'=>'js:bootbox.confirm("Are you sure to want to delete")',
+                                'buttons'=>array(
+                                        'delete'=>array(
+                                            'url'=>'Yii::app()->createUrl("cerDetail/deleteTemp", array("id"=>$data->detail_id))',    
+
+                                        ),
+                                        'update'=>array(
+
+                                            'url'=>'Yii::app()->createUrl("cerDetail/updateTemp", array("id"=>$data->detail_id))',
+                                            //'click'=>'updateApprove($data->id)'   
                                             
-                //                         )
+                                        )
 
-                //                     )
+                                    )
 
                                 
-                //             ),
-                //         )
+                            ),
+                        )
 
-                //     ));
+                    ));
 
              ?>
             </div>
@@ -638,12 +637,28 @@
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
-			'label'=>$model->isNewRecord ? 'Create' : 'Save',
+			'label'=>$model->isNewRecord ? 'บันทึก' : 'Save',
 		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
+<div id="modalApprove"  class="modal hide fade">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>แก้ไขข้อมูลการอนุมัติ</h3>
+    </div>
+    <div class="modal-body" id="bodyApprove">
+      <?php 
+    
+      ?>
+
+    </div>
+    <div class="modal-footer">
+    <a href="#" class="btn btn-danger" id="modalCancel">ยกเลิก</a>
+    <a href="#" class="btn btn-primary" id="modalSubmit">บันทึก</a>
+    </div>
+</div>
 <div id="modal-content" class="hide">
     <div id="modal-body2">
     <?php
@@ -653,3 +668,82 @@
     ?>
     </div>
 </div>
+
+<?php
+
+Yii::app()->clientScript->registerCoreScript('jquery');
+Yii::app()->clientScript->registerScript('edit','
+    var link;
+    var myBackup2;
+    
+    $("#modalCancel").click(function(e){
+        
+        myBackup2 = $("#modalApprove").clone();
+                        $("#modalApprove").modal("hide");
+                        $("#bodyApprove").html();
+                     
+    });
+
+
+    $("#modalSubmit").click(function(e){
+      
+       $.ajax( {
+            type: "POST",
+            url: link,
+            dataType:"json",
+            data: $("#cer-detail-form").serialize(),
+            success: function( msg ) {
+                //console.log(msg.status);
+
+                //$("#modalApprove").modal("hide");
+
+                if(msg.status=="failure")                                   
+                {
+                    //js:bootbox.alert("<font color=red>!!!!บันทึกไม่สำเร็จ</font>","ตกลง");
+                    $("#cer-detail-form").html(msg.div);
+                }
+                else{
+                    
+                    //js:bootbox.alert("บันทึกสำเร็จ","ตกลง");
+                       myBackup2 = $("#modalApprove").clone();
+                        $("#modalApprove").modal("hide");
+                        $("#bodyApprove").html();
+                        
+                }
+                jQuery.fn.yiiGridView.update("detail-grid");
+              
+            }
+        } 
+        );
+
+    });
+
+    
+
+
+    
+    $("body").on("click","#detail-grid .update,#link",function(e){
+                link = $(this).attr("href");
+                console.log(link)
+
+                $.ajax({
+                 type:"GET",
+                 cache: false,
+                 url:$(this).attr("href"),
+                 success:function(data){
+                         
+                            $("#bodyApprove").html(data);
+                          
+                           
+                             $("#modalApprove").modal("show");
+
+                        
+                 },
+
+                });
+            return false;
+    });
+
+
+');
+?>
