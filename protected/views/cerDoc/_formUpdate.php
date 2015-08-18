@@ -85,7 +85,9 @@
 			<?php 
 						echo $form->hiddenField($model,'dept_id');
   						echo $form->labelEx($model,'dept_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
-    					 
+    					//$m = DeptOrder::model()->findAll(array("condition"=>"dept_name='".$model->dept_id."'"));
+                        //print_r($m);
+                        //$value = empty($model->dept_id) ? "" : $m[0]->dept_name; 
   						$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'dept_id',
                             'id'=>'dept_id',
@@ -295,11 +297,13 @@
                   
                         echo $form->hiddenField($model,'prod_id');
                         echo $form->labelEx($model,'prod_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
-                         
+                        $m = Prodtype::model()->findByPK($model->prod_id);
+                        //print_r($m);
+                        $value = empty($model->prod_id) ? "" : $m->prot_code."-".$m->prot_name;  
                         $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'prod_id',
                             'id'=>'prod_id',
-                            'value'=>$model->prod_id,
+                            'value'=>$value,
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
@@ -476,7 +480,7 @@
 
                                                 $.ajax({
                                                     type: "POST",
-                                                    url: "../cerDetail/createTemp",
+                                                    url: "../../cerDetail/create/' . $model->cer_id . '",
                                                     dataType:"json",
                                                     data: $(".modal-body #cer-detail-form").serialize()
                                                     })                                  
@@ -495,7 +499,7 @@
                                                                 {
                                                                     $.ajax({
                                                                         type: "POST",
-                                                                        url: "../cerDetail/createTemp",
+                                                                         url: "../../cerDetail/create/' . $model->cer_id . '",
                                                                         dataType:"json",
                                                                         data: $(".modal-body #cer-detail-form").serialize()
                                                                         })
@@ -532,7 +536,7 @@
                     'id'=>'detail-grid',
                     
                     'type'=>'bordered condensed',
-                    'dataProvider'=>CerDetailTemp::model()->searchByUser(Yii::app()->user->ID),
+                    'dataProvider'=>CerDetail::model()->searchByID($model->cer_id),
                     //'filter'=>$model,
                     'selectableRows' => 2,
                     'enableSorting' => false,
@@ -609,12 +613,12 @@
                                 // 'deleteConfirmation'=>'js:bootbox.confirm("Are you sure to want to delete")',
                                 'buttons'=>array(
                                         'delete'=>array(
-                                            'url'=>'Yii::app()->createUrl("cerDetail/deleteTemp", array("id"=>$data->detail_id))',    
+                                            'url'=>'Yii::app()->createUrl("cerDetail/delete", array("id"=>$data->detail_id))',    
 
                                         ),
                                         'update'=>array(
 
-                                            'url'=>'Yii::app()->createUrl("cerDetail/updateTemp", array("id"=>$data->detail_id))',
+                                            'url'=>'Yii::app()->createUrl("cerDetail/update", array("id"=>$data->detail_id))',
                                             //'click'=>'updateApprove($data->id)'   
                                             
                                         )
@@ -637,7 +641,7 @@
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
-			'label'=>$model->isNewRecord ? 'บันทึก' : 'Save',
+			'label'=>'บันทึก',
 		)); ?>
 	</div>
 
@@ -662,7 +666,7 @@
 <div id="modal-content" class="hide">
     <div id="modal-body2">
     <?php
-        $model3=new CerDetailTemp;
+        $model3=new CerDetail;
       
         $this->renderPartial('/cerDetail/_form',array('model'=>$model3),false); 
     ?>

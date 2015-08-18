@@ -194,6 +194,7 @@ class CerDocController extends Controller
 		if(isset($_POST['CerDoc']))
 		{
 			$model->attributes=$_POST['CerDoc'];
+			$model->user_update = Yii::app()->user->name;
 			if($model->save())
 				$this->redirect(array('index'));
 		}

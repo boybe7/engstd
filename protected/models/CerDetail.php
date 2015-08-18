@@ -58,10 +58,10 @@ class CerDetail extends CActiveRecord
 		return array(
 			'detail_id' => 'Detail',
 			'cer_id' => 'Cer',
-			'detail' => 'Detail',
-			'prod_size' => 'Prod Size',
-			'quantity' => 'Quantity',
-			'serialno' => 'Serialno',
+			'detail' => 'รายละเอียด',
+			'prod_size' => 'ขนาด &#8709 มม.',
+			'quantity' => 'จำนวน',
+			'serialno' => 'หมายเลข',
 		);
 	}
 
@@ -90,6 +90,19 @@ class CerDetail extends CActiveRecord
 		$criteria->compare('quantity',$this->quantity);
 		$criteria->compare('serialno',$this->serialno,true);
 
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function searchByID($id) {
+
+		$criteria=new CDbCriteria;
+		$criteria->select = '*';
+		//$criteria->join = 'JOIN foodType food ON foodtype = food.foodtype '; 
+		$criteria->condition = "cer_id='$id'";
+		//$criteria->group = 'foodtype ';
+		
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
