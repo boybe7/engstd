@@ -22,6 +22,10 @@ $this->widget('bootstrap.widgets.TbButton', array(
     'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 10px 0px 10px;'),
 )); 
 
+
+if(Yii::app()->user->isExecutive() || Yii::app()->user->isAdmin())
+{
+
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
     
@@ -55,8 +59,6 @@ $this->widget('bootstrap.widgets.TbButton', array(
     ),
 )); 
 
-if(Yii::app()->user->isExecutive() || Yii::app()->user->isAdmin())
-{
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
     

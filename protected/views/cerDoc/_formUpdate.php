@@ -613,7 +613,7 @@
                                 // 'deleteConfirmation'=>'js:bootbox.confirm("Are you sure to want to delete")',
                                 'buttons'=>array(
                                         'delete'=>array(
-                                            'url'=>'Yii::app()->createUrl("cerDetail/delete", array("id"=>$data->detail_id))',    
+                                            'url'=>'Yii::app()->createUrl("cerDetail/delete2", array("id"=>$data->detail_id))',    
 
                                         ),
                                         'update'=>array(
