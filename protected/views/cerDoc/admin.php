@@ -76,7 +76,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
                        {  
                                	 $.ajax({
 										type: "POST",
-										url: "cancleSelected",
+										url: "cancel",
 										data: { selectedID: $.fn.yiiGridView.getSelection("cer-doc-grid")}
 										})
 										.done(function( msg ) {
@@ -89,6 +89,34 @@ $this->widget('bootstrap.widgets.TbButton', array(
 )); 
 }
 
+$this->widget('bootstrap.widgets.TbButton', array(
+    'buttonType'=>'link',
+    
+    'type'=>'info',
+    'label'=>'ปิดงาน',
+    'icon'=>'icon-ok-sign',
+    //'url'=>array('close'),
+    'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 0px 0px 10px;',
+
+
+				'onclick'=>'      
+                       if($.fn.yiiGridView.getSelection("cer-doc-grid").length==0)
+                       	  js:bootbox.alert("กรุณาเลือกใบรับแจ้งที่ต้องการยกเลิก?","ตกลง");	
+                       else 
+                       {  
+                               	 $.ajax({
+										type: "POST",
+										url: "close",
+										data: { selectedID: $.fn.yiiGridView.getSelection("cer-doc-grid")}
+										})
+										.done(function( msg ) {
+											$("#cer-doc-grid").yiiGridView("update",{});
+										});
+			            }',
+
+
+    	),
+)); 
 
 $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'cer-doc-grid',

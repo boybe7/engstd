@@ -33,3 +33,55 @@ Stack trace:
 REQUEST_URI=/engstd/cerDetail/delete/2?ajax=detail-grid
 HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/2
 ---
+2015/08/19 16:57:56 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 16:57:56 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 16:57:56 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 17:04:09 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 17:04:09 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 17:04:09 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 18:25:04 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (160)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 18:25:04 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (160)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 18:25:04 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (160)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 18:37:48 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (165)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 18:37:48 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (165)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 18:37:48 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (165)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/19 18:46:24 [error] [php] Undefined variable: id (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:93)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/deleteSelected
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (93)
+in C:\xampp\htdocs\engstd\index.php (13)

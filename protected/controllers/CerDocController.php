@@ -31,7 +31,7 @@ class CerDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GenCerNo'),
+				'actions'=>array('create','update','DeleteSelected','GenCerNo','close','cancel'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -90,7 +90,38 @@ class CerDocController extends Controller
         {
             foreach($autoIdAll as $autoId)
             {
+             
+				Yii::app()->db->createCommand('DELETE FROM c_cer_detail WHERE cer_id='.$autoId)->execute();
+			
                 $this->loadModel($autoId)->delete();
+            }
+        }    
+    }
+
+    public function actionCancel()
+    {
+    	$ids = $_POST['selectedID'];
+        if(count($ids)>0)
+        {
+            foreach($ids as $id)
+            {
+                $model=$this->loadModel($id);
+                $model->cer_status = 3;
+                $model->save();
+            }
+        }    
+    }
+
+     public function actionClose()
+    {
+    	$ids = $_POST['selectedID'];
+        if(count($ids)>0)
+        {
+            foreach($ids as $id)
+            {
+                $model=$this->loadModel($id);
+                $model->cer_status = 2;
+                $model->save();
             }
         }    
     }
@@ -195,6 +226,10 @@ class CerDocController extends Controller
 		{
 			$model->attributes=$_POST['CerDoc'];
 			$model->user_update = Yii::app()->user->name;
+			$model->contractor = $_POST['CerDoc']['contractor'];
+			$model->contract_no = $_POST['CerDoc']['contract_no'];
+			$model->dept_id = $_POST['CerDoc']['dept_id'];
+
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -214,8 +249,15 @@ class CerDocController extends Controller
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+			
 
+			
+			$model = $this->loadModel($id);
+			$id = $model->cer_id; 
+
+			Yii::app()->db->createCommand('DELETE FROM c_cer_detail WHERE cer_id='.$id)->execute();
+			
+			$this->loadModel($id)->delete();
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
