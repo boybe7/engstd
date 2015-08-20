@@ -31,7 +31,7 @@ class CerDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GenCerNo','close','cancel'),
+				'actions'=>array('create','update','DeleteSelected','GenCerNo','close','cancel','print','getCerNO','preview'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,71 @@ class CerDocController extends Controller
 			),
 		);
 	}
+
+	public function actionPreview(){
+
+
+	
+
+		$this->render('preview');
+
+	}
+
+	public function gridGetProd($data,$row){
+
+	     $id = $data->prod_id;
+	     //do your stuff for finding the username or name with $user
+	     //for eg.
+	     $detail = ProdType::model()->findByPk($id);
+	     // make sure what ever model you are calling is accessible from this controller other wise you have to import the model on top of the controller above class of the controller.
+	     return $detail->prot_name;
+	}
+
+	public function actionPrint(){
+
+		$criteria = new CDbCriteria();
+
+	    if(!empty($_GET['cer_date_begin'])  && !empty($_GET['cer_date_end']))
+	    {
+	      $begin = $_GET['cer_date_begin'];
+	      $str_date = explode("/", $begin);
+          $begin= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+
+	      $end = $_GET['cer_date_end'];
+	      $str_date = explode("/", $end);
+          $end= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+
+	      $criteria->addBetweenCondition('cer_date', $begin, $end, 'OR');
+	    }
+	    else if(!empty($_GET['cer_date_begin'])){
+	      $begin = $_GET['cer_date_begin'];
+	      $str_date = explode("/", $begin);
+          $begin= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+
+          $criteria->compare('cer_date',$begin,true);
+	    }
+	    else if(!empty($_GET['cer_date_end'])){
+	      $begin = $_GET['cer_date_end'];
+	      $str_date = explode("/", $begin);
+          $begin= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+
+          $criteria->compare('cer_date',$begin,true);
+	    }
+
+	    if(isset($_GET['contract_no']))
+	    	$criteria->compare('contract_no',$_GET['contract_no'],true);
+
+	    if(isset($_GET['cer_no']))
+	    	$criteria->compare('cer_no',$_GET['cer_no'],true);
+
+
+
+	    $dataProvider=new CActiveDataProvider("CerDoc", array('criteria'=>$criteria,'pagination'=>array('pageSize'=>10)));
+
+		$this->render('print',array(
+			'dataProvider'=>$dataProvider
+		));
+	}	
 
 	 public function actionGenCerNo(){
        
@@ -110,6 +175,25 @@ class CerDocController extends Controller
                 $model->save();
             }
         }    
+    }
+
+    public function actionGetCerNO(){
+            $request=trim($_GET['term']);
+                    
+            $models=CerDoc::model()->findAll(array("condition"=>"cer_no like '%$request%'"));
+            $data=array();
+            foreach($models as $model){
+                //$data[]["label"]=$get->v_name;
+                //$data[]["id"]=$get->v_id;
+                $data[] = array(
+                        'id'=>$model['cer_no'],
+                        'label'=>$model['cer_no'],
+                );
+
+            }
+            $this->layout='empty';
+            echo json_encode($data);
+        
     }
 
      public function actionClose()
