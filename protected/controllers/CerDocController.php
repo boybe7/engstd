@@ -31,7 +31,7 @@ class CerDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GenCerNo','close','cancel','print','getCerNO','preview'),
+				'actions'=>array('create','update','DeleteSelected','GenCerNo','close','cancel','genPDF','print','getCerNO','preview'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -44,12 +44,21 @@ class CerDocController extends Controller
 		);
 	}
 
-	public function actionPreview(){
+	public function actionPreview($id){
 
 
-	
+		$this->render('preview',array('id'=>$id));
 
-		$this->render('preview');
+	}
+
+	public function actionGenPDF(){
+
+		$id = $_GET["id"]; 
+		//$filename='preview_'.date('m-d-Y_hia').'.pdf';
+		$filename = Yii::app()->user->username.".pdf";
+		$this->renderPartial('_formPDF',array('model'=>$this->loadModel($id),'filename'=>$filename));
+
+		echo json_encode($filename);
 
 	}
 

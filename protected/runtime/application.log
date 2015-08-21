@@ -556,3 +556,94 @@ Stack trace:
 REQUEST_URI=/engstd/test.pdf
 HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/1
 ---
+2015/08/21 10:14:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "previewPDF.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('previewPDF.php')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('previewPDF.php')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/previewP...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/previewPDF.php?id=1
+---
+2015/08/21 10:14:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "_form.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('_form.php')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('_form.php')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/_form.ph...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/_form.php
+---
+2015/08/21 10:15:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "genPDF.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('genPDF.php')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('genPDF.php')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/genPDF.p...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/genPDF.php?id=1
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/2
+---
+2015/08/21 10:17:15 [error] [exception.CException] exception 'CException' with message 'CerDocController ไม่สามารถค้นหา "_formDF" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('_formDF', NULL, true)
+#1 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(58): CController->render('_formDF')
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('genPDF')
+#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/genPDF')
+#13 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/engstd/cerDoc/genPDF?id=1
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/2
+---
+2015/08/21 11:11:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "preview.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('preview.pdf')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/preview.pdf
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/2
+---
+2015/08/21 13:32:37 [error] [php] Undefined variable: Yii (C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php:86)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(61): CerDocController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#8 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/genPDF?id=1
+in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (86)
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (61)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/21 13:52:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "มานะจะ.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('???????????????...')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/%E0%B8%A1%E0%B8%B2%E0%B8%99%E0%B8%B0%E0%B8%88%E0%B8%B0.pdf
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/1
+---
