@@ -6,7 +6,7 @@
        
                 minLength: 0
             }).bind('focus', function () {
-                 console.log("search");
+                 
                 $(this).autocomplete("search");
       });
     
@@ -44,6 +44,7 @@
                                     success: function (data) {
                                             response(data);
 
+                                        //console.log("load source")
                                     }
                                 })
                              }',
@@ -53,7 +54,7 @@
                                      'minLength'=>0,
                                      'select'=>'js: function(event, ui) {
                                         
-                                           //console.log(ui.item.id)
+                                           console.log(ui.item.id)
                                             $("#CerDetail_detail").val(ui.item.id);
                                             $("#CerDetail_prod_size").val(ui.item.id);
                                      }',

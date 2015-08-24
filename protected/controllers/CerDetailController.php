@@ -31,7 +31,7 @@ class CerDetailController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','delete2','update','createTemp','updateTemp','deleteTemp'),
+				'actions'=>array('create','delete2','update','createTemp','createTemp2','updateTemp','deleteTemp'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -87,6 +87,15 @@ class CerDetailController extends Controller
         }
 
 		$this->renderPartial('_form',array('model'=>$model));
+	}
+
+	public function actionCreateTemp2()
+	{
+        $model=new CerDetailTemp;
+        //Yii::app()->clientScript->scriptMap['jquery.js'] = false;
+        //Yii::app()->clientScript->scriptMap['jquery.min.js'] = false;
+
+		$this->renderPartial('_form',array('model'=>$model),false);
 	}
 
 	public function actionUpdateTemp($id)

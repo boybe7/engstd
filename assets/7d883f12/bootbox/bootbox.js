@@ -434,11 +434,33 @@ var bootbox = window.bootbox || (function(document, $) {
         div.on('shown', function() {
             div.find("a.btn-primary:first").focus();
 
-            console.log("shown");
+            
             $(".d-picker").datepicker();
 
-  
-            $(".ui-autocomplete-input").autocomplete();
+            //var fakedata = ['test1','test2','test3','test4','ietsanders'];
+                             $.ajax({
+                                    url: "../Prodtype/GetType",
+                                    dataType: "json",
+                                    data: {
+                                        term: '',
+                                       
+                                    },
+                                    success: function (data) {
+                                            //response(data);
+                                           
+                                        console.log(data)
+                                         $("#detail").autocomplete({source:data});
+                                    }
+                                })
+           
+             $( "#detail" ).autocomplete({
+              select: function( event, ui ) {
+                console.log(ui.item.id)
+                $("#CerDetail_prod_size").val(ui.item.id);
+              }
+            });
+          
+            //$(".ui-autocomplete-input").autocomplete();
            
         });
 

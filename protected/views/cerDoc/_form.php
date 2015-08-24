@@ -466,8 +466,8 @@
                     //'onclick'=>'createApprove(' . $index . ')'
                  
                      'onclick'=>'
-                             
-                                    js:bootbox.confirm($("#modal-body2").html(),"ยกเลิก","ตกลง",
+                             //$("#modal-body2").load("../cerDetail/createTemp2");
+                                    js:bootbox.confirm($("#modal-body2").load("../cerDetail/createTemp2"),"ยกเลิก","ตกลง",
                                         function(confirmed){
                                          
                                                         
@@ -487,7 +487,7 @@
                                                         if(msg.status=="failure")
                                                         {
                                                             $("#modal-body2").html(msg.div);
-                                                            js:bootbox.confirm($("#modal-body2").html(),"ยกเลิก","ตกลง",
+                                                            js:bootbox.confirm($("#modal-body2").load("../cerDetail/createTemp2"),"ยกเลิก","ตกลง",
                                                             function(confirmed){
                                                                 
                                                                 
@@ -662,11 +662,18 @@
 </div>
 <div id="modal-content" class="hide">
     <div id="modal-body2">
+      
     <?php
         $model3=new CerDetailTemp;
-      
+      //if (Yii::app()->request->isAjaxRequest)
         $this->renderPartial('/cerDetail/_form',array('model'=>$model3),false); 
     ?>
+
+    <?php 
+
+
+     ?>
+
     </div>
 </div>
 

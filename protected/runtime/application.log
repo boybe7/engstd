@@ -686,3 +686,54 @@ Stack trace:
 REQUEST_URI=/engstd/cerDoc/create
 HTTP_REFERER=http://localhost:8080/engstd/cerDoc/index
 ---
+2015/08/24 23:19:04 [error] [exception.CException] exception 'CException' with message 'CerDocController กำลังถูกเรียกใช้โดย endWidget() ในขณะนี้' in C:\xampp\htdocs\engstd\framework\web\CBaseController.php:210
+Stack trace:
+#0 C:\xampp\htdocs\engstd\protected\views\cerDoc\_form.php(698): CBaseController->endWidget()
+#1 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\engstd\protected\views\cerDoc\create.php(10): CController->renderPartial('_form', Array)
+#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#9 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(303): CController->render('create', Array)
+#10 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionCreate()
+#11 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#13 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#16 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('create')
+#20 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/create')
+#21 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/engstd/cerDoc/create
+HTTP_REFERER=http://localhost/engstd/cerDoc/index
+---
+2015/08/25 00:17:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "cerDetail" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('cerDetail')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('cerDetail')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/cerDetai...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/cerDetail/createTemp
+HTTP_REFERER=http://localhost/engstd/cerDoc/create
+---
+2015/08/25 00:46:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "'.$this->createUrl('Prodtype" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction(''.$this->create...')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run(''.$this->create...')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/'.$this-...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/'.$this-%3EcreateUrl('Prodtype/GetType').'?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/create
+---
