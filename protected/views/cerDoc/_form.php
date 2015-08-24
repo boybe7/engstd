@@ -2,7 +2,7 @@
 	
 	$(function(){
         //autocomplete search on focus    	
-	    $("#dept_id,#vend_id,#contract_no,#contractor,#prod_id").autocomplete({
+	    $("#dept_id,#vend_id,#contract_no,#contractor,#prod_id,#detail").autocomplete({
        
                 minLength: 0
             }).bind('focus', function () {
@@ -652,6 +652,7 @@
       <?php 
     
       ?>
+   
 
     </div>
     <div class="modal-footer">

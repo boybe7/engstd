@@ -1,6 +1,6 @@
 <?php
 
-	require_once('/../tcpdf/tcpdf.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/engstd/protected/tcpdf/tcpdf.php');
 
 	class MYPDF extends TCPDF {
 

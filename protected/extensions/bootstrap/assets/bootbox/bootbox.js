@@ -434,8 +434,11 @@ var bootbox = window.bootbox || (function(document, $) {
         div.on('shown', function() {
             div.find("a.btn-primary:first").focus();
 
-            //console.log("shown");
+            console.log("shown");
             $(".d-picker").datepicker();
+
+  
+            $(".ui-autocomplete-input").autocomplete();
            
         });
 
