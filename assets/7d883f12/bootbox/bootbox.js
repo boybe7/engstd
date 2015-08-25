@@ -409,9 +409,11 @@ var bootbox = window.bootbox || (function(document, $) {
                 // @see https://github.com/makeusabrew/bootbox/issues/91
                 hideModal = options.onEscape();
             }
-
+            
             if (hideModal !== false) {
                 div.modal('hide');
+
+                //div.removeClass('show');
             }
         }
 
@@ -439,7 +441,7 @@ var bootbox = window.bootbox || (function(document, $) {
 
             //var fakedata = ['test1','test2','test3','test4','ietsanders'];
                              $.ajax({
-                                    url: "../Prodtype/GetType",
+                                    url: "../Product/GetProduct",
                                     dataType: "json",
                                     data: {
                                         term: '',
@@ -448,15 +450,16 @@ var bootbox = window.bootbox || (function(document, $) {
                                     success: function (data) {
                                             //response(data);
                                            
-                                        console.log(data)
+                                        //console.log(data)
                                          $("#detail").autocomplete({source:data});
                                     }
                                 })
-           
+              //console.log($(".ui-autocomplete-input"))
              $( "#detail" ).autocomplete({
               select: function( event, ui ) {
-                console.log(ui.item.id)
-                $("#CerDetail_prod_size").val(ui.item.id);
+                //console.log(ui.item.id)
+                $("#CerDetailTemp_prod_size").val(ui.item.size);
+                $("#CerDetailTemp_detail").val(ui.item.name);
               }
             });
           

@@ -31,7 +31,7 @@ class ProductController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected'),
+				'actions'=>array('create','update','DeleteSelected','GetProduct'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -139,6 +139,29 @@ class ProductController extends Controller
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
+
+	public function actionGetProduct(){
+            $request=trim($_GET['term']);
+                    
+            $models=Product::model()->findAll(array("condition"=>"prod_code like '%$request%' OR prod_name like '%$request%'  "));
+            $data=array();
+            foreach($models as $model){
+                //$data[]["label"]=$get->v_name;
+                //$data[]["id"]=$get->v_id;
+                $data[] = array(
+                        'id'=>$model['prod_id'],
+                        'label'=>$model['prod_code'].'-'.$model['prod_name'],
+                        'name'=>$model['prod_name'],
+                        'size'=>$model['prod_sizename'],
+                        
+                );
+
+            }
+            $this->layout='empty';
+            echo json_encode($data);
+        
+    }
+
 
 	/**
 	 * Lists all models.

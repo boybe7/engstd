@@ -35,7 +35,7 @@
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
-                                    url: "'.$this->createUrl('Prodtype/GetType').'",
+                                    url: "'.$this->createUrl('Product/GetProduct').'",
                                     dataType: "json",
                                     data: {
                                         term: request.term,
@@ -55,8 +55,8 @@
                                      'select'=>'js: function(event, ui) {
                                         
                                            console.log(ui.item.id)
-                                            $("#CerDetail_detail").val(ui.item.id);
-                                            $("#CerDetail_prod_size").val(ui.item.id);
+                                            $("#CerDetailTemp_detail").val(ui.item.name);
+                                            $("#CerDetailTemp_prod_size").val(ui.item.size);
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
                                      

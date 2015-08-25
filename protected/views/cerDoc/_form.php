@@ -93,7 +93,7 @@
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
-                                    url: "'.$this->createUrl('DeptOrder/GetDept').'",
+                                    url: "'.$this->createUrl('deptorder/getdept').'",
                                     dataType: "json",
                                     data: {
                                         term: request.term,
@@ -452,7 +452,9 @@
         <fieldset class="well the-fieldset">
             <legend class="the-legend">รายละเอียดท่อ/อุปกรณ์</legend>
             <div class="row-fluid"> 
-            <?php   
+            <?php  
+
+
             $this->widget('bootstrap.widgets.TbButton', array(
                   'buttonType'=>'link',
                   
@@ -467,7 +469,19 @@
                  
                      'onclick'=>'
                              //$("#modal-body2").load("../cerDetail/createTemp2");
-                                    js:bootbox.confirm($("#modal-body2").load("../cerDetail/createTemp2"),"ยกเลิก","ตกลง",
+
+                                  // console.log($("#modal-body2")[0])
+                                   if($("#modal-body2")[0]==null)
+                                   {
+
+                                       $("#modal-content").append("<div id=modal-body2></div>")
+                                        //console.log($("#modal-body2")[0])
+                                   }    
+                                   v = $("#modal-body2").load("../cerDetail/createTemp2")
+                                   
+                                    js:bootbox.confirm(v,"ยกเลิก","ตกลง",
+                                       
+
                                         function(confirmed){
                                          
                                                         
@@ -486,8 +500,9 @@
                                                      
                                                         if(msg.status=="failure")
                                                         {
-                                                            $("#modal-body2").html(msg.div);
-                                                            js:bootbox.confirm($("#modal-body2").load("../cerDetail/createTemp2"),"ยกเลิก","ตกลง",
+                                                            
+                                                            //$("#modal-body2").load("../cerDetail/createTemp2")
+                                                            js:bootbox.confirm($("#modal-body2").html(msg.div),"ยกเลิก","ตกลง",
                                                             function(confirmed){
                                                                 
                                                                 
@@ -526,6 +541,29 @@
                             
                   ),
               ));
+
+
+            // $this->widget('bootstrap.widgets.TbButton', array(
+            //       'buttonType'=>'link',
+                  
+            //       'type'=>'success',
+            //       'label'=>'เพิ่มข้อมูล',
+            //       'icon'=>'plus-sign',
+                  
+            //       'htmlOptions'=>array(
+            //         'class'=>'pull-right',
+            //         'style'=>'margin:-20px 10px 10px 10px;',
+            //         //'onclick'=>'createApprove(' . $index . ')'
+                 
+            //          'onclick'=>'
+                        
+            //                 $("#modal-content").show()
+
+            //                             ',
+                            
+            //       ),
+            //   ));
+
 
                   
                 $this->widget('bootstrap.widgets.TbGridView',array(
@@ -660,22 +698,27 @@
     <a href="#" class="btn btn-primary" id="modalSubmit">บันทึก</a>
     </div>
 </div>
-<div id="modal-content" class="hide">
-    <div id="modal-body2">
-      
+<div id="modal-content" class="modal hide">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  
+    <div id="modal-body2" class='modal-body'>    
     <?php
-        $model3=new CerDetailTemp;
-      //if (Yii::app()->request->isAjaxRequest)
-        $this->renderPartial('/cerDetail/_form',array('model'=>$model3),false); 
+        //$model3=new CerDetailTemp;
+
+        //$this->renderPartial('/cerDetail/_form',array('model'=>$model3),false); 
     ?>
-
-    <?php 
-
-
-     ?>
-
     </div>
+    <!--  <div class="modal-footer">
+        <a href="#" class="btn btn-danger" id="modalCancel" data-dismiss="modal-content">ยกเลิก</a>
+        <a href="#" class="btn btn-primary" id="modalSubmit">บันทึก</a>
+    </div> -->
 </div>
+<script type="text/javascript">
+    $(function () {
+    
+});
+</script>
 
 <?php
 
@@ -755,3 +798,5 @@ Yii::app()->clientScript->registerScript('edit','
 
 ');
 ?>
+
+

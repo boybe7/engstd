@@ -66,6 +66,8 @@ class ProdtypeController extends Controller
                 $data[] = array(
                         'id'=>$model['prot_id'],
                         'label'=>$model['prot_code'].'-'.$model['prot_name'],
+                        'name'=>$model['prot_name'],
+                        
                 );
 
             }

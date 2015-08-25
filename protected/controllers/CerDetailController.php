@@ -92,10 +92,8 @@ class CerDetailController extends Controller
 	public function actionCreateTemp2()
 	{
         $model=new CerDetailTemp;
-        //Yii::app()->clientScript->scriptMap['jquery.js'] = false;
-        //Yii::app()->clientScript->scriptMap['jquery.min.js'] = false;
-
-		$this->renderPartial('_form',array('model'=>$model),false);
+       if (Yii::app()->request->isAjaxRequest)
+		  $this->renderPartial('_form',array('model'=>$model), false);
 	}
 
 	public function actionUpdateTemp($id)
