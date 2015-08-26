@@ -776,22 +776,46 @@ Yii::app()->clientScript->registerScript('edit','
     $("body").on("click","#detail-grid .update,#link",function(e){
                 link = $(this).attr("href");
                 console.log(link)
+                 if($("#modal-body2")[0]==null)
+                                   {
 
-                $.ajax({
-                 type:"GET",
-                 cache: false,
-                 url:$(this).attr("href"),
-                 success:function(data){
+                                       $("#modal-content").append("<div id=modal-body2></div>")
+                                        //console.log($("#modal-body2")[0])
+                                   }    
+                                   v = $("#modal-body2").load(link)
+                                   
+                                    js:bootbox.confirm(v,"ยกเลิก","ตกลง",
+                                       
+
+                                        function(confirmed){
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: link,
+                                                    dataType:"json",
+                                                    data: $(".modal-body #cer-detail-form").serialize()
+                                                    })                                  
+                                                    .done(function( msg ) {
+                                                     
+                                                        jQuery.fn.yiiGridView.update("detail-grid");
+                                                    })
+                                                  
+                                        }
+                                        )
+                // $.ajax({
+                //  type:"GET",
+                //  cache: false,
+                //  url:$(this).attr("href"),
+                //  success:function(data){
                          
-                            $("#bodyApprove").html(data);
+                //             $("#bodyApprove").html(data);
                           
                            
-                             $("#modalApprove").modal("show");
+                //              $("#modalApprove").modal("show");
 
                         
-                 },
+                //  },
 
-                });
+                // });
             return false;
     });
 

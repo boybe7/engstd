@@ -838,3 +838,422 @@ Stack trace:
 REQUEST_URI=/engstd/cerDoc/R6.php
 HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/3
 ---
+2015/08/27 00:58:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:02:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:02:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:03:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:03:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:05:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:20:29 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 01:20:29 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 01:20:29 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 01:20:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "R6.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('R6.php')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R6.php')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('product/R6.php')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/product/R6.php
+HTTP_REFERER=http://localhost/engstd/product/index
+---
+2015/08/27 01:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:48:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:49:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:50:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:51:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:54:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:55:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 01:55:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 02:14:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 02:14:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
+---
+2015/08/27 03:51:18 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp2/12
+HTTP_REFERER=http://localhost/engstd/cerDoc/create
+---
+2015/08/27 03:51:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp2/12
+---
+2015/08/27 03:52:06 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp2/12
+---
+2015/08/27 03:52:07 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp2/12
+---
+2015/08/27 03:52:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp2/12
+---
+2015/08/27 03:52:52 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp2/12
+---
+2015/08/27 03:52:53 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp2/12
+---
+2015/08/27 03:52:58 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp2/
+---
+2015/08/27 03:53:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp
+---
+2015/08/27 03:53:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp/12
+---
+2015/08/27 03:54:14 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp/13
+HTTP_REFERER=http://localhost/engstd/cerDoc/create
+---
+2015/08/27 03:56:34 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp/14?_=1440622594206
+HTTP_REFERER=http://localhost/engstd/cerDoc/create
+---
+2015/08/27 03:56:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/cerDetail/updateTemp/14?_=1440622598311
+HTTP_REFERER=http://localhost/engstd/cerDoc/create
+---

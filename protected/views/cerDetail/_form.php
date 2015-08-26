@@ -35,7 +35,7 @@
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
-                                    url: "'.$this->createUrl('Product/GetProduct').'",
+                                    url: "../Product/GetProduct",
                                     dataType: "json",
                                     data: {
                                         term: request.term,

@@ -31,7 +31,7 @@ class CerDetailController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','delete2','update','createTemp','createTemp2','updateTemp','deleteTemp'),
+				'actions'=>array('create','delete2','update','createTemp','createTemp2','updateTemp','updateTemp2','deleteTemp'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -92,6 +92,14 @@ class CerDetailController extends Controller
 	public function actionCreateTemp2()
 	{
         $model=new CerDetailTemp;
+       if (Yii::app()->request->isAjaxRequest)
+		  $this->renderPartial('_form',array('model'=>$model), false);
+	}
+
+
+	public function actionUpdateTemp2($id)
+	{
+        $model=CerDetailTemp::model()->findByPk($id);
        if (Yii::app()->request->isAjaxRequest)
 		  $this->renderPartial('_form',array('model'=>$model), false);
 	}

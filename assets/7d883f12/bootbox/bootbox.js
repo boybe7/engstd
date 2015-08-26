@@ -440,29 +440,42 @@ var bootbox = window.bootbox || (function(document, $) {
             $(".d-picker").datepicker();
 
             //var fakedata = ['test1','test2','test3','test4','ietsanders'];
-                             $.ajax({
+                                                
+             
+            if($("#detail").length > 0)                           
+            {         
+             
+                                    $.ajax({
                                     url: "../Product/GetProduct",
                                     dataType: "json",
                                     data: {
                                         term: '',
                                        
                                     },
+                               
                                     success: function (data) {
                                             //response(data);
                                            
-                                        //console.log(data)
+                                        console.log(data)
                                          $("#detail").autocomplete({source:data});
+                                    },
+                                    statusCode: {
+                                        404: function() {
+                                            console.log("Error")
+                                             
+                                        }
                                     }
                                 })
-              //console.log($(".ui-autocomplete-input"))
-             $( "#detail" ).autocomplete({
-              select: function( event, ui ) {
-                //console.log(ui.item.id)
-                $("#CerDetailTemp_prod_size").val(ui.item.size);
-                $("#CerDetailTemp_detail").val(ui.item.name);
-              }
-            });
-          
+             
+
+                     $( "#detail" ).autocomplete({
+                      select: function( event, ui ) {
+                        //console.log(ui.item.id)
+                        $("#CerDetailTemp_prod_size").val(ui.item.size);
+                        $("#CerDetailTemp_detail").val(ui.item.name);
+                      }
+                    });
+            }
             //$(".ui-autocomplete-input").autocomplete();
            
         });
