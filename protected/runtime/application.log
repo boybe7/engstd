@@ -827,3 +827,14 @@ Stack trace:
 REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
 HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/3
 ---
+2015/08/26 14:15:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "R6.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('R6.php')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R6.php')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/R6.php')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/R6.php
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/3
+---

@@ -1,6 +1,7 @@
 <?php
 $this->breadcrumbs = array(
-    'Vendor Report',
+    'รายงาน',
+        //----ไม่ต้องแก้-----
 );
 ?>
 
@@ -23,61 +24,63 @@ $this->breadcrumbs = array(
 <!-- <script type="text/javascript" src="/pea_track/themes/bootstrap/js/compatibility.js"></script> -->
 
 
-<h4>รายงานสรุป vendor</h4>
+<h4>รายงานสรุปยอดรับรองท่อ / อุปกรณ์</h4>
 
-<div class="well">
+<div class="well ">
     <div class="row-fluid">
 
-        <div class="span2">
-<?php
-echo CHtml::label('ประเภท', 'workcat');
-echo CHtml::dropDownList('workcat', '',
-        array(0 => "ผู้ผลิต", 1 => "ผู้จัดส่ง"), array('empty' => 'ทั้งหมด', 'class' => 'span12'
-    ,
-    'ajax' => array(
-        'type' => 'POST', //request type
-        'url' => CController::createUrl('ajax/getVendor'), //url to call.
-        'update' => '#vendor', //selector to update
-        'data' => array('workcat_id' => 'js:this.value'),
-    )
-));
-?>
-
-        </div>
         <div class="span3">
-            <?php
-            $vendors = Vendor::model()->findAll();
-            $list = CHtml::listData($vendors, 'id', 'name');
-
-            echo CHtml::label('ผู้ผลิต/ผู้จัดส่ง', 'vendor');
-            echo CHtml::dropDownList('vendor', '',
-                    $list, array('empty' => 'ทั้งหมด', 'class' => 'span12'
-            ));
-            ?>
-
+                <?php
+                echo CHtml::label('วันที่ออกใบรับรองเริ่มต้น', 'date_start');
+                echo '<div class="input-append" style="margin-top:0px;">'; //ใส่ icon ลงไป
+                $this->widget('zii.widgets.jui.CJuiDatePicker',
+                        array(
+                            'name' => 'date_start',
+                            'attribute' => 'date_start',
+                            'options' => array(
+                                'mode' => 'focus',
+                                //'language' => 'th',
+                                'format' => 'dd/mm/yyyy', //กำหนด date Format
+                                'showAnim' => 'slideDown',
+                            ),
+                            'htmlOptions' => array('class' => 'span12'), // ใส่ค่าเดิม ในเหตุการ Update
+                        )
+                );
+                echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
+                ?>
         </div>
-        <div class="span1">
 
+        <div class="span3" style="padding-left:10px;">
             <?php
-            echo CHtml::label('ณ เดือน', 'monthEnd');
-            $list = array("1" => "ม.ค.", "2" => "ก.พ.", "3" => "มี.ค.", "4" => "เม.ย.", "5" => "พ.ค.", "6" => "มิ.ย.", "7" => "ก.ค.", "8" => "ส.ค.", "9" => "ก.ย.", "10" => "ต.ค.", "11" => "พ.ย.", "12" => "ธ.ค.");
-            $mm = date("n");
-            echo CHtml::dropDownList('monthEnd', '',
-                    $list, array('class' => 'span12', "options" => array($mm => array("selected" => true))
-            ));
+            echo CHtml::label('วันที่ออกใบรับรองสิ้นสุด', 'date_end');
+            echo '<div class="input-append" style="margin-top:0px; ">'; //ใส่ icon ลงไป
+            $this->widget('zii.widgets.jui.CJuiDatePicker',
+                    array(
+                        'name' => 'date_end',
+                        'attribute' => 'date_end',
+                        'options' => array(
+                            'mode' => 'focus',
+                            //'language' => 'th',
+                            'format' => 'dd/mm/yyyy', //กำหนด date Format
+                            'showAnim' => 'slideDown',
+                        ),
+                        'htmlOptions' => array('class' => 'span12'), // ใส่ค่าเดิม ในเหตุการ Update
+                    )
+            );
+            echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
             ?>
         </div>
-        <div class="span1">
-            <?php
-            echo CHtml::label('ปี', 'yearEnd');
-            $yy = date("Y") + 543;
-            $list = array($yy - 2 => $yy - 2, $yy - 1 => $yy - 1, $yy => $yy, $yy + 1 => $yy + 1, $yy + 2 => $yy + 2);
-            echo CHtml::dropDownList('yearEnd', '',
-                    $list, array('class' => 'span12', "options" => array($yy => array("selected" => true))
-            ));
-            ?>
-        </div>
-        <div class="span3">
+
+
+
+
+        <!--  แถว 2 //// -->
+
+
+
+
+
+        <div class="span5 offset1">
 <?php
             $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType' => 'link',
@@ -91,8 +94,6 @@ echo CHtml::dropDownList('workcat', '',
                 ),
             ));
 ?>
-            <!-- </div> -->
-            <!-- <div class="span1"> -->
             <?php
             $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType' => 'link',
@@ -109,7 +110,7 @@ echo CHtml::dropDownList('workcat', '',
             $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType' => 'link',
                 'type' => 'info',
-                'label' => '',
+                'label' => 'Print',
                 'icon' => 'print white',
                 'htmlOptions' => array(
                     'class' => 'span3',
@@ -118,36 +119,35 @@ echo CHtml::dropDownList('workcat', '',
                 ),
             ));
             ?>
+
         </div>
+
+
     </div>
-
-
-
 </div>
-
-
 <div id="printcontent" style=""></div>
 
 
-            <?php
+
+<?php
 //Yii::app()->clientScript->registerCoreScript('jquery');
             Yii::app()->clientScript->registerScript('gentReport', '
 $("#gentReport").click(function(e){
     e.preventDefault();
 
-       
+
         $.ajax({
-            url: "genVendor",
+            url: "GenR4",
             cache:false,
-            data: {vendor: $("#vendor").val(),monthEnd:$("#monthEnd").val(),yearEnd:$("#yearEnd").val(),workcat:$("#workcat").val()
+            data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),workcat:$("#workcat").val()
               },
             success:function(response){
-               
-               $("#printcontent").html(response);                 
+
+               $("#printcontent").html(response);
             }
 
         });
-    
+
 });
 ', CClientScript::POS_END);
 
@@ -160,8 +160,8 @@ $("#printReport").click(function(e){
         data: {fiscalyear:$("#fiscalyear").val(),project: $("#project").val(),monthEnd:$("#monthEnd").val(),yearEnd:$("#yearEnd").val(),workcat:$("#workcat").val()
               },
         success:function(response){
-            window.open("../tempReport.pdf", "_blank", "fullscreen=yes");              
-            
+            window.open("../tempReport.pdf", "_blank", "fullscreen=yes");
+
         }
 
     });
@@ -173,9 +173,9 @@ $("#printReport").click(function(e){
 $("#exportExcel").click(function(e){
     e.preventDefault();
     window.location.href = "genVendorExcel?fiscalyear="+$("#fiscalyear").val()+"&project="+$("#project").val()+"&monthEnd="+$("#monthEnd").val()+"&yearEnd="+$("#yearEnd").val()+"&workcat="+$("#workcat").val();
-              
+
 
 
 });
 ', CClientScript::POS_END);
-            ?>
+?>
