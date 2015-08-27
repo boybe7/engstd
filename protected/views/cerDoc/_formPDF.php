@@ -3,14 +3,62 @@
 	require_once($_SERVER['DOCUMENT_ROOT'].'/engstd/protected/tcpdf/tcpdf.php');
 
 	class MYPDF extends TCPDF {
+			private $cer_no;
+			private $contract_no;
+			private $contractor;
+			private $vendor;
+			private $inspec_no;
+			private $dept_order;
+			private $prod_type;
+			private $date_op;
+
+			public function setHeaderInfo($cer_no, $contract_no,$contractor,$vendor,$inspec_no,$dept_order,$prod_type,$date_op) {
+		        $this->cer_no = $cer_no;
+		        $this->contract_no = $contract_no;
+		        $this->contractor = $contractor;
+		        $this->vendor = $vendor;
+		        $this->inspec_no = $inspec_no;
+		        $this->dept_order = $dept_order;
+		        $this->prod_type = $prod_type;
+		        $this->date_op = $date_op;
+		        
+		    }
+
+			private $author1;
+			private $author2;
+			private $author3;
+			private $pos_author2;
+			private $pos_author3;
+
 
 		    //Page header
 		    public function Header() {
 		        
 		        // Set font
-		        //$this->SetFont('helvetica', 'B', 20);
+		        $this->SetFont('thsarabun', 'B', 18);
+		        $this->writeHTMLCell(145, 20, 40, 10, 'ใบรับรองท่อและอุปกรณ์ประปาเลขที่ '.$this->cer_no, 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(145, 20, 40, 18, '<p style="font-size:14">แนบท้ายหนังสือกมว.ที่..................</p>', 0, 1, false, true, 'C', false);
+		        
+		        $this->writeHTMLCell(145, 20, 47, 18, '<p style="font-size:14">'.$this->dept_order.'<br>'.$this->inspec_no.'</p>', 0, 1, false, true, 'R', false);
+		        
+		        $this->writeHTMLCell(145, 20, 20, 25, '<p style="font-size:14">สัญญา </p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 40, 25, '<p style="font-size:14">'.$this->contract_no.'</p>', 0, 1, false, true, 'L', false);
+		        
+		        $this->writeHTMLCell(145, 20, 20, 30, '<p style="font-size:14">คู่สัญญา </p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 40, 30, '<p style="font-size:14">'.$this->contractor.'</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 110, 30, '<p style="font-size:14">ผู้ผลิต/จัดส่ง</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 135, 30, '<p style="font-size:14">'.$this->vendor.'</p>', 0, 1, false, true, 'L', false);
+		        		        		        
+
+		        $this->writeHTMLCell(145, 20, 20, 35, '<p style="font-size:14">ท่อ/อุปกรณ์ </p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 40, 35, '<p style="font-size:14">'.$this->prod_type.'</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 110, 35, '<p style="font-size:14">วันที่ดำเนินการ</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 135, 35, '<p style="font-size:14">'.$this->date_op.'</p>', 0, 1, false, true, 'L', false);
+		        			        
+
+
 		        // Title
-		        //$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+		        //\\$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 		    }
 
 		    // Page footer
@@ -18,13 +66,13 @@
 		        // Position at 15 mm from bottom
 		        $this->SetY(-10);
 		        // Set font
-		        $this->SetFont('thsarabun', '', 11);
+		        $this->SetFont('thsarabun', '', 20);
 		        // Page number
 		        //$this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
 		        // Logo
 		        //$image_file = 'bank/image/mwa2.jpg';
 		        //$this->Image($image_file, 170, 270, 25, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-		        $this->Cell(0, 5, date("d/m/Y"), 0, false, 'R', 0, '', 0, false, 'T', 'M');
+		        //$this->Cell(0, 5, date("d/m/Y"), 0, false, 'R', 0, '', 0, false, 'T', 'M');
 
 		        $this->writeHTMLCell(145, 550, 40, 287, '-'.$this->getAliasNumPage().'/'.$this->getAliasNbPages().'-', 0, 1, false, true, 'C', false);
 		        //writeHTMLCell ($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=false, $reseth=true, $align='', $autopadding=true)
@@ -35,6 +83,15 @@
 		//$pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		$pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
+		//set info header   
+		$prod = ProdType::model()->findByPk($model->prod_id); 
+		$inspec_no = "";
+		$pdf->setHeaderInfo($model->cer_no, $model->contract_no,$model->contractor,$model->vend_id,$inspec_no,$model->dept_id,$prod->prot_name,$model->cer_oper_date);
+
+
+
+
+
 		// set document information
 		$pdf->SetCreator(PDF_CREATOR);
 		$pdf->SetAuthor('Boybe');
@@ -44,7 +101,7 @@
 
 		// set default header data
 		//$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
-		$pdf->setPrintHeader(false);
+		$pdf->setPrintHeader(true);
 		$pdf->setFooterData(array(0,64,0), array(0,64,128));
 
 		// set header and footer fonts
@@ -88,8 +145,8 @@
 		print_r($model);
 		$html = "";
 		$pdf->SetFont('thsarabun', '', 12, '', true);
-		$html .= '<div align="center" style="font-size:25px;font-weight:bold">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ '.$model->cer_no.'</div>';
-		$html .= '<div align="center" style="font-size:16px;">แนบท้ายหนังสือกมว.ที่.................. </div>';
+		//$html .= '<div align="center" style="font-size:25px;font-weight:bold">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ '.$model->cer_no.'</div>';
+		//$html .= '<div align="center" style="font-size:16px;">แนบท้ายหนังสือกมว.ที่.................. </div>';
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
         $pdf->Output($_SERVER['DOCUMENT_ROOT'].'/engstd/print/'.$filename,'F');
