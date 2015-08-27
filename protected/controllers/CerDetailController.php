@@ -31,7 +31,7 @@ class CerDetailController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','delete2','update','createTemp','createTemp2','updateTemp','updateTemp2','deleteTemp'),
+				'actions'=>array('create','create2','delete2','update','createTemp','createTemp2','updateTemp','updateTemp2','deleteTemp'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -189,7 +189,7 @@ class CerDetailController extends Controller
 	                ));
 	            else
 	                echo CJSON::encode(array(
-	                'status'=>'failure','div'=>$this->renderPartial('_form', array('model'=>$model), true)));
+	                'status'=>'failure','div'=>$this->renderPartial('_formUpdate', array('model'=>$model), true)));
 	                
 	            exit;
 				        
@@ -204,13 +204,23 @@ class CerDetailController extends Controller
         {
             echo CJSON::encode(array(
                 'status'=>'failure', 
-                'div'=>$this->renderPartial('_form', array('model'=>$model), true)));
+                'div'=>$this->renderPartial('_formUpdate', array('model'=>$model), true)));
             exit;               
         }
 
-		$this->renderPartial('_form',array('model'=>$model));
+		$this->renderPartial('_formUpdate',array('model'=>$model));
+
+
 	}
 
+	public function actionCreate2($id)
+	{
+	
+
+		$model=new CerDetail;
+       if (Yii::app()->request->isAjaxRequest)
+		  $this->renderPartial('_formUpdate',array('model'=>$model), false);
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -237,7 +247,7 @@ class CerDetailController extends Controller
 	                ));
 	            else
 	                echo CJSON::encode(array(
-	                'status'=>'failure','div'=>$this->renderPartial('_form', array('model'=>$model), true)));
+	                'status'=>'failure','div'=>$this->renderPartial('_formUpdate', array('model'=>$model), true)));
 	                
 	            exit;
 			}	        
@@ -245,7 +255,7 @@ class CerDetailController extends Controller
 
 		}
 
-		$this->renderPartial('_form',array('model'=>$model));
+		$this->renderPartial('_formUpdate',array('model'=>$model));
 	}
 
 	/**

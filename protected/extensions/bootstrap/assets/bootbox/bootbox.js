@@ -440,7 +440,8 @@ var bootbox = window.bootbox || (function(document, $) {
             $(".d-picker").datepicker();
 
             //var fakedata = ['test1','test2','test3','test4','ietsanders'];
-                                                
+            //console.log($("#detail"));      
+            //console.log($(".ui-autocomplete-input"));                              
              
             if($("#detail").length > 0)                           
             {         
@@ -456,7 +457,7 @@ var bootbox = window.bootbox || (function(document, $) {
                                     success: function (data) {
                                             //response(data);
                                            
-                                        console.log(data)
+                                        //console.log(data)
                                          $("#detail").autocomplete({source:data});
                                     },
                                     statusCode: {
@@ -473,6 +474,42 @@ var bootbox = window.bootbox || (function(document, $) {
                         //console.log(ui.item.id)
                         $("#CerDetailTemp_prod_size").val(ui.item.size);
                         $("#CerDetailTemp_detail").val(ui.item.name);
+                      }
+                    });
+            }
+
+             if($("#detail2").length > 0)                           
+            {         
+             
+                                    $.ajax({
+                                    url: "../../Product/GetProduct",
+                                    dataType: "json",
+                                    data: {
+                                        term: '',
+                                       
+                                    },
+                               
+                                    success: function (data) {
+                                            //response(data);
+                                           
+                                        //console.log(data)
+                                         $("#detail2").autocomplete({source:data});
+                                    },
+                                    statusCode: {
+                                        404: function() {
+                                            console.log("Error")
+                                             
+                                        }
+                                    }
+                                })
+             
+
+                     $( "#detail2" ).autocomplete({
+                      select: function( event, ui ) {
+                        //console.log($("#detail2").val())
+                        $("#CerDetail_prod_size").val(ui.item.size);
+                        $("#CerDetail_detail").val(ui.item.name);
+                        //$("#detail2").val(ui.item.name);
                       }
                     });
             }

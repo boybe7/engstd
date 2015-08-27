@@ -470,8 +470,15 @@
                     //'onclick'=>'createApprove(' . $index . ')'
                  
                      'onclick'=>'
-                             
-                                    js:bootbox.confirm($("#modal-body2").html(),"ยกเลิก","ตกลง",
+                                  if($("#modal-body2")[0]==null)
+                                   {
+
+                                       $("#modal-content").append("<div id=modal-body2></div>")
+                                        //console.log($("#modal-body2")[0])
+                                   }    
+                                   v = $("#modal-body2").load("../../cerDetail/create2/' . $model->cer_id . '")
+                                   
+                                    js:bootbox.confirm(v,"ยกเลิก","ตกลง",
                                         function(confirmed){
                                          
                                                         
@@ -491,7 +498,7 @@
                                                         if(msg.status=="failure")
                                                         {
                                                             $("#modal-body2").html(msg.div);
-                                                            js:bootbox.confirm($("#modal-body2").html(),"ยกเลิก","ตกลง",
+                                                            js:bootbox.confirm($("#modal-body2").html(msg.div),"ยกเลิก","ตกลง",
                                                             function(confirmed){
                                                                 
                                                                 
@@ -663,14 +670,21 @@
     <a href="#" class="btn btn-primary" id="modalSubmit">บันทึก</a>
     </div>
 </div>
-<div id="modal-content" class="hide">
-    <div id="modal-body2">
+<div id="modal-content" class="modal hide">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  
+    <div id="modal-body2" class='modal-body'>    
     <?php
-        $model3=new CerDetail;
-      
-        $this->renderPartial('/cerDetail/_form',array('model'=>$model3),false); 
+        //$model3=new CerDetailTemp;
+
+        //$this->renderPartial('/cerDetail/_form',array('model'=>$model3),false); 
     ?>
     </div>
+    <!--  <div class="modal-footer">
+        <a href="#" class="btn btn-danger" id="modalCancel" data-dismiss="modal-content">ยกเลิก</a>
+        <a href="#" class="btn btn-primary" id="modalSubmit">บันทึก</a>
+    </div> -->
 </div>
 
 <?php
@@ -728,23 +742,49 @@ Yii::app()->clientScript->registerScript('edit','
     
     $("body").on("click","#detail-grid .update,#link",function(e){
                 link = $(this).attr("href");
-                console.log(link)
+                //console.log(link)
 
-                $.ajax({
-                 type:"GET",
-                 cache: false,
-                 url:$(this).attr("href"),
-                 success:function(data){
+                // $.ajax({
+                //  type:"GET",
+                //  cache: false,
+                //  url:$(this).attr("href"),
+                //  success:function(data){
                          
-                            $("#bodyApprove").html(data);
+                //             $("#bodyApprove").html(data);
                           
                            
-                             $("#modalApprove").modal("show");
+                //              $("#modalApprove").modal("show");
 
                         
-                 },
+                //  },
 
-                });
+                // });
+
+                                    if($("#modal-body2")[0]==null)
+                                   {
+
+                                       $("#modal-content").append("<div id=modal-body2></div>")
+                                        //console.log($("#modal-body2")[0])
+                                   }    
+                                   v = $("#modal-body2").load(link)
+                                   
+                                    js:bootbox.confirm(v,"ยกเลิก","ตกลง",
+                                       
+
+                                        function(confirmed){
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: link,
+                                                    dataType:"json",
+                                                    data: $(".modal-body #cer-detail-form").serialize()
+                                                    })                                  
+                                                    .done(function( msg ) {
+                                                     
+                                                        jQuery.fn.yiiGridView.update("detail-grid");
+                                                    })
+                                                  
+                                        }
+                                        )
             return false;
     });
 

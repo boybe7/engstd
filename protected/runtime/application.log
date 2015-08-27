@@ -1257,3 +1257,98 @@ Stack trace:
 REQUEST_URI=/engstd/cerDetail/updateTemp/14?_=1440622598311
 HTTP_REFERER=http://localhost/engstd/cerDoc/create
 ---
+2015/08/27 09:35:24 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 09:35:24 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 09:35:24 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 09:37:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
+---
+2015/08/27 09:43:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
+---
+2015/08/27 09:46:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
+---
+2015/08/27 09:47:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
+---
+2015/08/27 09:49:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
+---
+2015/08/27 09:51:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
+---
+2015/08/27 10:37:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
+HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
+---
+2015/08/27 10:40:48 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 10:40:48 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 10:40:48 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
+in C:\xampp\htdocs\engstd\index.php (13)

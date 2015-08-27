@@ -45,7 +45,7 @@
 	<h4><?php  echo($title);  ?></h4>
 	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php //echo $form->errorSummary($model); ?>
 
     
 	<div class="row-fluid">
@@ -775,8 +775,8 @@ Yii::app()->clientScript->registerScript('edit','
     
     $("body").on("click","#detail-grid .update,#link",function(e){
                 link = $(this).attr("href");
-                console.log(link)
-                 if($("#modal-body2")[0]==null)
+                //console.log(link)
+                                    if($("#modal-body2")[0]==null)
                                    {
 
                                        $("#modal-content").append("<div id=modal-body2></div>")

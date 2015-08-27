@@ -2,7 +2,7 @@
     
     $(function(){
         //autocomplete search on focus      
-        $("#detail").autocomplete({
+        $("#detail2").autocomplete({
        
                 minLength: 0
             }).bind('focus', function () {
@@ -20,7 +20,7 @@
     
 	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php //echo $form->errorSummary($model); ?>
 
 	
 	<?php 
@@ -28,11 +28,11 @@
 	          echo $form->hiddenField($model,'detail');
               echo $form->labelEx($model,'detail',array('class'=>'span5','style'=>'text-align:left;margin-left:-1px;margin-bottom:0px'));
               
-             
+
 
               $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                            'name'=>'detail',
-                            'id'=>'detail',
+                            'name'=>'detail2',
+                            'id'=>'detail2',
                             'value'=>$model->detail,                      
                            'source'=>'js: function(request, response) {
                                 $.ajax({
