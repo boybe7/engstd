@@ -1352,3 +1352,141 @@ in C:\xampp\htdocs\engstd\index.php (13)
 2015/08/27 10:40:48 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
 in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 13:58:13 [error] [php] Undefined variable: model (C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php:90)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(141): ReportController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR4()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/printR4?date_start=01%2F08%2F2558&date_end=31%2F08%2F2558
+in C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php (90)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (141)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 13:58:28 [error] [php] Undefined variable: model (C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php:90)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(141): ReportController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR4()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/printR4?date_start=01%2F08%2F2558&date_end=31%2F08%2F2558
+in C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php (90)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (141)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/27 14:11:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/tempReport.pdf
+HTTP_REFERER=http://localhost:8080/engstd/report/r4
+---
+2015/08/27 14:12:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/tempReport.pdf
+HTTP_REFERER=http://localhost:8080/engstd/report/r4
+---
+2015/08/27 14:13:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/tempReport.pdf
+HTTP_REFERER=http://localhost:8080/engstd/report/r4
+---
+2015/08/27 14:15:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/tempReport.pdf
+HTTP_REFERER=http://localhost:8080/engstd/report/r4
+---
+2015/08/27 14:16:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/tempReport.pdf
+HTTP_REFERER=http://localhost:8080/engstd/report/r4
+---
+2015/08/27 14:17:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/tempReport.pdf
+HTTP_REFERER=http://localhost:8080/engstd/report/r4
+---
+2015/08/27 14:34:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport2.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport2.pdf')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/tempReport2.pdf
+---
+2015/08/27 14:35:13 [error] [php] imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error:  (C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php:7033)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3537): MYPDF->Header()
+#1 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3204): MYPDF->setHeader()
+#2 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3116): MYPDF->startPage()
+#3 C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php(86): MYPDF->AddPage()
+#4 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
+#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): ReportController->renderInternal()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#7 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(141): ReportController->renderPartial()
+#8 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR4()
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#11 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#13 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/printR4?date_start=01%2F08%2F2558&date_end=31%2F08%2F2558
+in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (7033)
+in C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php (15)
+in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (3537)
+2015/08/27 14:35:22 [error] [php] imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error:  (C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php:7033)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3537): MYPDF->Header()
+#1 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3204): MYPDF->setHeader()
+#2 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3116): MYPDF->startPage()
+#3 C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php(86): MYPDF->AddPage()
+#4 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
+#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): ReportController->renderInternal()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#7 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(141): ReportController->renderPartial()
+#8 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR4()
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#11 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#13 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/printR4?date_start=01%2F08%2F2558&date_end=31%2F08%2F2558
+in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (7033)
+in C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php (15)
+in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (3537)

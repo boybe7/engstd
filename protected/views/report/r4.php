@@ -139,7 +139,7 @@ $("#gentReport").click(function(e){
         $.ajax({
             url: "GenR4",
             cache:false,
-            data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),workcat:$("#workcat").val()
+            data: {date_start:$("#date_start").val(),date_end:$("#date_end").val()
               },
             success:function(response){
 
@@ -156,11 +156,11 @@ $("#printReport").click(function(e){
     e.preventDefault();
 
     $.ajax({
-        url: "printVendor",
-        data: {fiscalyear:$("#fiscalyear").val(),project: $("#project").val(),monthEnd:$("#monthEnd").val(),yearEnd:$("#yearEnd").val(),workcat:$("#workcat").val()
+        url: "printR4",
+        data: {date_start:$("#date_start").val(),date_end:$("#date_end").val()
               },
         success:function(response){
-            window.open("../tempReport.pdf", "_blank", "fullscreen=yes");
+            window.open("../print/tempReport.pdf", "_blank", "fullscreen=yes");
 
         }
 

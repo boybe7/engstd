@@ -122,6 +122,28 @@ class ReportController extends Controller
             'display' => 'block',
         ), false, true);
 	}
+
+
+	public function actionPrintR4()
+    {
+        	
+	    
+	          $date_start = $_GET["date_start"];
+                $date_end   = $_GET["date_end"];
+
+		$this->renderPartial('_formR4_PDF', array(
+
+                'date_start'=>$date_start,
+                'date_end'=>$date_end,
+
+            //'model' => $model,
+            'display' => 'block',
+        ), false, true);
+
+        
+    }
+
+
         //-----------------------------
         public function actionR5()
 	{
