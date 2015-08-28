@@ -2,6 +2,34 @@
 
 	require_once($_SERVER['DOCUMENT_ROOT'].'/engstd/protected/tcpdf/tcpdf.php');
 
+	function renderDate($value)
+	{
+	    $th_month = array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+	    $dates = explode("/", $value);
+	    $d=0;
+	    $mi = 0;
+	    $yi = 0;
+	    foreach ($dates as $key => $value) {
+	         $d++;
+	         if($d==2)
+	            $mi = $value;
+	         if($d==3)
+	            $yi = $value;
+	    }
+	    if(substr($mi, 0,1)==0)
+	        $mi = substr($mi, 1);
+	    if(substr($dates[0], 0,1)==0)
+	        $d = substr($dates[0], 1);
+	    else
+	    	$d = $dates[0];
+
+	    $renderDate = $d." ".$th_month[$mi]." ".$yi;
+	    if($renderDate==0)
+	        $renderDate = "";   
+
+	    return $renderDate;             
+	}
+
 	class MYPDF extends TCPDF {
 			private $cer_no;
 			private $contract_no;
@@ -24,36 +52,46 @@
 		        
 		    }
 
+
+
 			private $author1;
 			private $author2;
 			private $author3;
 			private $pos_author2;
 			private $pos_author3;
 
+			public function setFooterInfo($author1, $author2,$author3,$pos_author2,$pos_author3){
+				$this->author1 = $author1;
+		        $this->author2 = $author2;
+		        $this->author3 = $author3;
+		        $this->pos_author2 = $pos_author2;
+		        $this->pos_author3 = $pos_author3;
+			}
+
 
 		    //Page header
 		    public function Header() {
 		        
 		        // Set font
-		        $this->SetFont('thsarabun', 'B', 18);
-		        $this->writeHTMLCell(145, 20, 40, 10, 'ใบรับรองท่อและอุปกรณ์ประปาเลขที่ '.$this->cer_no, 0, 1, false, true, 'C', false);
-		        $this->writeHTMLCell(145, 20, 40, 18, '<p style="font-size:14">แนบท้ายหนังสือกมว.ที่..................</p>', 0, 1, false, true, 'C', false);
+		        $this->SetFont('thsarabun', '', 18);
+		        $this->writeHTMLCell(145, 20, 40, 35, '<p style="font-weight:bold;">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ '.$this->cer_no, 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(145, 20, 40, 43, '<p style="font-weight:bold;font-size:13">แนบท้ายหนังสือกมว.ที่..................</p>', 0, 1, false, true, 'C', false);
 		        
-		        $this->writeHTMLCell(145, 20, 47, 18, '<p style="font-size:14">'.$this->dept_order.'<br>'.$this->inspec_no.'</p>', 0, 1, false, true, 'R', false);
+		        $this->writeHTMLCell(145, 20, 47, 43, '<p style="font-weight:bold;font-size:13">'.$this->dept_order.'<br>'.$this->inspec_no.'</p>', 0, 1, false, true, 'R', false);
 		        
-		        $this->writeHTMLCell(145, 20, 20, 25, '<p style="font-size:14">สัญญา </p>', 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 20, 40, 25, '<p style="font-size:14">'.$this->contract_no.'</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 15, 55, '<p style="font-size:13">สัญญา </p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 40, 55, '<p style="font-size:13">'.$this->contract_no.'</p>', 0, 1, false, true, 'L', false);
 		        
-		        $this->writeHTMLCell(145, 20, 20, 30, '<p style="font-size:14">คู่สัญญา </p>', 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 20, 40, 30, '<p style="font-size:14">'.$this->contractor.'</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 110, 30, '<p style="font-size:14">ผู้ผลิต/จัดส่ง</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 135, 30, '<p style="font-size:14">'.$this->vendor.'</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 15, 60, '<p style="font-size:13">คู่สัญญา </p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 40, 60, '<p style="font-size:13">'.$this->contractor.'</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 110, 60, '<p style="font-size:13">ผู้ผลิต/จัดส่ง</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 135, 60, '<p style="font-size:13">'.$this->vendor.'</p>', 0, 1, false, true, 'L', false);
 		        		        		        
 
-		        $this->writeHTMLCell(145, 20, 20, 35, '<p style="font-size:14">ท่อ/อุปกรณ์ </p>', 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 20, 40, 35, '<p style="font-size:14">'.$this->prod_type.'</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 110, 35, '<p style="font-size:14">วันที่ดำเนินการ</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 135, 35, '<p style="font-size:14">'.$this->date_op.'</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 15, 65, '<p style="font-size:13">ท่อ/อุปกรณ์ </p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 40, 65, '<p style="font-size:13">'.$this->prod_type.'</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 110, 65, '<p style="font-size:13">วันที่ดำเนินการ</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 135, 65, '<p style="font-size:13">'.$this->date_op.'</p>', 0, 1, false, true, 'L', false);
 		        			        
 
 
@@ -65,17 +103,28 @@
 		    public function Footer() {
 		        // Position at 15 mm from bottom
 		        $this->SetY(-10);
-		        // Set font
-		        $this->SetFont('thsarabun', '', 20);
-		        // Page number
-		        //$this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
-		        // Logo
-		        //$image_file = 'bank/image/mwa2.jpg';
-		        //$this->Image($image_file, 170, 270, 25, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-		        //$this->Cell(0, 5, date("d/m/Y"), 0, false, 'R', 0, '', 0, false, 'T', 'M');
 
-		        $this->writeHTMLCell(145, 550, 40, 287, '-'.$this->getAliasNumPage().'/'.$this->getAliasNbPages().'-', 0, 1, false, true, 'C', false);
-		        //writeHTMLCell ($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=false, $reseth=true, $align='', $autopadding=true)
+		        $this->SetFont('thsarabun', '', 11);
+
+		        $this->writeHTMLCell(50, 150, 15, 225,'.................................................................' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 15, 230,'<p style="font-size:15px;">('.$this->author1.')</p>' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 15, 235,'<p style="font-size:15px;">เจ้าหน้าที่ผู้ควบคุมการผลิต</p>' , 0, 1, false, true, 'C', false);
+
+		        $this->writeHTMLCell(50, 150, 80, 225,'.................................................................' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 80, 230,'<p style="font-size:15px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 80, 235,'<p style="font-size:15px;">'.$this->pos_author2.'</p>' , 0, 1, false, true, 'C', false);
+
+		        $this->writeHTMLCell(50, 150, 145, 225,'.................................................................' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 145, 230,'<p style="font-size:15px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 145, 235,'<p style="font-size:15px;">'.$this->pos_author2.'</p>' , 0, 1, false, true, 'C', false);
+
+		        $this->writeHTMLCell(145, 550, 15, 250,'ข้อควรพึงปฏิบัติ' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 550, 33, 250,'1.ใบรับรองนี้ให้ถือเสมือนหนึ่งเป็นใบกำกับผลิตภัณฑ์ ให้ผู้ผลิตแนบไปพร้อมกับการส่งท่อ/อุปกรณ์ที่ได้ผ่านการตรวจสอบมาตรฐานจากกองมาตรฐานวิศวกรรม<br>  แล้วทุกครั้ง' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 550, 33, 260,'2.ท่อ/อุปกรณ์ใดที่ไม่มีใบรับรองฯ หรือมีรายละเอียดผิดไปจากใบรับรองฯ ซึ่งกำกับผลิตภัณฑ์มาด้วยนี้ จะไม่ได้รับการตรวจรับงานจากเจ้าหน้าที่ตรวจรับของ<br>  การประปานครหลวง' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 550, 33, 270,'3.ใบรับรองฯที่ส่งให้หน่วยงานของกปน. ให้หน่วยงานฯใช้ประกอบในการตรวจสอบ/ตรวจรับ ให้ถูกต้องตรงกับฉบับซึ่งมาพร้อมกับผลิตภัณฑ์จากผู้ผลิต<br>  และให้รวบรวมเก็บไว้เป็นหลักฐาน เพื่อตรวจสอบภายหลังได้' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 550, 33, 280,'4.ใบรับรองฯจะต้องไม่มีรอยขูดขีด แก้ ลบใดๆ หากมีการแก้ดังกล่าวต้องมีลายมือชื่อเจ้าหน้าที่ควบคุม กำกับทุกแห่ง ในส่วนที่เป็นอำนาจหน้าที่ของเจ้าหน้าที่นั้นๆ' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 550, 100, 285,'กองมาตรฐานวิศวกรรม<br>โทร 0-2504-0123 ต่อ 774,775' , 0, 1, false, true, 'C', false);
+		       
 		    }
 		}
 
@@ -86,11 +135,14 @@
 		//set info header   
 		$prod = ProdType::model()->findByPk($model->prod_id); 
 		$inspec_no = "";
-		$pdf->setHeaderInfo($model->cer_no, $model->contract_no,$model->contractor,$model->vend_id,$inspec_no,$model->dept_id,$prod->prot_name,$model->cer_oper_date);
+		$date_oper = renderDate($model->cer_oper_date);
+		$pdf->setHeaderInfo($model->cer_no, $model->contract_no,$model->contractor,$model->vend_id,$inspec_no,$model->dept_id,$prod->prot_name,$date_oper);
 
 
-
-
+		//set info footer   
+		$pos_author2 = "หัวหน้าส่วนควบคุมการผลิตท่อและอุปกรณ์";
+		$pos_author3 = "ผู้อำนวยการกองมาตรฐานวิศวกรรม";
+		$pdf->setFooterInfo($model->cer_name, $model->cer_ct_name,$model->cer_di_name,$pos_author2,$pos_author3);
 
 		// set document information
 		$pdf->SetCreator(PDF_CREATOR);
@@ -112,7 +164,7 @@
 		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 		// set margins
-		$pdf->SetMargins(PDF_MARGIN_LEFT, 10, 10);
+		$pdf->SetMargins(15, 80, 5);
 		//$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -144,9 +196,11 @@
 		$model = CerDoc::model()->findByPK($_GET['id']);
 		print_r($model);
 		$html = "";
-		$pdf->SetFont('thsarabun', '', 12, '', true);
+		$pdf->SetFont('thsarabun', '', 13, '', true);
 		//$html .= '<div align="center" style="font-size:25px;font-weight:bold">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ '.$model->cer_no.'</div>';
 		//$html .= '<div align="center" style="font-size:16px;">แนบท้ายหนังสือกมว.ที่.................. </div>';
+		$html .= '<div style="text-indent: 12.7mm;">ท่อและอุปกรณ์ตามรายการต่อไปนี้ได้ผ่านการตรวจสอบจากเจ้าหน้าที่การประปานครหลวงแล้ว มีคุณภาพได้มาตรฐาน
+ตามที่ระบุไว้ในแบบ แปลนรายการละเอียดของสัญญา และได้ประทับตรารับรองคุณภาพให้ไว้เป็นที่เรียบร้อยแล้ว จึงอนุญาตให้นำส่งท่อและอุปกรณ์ประปาเหล่านี้ไปใช้งาน ของการประปานครหลวงได้</div>';
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
         $pdf->Output($_SERVER['DOCUMENT_ROOT'].'/engstd/print/'.$filename,'F');
