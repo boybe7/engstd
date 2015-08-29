@@ -145,9 +145,19 @@
 		print_r($model);
 		$html = "";
 		$pdf->SetFont('thsarabun', '', 12, '', true);
-		//$html .= '<div align="center" style="font-size:25px;font-weight:bold">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ '.$model->cer_no.'</div>';
-		//$html .= '<div align="center" style="font-size:16px;">แนบท้ายหนังสือกมว.ที่.................. </div>';
-        $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+		$html .= '<table>';
+		   $html .= '<thead>';
+		      $html .= '<tr>';
+		   		$html .= '<th>ลำดับที่</th>';
+		   		$html .= '<th>รายละเอียดท่อและอุปกรณ์</th>';
+		   		$html .= '<th>ขนาด &#8709 มม.</th>';
+		   		$html .= '<th>หมายเลข</th>';
+		   		$html .= '<th>จำนวน</th>';
+		   		
+		   	  $html .= '</tr>';	
+		   $html .= '</thead>';
+		$html .= '</table>';
+		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
         $pdf->Output($_SERVER['DOCUMENT_ROOT'].'/engstd/print/'.$filename,'F');
         ob_end_clean() ;
