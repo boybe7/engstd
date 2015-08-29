@@ -1586,3 +1586,12 @@ REQUEST_URI=/engstd/cerDoc/genPDF?id=16
 in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (66)
 in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (59)
 in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 00:23:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/intro-bg.jpg".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('images/intro-bg...')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/images/intro-bg.jpg
+HTTP_REFERER=http://localhost/engstd/site/login
+---
