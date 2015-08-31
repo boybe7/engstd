@@ -225,5 +225,7 @@ class CerDoc extends CActiveRecord
             	$this->cer_date_add = '';
             else if(count($str_date)>1)
             	$this->cer_date_add = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+
+           
      }
 }

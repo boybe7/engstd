@@ -9,9 +9,9 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<?php echo $form->textFieldRow($model,'prod_code',array('class'=>'span2','maxlength'=>5)); ?>
+	<?php echo $form->textFieldRow($model,'prod_code',array('class'=>'span2','maxlength'=>100)); ?>
 
-	<?php echo $form->textFieldRow($model,'prod_name',array('class'=>'span5','maxlength'=>200)); ?>
+	<?php echo $form->textFieldRow($model,'prod_name',array('class'=>'span5','maxlength'=>400)); ?>
 
 	<?php 
 

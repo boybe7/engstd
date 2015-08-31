@@ -448,7 +448,7 @@
 	</div>
     <div class="row-fluid">
         <div class="span8"> 
-	       <?php echo $form->textAreaRow($model,'cer_notes',array('class'=>'span12','rows'=>4)); ?>
+	       <?php echo $form->textAreaRow($model,'cer_notes',array('class'=>'span12','rows'=>4,'wrap'=>"physical")); ?>
         </div>
     </div>
 

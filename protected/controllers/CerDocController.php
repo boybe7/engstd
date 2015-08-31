@@ -261,6 +261,9 @@ class CerDocController extends Controller
 			$model->contractor = $_POST['CerDoc']['contractor'];
 			$model->contract_no = $_POST['CerDoc']['contract_no'];
 			$model->dept_id = $_POST['CerDoc']['dept_id'];
+			$text = trim($_POST['CerDoc']['cer_notes']); // remove the last \n or whitespace character
+            $model->cer_notes = nl2br($text); // insert <br /> before \n 
+
 
 			if($model->save())
 			{	
@@ -322,10 +325,14 @@ class CerDocController extends Controller
 			$model->contractor = $_POST['CerDoc']['contractor'];
 			$model->contract_no = $_POST['CerDoc']['contract_no'];
 			$model->dept_id = $_POST['CerDoc']['dept_id'];
+			$text = trim($_POST['CerDoc']['cer_notes']); // remove the last \n or whitespace character
+            $model->cer_notes = nl2br($text); // insert <br /> before \n 
 
 			if($model->save())
 				$this->redirect(array('index'));
 		}
+
+		$model->cer_notes = str_replace("<br />", "", $model->cer_notes);
 
 		$this->render('update',array(
 			'model'=>$model,

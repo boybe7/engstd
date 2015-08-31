@@ -1,626 +1,7 @@
-2015/08/18 00:31:39 [error] [php] Undefined index: CerDetailT (C:\xampp\htdocs\engstd\protected\controllers\CerDetailController.php:207)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
-#1 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#2 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDetailController->runAction()
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#4 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#5 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDetailController->filterAccessControl()
-#6 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#7 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#8 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDetailController->runActionWithFilters()
-#9 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDetailController->run()
-#10 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#11 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#12 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDetail/update/1
-in C:\xampp\htdocs\engstd\protected\controllers\CerDetailController.php (207)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/18 18:31:18 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '???????????????...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('delete')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/delet...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/delete/2?ajax=detail-grid
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/2
----
-2015/08/19 16:57:56 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 16:57:56 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 16:57:56 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 17:04:09 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 17:04:09 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 17:04:09 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (196)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 18:25:04 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (160)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 18:25:04 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (160)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 18:25:04 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (160)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 18:37:48 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (165)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 18:37:48 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (165)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 18:37:48 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (165)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/19 18:46:24 [error] [php] Undefined variable: id (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:93)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/deleteSelected
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (93)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 15:41:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "R5.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('R5.php')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R5.php')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/R5.php')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/R5.php
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/index
----
-2015/08/20 15:51:08 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "CerDoc.proj_id" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(145): CComponent->__get('proj_id')
-#1 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(2529): CActiveRecord->__get('proj_id')
-#2 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(2252): CHtml::resolveValue(Object(CerDoc), 'proj_id')
-#3 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(1609): CHtml::activeInputField('hidden', Object(CerDoc), 'proj_id', Array)
-#4 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(34): CHtml::activeHiddenField(Object(CerDoc), 'proj_id')
-#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#6 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#7 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#8 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('print', Array, true)
-#9 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(56): CController->render('print', Array)
-#10 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#12 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#13 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#16 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#19 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('print')
-#20 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/print')
-#21 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#23 {main}
-REQUEST_URI=/engstd/cerDoc/print
-HTTP_REFERER=http://localhost:8080/engstd/menuTree/index
----
-2015/08/20 15:53:13 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "CerDoc.proj_id" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(145): CComponent->__get('proj_id')
-#1 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(2529): CActiveRecord->__get('proj_id')
-#2 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(2252): CHtml::resolveValue(Object(CerDoc), 'proj_id')
-#3 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(1609): CHtml::activeInputField('hidden', Object(CerDoc), 'proj_id', Array)
-#4 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(34): CHtml::activeHiddenField(Object(CerDoc), 'proj_id')
-#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#6 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#7 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#8 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('print', Array, true)
-#9 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(56): CController->render('print', Array)
-#10 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#12 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#13 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#16 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#19 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('print')
-#20 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/print')
-#21 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#23 {main}
-REQUEST_URI=/engstd/cerDoc/print
-HTTP_REFERER=http://localhost:8080/engstd/menuTree/index
----
-2015/08/20 15:59:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ProjectContract/GetProjectContract".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('ProjectContract...')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/ProjectContract/GetProjectContract?term=xxx
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/print
----
-2015/08/20 16:47:41 [error] [exception.CException] exception 'CException' with message 'CerDoc and its behaviors do not have a method or closure named "searchPrint".' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:266
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(227): CComponent->__call('searchPrint', Array)
-#1 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(199): CActiveRecord->__call('searchPrint', Array)
-#2 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(199): CerDoc->searchPrint()
-#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#4 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('print', Array, true)
-#7 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(56): CController->render('print', Array)
-#8 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#10 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#11 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#12 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#13 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#14 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#16 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#17 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('print')
-#18 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/print')
-#19 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#20 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#21 {main}
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=04%2F08%2F2558&cer_date_end=22%2F08%2F2558&contract_no=&cer_no=&yt0=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/print?cer_date_begin=&cer_date_end=&contract_no=&cer_no=&yt0=
----
-2015/08/20 16:49:26 [error] [php] include(Model.php): failed to open stream: No such file or directory (C:\xampp\htdocs\engstd\framework\YiiBase.php:427)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(395): spl_autoload_call()
-#1 C:\xampp\htdocs\engstd\framework\web\CActiveDataProvider.php(165): model()
-#2 C:\xampp\htdocs\engstd\framework\web\CActiveDataProvider.php(87): CActiveDataProvider->getModel()
-#3 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(58): CActiveDataProvider->__construct()
-#4 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#6 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#7 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#8 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#9 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#10 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#12 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#13 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#14 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#15 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=04%2F08%2F2558&cer_date_end=22%2F08%2F2558&contract_no=&cer_no=&yt0=
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (58)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 16:50:08 [error] [php] Undefined variable: model (C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php:229)
+2015/08/30 00:52:02 [error] [php] Undefined index: serial_no (C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php:227)
 Stack trace:
 #0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#1 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CerDocController->renderPartial()
-#2 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(62): CerDocController->render()
-#3 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#4 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#5 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#6 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#7 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#8 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#9 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#10 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#13 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#14 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#15 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=04%2F08%2F2558&cer_date_end=22%2F08%2F2558&contract_no=&cer_no=&yt0=
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php (229)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (62)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 16:53:40 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (181)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 16:53:40 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (181)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 16:53:40 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (181)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 16:53:48 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "CerDoc.doc_id" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(145): CComponent->__get('doc_id')
-#1 C:\xampp\htdocs\engstd\protected\views\cerDoc\_view.php(12): CActiveRecord->__get('doc_id')
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(130): require('C:\xampp\htdocs...')
-#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, false)
-#4 C:\xampp\htdocs\engstd\framework\zii\widgets\CListView.php(291): CBaseController->renderFile('C:\xampp\htdocs...', Array)
-#5 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(167): CListView->renderItems()
-#6 [internal function]: CBaseListView->renderSection(Array)
-#7 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback('/{(\w+)}/', Array, '{summary}?{sort...')
-#8 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(135): CBaseListView->renderContent()
-#9 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(173): CBaseListView->run()
-#10 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(198): CBaseController->widget('bootstrap.widge...', Array)
-#11 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#12 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#13 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#14 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('print', Array, true)
-#15 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(62): CController->render('print', Array)
-#16 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#18 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#19 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#20 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#21 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#22 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#23 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#24 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#25 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('print')
-#26 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/print')
-#27 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#28 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#29 {main}
-REQUEST_URI=/engstd/cerDoc/print
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/index
----
-2015/08/20 17:34:04 [error] [php] Undefined offset: 2 (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:59)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=20%2F08%2F2558&cer_date_end=&contract_no=&cer_no=&yt0=
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (59)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 17:39:17 [error] [php] include($data-&gt;prod_id.php): failed to open stream: Invalid argument (C:\xampp\htdocs\engstd\framework\YiiBase.php:427)
-Stack trace:
-#0 unknown(0): spl_autoload_call()
-#1 C:\xampp\htdocs\engstd\framework\base\CComponent.php(617): call_user_func_array()
-#2 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CDataColumn.php(137): TbDataColumn->evaluateExpression()
-#3 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridColumn.php(151): TbDataColumn->renderDataCellContent()
-#4 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(616): TbDataColumn->renderDataCell()
-#5 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(572): TbGridView->renderTableRow()
-#6 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(482): TbGridView->renderTableBody()
-#7 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(167): TbGridView->renderItems()
-#8 unknown(0): TbGridView->renderSection()
-#9 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
-#10 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(135): TbGridView->renderContent()
-#11 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(173): TbGridView->run()
-#12 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(259): CerDocController->widget()
-#13 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#14 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#15 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#16 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CerDocController->renderPartial()
-#17 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(82): CerDocController->render()
-#18 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#19 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#20 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#21 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#22 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#23 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#24 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#25 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#26 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#27 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#28 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#29 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#30 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=&cer_date_end=20%2F08%2F2558&contract_no=&cer_no=&yt0=
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php (259)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (82)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 17:40:27 [error] [php] include($data-&gt;prod_id.php): failed to open stream: Invalid argument (C:\xampp\htdocs\engstd\framework\YiiBase.php:427)
-Stack trace:
-#0 unknown(0): spl_autoload_call()
-#1 C:\xampp\htdocs\engstd\framework\base\CComponent.php(617): call_user_func_array()
-#2 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CDataColumn.php(137): TbDataColumn->evaluateExpression()
-#3 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridColumn.php(151): TbDataColumn->renderDataCellContent()
-#4 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(616): TbDataColumn->renderDataCell()
-#5 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(572): TbGridView->renderTableRow()
-#6 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(482): TbGridView->renderTableBody()
-#7 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(167): TbGridView->renderItems()
-#8 unknown(0): TbGridView->renderSection()
-#9 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
-#10 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(135): TbGridView->renderContent()
-#11 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(173): TbGridView->run()
-#12 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(259): CerDocController->widget()
-#13 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#14 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#15 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#16 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CerDocController->renderPartial()
-#17 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(82): CerDocController->render()
-#18 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#19 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#20 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#21 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#22 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#23 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#24 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#25 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#26 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#27 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#28 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#29 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#30 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=&cer_date_end=20%2F08%2F2558&contract_no=&cer_no=&yt0=
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php (259)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (82)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 17:40:29 [error] [php] include($data-&gt;prod_id.php): failed to open stream: Invalid argument (C:\xampp\htdocs\engstd\framework\YiiBase.php:427)
-Stack trace:
-#0 unknown(0): spl_autoload_call()
-#1 C:\xampp\htdocs\engstd\framework\base\CComponent.php(617): call_user_func_array()
-#2 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CDataColumn.php(137): TbDataColumn->evaluateExpression()
-#3 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridColumn.php(151): TbDataColumn->renderDataCellContent()
-#4 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(616): TbDataColumn->renderDataCell()
-#5 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(572): TbGridView->renderTableRow()
-#6 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(482): TbGridView->renderTableBody()
-#7 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(167): TbGridView->renderItems()
-#8 unknown(0): TbGridView->renderSection()
-#9 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
-#10 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(135): TbGridView->renderContent()
-#11 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(173): TbGridView->run()
-#12 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(259): CerDocController->widget()
-#13 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#14 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#15 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#16 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CerDocController->renderPartial()
-#17 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(82): CerDocController->render()
-#18 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#19 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#20 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#21 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#22 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#23 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#24 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#25 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#26 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#27 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#28 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#29 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#30 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=&cer_date_end=20%2F08%2F2558&contract_no=&cer_no=&yt0=
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php (259)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (82)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 17:43:30 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\engstd\framework\base\CComponent.php(612) : eval()'d code:1)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridColumn.php(151): TbDataColumn->renderDataCellContent()
-#1 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(616): TbDataColumn->renderDataCell()
-#2 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(572): TbGridView->renderTableRow()
-#3 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(482): TbGridView->renderTableBody()
-#4 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(167): TbGridView->renderItems()
-#5 unknown(0): TbGridView->renderSection()
-#6 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
-#7 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(135): TbGridView->renderContent()
-#8 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(173): TbGridView->run()
-#9 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(259): CerDocController->widget()
-#10 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#11 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#12 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#13 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CerDocController->renderPartial()
-#14 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(82): CerDocController->render()
-#15 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#16 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#17 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#18 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#19 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#20 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#21 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#22 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#23 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#24 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#25 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#26 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#27 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=&cer_date_end=20%2F08%2F2558&contract_no=&cer_no=&yt0=
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php (259)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (82)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 17:45:41 [error] [exception.CException] exception 'CException' with message 'CerDocController and its behaviors do not have a method or closure named "getStatus".' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:266
-Stack trace:
-#0 [internal function]: CComponent->__call('getStatus', Array)
-#1 [internal function]: CerDocController->getStatus(Object(CerDoc), 0, Object(TbDataColumn))
-#2 C:\xampp\htdocs\engstd\framework\base\CComponent.php(617): call_user_func_array(Array, Array)
-#3 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CDataColumn.php(137): CComponent->evaluateExpression(Array, Array)
-#4 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridColumn.php(151): CDataColumn->renderDataCellContent(0, Object(CerDoc))
-#5 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(616): CGridColumn->renderDataCell(0)
-#6 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(572): CGridView->renderTableRow(0)
-#7 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(482): CGridView->renderTableBody()
-#8 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(167): CGridView->renderItems()
-#9 [internal function]: CBaseListView->renderSection(Array)
-#10 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback('/{(\w+)}/', Array, '{items}<div cla...')
-#11 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(135): CBaseListView->renderContent()
-#12 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(173): CBaseListView->run()
-#13 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(259): CBaseController->widget('bootstrap.widge...', Array)
-#14 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#15 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#16 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('print', Array, true)
-#18 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(82): CController->render('print', Array)
-#19 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#20 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#21 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#22 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#23 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#24 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#25 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#26 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#27 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#28 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('print')
-#29 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/print')
-#30 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#31 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#32 {main}
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=&cer_date_end=20%2F08%2F2558&contract_no=&cer_no=&yt0=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/print?cer_date_begin=&cer_date_end=04%2F08%2F2558&contract_no=&cer_no=&yt0=
----
-2015/08/20 17:49:26 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "Prodtype.prod_name" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(145): CComponent->__get('prod_name')
-#1 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(54): CActiveRecord->__get('prod_name')
-#2 [internal function]: CerDocController->gridGetProd(Object(CerDoc), 0, Object(TbDataColumn))
-#3 C:\xampp\htdocs\engstd\framework\base\CComponent.php(617): call_user_func_array(Array, Array)
-#4 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CDataColumn.php(137): CComponent->evaluateExpression(Array, Array)
-#5 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridColumn.php(151): CDataColumn->renderDataCellContent(0, Object(CerDoc))
-#6 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(616): CGridColumn->renderDataCell(0)
-#7 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(572): CGridView->renderTableRow(0)
-#8 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(482): CGridView->renderTableBody()
-#9 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(167): CGridView->renderItems()
-#10 [internal function]: CBaseListView->renderSection(Array)
-#11 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback('/{(\w+)}/', Array, '{items}<div cla...')
-#12 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(135): CBaseListView->renderContent()
-#13 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(173): CBaseListView->run()
-#14 C:\xampp\htdocs\engstd\protected\views\cerDoc\print.php(259): CBaseController->widget('bootstrap.widge...', Array)
-#15 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#16 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#18 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('print', Array, true)
-#19 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(92): CController->render('print', Array)
-#20 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionPrint()
-#21 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#22 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#23 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#24 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#25 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#26 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#27 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#28 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#29 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('print')
-#30 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/print')
-#31 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#32 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#33 {main}
-REQUEST_URI=/engstd/cerDoc/print?cer_date_begin=&cer_date_end=20%2F08%2F2558&contract_no=&cer_no=&yt0=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/print?cer_date_begin=&cer_date_end=04%2F08%2F2558&contract_no=&cer_no=&yt0=
----
-2015/08/20 18:28:40 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (238)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 18:28:40 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (238)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 18:28:40 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (238)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/20 18:39:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "preview" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('preview')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('preview')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/preview')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/preview/1
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/print?cer_date_begin=&cer_date_end=&contract_no=&cer_no=&yt0=
----
-2015/08/20 18:43:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "test.pdf" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('test.pdf')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('test.pdf')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/test.pdf')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/test.pdf
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/1
----
-2015/08/20 18:43:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "test.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('test.pdf')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/test.pdf
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/1
----
-2015/08/21 10:14:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "previewPDF.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('previewPDF.php')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('previewPDF.php')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/previewP...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/previewPDF.php?id=1
----
-2015/08/21 10:14:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "_form.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('_form.php')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('_form.php')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/_form.ph...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/_form.php
----
-2015/08/21 10:15:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "genPDF.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('genPDF.php')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('genPDF.php')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/genPDF.p...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/genPDF.php?id=1
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/2
----
-2015/08/21 10:17:15 [error] [exception.CException] exception 'CException' with message 'CerDocController ไม่สามารถค้นหา "_formDF" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:878
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('_formDF', NULL, true)
-#1 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(58): CController->render('_formDF')
-#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
-#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#5 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#7 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#8 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#10 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('genPDF')
-#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/genPDF')
-#13 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#14 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#15 {main}
-REQUEST_URI=/engstd/cerDoc/genPDF?id=1
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/2
----
-2015/08/21 11:11:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "preview.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('preview.pdf')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/preview.pdf
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/2
----
-2015/08/21 13:32:37 [error] [php] Undefined variable: Yii (C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php:86)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#1 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(61): CerDocController->renderPartial()
+#1 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(59): CerDocController->renderPartial()
 #2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
 #3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
 #4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
@@ -634,959 +15,154 @@ Stack trace:
 #12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
 #13 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
 #14 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/genPDF?id=1
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (86)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (61)
+REQUEST_URI=/engstd/cerDoc/genPDF?id=16
+in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (227)
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (59)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/21 13:52:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "มานะจะ.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('???????????????...')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/%E0%B8%A1%E0%B8%B2%E0%B8%99%E0%B8%B0%E0%B8%88%E0%B8%B0.pdf
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/1
----
-2015/08/24 15:19:51 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "CerDetailTemp.doc_date" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:130
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(145): CComponent->__get('doc_date')
-#1 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(2529): CActiveRecord->__get('doc_date')
-#2 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(2252): CHtml::resolveValue(Object(CerDetailTemp), 'doc_date')
-#3 C:\xampp\htdocs\engstd\framework\web\helpers\CHtml.php(1434): CHtml::activeInputField('text', Object(CerDetailTemp), 'doc_date', Array)
-#4 C:\xampp\htdocs\engstd\framework\zii\widgets\jui\CJuiDatePicker.php(84): CHtml::activeTextField(Object(CerDetailTemp), 'doc_date', Array)
-#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(173): CJuiDatePicker->run()
-#6 C:\xampp\htdocs\engstd\protected\views\cerDetail\_form.php(85): CBaseController->widget('zii.widgets.jui...', Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#8 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#10 C:\xampp\htdocs\engstd\protected\views\cerDoc\_form.php(667): CController->renderPartial('/cerDetail/_for...', Array, false)
-#11 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#12 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#13 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#14 C:\xampp\htdocs\engstd\protected\views\cerDoc\create.php(10): CController->renderPartial('_form', Array)
-#15 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#16 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#18 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#19 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(303): CController->render('create', Array)
-#20 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionCreate()
-#21 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#22 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#23 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#24 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#25 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#26 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#27 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#28 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#29 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('create')
-#30 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/create')
-#31 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#32 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#33 {main}
-REQUEST_URI=/engstd/cerDoc/create
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/index
----
-2015/08/24 23:19:04 [error] [exception.CException] exception 'CException' with message 'CerDocController กำลังถูกเรียกใช้โดย endWidget() ในขณะนี้' in C:\xampp\htdocs\engstd\framework\web\CBaseController.php:210
-Stack trace:
-#0 C:\xampp\htdocs\engstd\protected\views\cerDoc\_form.php(698): CBaseController->endWidget()
-#1 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#3 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#4 C:\xampp\htdocs\engstd\protected\views\cerDoc\create.php(10): CController->renderPartial('_form', Array)
-#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
-#6 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
-#7 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
-#8 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#9 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(303): CController->render('create', Array)
-#10 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionCreate()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#12 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#13 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#15 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#16 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#19 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('create')
-#20 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/create')
-#21 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#23 {main}
-REQUEST_URI=/engstd/cerDoc/create
-HTTP_REFERER=http://localhost/engstd/cerDoc/index
----
-2015/08/25 00:17:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "cerDetail" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('cerDetail')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('cerDetail')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/cerDetai...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/cerDetail/createTemp
-HTTP_REFERER=http://localhost/engstd/cerDoc/create
----
-2015/08/25 00:46:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "'.$this->createUrl('Prodtype" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction(''.$this->create...')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run(''.$this->create...')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/'.$this-...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/'.$this-%3EcreateUrl('Prodtype/GetType').'?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/create
----
-2015/08/25 09:50:16 [error] [php] include(TbHtml.php): failed to open stream: No such file or directory (C:\xampp\htdocs\engstd\framework\YiiBase.php:427)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\protected\views\cerDoc\_form.php(765): spl_autoload_call()
-#1 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#3 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#4 C:\xampp\htdocs\engstd\protected\views\cerDoc\create.php(10): CerDocController->renderPartial()
-#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#6 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#7 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#8 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CerDocController->renderPartial()
-#9 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(303): CerDocController->render()
-#10 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionCreate()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#12 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#13 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#14 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#15 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#16 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#18 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#19 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#20 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#21 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#22 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/create
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\_form.php (765)
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\create.php (10)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (303)
-2015/08/25 09:56:00 [error] [exception.CException] exception 'CException' with message 'คุณสมบัติ "TbModal.footer" ยังไม่ถูกกำหนด' in C:\xampp\htdocs\engstd\framework\base\CComponent.php:173
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWidgetFactory.php(161): CComponent->__set('footer', '')
-#1 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(CerDocController), 'bootstrap.widge...', Array)
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
-#3 C:\xampp\htdocs\engstd\protected\views\cerDoc\_form.php(767): CBaseController->widget('bootstrap.widge...', Array)
-#4 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#7 C:\xampp\htdocs\engstd\protected\views\cerDoc\create.php(10): CController->renderPartial('_form', Array)
-#8 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
-#9 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
-#10 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
-#12 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(303): CController->render('create', Array)
-#13 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionCreate()
-#14 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#15 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
-#16 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#17 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#18 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#19 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#20 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#21 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#22 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('create')
-#23 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/create')
-#24 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#25 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#26 {main}
-REQUEST_URI=/engstd/cerDoc/create
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/index
----
-2015/08/25 10:36:14 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/25 10:36:14 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/25 10:36:14 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/25 13:26:34 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/25 13:26:34 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/25 13:26:34 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/25 16:18:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/3
----
-2015/08/26 14:15:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "R6.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('R6.php')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R6.php')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/R6.php')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/R6.php
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/preview/3
----
-2015/08/27 00:58:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:02:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:02:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:03:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:03:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:05:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:20:29 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 01:20:29 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 01:20:29 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
-in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 01:20:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "R6.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('R6.php')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R6.php')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('product/R6.php')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/product/R6.php
-HTTP_REFERER=http://localhost/engstd/product/index
----
-2015/08/27 01:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:48:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:49:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:50:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:51:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:54:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:55:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 01:55:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 02:14:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 02:14:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost/engstd/cerDoc/update/16
----
-2015/08/27 03:51:18 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp2/12
-HTTP_REFERER=http://localhost/engstd/cerDoc/create
----
-2015/08/27 03:51:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp2/12
----
-2015/08/27 03:52:06 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp2/12
----
-2015/08/27 03:52:07 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp2/12
----
-2015/08/27 03:52:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp2/12
----
-2015/08/27 03:52:52 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp2/12
----
-2015/08/27 03:52:53 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp2/12
----
-2015/08/27 03:52:58 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp2')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp2/
----
-2015/08/27 03:53:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp
----
-2015/08/27 03:53:17 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp/12
----
-2015/08/27 03:54:14 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp/13
-HTTP_REFERER=http://localhost/engstd/cerDoc/create
----
-2015/08/27 03:56:34 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp/14?_=1440622594206
-HTTP_REFERER=http://localhost/engstd/cerDoc/create
----
-2015/08/27 03:56:38 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
-#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
-#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
-#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
-#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('updateTemp')
-#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDetail/updat...')
-#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#11 {main}
-REQUEST_URI=/engstd/cerDetail/updateTemp/14?_=1440622598311
-HTTP_REFERER=http://localhost/engstd/cerDoc/create
----
-2015/08/27 09:35:24 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 09:35:24 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 09:35:24 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
-in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 09:37:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
----
-2015/08/27 09:43:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
----
-2015/08/27 09:46:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
----
-2015/08/27 09:47:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
----
-2015/08/27 09:49:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
----
-2015/08/27 09:51:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
----
-2015/08/27 10:37:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "Product" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('Product')
-#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('Product')
-#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/Product/...')
-#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/engstd/cerDoc/Product/GetProduct?term=
-HTTP_REFERER=http://localhost:8080/engstd/cerDoc/update/4
----
-2015/08/27 10:40:48 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+2015/08/30 01:00:48 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
 in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 10:40:48 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+2015/08/30 01:00:48 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
 in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 10:40:48 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+2015/08/30 01:00:48 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
 in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 13:58:13 [error] [php] Undefined variable: model (C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php:90)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
-#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(141): ReportController->renderPartial()
-#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR4()
-#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
-#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/report/printR4?date_start=01%2F08%2F2558&date_end=31%2F08%2F2558
-in C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php (90)
-in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (141)
+2015/08/30 01:01:30 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 13:58:28 [error] [php] Undefined variable: model (C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php:90)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
-#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(141): ReportController->renderPartial()
-#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR4()
-#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
-#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
-#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
-#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/report/printR4?date_start=01%2F08%2F2558&date_end=31%2F08%2F2558
-in C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php (90)
-in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (141)
+2015/08/30 01:01:30 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 14:11:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/tempReport.pdf
-HTTP_REFERER=http://localhost:8080/engstd/report/r4
----
-2015/08/27 14:12:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/tempReport.pdf
-HTTP_REFERER=http://localhost:8080/engstd/report/r4
----
-2015/08/27 14:13:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/tempReport.pdf
-HTTP_REFERER=http://localhost:8080/engstd/report/r4
----
-2015/08/27 14:15:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/tempReport.pdf
-HTTP_REFERER=http://localhost:8080/engstd/report/r4
----
-2015/08/27 14:16:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/tempReport.pdf
-HTTP_REFERER=http://localhost:8080/engstd/report/r4
----
-2015/08/27 14:17:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport.pdf')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/tempReport.pdf
-HTTP_REFERER=http://localhost:8080/engstd/report/r4
----
-2015/08/27 14:34:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tempReport2.pdf".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('tempReport2.pdf')
-#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
-#3 {main}
-REQUEST_URI=/engstd/tempReport2.pdf
----
-2015/08/27 14:35:13 [error] [php] imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error:  (C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php:7033)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3537): MYPDF->Header()
-#1 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3204): MYPDF->setHeader()
-#2 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3116): MYPDF->startPage()
-#3 C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php(86): MYPDF->AddPage()
-#4 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): ReportController->renderInternal()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
-#7 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(141): ReportController->renderPartial()
-#8 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR4()
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#10 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
-#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
-#13 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#14 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#15 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/report/printR4?date_start=01%2F08%2F2558&date_end=31%2F08%2F2558
-in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (7033)
-in C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php (15)
-in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (3537)
-2015/08/27 14:35:22 [error] [php] imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error:  (C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php:7033)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3537): MYPDF->Header()
-#1 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3204): MYPDF->setHeader()
-#2 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3116): MYPDF->startPage()
-#3 C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php(86): MYPDF->AddPage()
-#4 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#5 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): ReportController->renderInternal()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
-#7 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(141): ReportController->renderPartial()
-#8 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR4()
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#10 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
-#11 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
-#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
-#13 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#14 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#15 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/report/printR4?date_start=01%2F08%2F2558&date_end=31%2F08%2F2558
-in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (7033)
-in C:\xampp\htdocs\engstd\protected\views\report\_formR4_PDF.php (15)
-in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (3537)
-2015/08/27 23:14:57 [error] [php] include(ProeType.php): failed to open stream: No such file or directory (C:\xampp\htdocs\engstd\framework\YiiBase.php:427)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php(66): spl_autoload_call()
-#1 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#3 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#4 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(59): CerDocController->renderPartial()
-#5 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#7 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#8 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#10 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#11 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#12 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#14 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#15 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#16 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/genPDF?id=16
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (66)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (59)
+2015/08/30 01:01:30 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 23:15:08 [error] [php] include(ProeType.php): failed to open stream: No such file or directory (C:\xampp\htdocs\engstd\framework\YiiBase.php:427)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php(66): spl_autoload_call()
-#1 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#3 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#4 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(59): CerDocController->renderPartial()
-#5 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#7 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#8 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#10 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#11 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#12 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#14 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#15 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#16 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/genPDF?id=16
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (66)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (59)
+2015/08/30 01:08:42 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 23:15:58 [error] [php] include(ProeType.php): failed to open stream: No such file or directory (C:\xampp\htdocs\engstd\framework\YiiBase.php:427)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php(66): spl_autoload_call()
-#1 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#3 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#4 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(59): CerDocController->renderPartial()
-#5 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#7 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#8 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#10 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#11 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#12 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#14 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#15 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#16 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/genPDF?id=16
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (66)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (59)
+2015/08/30 01:08:42 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/27 23:17:00 [error] [php] include(ProeType.php): failed to open stream: No such file or directory (C:\xampp\htdocs\engstd\framework\YiiBase.php:427)
-Stack trace:
-#0 C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php(66): spl_autoload_call()
-#1 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
-#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
-#3 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
-#4 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(59): CerDocController->renderPartial()
-#5 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
-#6 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
-#7 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
-#8 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
-#9 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
-#10 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
-#11 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
-#12 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
-#13 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
-#14 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
-#15 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#16 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#17 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
-REQUEST_URI=/engstd/cerDoc/genPDF?id=16
-in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (66)
-in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (59)
+2015/08/30 01:08:42 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
 in C:\xampp\htdocs\engstd\index.php (13)
-2015/08/30 00:23:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/intro-bg.jpg".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+2015/08/30 01:08:57 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 01:08:57 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 01:08:57 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 01:12:13 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 01:12:13 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 01:12:13 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (320)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:36:07 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:36:07 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:36:07 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (110)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:48:18 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:48:18 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:48:18 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:49:08 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:49:08 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:49:08 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:54:34 [warning] [application] Failed to set unsafe attribute "doc_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (170)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:54:34 [warning] [application] Failed to set unsafe attribute "dept_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (170)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:54:34 [warning] [application] Failed to set unsafe attribute "cust_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (170)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:54:34 [warning] [application] Failed to set unsafe attribute "vend_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (170)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:54:55 [warning] [application] Failed to set unsafe attribute "doc_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (170)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:54:55 [warning] [application] Failed to set unsafe attribute "dept_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (170)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:54:55 [warning] [application] Failed to set unsafe attribute "cust_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (170)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:54:55 [warning] [application] Failed to set unsafe attribute "vend_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (170)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:58:20 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:58:20 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 21:58:20 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 22:00:01 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 22:00:01 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 22:00:01 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 22:02:24 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 22:02:24 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 22:02:24 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 22:04:39 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 22:04:39 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/30 22:04:39 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (323)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 09:26:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "m1.php" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('m1.php')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('m1.php')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('menuTree/m1.php')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/menuTree/m1.php
+HTTP_REFERER=http://localhost/engstd/menuTree/index
+---
+2015/08/31 09:55:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/intro-bg.jpg".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
 Stack trace:
 #0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('images/intro-bg...')
 #1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
@@ -1595,3 +171,48 @@ Stack trace:
 REQUEST_URI=/engstd/images/intro-bg.jpg
 HTTP_REFERER=http://localhost/engstd/site/login
 ---
+2015/08/31 10:00:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/intro-bg.jpg".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('images/intro-bg...')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/images/intro-bg.jpg
+HTTP_REFERER=http://localhost/engstd/site/login
+---
+2015/08/31 10:14:32 [warning] [application] Failed to set unsafe attribute "prod_size1" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:14:32 [warning] [application] Failed to set unsafe attribute "prod_size2" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:14:32 [warning] [application] Failed to set unsafe attribute "prod_size3" of "Product".
+in C:\xampp\htdocs\engstd\protected\controllers\ProductController.php (83)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:16:32 [warning] [application] Failed to set unsafe attribute "type" of "Vendor".
+in C:\xampp\htdocs\engstd\protected\controllers\VendorController.php (71)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:22:46 [warning] [application] Failed to set unsafe attribute "dept_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (107)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:22:46 [warning] [application] Failed to set unsafe attribute "cust_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (107)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:22:46 [warning] [application] Failed to set unsafe attribute "vend_id" of "InspecDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\InspecDocController.php (107)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:47:45 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:47:45 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:47:45 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (256)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:49:04 [warning] [application] Failed to set unsafe attribute "type" of "Vendor".
+in C:\xampp\htdocs\engstd\protected\controllers\VendorController.php (71)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/08/31 10:49:43 [warning] [application] Failed to set unsafe attribute "type" of "Vendor".
+in C:\xampp\htdocs\engstd\protected\controllers\VendorController.php (96)
+in C:\xampp\htdocs\engstd\index.php (13)

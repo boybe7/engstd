@@ -28,8 +28,8 @@ class Prodtype extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('prot_name', 'required'),
-			array('prot_code', 'length', 'max'=>5),
-			array('prot_name', 'length', 'max'=>100),
+			array('prot_code', 'length', 'max'=>25),
+			array('prot_name', 'length', 'max'=>200),
 
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

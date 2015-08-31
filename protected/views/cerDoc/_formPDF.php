@@ -164,7 +164,7 @@
 		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 		// set margins
-		$pdf->SetMargins(15, 80, 5);
+		$pdf->SetMargins(15, 80, 15);
 		//$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -193,32 +193,53 @@
 		$pdf->AddPage();
 
 
-		$model = CerDoc::model()->findByPK($_GET['id']);
-		print_r($model);
+		
+		$details = Yii::app()->db->createCommand()
+					->select('*')
+					->from('c_cer_detail ct')	
+					//->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+          			//->join('m_product p', 'p.prod_name=ct.detail')
+					->where('ct.cer_id='.$model->cer_id)		
+          			//->group('detail')			                   
+					->queryAll();
+		//print_r($model);
 		$html = "";
-<<<<<<< HEAD
-		$pdf->SetFont('thsarabun', '', 12, '', true);
-		$html .= '<table>';
-		   $html .= '<thead>';
-		      $html .= '<tr>';
-		   		$html .= '<th>ลำดับที่</th>';
-		   		$html .= '<th>รายละเอียดท่อและอุปกรณ์</th>';
-		   		$html .= '<th>ขนาด &#8709 มม.</th>';
-		   		$html .= '<th>หมายเลข</th>';
-		   		$html .= '<th>จำนวน</th>';
-		   		
-		   	  $html .= '</tr>';	
-		   $html .= '</thead>';
-		$html .= '</table>';
-		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
-=======
+
+
 		$pdf->SetFont('thsarabun', '', 13, '', true);
-		//$html .= '<div align="center" style="font-size:25px;font-weight:bold">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ '.$model->cer_no.'</div>';
-		//$html .= '<div align="center" style="font-size:16px;">แนบท้ายหนังสือกมว.ที่.................. </div>';
 		$html .= '<div style="text-indent: 12.7mm;">ท่อและอุปกรณ์ตามรายการต่อไปนี้ได้ผ่านการตรวจสอบจากเจ้าหน้าที่การประปานครหลวงแล้ว มีคุณภาพได้มาตรฐาน
 ตามที่ระบุไว้ในแบบ แปลนรายการละเอียดของสัญญา และได้ประทับตรารับรองคุณภาพให้ไว้เป็นที่เรียบร้อยแล้ว จึงอนุญาตให้นำส่งท่อและอุปกรณ์ประปาเหล่านี้ไปใช้งาน ของการประปานครหลวงได้</div>';
-        $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
->>>>>>> c1f9ee7f37389c7832a100f321f5729f42666347
+
+		$html .= '<br><table>';
+	    $html .= '<thead>';
+	    $html .= '  <tr style="line-height: 30px;backg" bgcolor="#f5f5f5">';
+	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:7%">ลำดับที่</th>';
+	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:40%">รายละเอียดท่อ/อุปกรณ์</th>';
+	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:20%">ขนาด '.TCPDF_FONTS::unichr(248).' มม.</th>';
+	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:20%">หมายเลข</th>';
+	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:13%">จำนวน</th>';
+	    $html .= '  </tr>';
+	    $html .= '</thead>';
+	    $html .= '<tbody>';
+	    $row = 1;
+        foreach ($details as $key => $value) {
+        				 $html .= ' <tr>';
+	                     $html .= '<td style="text-align:center;border:1px solid black;width:7%"> '.($row++).'</td><td style="border:1px solid black;width:40%"> '.$value["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$value["prod_size"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$value["serialno"].'</td><td style="border:1px solid black;text-align:center;width:13%">'.$value["quantity"].'</td>';
+	                     $html .= '</tr>';
+        }
+        for ($i=$row; $i < 16 ; $i++) { 
+        				 $html .= ' <tr>';
+	                     $html .= '<td style="border:1px solid black;width:7%"></td><td style="border:1px solid black;width:40%"></td><td style="border:1px solid black;text-align:center;width:20%"></td><td style="border:1px solid black;text-align:center;width:20%"></td><td style="border:1px solid black;text-align:center;width:13%"></td>';
+	                     $html .= '</tr>';
+        }
+	                 
+	     
+	    $html .= '</tbody>';
+	  	$html .= '</table>';
+
+	  	$html .= '<br><br><table><tr><td width="10%"><u>หมายเหตุ</u>     </td><td>'.$model->cer_notes.'</td></tr></table>';
+        
+		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
         $pdf->Output($_SERVER['DOCUMENT_ROOT'].'/engstd/print/'.$filename,'F');
         ob_end_clean() ;
