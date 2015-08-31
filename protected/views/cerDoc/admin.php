@@ -26,38 +26,38 @@ $this->widget('bootstrap.widgets.TbButton', array(
 if(Yii::app()->user->isExecutive() || Yii::app()->user->isAdmin())
 {
 
-$this->widget('bootstrap.widgets.TbButton', array(
-    'buttonType'=>'link',
+// $this->widget('bootstrap.widgets.TbButton', array(
+//     'buttonType'=>'link',
     
-    'type'=>'danger',
-    'label'=>'ลบข้อมูล',
-    'icon'=>'minus-sign',
-    //'url'=>array('delAll'),
-    //'htmlOptions'=>array('id'=>"buttonDel2",'class'=>'pull-right'),
-    'htmlOptions'=>array(
-        //'data-toggle'=>'modal',
-        //'data-target'=>'#myModal',
-        'onclick'=>'      
+//     'type'=>'danger',
+//     'label'=>'ลบข้อมูล',
+//     'icon'=>'minus-sign',
+//     //'url'=>array('delAll'),
+//     //'htmlOptions'=>array('id'=>"buttonDel2",'class'=>'pull-right'),
+//     'htmlOptions'=>array(
+//         //'data-toggle'=>'modal',
+//         //'data-target'=>'#myModal',
+//         'onclick'=>'      
     
-                       if($.fn.yiiGridView.getSelection("cer-doc-grid").length==0)
-                       		js:bootbox.alert("กรุณาเลือกแถวข้อมูลที่ต้องการลบ?","ตกลง");
-                       else  
-                          js:bootbox.confirm("คุณต้องการจะลบข้อมูล?","ยกเลิก","ตกลง",
-			                   function(confirmed){
+//                        if($.fn.yiiGridView.getSelection("cer-doc-grid").length==0)
+//                        		js:bootbox.alert("กรุณาเลือกแถวข้อมูลที่ต้องการลบ?","ตกลง");
+//                        else  
+//                           js:bootbox.confirm("คุณต้องการจะลบข้อมูล?","ยกเลิก","ตกลง",
+// 			                   function(confirmed){
 			         
-                                if(confirmed)
-			                   	 $.ajax({
-										type: "POST",
-										url: "deleteSelected",
-										data: { selectedID: $.fn.yiiGridView.getSelection("cer-doc-grid")}
-										})
-										.done(function( msg ) {
-											$("#cer-doc-grid").yiiGridView("update",{});
-										});
-			                  })',
-        'class'=>'pull-right'
-    ),
-)); 
+//                                 if(confirmed)
+// 			                   	 $.ajax({
+// 										type: "POST",
+// 										url: "deleteSelected",
+// 										data: { selectedID: $.fn.yiiGridView.getSelection("cer-doc-grid")}
+// 										})
+// 										.done(function( msg ) {
+// 											$("#cer-doc-grid").yiiGridView("update",{});
+// 										});
+// 			                  })',
+//         'class'=>'pull-right'
+//     ),
+// )); 
 
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',

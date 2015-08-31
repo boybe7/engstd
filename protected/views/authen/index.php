@@ -26,7 +26,10 @@ $this->breadcrumbs=array(
             'enableAjaxValidation'=>false,
             'type'=>'vertical',
             'htmlOptions'=>  array('class'=>'','style'=>''),
-        )); ?>
+        )); 
+ echo $form->errorSummary($model);
+
+        ?>
 
 <div class="row-fluid">
 	<div class="span3" style="text-align:right;font-weight:bold;font-size:15px;font-family: 'Boon700',sans-serif;">กลุ่มผู้ใช้งาน :</div>

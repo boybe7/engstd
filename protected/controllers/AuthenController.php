@@ -31,11 +31,11 @@ class AuthenController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','admin','delete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -83,24 +83,24 @@ class AuthenController extends Controller
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
+	// public function actionUpdate($id)
+	// {
+	// 	$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+	// 	// Uncomment the following line if AJAX validation is needed
+	// 	// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Authen']))
-		{
-			$model->attributes=$_POST['Authen'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+	// 	if(isset($_POST['Authen']))
+	// 	{
+	// 		$model->attributes=$_POST['Authen'];
+	// 		if($model->save())
+	// 			$this->redirect(array('view','id'=>$model->id));
+	// 	}
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
+	// 	$this->render('update',array(
+	// 		'model'=>$model,
+	// 	));
+	// }
 
 	/**
 	 * Deletes a particular model.
@@ -112,7 +112,9 @@ class AuthenController extends Controller
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+			Yii::app()->db->createCommand('DELETE FROM user_group WHERE id='.$id)->execute();
+
+			Yii::app()->db->createCommand('DELETE FROM authen WHERE group_id='.$id)->execute();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
@@ -125,17 +127,15 @@ class AuthenController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionUpdate()
 	{
 		$model=new Authen("search");
 
-		//header('Content-type: text/plain');
-        //    print_r($_POST['authen_rule']);                    
-        // exit;
+		
 
-		if(isset($_POST['user_group']) && isset($_POST['authen_rule']))
+		if(isset($_POST['user_group']) )
 		{
-			
+		
 		  $transaction=Yii::app()->db->beginTransaction();
 		  try {	
 				//case 1 : check exist user_group
@@ -148,7 +148,7 @@ class AuthenController extends Controller
 							Yii::app()->db->createCommand('DELETE FROM authen WHERE group_id='.$model_group[0]->id)->execute();
 							$group_id = $model_group[0]->id;
 
-
+                           if(!empty($_POST['authen_rule']))  
 							foreach ($_POST['authen_rule'] as $key => $rule) {
 								$m_rule = new Authen("search");
 								$m_rule->group_id = $group_id;
@@ -166,7 +166,7 @@ class AuthenController extends Controller
 						{
 							$group_id = $model_group->id;
 
-
+                            if(!empty($_POST['authen_rule']))
 							foreach ($_POST['authen_rule'] as $key => $rule) {
 								$m_rule = new Authen("search");
 								$m_rule->group_id = $group_id;
@@ -184,6 +184,7 @@ class AuthenController extends Controller
 
 
 				$transaction->commit();
+			    $this->redirect(array('index'));
 		  }
 		  catch(Exception $e)
 	 	  {
@@ -194,10 +195,7 @@ class AuthenController extends Controller
 	 	        	Yii::log( 'Exception when saving data: ' . $e->getMessage(), CLogger::LEVEL_ERROR );
 	 
 	 	  }    	
-			if($model->save())
-				$this->render('index',array(
-					'model'=>$model,
-				));
+			
 		}
 
 		$this->render('index',array(
@@ -208,12 +206,12 @@ class AuthenController extends Controller
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionIndex()
 	{
-		$model=new Authen('search');
+		$model=new UserGroup('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Authen']))
-			$model->attributes=$_GET['Authen'];
+		if(isset($_GET['UserGroup']))
+			$model->attributes=$_GET['UserGroup'];
 
 		$this->render('admin',array(
 			'model'=>$model,
