@@ -46,39 +46,10 @@
 	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model);
-    $fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
-        $m = Yii::app()->db->createCommand()
-                    ->select('max(strSplit(running_no,"/", 1)) as max')
-                    ->from('c_cer_doc') 
-                    ->where('strSplit(running_no,"/", 2)='.$fiscalyear)                                    
-                    ->queryAll();
-
-                    $m[0]['max'] = 11100;
-         if(empty($m[0]['max']))
-            {
-                
-                $runNo = "00001/".$fiscalyear;  
-            }
-            else
-            {
-               
-                $num = intval($m[0]['max'])+1;
-                if(strlen($num)==4)
-                    $num = "0".$num;
-                else if(strlen($num)==3)
-                    $num = "00".$num;
-                else if(strlen($num)==2)
-                    $num = "000".$num;
-                else if(strlen($num)==1)
-                    $num = "0000".$num;
-
-                $runNo = $num."/".$fiscalyear;
-            }               
-           
-print_r($runNo);
+    
      ?>
 
-    
+    <div class="pull-right"><?php echo $model->running_no;?></div>
 	<div class="row-fluid">
 		<div class="span3">
 			<?php echo $form->textFieldRow($model,'cer_no',array('class'=>'span12','maxlength'=>20,'readonly'=>true)); ?>

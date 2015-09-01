@@ -251,27 +251,32 @@ class CerDocController extends Controller
 			
 
 			if(empty($m[0]['max']))
-			{
-				
-				$runNo = "00001/".$fiscalyear;	
-			}
-			else
-			{
-				$code = $m[0]['max'];
-				$num = intval($code[1])+1;
-                if(strlen($num)==2)
+            {
+                
+                $runNo = "00001/".$fiscalyear;  
+            }
+            else
+            {
+               
+                $num = intval($m[0]['max'])+1;
+                if(strlen($num)==4)
+                    $num = "0".$num;
+                else if(strlen($num)==3)
+                    $num = "00".$num;
+                else if(strlen($num)==2)
                     $num = "000".$num;
-                else
+                else if(strlen($num)==1)
                     $num = "0000".$num;
 
                 $runNo = $num."/".$fiscalyear;
-			}  				
+            }               
+            				
 
 
 		//$model->cer_no = ($m[0]['max']+1)."/".$fiscalyear;		
 
 		$model->cer_date = date("d")."/".date("m")."/".(date("Y")+543);//"11/07/2526";
-
+        $model->running_no = $runNo;
 
 		if(isset($_POST['CerDoc']))
 		{
@@ -285,7 +290,7 @@ class CerDocController extends Controller
 			$model->dept_id = $_POST['CerDoc']['dept_id'];
 			$text = trim($_POST['CerDoc']['cer_notes']); // remove the last \n or whitespace character
             $model->cer_notes = nl2br($text); // insert <br /> before \n 
-
+            $model->running_no = $runNo;
 
 			if($model->save())
 			{	

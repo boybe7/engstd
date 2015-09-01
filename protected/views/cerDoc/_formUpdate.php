@@ -47,7 +47,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-    
+    <div class="pull-right"><?php echo $model->running_no;?></div>
 	<div class="row-fluid">
 		<div class="span3">
 			<?php echo $form->textFieldRow($model,'cer_no',array('class'=>'span12','maxlength'=>20,'readonly'=>true)); ?>
