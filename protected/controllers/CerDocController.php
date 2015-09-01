@@ -145,7 +145,7 @@ class CerDocController extends Controller
 				$num = intval($code[1])+1;
                 if(strlen($num)==2)
                     $num = "0".$num;
-                else
+                else if(strlen($num)==1)
                     $num = "00".$num;
 
                 $cerNo = $code[0].".".$num."/".$fiscalyear;
@@ -238,13 +238,35 @@ class CerDocController extends Controller
 	{
 		$model=new CerDoc;
 
-		//auto gen doc_no
-		$fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
-		$m = Yii::app()->db->createCommand()
-				->select('max(strSplit(cer_no,"/", 1)) as max')
-				->from('c_cer_doc')	
-				->where('strSplit(cer_no,"/", 2)='.$fiscalyear)					                   
-				->queryAll();
+
+
+		//auto gen running_no
+		 $fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
+		 $m = Yii::app()->db->createCommand()
+                    ->select('max(strSplit(running_no,"/", 1)) as max')
+                    ->from('c_cer_doc') 
+                    ->where('strSplit(running_no,"/", 2)='.$fiscalyear)                                    
+                    ->queryAll();
+
+			
+
+			if(empty($m[0]['max']))
+			{
+				
+				$runNo = "00001/".$fiscalyear;	
+			}
+			else
+			{
+				$code = $m[0]['max'];
+				$num = intval($code[1])+1;
+                if(strlen($num)==2)
+                    $num = "000".$num;
+                else
+                    $num = "0000".$num;
+
+                $runNo = $num."/".$fiscalyear;
+			}  				
+
 
 		//$model->cer_no = ($m[0]['max']+1)."/".$fiscalyear;		
 

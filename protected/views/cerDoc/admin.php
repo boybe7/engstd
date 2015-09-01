@@ -120,7 +120,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
 
 $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'cer-doc-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$model->searchByUser(Yii::app()->user->name),
 	'type'=>'bordered condensed',
 	'filter'=>$model,
 	'selectableRows' =>2,

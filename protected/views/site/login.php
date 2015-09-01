@@ -21,7 +21,7 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 </style>
 
 <center>
-<div class="container-fluid well" style="width:350px;margin-top:49px;">
+<div class="container-fluid well" style="width:350px;margin-top:49px;margin-bottom:300px;">
 
  <div class="row-fluid">
 

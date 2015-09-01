@@ -227,7 +227,8 @@ body{
     
     
      width:100%;
-     min-height:340px;
+     /*min-height:340px;*/
+      height: 100%;
      position: relative;
      /*background: url(../images/intro-bg.jpg) no-repeat center center;*/
      background-size: cover;
@@ -246,6 +247,22 @@ h1,h2,h3,h4{
 
 table tr .tr_white {
   background-color: #ffffff;
+}
+
+#footer {
+    background-color: #F0EFEF;
+}
+.credit {
+    margin: 6px 0;
+    color: #000000;
+    text-align: center;
+}
+#wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        /*margin: 0 auto -60px;*/
 }
 
 </style>     
@@ -340,7 +357,7 @@ else{
 }   
  
    ?>
-
+<div id="wrap">
     <div class="container" id="page" >
 
 	<?php if(isset($this->breadcrumbs)):?>
@@ -355,6 +372,17 @@ else{
 
 
 </div><!-- page -->
+</div>
 
+
+<div class="navbar navbar-fixed-bottom">
+    <div class="navbar-inner" style="background-color: #eeeeee;">
+        <div class="width-constraint clearfix">
+             <p class="muted credit">พัฒนาโดย กองพัฒนาระบบงานผลิตและวิศวกรรม ฝ่ายพัฒนาและสนับสนุนเทคโนโลยี การประปานครหลวง</p>
+     
+        </div>
+    </div>
+</div>
 </body>
+
 </html>

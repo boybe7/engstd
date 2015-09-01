@@ -66,15 +66,15 @@ function getUsertype(){
 
 function isSuperUser(){
     $user = $this->loadUser(Yii::app()->user->id);
-    return $user->u_group == "2";
+    return $user->u_group == "3";
 }
 function isUser(){
     $user = $this->loadUser(Yii::app()->user->id);
-    return $user->u_group == "3";
+    return $user->u_group == "2";
 }
 function isExecutive(){
     $user = $this->loadUser(Yii::app()->user->id);
-    return $user->position=="2";
+    return $user->u_group == "3";
 }
 
 // Load user model.

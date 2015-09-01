@@ -1,0 +1,101 @@
+2015/09/01 10:22:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/intro-bg.jpg".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('images/intro-bg...')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/images/intro-bg.jpg
+HTTP_REFERER=http://localhost:8080/engstd/site/login
+---
+2015/09/01 10:22:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/intro-bg.jpg".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('images/intro-bg...')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/images/intro-bg.jpg
+HTTP_REFERER=http://localhost:8080/engstd/site/login
+---
+2015/09/01 10:23:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/intro-bg.jpg".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('images/intro-bg...')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/images/intro-bg.jpg
+HTTP_REFERER=http://localhost:8080/engstd/site/login
+---
+2015/09/01 10:24:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/intro-bg.jpg".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('images/intro-bg...')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/images/intro-bg.jpg
+HTTP_REFERER=http://localhost:8080/engstd/site/login
+---
+2015/09/01 10:24:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/intro-bg.jpg".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('images/intro-bg...')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/images/intro-bg.jpg
+HTTP_REFERER=http://localhost:8080/engstd/site/login
+---
+2015/09/01 11:21:10 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'admin' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `c_cer_doc` `t` WHERE cer_name=it admin.
+in C:\xampp\htdocs\engstd\protected\extensions\bootstrap\widgets\TbGridView.php (49)
+in C:\xampp\htdocs\engstd\protected\views\cerDoc\admin.php (174)
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (381)
+2015/09/01 11:21:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'admin' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `c_cer_doc` `t` WHERE cer_name=it admin' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\engstd\framework\db\ar\CActiveRecord.php(1601): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\engstd\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\engstd\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#4 C:\xampp\htdocs\engstd\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#5 C:\xampp\htdocs\engstd\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#6 C:\xampp\htdocs\engstd\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#7 C:\xampp\htdocs\engstd\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#8 C:\xampp\htdocs\engstd\protected\extensions\bootstrap\widgets\TbGridView.php(49): CGridView->init()
+#9 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(147): TbGridView->init()
+#10 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#11 C:\xampp\htdocs\engstd\protected\views\cerDoc\admin.php(174): CBaseController->widget('bootstrap.widge...', Array)
+#12 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#13 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#14 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#15 C:\xampp\htdocs\engstd\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#16 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(381): CController->render('admin', Array)
+#17 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionIndex()
+#18 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('index')
+#27 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('cerDoc/index')
+#28 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#29 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/engstd/cerDoc/index
+HTTP_REFERER=http://localhost:8080/engstd/inspecDoc/index
+---
+2015/09/01 16:10:03 [error] [php] Undefined variable: id (C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php:258)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/create
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (258)
+in C:\xampp\htdocs\engstd\index.php (13)

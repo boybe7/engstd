@@ -35,13 +35,13 @@ class CerDoc extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cer_no, vend_id,user_update, cer_date, cer_oper_date, cer_name, cer_ct_name, cer_di_name, cer_status, cer_date_add', 'required'),
+			array('cer_no, vend_id,user_update,running_no, cer_date, cer_oper_date, cer_name, cer_ct_name, cer_di_name, cer_status, cer_date_add', 'required'),
 			array('cer_status,prod_id', 'numerical', 'integerOnly'=>true),
 			array('cer_no', 'length', 'max'=>20),
 			array('cer_name, cer_ct_name, cer_di_name, cer_notes', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('cer_id, cer_no,user_update, dept_id, vend_id, cer_date, cer_oper_date, cer_name,contract_no,contractor,prod_id, cer_ct_name, cer_di_name, cer_notes, cer_status, cer_date_add', 'safe', 'on'=>'search'),
+			array('cer_id, cer_no,user_update,running_no, dept_id, vend_id, cer_date, cer_oper_date, cer_name,contract_no,contractor,prod_id, cer_ct_name, cer_di_name, cer_notes, cer_status, cer_date_add', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -113,6 +113,39 @@ class CerDoc extends CActiveRecord
 		$criteria->compare('cer_status',$this->cer_status);
 		$criteria->compare('prod_id',$this->prod_id);
 		$criteria->compare('cer_date_add',$this->cer_date_add,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function searchByUser($id)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('cer_id',$this->cer_id);
+		$criteria->compare('cer_no',$this->cer_no,true);
+		$criteria->compare('dept_id',$this->dept_id,true);
+		$criteria->compare('vend_id',$this->vend_id,true);
+		$criteria->compare('cer_date',$this->cer_date,true);
+		$criteria->compare('cer_oper_date',$this->cer_oper_date,true);
+		$criteria->compare('cer_name',$this->cer_name,true);
+		$criteria->compare('cer_ct_name',$this->cer_ct_name,true);
+		$criteria->compare('cer_di_name',$this->cer_di_name,true);
+		$criteria->compare('cer_notes',$this->cer_notes,true);
+		$criteria->compare('contract_no',$this->contract_no,true);
+		$criteria->compare('contractor',$this->contractor,true);
+		$criteria->compare('cer_status',$this->cer_status);
+		$criteria->compare('prod_id',$this->prod_id);
+		$criteria->compare('cer_date_add',$this->cer_date_add,true);
+
+		if(Yii::app()->user->isUser())
+		{
+			
+			$criteria->addCondition('cer_name="'.$id.'"');
+		}	
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
