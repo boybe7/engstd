@@ -201,3 +201,61 @@ Stack trace:
 REQUEST_URI=/engstd/cerDoc/cancel
 in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (186)
 in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/02 23:37:12 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GetVendor2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('Vendor/GetVendo...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/Vendor/GetVendor2?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/create
+---
+2015/09/02 23:37:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'คุณไม่ได้รับอนุญาตให้ดำเนินการดังกล่าว' in C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(WebUser), '\xE0\xB8\x84\xE0\xB8\xB8\xE0\xB8\x93\xE0\xB9\x84\xE0\xB8\xA1...')
+#1 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GetVendor2')
+#8 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('Vendor/GetVendo...')
+#9 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/engstd/Vendor/GetVendor2?term=
+HTTP_REFERER=http://localhost/engstd/cerDoc/create
+---
+2015/09/02 23:52:04 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (294)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/02 23:52:04 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (294)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/02 23:52:04 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (294)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/02 23:52:04 [warning] [application] Failed to set unsafe attribute "supp_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (294)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/03 00:25:26 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/03 00:25:26 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/03 00:25:26 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/03 00:25:26 [warning] [application] Failed to set unsafe attribute "supp_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)

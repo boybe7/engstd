@@ -41,7 +41,7 @@ class CerDoc extends CActiveRecord
 			array('cer_name, cer_ct_name, cer_di_name, cer_notes', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('cer_id, cer_no,user_update,running_no, dept_id, vend_id, cer_date, cer_oper_date, cer_name,contract_no,contractor,prod_id, cer_ct_name, cer_di_name, cer_notes, cer_status, cer_date_add', 'safe', 'on'=>'search'),
+			array('cer_id, cer_no,user_update,running_no, dept_id, vend_id,supp_id, cer_date, cer_oper_date, cer_name,contract_no,contractor,prod_id, cer_ct_name, cer_di_name, cer_notes, cer_status, cer_date_add', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,7 +65,8 @@ class CerDoc extends CActiveRecord
 			'cer_id' => 'Cer',
 			'cer_no' => 'เลขที่ใบรับรอง',
 			'dept_id' => 'หน่วยงานต้นเรื่อง',
-			'vend_id' => 'ผู้ผลิต/ผู้จัดส่ง',
+			'vend_id' => 'ผู้ผลิต',
+			'supp_id' => 'ผู้จัดส่ง',
 			'cer_date' => 'วันที่ออกใบรับรอง',
 			'cer_oper_date' => 'วันที่ตรวจโรงงาน',
 			'cer_name' => 'เจ้าหน้าที่ผู้ควบคุมการผลิต',
@@ -102,6 +103,7 @@ class CerDoc extends CActiveRecord
 		$criteria->compare('cer_no',$this->cer_no,true);
 		$criteria->compare('dept_id',$this->dept_id,true);
 		$criteria->compare('vend_id',$this->vend_id,true);
+		$criteria->compare('supp_id',$this->supp_id,true);
 		$criteria->compare('cer_date',$this->cer_date,true);
 		$criteria->compare('cer_oper_date',$this->cer_oper_date,true);
 		$criteria->compare('cer_name',$this->cer_name,true);
@@ -129,6 +131,7 @@ class CerDoc extends CActiveRecord
 		$criteria->compare('cer_no',$this->cer_no,true);
 		$criteria->compare('dept_id',$this->dept_id,true);
 		$criteria->compare('vend_id',$this->vend_id,true);
+		$criteria->compare('supp_id',$this->supp_id,true);
 		$criteria->compare('cer_date',$this->cer_date,true);
 		$criteria->compare('cer_oper_date',$this->cer_oper_date,true);
 		$criteria->compare('cer_name',$this->cer_name,true);

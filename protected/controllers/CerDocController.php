@@ -31,7 +31,7 @@ class CerDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GenCerNo','close','cancel','genPDF','print','getCerNO','preview'),
+				'actions'=>array('create','update','DeleteSelected','GenCerNo','GenCerNo2','close','cancel','genPDF','print','getCerNO','preview'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -126,6 +126,50 @@ class CerDocController extends Controller
 					->select('max(strSplit(cer_no,"/", 1)) as max')
 					->from('c_cer_doc')	
 					->where('strSplit(strSplit(cer_no,".", 2),"/",2)='.$fiscalyear.' AND vend_id="'.$id.'"')					                   
+					->queryAll();
+
+			$v = Yii::app()->db->createCommand()
+					->select('shortname')
+					->from('vendor')	
+					->where('name="'.$id.'"')					                   
+					->queryAll();		
+
+
+			if(empty($m[0]['max']))
+			{
+				$cerNo = $v[0]['shortname'].".001/".$fiscalyear;	
+			}
+			else
+			{
+				$code = explode(".", $m[0]['max']);
+				if($code[0]!=$v[0]['shortname'])
+                   $cerNo = $v[0]['shortname'].".001/".$fiscalyear;
+				else
+				{
+					$num = intval($code[1])+1;
+	                if(strlen($num)==2)
+	                    $num = "0".$num;
+	                else if(strlen($num)==1)
+	                    $num = "00".$num;
+
+	                $cerNo = $code[0].".".$num."/".$fiscalyear;	
+				}	
+				
+			}  				
+
+            $this->layout='empty';
+            echo json_encode($cerNo);
+        
+    }
+
+     public function actionGenCerNo2(){
+       
+            $id = $_GET['id'];        
+            $fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
+			$m = Yii::app()->db->createCommand()
+					->select('max(strSplit(cer_no,"/", 1)) as max')
+					->from('c_cer_doc')	
+					->where('strSplit(strSplit(cer_no,".", 2),"/",2)='.$fiscalyear.' AND supp_id="'.$id.'"')					                   
 					->queryAll();
 
 			
@@ -302,6 +346,8 @@ class CerDocController extends Controller
 			$text = trim($_POST['CerDoc']['cer_notes']); // remove the last \n or whitespace character
             $model->cer_notes = nl2br($text); // insert <br /> before \n 
             $model->running_no = $runNo;
+            $model->vend_id = $_POST["vend_id"];
+            $model->supp_id = $_POST["supp_id"];
 
 			if($model->save())
 			{	
@@ -365,6 +411,8 @@ class CerDocController extends Controller
 			$model->dept_id = $_POST['CerDoc']['dept_id'];
 			$text = trim($_POST['CerDoc']['cer_notes']); // remove the last \n or whitespace character
             $model->cer_notes = nl2br($text); // insert <br /> before \n 
+            $model->vend_id = $_POST["vend_id"];
+            $model->supp_id = $_POST["supp_id"];
 
 			if($model->save())
 				$this->redirect(array('index'));

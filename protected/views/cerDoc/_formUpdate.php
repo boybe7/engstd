@@ -2,7 +2,7 @@
 	
 	$(function(){
         //autocomplete search on focus    	
-	    $("#dept_id,#vend_id,#contract_no,#contractor,#prod_id").autocomplete({
+	    $("#dept_id,#vend_id,#contract_no,#contractor,#prod_id,#supp_id").autocomplete({
        
                 minLength: 0
             }).bind('focus', function () {
@@ -45,7 +45,10 @@
 	<h4><?php  echo($title);  ?></h4>
 	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model);
+
+  echo "<input type='hidden' id='old_cer_no' value='".$model->cer_no."'>";
+     ?>
 
     <div class="pull-right"><?php echo $model->running_no;?></div>
 	<div class="row-fluid">
@@ -227,7 +230,7 @@
             ?>
         </div>
     </div>  
-	 <div class="row-fluid">
+	  <div class="row-fluid">
         <div class="span8"> 
             <?php 
                        // $code = explode(".", "จว.011");
@@ -244,7 +247,79 @@
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
-                                    url: "'.$this->createUrl('Vendor/GetVendor').'",
+                                    url: "'.$this->createUrl('Vendor/GetVendor2').'",
+                                    dataType: "json",
+                                    data: {
+                                        term: request.term,
+                                       
+                                    },
+                                    success: function (data) {
+                                            response(data);
+
+                                    }
+                                })
+                             }',
+                            // additional javascript options for the autocomplete plugin
+                            'options'=>array(
+                                     'showAnim'=>'fold',
+                                     'minLength'=>0,
+                                     'select'=>'js: function(event, ui) {
+                                        
+                                           //console.log($("#supp_id").val())
+                                            //$("#CerDoc_vend_id").val(ui.item.id);
+
+                                            if($("#supp_id").val()=="" && $("#CerDoc_vend_id").val()!=ui.item.id)
+                                            {
+                                                $.ajax({
+                                                    url: "'.$this->createUrl('cerDoc/GenCerNo').'",
+                                                    dataType: "json",
+                                                    data: {
+                                                        id: ui.item.id,
+                                                       
+                                                    },
+                                                    success: function (data) {
+                                                            $("#CerDoc_cer_no").val(data);
+
+                                                    }
+                                                })
+                                            }
+                                            else
+                                            {
+                                                $("#CerDoc_cer_no").val($("#old_cer_no").val());
+                                            }
+
+                                     }',
+                                     //'close'=>'js:function(){$(this).val("");}',
+                                     
+                            ),
+                           'htmlOptions'=>array(
+                                'class'=>'span12'
+                            ),
+                                  
+                        ));
+    
+
+            ?>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span8"> 
+            <?php 
+                       // $code = explode(".", "จว.011");
+                        
+                       
+
+                        echo $form->hiddenField($model,'supp_id');
+                        echo $form->labelEx($model,'supp_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
+                         
+                        $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                            'name'=>'supp_id',
+                            'id'=>'supp_id',
+                            'value'=>$model->supp_id,
+                           // 'source'=>$this->createUrl('Ajax/GetDrug'),
+                           'source'=>'js: function(request, response) {
+                                $.ajax({
+                                    url: "'.$this->createUrl('Vendor/GetSupplier').'",
                                     dataType: "json",
                                     data: {
                                         term: request.term,
@@ -263,19 +338,26 @@
                                      'select'=>'js: function(event, ui) {
                                         
                                            //console.log(ui.item.id)
-                                            $("#CerDoc_vend_id").val(ui.item.id);
-                                            $.ajax({
-                                                url: "'.$this->createUrl('cerDoc/GenCerNo').'",
-                                                dataType: "json",
-                                                data: {
-                                                    id: ui.item.id,
-                                                   
-                                                },
-                                                success: function (data) {
-                                                        $("#CerDoc_cer_no").val(data);
+                                            //$("#CerDoc_supp_id").val(ui.item.id);
+                                            if($("#CerDoc_supp_id").val()!=ui.item.id){
+                                                   $.ajax({
+                                                    url: "'.$this->createUrl('cerDoc/GenCerNo2').'",
+                                                    dataType: "json",
+                                                    data: {
+                                                        id: ui.item.id,
+                                                       
+                                                    },
+                                                    success: function (data) {
+                                                            $("#CerDoc_cer_no").val(data);
 
-                                                }
-                                            })
+                                                    }
+                                                })                 
+                                            }
+                                            else
+                                            {
+                                                $("#CerDoc_cer_no").val($("#old_cer_no").val());
+                                            }
+                                            
                                           
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
@@ -290,7 +372,7 @@
 
             ?>
         </div>
-    </div>  
+    </div>    
      <div class="row-fluid">
         <div class="span8"> 
             <?php 

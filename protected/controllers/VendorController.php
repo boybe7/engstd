@@ -31,7 +31,7 @@ class VendorController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GetVendor'),
+				'actions'=>array('create','update','DeleteSelected','GetVendor','GetVendor2','GetSupplier'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -149,6 +149,46 @@ class VendorController extends Controller
             $request=trim($_GET['term']);
                     
             $models=Vendor::model()->findAll(array("condition"=>"name like '%$request%' OR code like '%$request%'"));
+            $data=array();
+            foreach($models as $model){
+                //$data[]["label"]=$get->v_name;
+                //$data[]["id"]=$get->v_id;
+                $data[] = array(
+                        'id'=>$model['name'],
+                        'label'=>$model['name'],
+                        'vid'=>$model['id'],
+                );
+
+            }
+            $this->layout='empty';
+            echo json_encode($data);
+        
+    }
+
+    public function actionGetVendor2(){
+            $request=trim($_GET['term']);
+                    
+            $models=Vendor::model()->findAll(array("condition"=>"(name like '%$request%' OR code like '%$request%') AND type=0 "));
+            $data=array();
+            foreach($models as $model){
+                //$data[]["label"]=$get->v_name;
+                //$data[]["id"]=$get->v_id;
+                $data[] = array(
+                        'id'=>$model['name'],
+                        'label'=>$model['name'],
+                        'vid'=>$model['id'],
+                );
+
+            }
+            $this->layout='empty';
+            echo json_encode($data);
+        
+    }
+
+    public function actionGetSupplier(){
+            $request=trim($_GET['term']);
+                    
+            $models=Vendor::model()->findAll(array("condition"=>"(name like '%$request%' OR code like '%$request%') AND type=1 "));
             $data=array();
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;
