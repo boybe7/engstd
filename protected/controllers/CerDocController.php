@@ -174,16 +174,27 @@ class CerDocController extends Controller
 
     public function actionCancel()
     {
-    	$ids = $_POST['selectedID'];
-        if(count($ids)>0)
-        {
-            foreach($ids as $id)
-            {
-                $model=$this->loadModel($id);
-                $model->cer_status = 3;
-                $model->save();
-            }
-        }    
+    	$id = $_POST['selectedID'];
+        $comment = str_replace("comment=&comment=", "", urldecode($_POST['data']));
+        $model=$this->loadModel($id);
+        $model->cer_status = 3;
+        $model->cer_notes .= " ยกเลิก (".$comment.")";
+         $model->save();
+
+   //        header('Content-type: text/plain charset=utf-8');
+    
+		 // 			print_r(urldecode($_POST['data']));                    
+		 // exit;
+    	
+        // if(count($ids)>0)
+        // {
+        //     foreach($ids as $id)
+        //     {
+        //         $model=$this->loadModel($id);
+        //         $model->cer_status = 3;
+        //         $model->save();
+        //     }
+        // }    
     }
 
     public function actionGetCerNO(){

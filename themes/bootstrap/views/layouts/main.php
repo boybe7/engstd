@@ -254,7 +254,7 @@ table tr .tr_white {
 }
 .credit {
     margin: 6px 0;
-    color: #000000;
+    color: #6a686b;
     text-align: center;
 }
 #wrap {
