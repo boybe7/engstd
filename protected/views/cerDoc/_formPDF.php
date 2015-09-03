@@ -134,7 +134,7 @@
 
 		//set info header   
 		$prod = ProdType::model()->findByPk($model->prod_id); 
-		$inspec_no = "";
+		$inspec_no = $model->running_no;
 		$date_oper = renderDate($model->cer_oper_date);
 		$pdf->setHeaderInfo($model->cer_no, $model->contract_no,$model->contractor,$model->vend_id,$inspec_no,$model->dept_id,$prod->prot_name,$date_oper);
 
