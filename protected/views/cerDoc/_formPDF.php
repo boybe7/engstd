@@ -190,7 +190,7 @@
 		// print standard ASCII chars, you can use core fonts like
 		// helvetica or times to reduce file size.
 		
-		$pdf->AddPage();
+		//$pdf->AddPage();
 
 
 		
@@ -203,42 +203,67 @@
           			//->group('detail')			                   
 					->queryAll();
 		//print_r($model);
+		$npages = ceil(count($details)/15.0);			
 		$html = "";
 
 
 		$pdf->SetFont('thsarabun', '', 13, '', true);
-		$html .= '<div style="text-indent: 12.7mm;">ท่อและอุปกรณ์ตามรายการต่อไปนี้ได้ผ่านการตรวจสอบจากเจ้าหน้าที่การประปานครหลวงแล้ว มีคุณภาพได้มาตรฐาน
-ตามที่ระบุไว้ในแบบ แปลนรายการละเอียดของสัญญา และได้ประทับตรารับรองคุณภาพให้ไว้เป็นที่เรียบร้อยแล้ว จึงอนุญาตให้นำส่งท่อและอุปกรณ์ประปาเหล่านี้ไปใช้งาน ของการประปานครหลวงได้</div>';
+		$row = 1;
+		for ($n=1; $n < $npages+1 ; $n++) { 
+						# code...
+					
+					$html .= '<div style="text-indent: 12.7mm;">ท่อและอุปกรณ์ตามรายการต่อไปนี้ได้ผ่านการตรวจสอบจากเจ้าหน้าที่การประปานครหลวงแล้ว มีคุณภาพได้มาตรฐาน
+			ตามที่ระบุไว้ในแบบ แปลนรายการละเอียดของสัญญา และได้ประทับตรารับรองคุณภาพให้ไว้เป็นที่เรียบร้อยแล้ว จึงอนุญาตให้นำส่งท่อและอุปกรณ์ประปาเหล่านี้ไปใช้งาน ของการประปานครหลวงได้</div>';
 
-		$html .= '<br><table>';
-	    $html .= '<thead>';
-	    $html .= '  <tr style="line-height: 30px;backg" bgcolor="#f5f5f5">';
-	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:7%">ลำดับที่</th>';
-	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:40%">รายละเอียดท่อ/อุปกรณ์</th>';
-	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:20%">ขนาด '.TCPDF_FONTS::unichr(248).' มม.</th>';
-	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:20%">หมายเลข</th>';
-	    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:13%">จำนวน</th>';
-	    $html .= '  </tr>';
-	    $html .= '</thead>';
-	    $html .= '<tbody>';
-	    $row = 1;
-        foreach ($details as $key => $value) {
-        				 $html .= ' <tr>';
-	                     $html .= '<td style="text-align:center;border:1px solid black;width:7%"> '.($row++).'</td><td style="border:1px solid black;width:40%"> '.$value["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$value["prod_size"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$value["serialno"].'</td><td style="border:1px solid black;text-align:center;width:13%">'.$value["quantity"].'</td>';
-	                     $html .= '</tr>';
-        }
-        for ($i=$row; $i < 16 ; $i++) { 
-        				 $html .= ' <tr>';
-	                     $html .= '<td style="border:1px solid black;width:7%"></td><td style="border:1px solid black;width:40%"></td><td style="border:1px solid black;text-align:center;width:20%"></td><td style="border:1px solid black;text-align:center;width:20%"></td><td style="border:1px solid black;text-align:center;width:13%"></td>';
-	                     $html .= '</tr>';
-        }
-	                 
-	     
-	    $html .= '</tbody>';
-	  	$html .= '</table>';
+					$html .= '<br><table>';
+				    $html .= '<thead>';
+				    $html .= '  <tr style="line-height: 30px;backg" bgcolor="#f5f5f5">';
+				    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:7%">ลำดับที่</th>';
+				    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:40%">รายละเอียดท่อ/อุปกรณ์</th>';
+				    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:20%">ขนาด '.TCPDF_FONTS::unichr(248).' มม.</th>';
+				    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:20%">หมายเลข</th>';
+				    $html .= '    <th style="font-weight:bold;border:1px solid black;text-align:center;width:13%">จำนวน</th>';
+				    $html .= '  </tr>';
+				    $html .= '</thead>';
+				    $html .= '<tbody>';
+				    
+			        // foreach ($details as $key => $value) {
+			        // 				 $html .= ' <tr>';
+				       //               $html .= '<td style="text-align:center;border:1px solid black;width:7%"> '.($row++).'</td><td style="border:1px solid black;width:40%"> '.$value["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$value["prod_size"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$value["serialno"].'</td><td style="border:1px solid black;text-align:center;width:13%">'.$value["quantity"].'</td>';
+				       //               $html .= '</tr>';
+			        // }
+			        
+			        for ($i=$row-1; $i < 15*$n  ; $i++) { 
+			        			if(!empty($details[$i]))
+			        			{	
+			        	             $html .= ' <tr>';
+				                     $html .= '<td style="text-align:center;border:1px solid black;width:7%"> '.($row++).'</td><td style="border:1px solid black;width:40%"> '.$details[$i]["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$details[$i]["prod_size"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$details[$i]["serialno"].'</td><td style="border:1px solid black;text-align:center;width:13%">'.$details[$i]["quantity"].'</td>';
+				                     $html .= '</tr>';
+				                }
+				                else
+				                {     
+			        				 $html .= ' <tr>';
+				                     $html .= '<td style="border:1px solid black;width:7%"></td><td style="border:1px solid black;width:40%"></td><td style="border:1px solid black;text-align:center;width:20%"></td><td style="border:1px solid black;text-align:center;width:20%"></td><td style="border:1px solid black;text-align:center;width:13%"></td>';
+				                     $html .= '</tr>';
+				                }     
+			        }
+				                 
+				     
+				    $html .= '</tbody>';
+				  	$html .= '</table>';
+				  	if(empty($model->cer_notes))
+				  	   $note = "จำนวน ".$npages." หน้า <br>"."จำนวนรวม ".count($details)." รายการ";
+				  	else
+				  	   $note = $model->cer_notes."<br>จำนวน ".$npages." หน้า <br>"."จำนวนรวม ".count($details)." รายการ"; 	
+				  	$html .= '<br><br><table><tr><td width="10%"><u>หมายเหตุ</u>     </td><td>'.$note.'</td></tr></table>';
+			        
+			        if($n!=$npages)
+			        {
+			           $html .='<br pagebreak="true" />';	
+			           $pdf->AddPage();
+			        }
 
-	  	$html .= '<br><br><table><tr><td width="10%"><u>หมายเหตุ</u>     </td><td>'.$model->cer_notes.'</td></tr></table>';
-        
+        }
 		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
         $pdf->Output($_SERVER['DOCUMENT_ROOT'].'/engstd/print/'.$filename,'F');

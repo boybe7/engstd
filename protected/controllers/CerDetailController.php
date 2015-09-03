@@ -57,6 +57,7 @@ class CerDetailController extends Controller
 			$model->attributes=$_POST['CerDetailTemp'];
 			$model->cer_id = 0;
 			$model->user_id = Yii::app()->user->ID;
+			$model->prod_id = $_POST['CerDetailTemp']['prod_id'];
 		
 			if (Yii::app()->request->isAjaxRequest)
 	        {
@@ -114,6 +115,7 @@ class CerDetailController extends Controller
 		if(isset($_POST['CerDetailTemp']))
 		{
 			$model->attributes=$_POST['CerDetailTemp'];
+			$model->prod_id = $_POST['CerDetailTemp']['prod_id'];
             //$model->type = 1;
 			 if (Yii::app()->request->isAjaxRequest)
 	         {
@@ -179,6 +181,7 @@ class CerDetailController extends Controller
 		{
 			$model->attributes=$_POST['CerDetail'];
 			$model->cer_id = $id;
+			$model->prod_id = $_POST['CerDetail']['prod_id'];
 			
 			if (Yii::app()->request->isAjaxRequest)
 	        {
@@ -237,6 +240,12 @@ class CerDetailController extends Controller
 		if(isset($_POST['CerDetail']))
 		{
 			$model->attributes=$_POST['CerDetail'];
+			$model->prod_id = $_POST['CerDetail']['prod_id'];
+
+			 //    header('Content-type: text/plain charset=utf-8');
+    
+		 	// 		print_r($model);                    
+		  // exit;
             //$model->type = 1;
 			 if (Yii::app()->request->isAjaxRequest)
 	         {

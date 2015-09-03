@@ -26,6 +26,7 @@
 	<?php 
 	//echo $form->textFieldRow($model,'detail',array('class'=>'span5','maxlength'=>500));
 	          echo $form->hiddenField($model,'detail');
+              echo $form->hiddenField($model,'prod_id');
               echo $form->labelEx($model,'detail',array('class'=>'span5','style'=>'text-align:left;margin-left:-1px;margin-bottom:0px'));
               
 
@@ -55,9 +56,10 @@
                                      'minLength'=>0,
                                      'select'=>'js: function(event, ui) {
                                         
-                                           console.log(ui.item.id)
-                                            $("#CerDetailTemp_detail").val(ui.item.name);
-                                            $("#CerDetailTemp_prod_size").val(ui.item.size);
+                                           //console.log(ui.item.name)
+                                            $("#CerDetail_prod_id").val(ui.item.id);
+                                            $("#CerDetail_detail").val(ui.item.name);
+                                            $("#CerDetail_prod_size").val(ui.item.size);
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
                                      

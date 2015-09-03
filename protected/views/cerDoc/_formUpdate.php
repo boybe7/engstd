@@ -633,7 +633,7 @@
 
                     // 'template'=>"{summary}{items}{pager}",
                     'htmlOptions'=>array('style'=>'padding-top:20px;'),
-                    'enablePagination' => false,
+                    'enablePagination' => true,
                     'summaryText'=>'',//'Displaying {start}-{end} of {count} results.',
                     'columns'=>array(
                             'No.'=>array(
