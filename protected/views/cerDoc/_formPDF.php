@@ -59,13 +59,17 @@
 			private $author3;
 			private $pos_author2;
 			private $pos_author3;
+			private $is_acting2;
+			private $is_acting3;
 
-			public function setFooterInfo($author1, $author2,$author3,$pos_author2,$pos_author3){
+			public function setFooterInfo($author1, $author2,$author3,$pos_author2,$pos_author3,$is_acting2,$is_acting3){
 				$this->author1 = $author1;
 		        $this->author2 = $author2;
 		        $this->author3 = $author3;
 		        $this->pos_author2 = $pos_author2;
 		        $this->pos_author3 = $pos_author3;
+		        $this->is_acting2 = $is_acting2;
+		        $this->is_acting3 = $is_acting3;
 			}
 
 
@@ -108,22 +112,45 @@
 
 		        $this->writeHTMLCell(50, 150, 15, 225,'.................................................................' , 0, 1, false, true, 'C', false);
 		        $this->writeHTMLCell(50, 150, 15, 230,'<p style="font-size:15px;">('.$this->author1.')</p>' , 0, 1, false, true, 'C', false);
-		        $this->writeHTMLCell(50, 150, 15, 235,'<p style="font-size:15px;">เจ้าหน้าที่ผู้ควบคุมการผลิต</p>' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 15, 235,'<p style="font-size:15px;">เจ้าหน้าที่ผู้ควบคุม</p>' , 0, 1, false, true, 'C', false);
 
-		        $this->writeHTMLCell(50, 150, 80, 225,'.................................................................' , 0, 1, false, true, 'C', false);
-		        $this->writeHTMLCell(50, 150, 80, 230,'<p style="font-size:15px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
-		        $this->writeHTMLCell(50, 150, 80, 235,'<p style="font-size:15px;">'.$this->pos_author2.'</p>' , 0, 1, false, true, 'C', false);
+		        if($this->is_acting2==false)
+		        {	
+		        	$this->writeHTMLCell(50, 150, 80, 225,'.................................................................' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 150, 80, 230,'<p style="font-size:15px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 150, 80, 235,'<p style="font-size:15px;">'.$this->pos_author2.'</p>' , 0, 1, false, true, 'C', false);
+		        }
+		        else
+		        {
+		        	$this->writeHTMLCell(50, 150, 80, 225,'.................................................................' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 150, 80, 230,'<p style="font-size:15px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 150, 80, 235,'<p style="font-size:15px;">'.$this->pos_author2.' รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 150, 80, 240,'<p style="font-size:15px;">หัวหน้าส่วนควบคุมคุณภาพท่อและอุปกรณ์' , 0, 1, false, true, 'C', false);
+		        	
+		        }
 
-		        $this->writeHTMLCell(50, 150, 145, 225,'.................................................................' , 0, 1, false, true, 'C', false);
-		        $this->writeHTMLCell(50, 150, 145, 230,'<p style="font-size:15px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
-		        $this->writeHTMLCell(50, 150, 145, 235,'<p style="font-size:15px;">'.$this->pos_author2.'</p>' , 0, 1, false, true, 'C', false);
-
+		        if($this->is_acting3==false)
+		        {	
+			        $this->writeHTMLCell(50, 150, 145, 225,'.................................................................' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 145, 230,'<p style="font-size:15px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 145, 235,'<p style="font-size:15px;">'.$this->pos_author3.'</p>' , 0, 1, false, true, 'C', false);
+			    }
+			    else
+			    {
+			    	$this->writeHTMLCell(50, 150, 145, 225,'.................................................................' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 145, 230,'<p style="font-size:15px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 145, 235,'<p style="font-size:15px;">หน.สคภ. รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
+			    	$this->writeHTMLCell(50, 150, 145, 240,'<p style="font-size:15px;">ผู้อำนวยการกองมาตรฐานวิศวกรรม' , 0, 1, false, true, 'C', false);
+		        	
+			    }
+			        
 		        $this->writeHTMLCell(145, 550, 15, 250,'ข้อควรพึงปฏิบัติ' , 0, 1, false, true, 'L', false);
 		        $this->writeHTMLCell(170, 550, 33, 250,'1.ใบรับรองนี้ให้ถือเสมือนหนึ่งเป็นใบกำกับผลิตภัณฑ์ ให้ผู้ผลิตแนบไปพร้อมกับการส่งท่อ/อุปกรณ์ที่ได้ผ่านการตรวจสอบมาตรฐานจากกองมาตรฐานวิศวกรรม<br>  แล้วทุกครั้ง' , 0, 1, false, true, 'L', false);
 		        $this->writeHTMLCell(170, 550, 33, 260,'2.ท่อ/อุปกรณ์ใดที่ไม่มีใบรับรองฯ หรือมีรายละเอียดผิดไปจากใบรับรองฯ ซึ่งกำกับผลิตภัณฑ์มาด้วยนี้ จะไม่ได้รับการตรวจรับงานจากเจ้าหน้าที่ตรวจรับของ<br>  การประปานครหลวง' , 0, 1, false, true, 'L', false);
 		        $this->writeHTMLCell(170, 550, 33, 270,'3.ใบรับรองฯที่ส่งให้หน่วยงานของกปน. ให้หน่วยงานฯใช้ประกอบในการตรวจสอบ/ตรวจรับ ให้ถูกต้องตรงกับฉบับซึ่งมาพร้อมกับผลิตภัณฑ์จากผู้ผลิต<br>  และให้รวบรวมเก็บไว้เป็นหลักฐาน เพื่อตรวจสอบภายหลังได้' , 0, 1, false, true, 'L', false);
 		        $this->writeHTMLCell(170, 550, 33, 280,'4.ใบรับรองฯจะต้องไม่มีรอยขูดขีด แก้ ลบใดๆ หากมีการแก้ดังกล่าวต้องมีลายมือชื่อเจ้าหน้าที่ควบคุม กำกับทุกแห่ง ในส่วนที่เป็นอำนาจหน้าที่ของเจ้าหน้าที่นั้นๆ' , 0, 1, false, true, 'L', false);
 		        $this->writeHTMLCell(145, 550, 100, 285,'กองมาตรฐานวิศวกรรม<br>โทร 0-2504-0123 ต่อ 774,775' , 0, 1, false, true, 'C', false);
+			    
 		       
 		    }
 		}
@@ -140,9 +167,28 @@
 
 
 		//set info footer   
-		$pos_author2 = "หัวหน้าส่วนควบคุมการผลิตท่อและอุปกรณ์";
-		$pos_author3 = "ผู้อำนวยการกองมาตรฐานวิศวกรรม";
-		$pdf->setFooterInfo($model->cer_name, $model->cer_ct_name,$model->cer_di_name,$pos_author2,$pos_author3);
+		//$pos_author2 = "หัวหน้าส่วนควบคุมคุณภาพท่อและอุปกรณ์";
+		$is_acting2 = strpos($model->cer_ct_name, "รักษาการแทน");
+		$name2 = str_replace("(รักษาการแทน)", "", $model->cer_ct_name);
+		$author = Yii::app()->db->createCommand()
+					->select('posi_name')
+					->from('user')
+					->join('m_position p', 'user.position=p.id')
+					->where('name="'.$name2.'"')	                   
+					->queryAll();
+		$pos_author2 = $author[0]['posi_name'];		
+
+		$is_acting3 = strpos($model->cer_di_name, "รักษาการแทน");	
+		$name3 = str_replace("(รักษาการแทน)", "", $model->cer_di_name);
+		$author = Yii::app()->db->createCommand()
+					->select('posi_name')
+					->from('user')
+					->join('m_position p', 'user.position=p.id')
+					->where('name="'.$name3.'"')	                   
+					->queryAll();
+		//$pos_author3 = "ผู้อำนวยการกองมาตรฐานวิศวกรรม";
+		$pos_author3 = $author[0]['posi_name'];					
+		$pdf->setFooterInfo($model->cer_name, $name2,$name3,$pos_author2,$pos_author3,$is_acting2,$is_acting3);
 
 		// set document information
 		$pdf->SetCreator(PDF_CREATOR);
@@ -252,9 +298,9 @@
 				    $html .= '</tbody>';
 				  	$html .= '</table>';
 				  	if(empty($model->cer_notes))
-				  	   $note = "จำนวน ".$npages." หน้า <br>"."จำนวนรวม ".count($details)." รายการ";
+				  	   $note = "จำนวน ".$npages." หน้า ,"."จำนวนรวม ".count($details)." รายการ";
 				  	else
-				  	   $note = $model->cer_notes."<br>จำนวน ".$npages." หน้า <br>"."จำนวนรวม ".count($details)." รายการ"; 	
+				  	   $note = $model->cer_notes."<br>จำนวน ".$npages." หน้า ,จำนวนรวม ".count($details)." รายการ"; 	
 				  	$html .= '<br><br><table><tr><td width="10%"><u>หมายเหตุ</u>     </td><td>'.$note.'</td></tr></table>';
 			        
 			        if($n!=$npages)

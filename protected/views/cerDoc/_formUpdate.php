@@ -488,7 +488,7 @@
         
                         foreach ($models as $key => $value) {
                           $data[] = array(
-                                          'value'=>$value['name'],
+                                          'value'=>$value['name']."(รักษาการแทน)",
                                           'text'=>$value['name']."(รักษาการแทน)",
                                        );
                         } 

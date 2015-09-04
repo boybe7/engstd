@@ -534,3 +534,77 @@ Stack trace:
 REQUEST_URI=/engstd/cerDetail/create/19
 HTTP_REFERER=http://localhost/engstd/cerDoc/update/19
 ---
+2015/09/04 15:01:28 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/04 15:01:28 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/04 15:01:28 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/04 15:01:28 [warning] [application] Failed to set unsafe attribute "supp_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/04 15:05:15 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/04 15:05:15 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/04 15:05:15 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/04 15:05:15 [warning] [application] Failed to set unsafe attribute "supp_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (407)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/04 15:14:12 [error] [php] Undefined offset: 0 (C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php:150)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(59): CerDocController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#8 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/genPDF?id=20
+in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (150)
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (59)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/04 15:27:43 [error] [php] Undefined variable: is_acting2 (C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php:117)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3114): MYPDF->endPage()
+#1 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(4949): MYPDF->AddPage()
+#2 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(17222): MYPDF->checkPageBreak()
+#3 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(5828): MYPDF->writeHTML()
+#4 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(17094): MYPDF->MultiCell()
+#5 C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php(297): MYPDF->writeHTMLCell()
+#6 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
+#7 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CerDocController->renderInternal()
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CerDocController->renderFile()
+#9 C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php(59): CerDocController->renderPartial()
+#10 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): CerDocController->actionGenPDF()
+#11 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#12 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(133): CerDocController->runAction()
+#13 C:\xampp\htdocs\engstd\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#14 C:\xampp\htdocs\engstd\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#15 C:\xampp\htdocs\engstd\framework\web\filters\CInlineFilter.php(58): CerDocController->filterAccessControl()
+#16 C:\xampp\htdocs\engstd\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#17 C:\xampp\htdocs\engstd\framework\web\CController.php(291): CFilterChain->run()
+#18 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CerDocController->runActionWithFilters()
+#19 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CerDocController->run()
+#20 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#21 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#22 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/cerDoc/genPDF?id=20
+in C:\xampp\htdocs\engstd\protected\views\cerDoc\_formPDF.php (117)
+in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (3586)
+in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (3132)
