@@ -67,9 +67,17 @@ class CerDocController extends Controller
 	     $id = $data->prod_id;
 	     //do your stuff for finding the username or name with $user
 	     //for eg.
-	     $detail = ProdType::model()->findByPk($id);
+	     //$detail = ProdType::model()->findByPk($id);
 	     // make sure what ever model you are calling is accessible from this controller other wise you have to import the model on top of the controller above class of the controller.
-	     return $detail->prot_name;
+	     //return $detail->prot_name;
+
+	     $m = Yii::app()->db->createCommand()
+					->select('prot_name')
+					->from('m_prodtype')	
+					->where('prot_id="'.$id.'"')					                   
+					->queryAll();
+
+		 return $m[0]['prot_name'];			
 	}
 
 	public function actionPrint(){
@@ -364,6 +372,7 @@ class CerDocController extends Controller
 					 $modelDetail->prod_size = $mTemp['prod_size'];
 					 $modelDetail->quantity = $mTemp['quantity'];
 					 $modelDetail->serialno = $mTemp['serialno'];
+					 $modelDetail->prod_id = $mTemp['prod_id'];
                      $modelDetail->cer_id = $model->cer_id;
                     
                      $modelDetail->save();

@@ -160,10 +160,16 @@
 		$pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 		//set info header   
-		$prod = ProdType::model()->findByPk($model->prod_id); 
+		//$prod = ProdType::model()->findByPk($model->prod_id); 
+		$m = Yii::app()->db->createCommand()
+					->select('prot_name')
+					->from('m_prodtype')	
+					->where('prot_id="'.$model->prod_id.'"')					                   
+					->queryAll();
+					
 		$inspec_no = $model->running_no;
 		$date_oper = renderDate($model->cer_oper_date);
-		$pdf->setHeaderInfo($model->cer_no, $model->contract_no,$model->contractor,$model->vend_id,$inspec_no,$model->dept_id,$prod->prot_name,$date_oper);
+		$pdf->setHeaderInfo($model->cer_no, $model->contract_no,$model->contractor,$model->vend_id,$inspec_no,$model->dept_id,$m[0]['prot_name'],$date_oper);
 
 
 		//set info footer   
@@ -236,7 +242,7 @@
 		// print standard ASCII chars, you can use core fonts like
 		// helvetica or times to reduce file size.
 		
-		//$pdf->AddPage();
+		$pdf->AddPage();
 
 
 		
@@ -305,7 +311,9 @@
 			        
 			        if($n!=$npages)
 			        {
+			           
 			           $html .='<br pagebreak="true" />';	
+			           if($n!=1)
 			           $pdf->AddPage();
 			        }
 

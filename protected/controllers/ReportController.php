@@ -97,6 +97,8 @@ class ReportController extends Controller
             'display' => 'block',
         ), false, true);
 	}
+
+
         //-----------------------------
         public function actionR4()
 	{
@@ -105,11 +107,6 @@ class ReportController extends Controller
 
 	public function actionGenR4()
 	{
-
-		//$vid = $_GET["r9"];
-		//$modelV = Vendor::model()->findByPk($vid);
-
-		//$model = InspecDoc::model()->findAll(array('order'=>'', 'condition'=>'vend_id="'.$modelV->name.'"', 'params'=>array()));
                 $date_start = $_GET["date_start"];
                 $date_end   = $_GET["date_end"];
 
@@ -123,9 +120,8 @@ class ReportController extends Controller
         ), false, true);
 	}
 
-
 	public function actionPrintR4()
-    {
+        {
         	
 	    
 	          $date_start = $_GET["date_start"];
@@ -141,7 +137,7 @@ class ReportController extends Controller
         ), false, true);
 
         
-    }
+        }
 
 
         //-----------------------------
@@ -152,11 +148,6 @@ class ReportController extends Controller
 
 	public function actionGenR5()
 	{
-
-		//$vid = $_GET["r9"];
-		//$modelV = Vendor::model()->findByPk($vid);
-
-		//$model = InspecDoc::model()->findAll(array('order'=>'', 'condition'=>'vend_id="'.$modelV->name.'"', 'params'=>array()));
                 $date_start = $_GET["date_start"];
                 $date_end   = $_GET["date_end"];
 
