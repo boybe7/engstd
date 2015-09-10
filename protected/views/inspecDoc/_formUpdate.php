@@ -2,7 +2,7 @@
 	
 	$(function(){
         //autocomplete search on focus    	
-	    $("#con_id,#cust_id,#prot_id,#dept_id,#vend_id").autocomplete({
+	    $("#con_id,#cust_id,#prot_id,#dept_id,#vend_id,#cerID").autocomplete({
        
                 minLength: 0
             }).bind('focus', function () {
@@ -14,6 +14,28 @@
 
 
 </script>
+<style type="text/css">
+    
+.the-legend {
+    
+    font: 16px/1.6em 'Boon700',sans-serif;
+    font-weight: bold;
+    margin-bottom: 0;
+    width:inherit; /* Or auto */
+    padding:0 0px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+}
+.the-fieldset {
+    background-color: whiteSmoke;
+    border: 1px solid #E3E3E3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+</style>
 <div class="well">
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'inspec-doc-form',
@@ -409,7 +431,146 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 // ));
 
 //echo $formUpload->fileFieldRow($model2, 'ins_file'); 
+
+
+
+
 ?>
+
+
+  <fieldset class="well the-fieldset">
+            <legend class="the-legend">ผูกใบรับรอง</legend>
+            <div class="row-fluid"> 
+                <div class="span9">
+                  <?php 
+                  //echo CHtml::textField('cerID', '',array('class'=>'span12','placeholder'=>'เลือกใบรับรอง'));
+
+                  $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                            'name'=>'cerID',
+                            'id'=>'cerID',
+                            'value'=>'',                      
+                           'source'=>'js: function(request, response) {
+                                $.ajax({
+                                    url: "'.$this->createUrl('CerDoc/GetCerNo').'",
+                                    dataType: "json",
+                                    data: {
+                                        term: request.term,
+                                       
+                                    },
+                                    success: function (data) {
+                                            response(data);
+
+                                        //console.log("load source")
+                                    }
+                                })
+                             }',
+                            // additional javascript options for the autocomplete plugin
+                            'options'=>array(
+                                     'showAnim'=>'fold',
+                                     'minLength'=>0,
+                                     'select'=>'js: function(event, ui) {
+                                        
+                                     }',
+                                     //'close'=>'js:function(){$(this).val("");}',
+                                     
+                            ),
+                           'htmlOptions'=>array(
+                                'class'=>'span12'
+                            ),
+                                  
+                        ));
+
+                   ?>
+                </div>
+                <div class="span3">
+                  <?php  
+
+
+                       $this->widget('bootstrap.widgets.TbButton', array(
+                          'buttonType'=>'ajaxLink',
+                          
+                          'type'=>'success',
+                          'label'=>'เพิ่ม',
+                          'icon'=>'plus-sign',
+                          'url'=>array('addCer'),
+                          'htmlOptions'=>array('class'=>'span6','style'=>''),
+                          'ajaxOptions'=>array(
+                                //'url'=>$this->createUrl('create'),
+                                'type' => 'POST',
+                                    'data' => array('cerID' => 'js:$("#cerID").val()','id'=>$model->doc_id),
+                                    'success' => 'function(html){ $("#cerID").val(""); $.fn.yiiGridView.update("detail-grid"); }'
+                                  ) 
+                      )); 
+
+
+                  ?>
+                  </div>
+          </div> 
+           <div class="row-fluid">        
+          <?php        
+                  
+                $this->widget('bootstrap.widgets.TbGridView',array(
+                    'id'=>'detail-grid',
+                    
+                    'type'=>'bordered condensed',
+                    'dataProvider'=>InspecCer::model()->searchByInspecID($model->doc_id),
+                    //'filter'=>$model,
+                    'selectableRows' => 2,
+                    'enableSorting' => false,
+                    'rowCssClassExpression'=>'"tr_white"',
+
+                    // 'template'=>"{summary}{items}{pager}",
+                    'htmlOptions'=>array('style'=>'padding-top:0px;'),
+                    'enablePagination' => true,
+                    'summaryText'=>'',//'Displaying {start}-{end} of {count} results.',
+                    'columns'=>array(
+                            'No.'=>array(
+                                'header'=>'ลำดับ',
+                                'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),                            
+                                'htmlOptions'=>array(
+                                    'style'=>'text-align:center'
+
+                                ),
+                                'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
+                              ),
+                            'cer_id'=>array(
+                                // 'header'=>'', 
+                                
+                                'name' => 'cer_id',
+
+                                'headerHtmlOptions' => array('style' => 'width:80%;text-align:center;background-color: #eeeeee'),                           
+                                //'headerHtmlOptions' => array('style' => 'width: 110px'),
+                                'htmlOptions'=>array(
+                                                    'style'=>'text-align:left'
+
+                                )
+                            ),
+                            
+                            
+                            array(
+                                'class'=>'bootstrap.widgets.TbButtonColumn',
+                                'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),
+                                'template' => '{delete}',
+                                // 'deleteConfirmation'=>'js:bootbox.confirm("Are you sure to want to delete")',
+                                'buttons'=>array(
+                                        'delete'=>array(
+                                            'url'=>'Yii::app()->createUrl("inspecDoc/deleteInspecCer", array("id"=>$data->id))',    
+
+                                        )
+                                        
+                                    )
+
+                                
+                            ),
+                        )
+
+                    ));
+
+             ?>
+            </div>
+           
+        </fieldset>
+
 
 
 

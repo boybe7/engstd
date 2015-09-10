@@ -27,7 +27,7 @@ class InspecCer extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('inspec_id, cer_id', 'required'),
-			array('inspec_id, cer_id', 'numerical', 'integerOnly'=>true),
+	
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, inspec_id, cer_id', 'safe', 'on'=>'search'),
@@ -53,7 +53,7 @@ class InspecCer extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'inspec_id' => 'Inspec',
-			'cer_id' => 'Cer',
+			'cer_id' => 'เลขที่ใบรับรอง',
 		);
 	}
 
@@ -69,14 +69,14 @@ class InspecCer extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
-	public function search()
+	public function searchByInspecID($id)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('inspec_id',$this->inspec_id);
+		$criteria->compare('inspec_id',$id);
 		$criteria->compare('cer_id',$this->cer_id);
 
 		return new CActiveDataProvider($this, array(

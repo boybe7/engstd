@@ -37,6 +37,24 @@ $this->widget('bootstrap.widgets.TbButton', array(
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
     
+    'type'=>'info',
+    'label'=>'ผูกใบรับรอง',
+    'icon'=>'icon-file',
+    'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 0px 0px 10px;',
+        'onclick'=>'      
+    
+                       if($.fn.yiiGridView.getSelection("inspec-doc-grid").length==0)
+                       		js:bootbox.alert("กรุณาเลือกแถวข้อมูลที่ต้องการ?","ตกลง");
+                       else  
+                        window.location.href = "update/"+$.fn.yiiGridView.getSelection("inspec-doc-grid")
+                    ',
+        'class'=>'pull-right'
+    ),
+)); 
+
+$this->widget('bootstrap.widgets.TbButton', array(
+    'buttonType'=>'link',
+    
     'type'=>'danger',
     'label'=>'ลบข้อมูล',
     'icon'=>'minus-sign',
@@ -50,7 +68,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
                        if($.fn.yiiGridView.getSelection("inspec-doc-grid").length==0)
                        		js:bootbox.alert("กรุณาเลือกแถวข้อมูลที่ต้องการลบ?","ตกลง");
                        else  
-                          js:bootbox.confirm("คุณต้องการจะลบข้อมูล?","ยกเลิก","ตกลง",
+                          s:bootbox.confirm("คุณต้องการจะลบข้อมูล?","ยกเลิก","ตกลง",
 			                   function(confirmed){
 			         
                                 if(confirmed)
@@ -63,6 +81,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
 											$("#inspec-doc-grid").yiiGridView("update",{});
 										});
 			                  })',
+
         'class'=>'pull-right'
     ),
 )); 

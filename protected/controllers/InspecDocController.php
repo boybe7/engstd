@@ -31,7 +31,7 @@ class InspecDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','CancleSelected'),
+				'actions'=>array('create','update','DeleteSelected','CancleSelected','addCer','DeleteInspecCer'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -56,6 +56,29 @@ class InspecDocController extends Controller
                 $pjModel->save();
             }
         }    
+    }
+
+    public function actionAddCer()
+	{
+		$model=new InspecCer("search");
+		if(isset($_POST['cerID']) && $_POST['cerID']!="")
+		{
+			$model->cer_id =$_POST['cerID'];
+		    $model->inspec_id = $_POST['id'];
+		
+			if($model->save())
+				echo "OK";//$this->redirect(array('admin'));
+			else
+				print_r($model);
+		}
+
+	}
+
+	public function actionDeleteInspecCer($id)
+    {
+    	$model = InspecCer::model()->findByPk($id);
+		$model->delete();
+			 
     }
 
 	public function actionDeleteSelected()

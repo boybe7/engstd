@@ -259,7 +259,8 @@ class CerDocController extends Controller
                 //$data[]["id"]=$get->v_id;
                 $data[] = array(
                         'id'=>$model['cer_no'],
-                        'label'=>$model['cer_no'],
+                        'label'=>$model['cer_no']
+
                 );
 
             }
