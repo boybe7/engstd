@@ -1262,3 +1262,212 @@ Stack trace:
 REQUEST_URI=/engstd/report/R2Excel?date_start=07/09/2558date_end=16/09/2558
 in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (166)
 in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 10:30:11 [error] [php] Undefined index: date_end (C:\xampp\htdocs\engstd\protected\controllers\ReportController.php:167)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/R2Excel?date_start=date_end=
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (167)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 10:30:35 [error] [php] Undefined index: date_end (C:\xampp\htdocs\engstd\protected\controllers\ReportController.php:167)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/R2Excel?date_start=date_end=
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (167)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 10:31:12 [error] [php] Undefined index: date_end (C:\xampp\htdocs\engstd\protected\controllers\ReportController.php:167)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/R2Excel?date_start=date_end=
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (167)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 10:31:19 [error] [php] Undefined variable: monthBetween (C:\xampp\htdocs\engstd\protected\controllers\ReportController.php:315)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/R2Excel?date_start=&date_end=
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (315)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 11:15:08 [error] [php] Undefined offset: 2 (C:\xampp\htdocs\engstd\protected\views\report\_formR2_PDF.php:8)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3204): MYPDF->setHeader()
+#1 C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php(3116): MYPDF->startPage()
+#2 C:\xampp\htdocs\engstd\protected\views\report\_formR2_PDF.php(136): MYPDF->AddPage()
+#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require()
+#4 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): ReportController->renderInternal()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#6 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(157): ReportController->renderPartial()
+#7 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR2()
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#10 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#12 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/printR2?date_start=&date_end=
+in C:\xampp\htdocs\engstd\protected\views\report\_formR2_PDF.php (8)
+in C:\xampp\htdocs\engstd\protected\views\report\_formR2_PDF.php (40)
+in C:\xampp\htdocs\engstd\protected\tcpdf\tcpdf.php (3537)
+2015/09/15 11:54:07 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'quantit' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `quantit`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON p.prod_name=ct.detail
+WHERE cer_date BETWEEN "" AND ""
+GROUP BY `detail`.
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (190)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 11:54:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'quantit' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `quantit`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON p.prod_name=ct.detail
+WHERE cer_date BETWEEN "" AND ""
+GROUP BY `detail`' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(190): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionR2Excel()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R2Excel')
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/R2Excel')
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/engstd/report/R2Excel?date_start=&date_end=
+HTTP_REFERER=http://localhost:8080/engstd/report/r2
+---
+2015/09/15 13:29:10 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_code' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id.
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (355)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 13:29:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_code' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(355): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionR2Excel()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R2Excel')
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/R2Excel')
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/engstd/report/R2Excel?date_start=&date_end=
+HTTP_REFERER=http://localhost:8080/engstd/report/r2?cer_date_begin=&cer_date_end=&yt0=
+---
+2015/09/15 13:33:46 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_code' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id.
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (355)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 13:33:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_code' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(355): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionR2Excel()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R2Excel')
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/R2Excel')
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/engstd/report/R2Excel?date_start=&date_end=
+HTTP_REFERER=http://localhost:8080/engstd/report/r2?cer_date_begin=&cer_date_end=&yt0=
+---
+2015/09/15 13:33:46 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_code' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id.
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (355)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 13:33:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_code' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(355): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionR2Excel()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R2Excel')
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/R2Excel')
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/engstd/report/R2Excel?date_start=&date_end=
+HTTP_REFERER=http://localhost:8080/engstd/report/r2?cer_date_begin=&cer_date_end=&yt0=
+---
+2015/09/15 13:33:49 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_code' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id.
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (355)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 13:33:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_code' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `prod_code`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(355): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionR2Excel()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R2Excel')
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/R2Excel')
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/engstd/report/R2Excel?date_start=&date_end=
+HTTP_REFERER=http://localhost:8080/engstd/report/r2?cer_date_begin=&cer_date_end=&yt0=
+---
+2015/09/15 13:34:00 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_unit' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id.
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (355)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/15 13:34:00 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'prod_unit' in 'field list'. The SQL statement executed was: SELECT `vend_id`, `cer_no`, `running_no`, `cer_date`, `cer_oper_date`, `contract_no`, `detail`, `ct`.`prod_size` AS `size`, `serialno`, `quantity`, `prod_unit`, `cer_name`, `dept_id`
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(355): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionR2Excel()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('R2Excel')
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/R2Excel')
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/engstd/report/R2Excel?date_start=&date_end=
+HTTP_REFERER=http://localhost:8080/engstd/report/r2?cer_date_begin=&cer_date_end=&yt0=
+---

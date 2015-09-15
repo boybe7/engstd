@@ -165,6 +165,21 @@ class ReportController extends Controller
 
     	$date_start = $_GET["date_start"];
         $date_end   = $_GET["date_end"];
+
+        $str_date = explode("/", $date_start);
+		if(count($str_date)>1)
+		    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+
+		$str_date = explode("/", $date_end);
+		if(count($str_date)>1)
+		    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+
+		if(empty($date_end))
+			$date_end = $date_start;
+		if(empty($date_start))
+			$date_start = $date_end;
+
+
 	
 		Yii::import('ext.phpexcel.XPHPExcel');    
 		$objPHPExcel= XPHPExcel::createPHPExcel();
@@ -174,7 +189,7 @@ class ReportController extends Controller
 			        array(
 			            'font'  => array(
 			            'name'  => 'TH SarabunPSK', 
-			            'size'  => 18,   
+			            'size'  => 12,   
 			            'bold'  => true,           
 			            'color' => array(
 			            	'rgb'   => '000000'
@@ -187,7 +202,7 @@ class ReportController extends Controller
 			        array(
 			            'font'  => array(
 			            'name'  => 'TH SarabunPSK', 
-			            'size'  => 16,   
+			            'size'  => 12,   
 			             'bold'  => true,              
 			            'color' => array(
 			            'rgb'   => '000000'
@@ -201,7 +216,7 @@ class ReportController extends Controller
 			        array(
 			            'font'  => array(
 			            'name'  => 'TH SarabunPSK', 
-			            'size'  => 16,   
+			            'size'  => 12,   
 			             'bold'  => true,              
 			            'color' => array(
 			            'rgb'   => '000000'
@@ -238,7 +253,7 @@ class ReportController extends Controller
 			        array(
 			            'font'  => array(
 			            'name'  => 'TH SarabunPSK', 
-			            'size'  => 16,   
+			            'size'  => 12,   
 			                          
 			            'color' => array(
 			            'rgb'   => '000000'
@@ -260,7 +275,7 @@ class ReportController extends Controller
 			        array(
 			            'font'  => array(
 			            'name'  => 'TH SarabunPSK', 
-			            'size'  => 16,   
+			            'size'  => 12,   
 			                          
 			            'color' => array(
 			            'rgb'   => '000000'
@@ -283,7 +298,7 @@ class ReportController extends Controller
 			        array(
 			            'font'  => array(
 			            'name'  => 'TH SarabunPSK', 
-			            'size'  => 16,   
+			            'size'  => 12,   
 			                          
 			            'color' => array(
 			            'rgb'   => '000000'
@@ -300,30 +315,91 @@ class ReportController extends Controller
 				$sheet = 0;
 			    $objPHPExcel->createSheet(0);
 				$objPHPExcel->setActiveSheetIndex($sheet)->setTitle("ใบรับรอง");
-				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('A')->setWidth(10);
-				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('B')->setWidth(50);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('A')->setWidth(50);
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('B')->setWidth(20);	
 				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('C')->setWidth(20);	
-				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('D')->setWidth(20);	
-				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('E')->setWidth(20);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('D')->setWidth(30);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('E')->setWidth(30);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('F')->setWidth(20);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('G')->setWidth(20);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('H')->setWidth(50);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('I')->setWidth(20);
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('J')->setWidth(20);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('K')->setWidth(20);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('L')->setWidth(20);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('M')->setWidth(30);
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('N')->setWidth(20);
 						   	      
 
-				$objPHPExcel->setActiveSheetIndex($sheet)->mergeCells("A1:E1");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A1', "ฝ่ายบริการวิศวกรรม การไฟฟ้าส่วนภูมิภาค");
-				$objPHPExcel->setActiveSheetIndex($sheet)->mergeCells('A2:E2');
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A2', "งบกำไรขาดทุน");
-				$objPHPExcel->setActiveSheetIndex($sheet)->mergeCells('A3:E3');
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A3', "ประจำเดือน ".$monthBetween);
-				$objPHPExcel->setActiveSheetIndex($sheet)->setSharedStyle($header, 'A1:E3');
-				$objPHPExcel->setActiveSheetIndex($sheet)->getStyle('A1:E3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+				//$objPHPExcel->setActiveSheetIndex($sheet)->mergeCells("A1:E1");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A1', "ผู้ผลิต/ผู้จัดส่ง");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('B1', "เลขที่");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('C1', "Running No.");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('D1', "วันที่ดำเนินการ");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('E1', "วันตรวจโรงงาน");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('F1', "สัญญา");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('G1', "รหัสท่อ/อุปกรณ์");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('H1', "รายละเอียดท่อ/อุปกรณ์");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('I1', "ขนาด");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('J1', "Serial No.");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('K1', "ปริมาณ");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('L1', "หน่วยนับ");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('M1', "ผู้ตรวจโรงงาน");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('N1', "หน่วยงานต้นเรื่อง");
 
-				//table header
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('D4', "จำนวนเงิน (บาท)");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('E4', "หมายเหตุ");
 
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A5', "รายได้ :");
+				//$objPHPExcel->setActiveSheetIndex($sheet)->setSharedStyle($header, 'A1:N1');
+				//$objPHPExcel->setActiveSheetIndex($sheet)->getStyle('A1:E3')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
-				// $row = 6;
-			
+				$row = 2;
+		
+		if(empty($date_end) && empty($date_start))
+		{
+				$models = Yii::app()->db->createCommand()
+					->select('vend_id,cer_no,running_no,cer_date,cer_oper_date,contract_no,detail,ct.prod_size as size,serialno,quantity,cer_name,dept_id')
+					->from('c_cer_doc cd')	
+					->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+         			//->join('m_product p', 'p.prod_name=ct.detail')
+					//->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')				                   
+					->queryAll();
+		}	
+		else 
+		{
+
+
+			$models = Yii::app()->db->createCommand()
+					->select('vend_id,cer_no,running_no,cer_date,cer_oper_date,contract_no,detail,ct.prod_size as size,serialno,quantity,cer_name,dept_id')
+					->from('c_cer_doc cd')	
+					->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+         			//->join('m_product p', 'p.prod_name=ct.detail')
+					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')				                   
+					->queryAll();
+		}			
+		foreach ($models as $key => $model) {
+
+			   $m = Yii::app()->db->createCommand()
+					->select('prod_code,prod_unit')
+					->from('m_product')	
+					->where('prod_name="'.$model['detail'].'"')				                   
+					->queryAll();
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A'.$row, $model['vend_id']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('B'.$row, $model['cer_no']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('C'.$row, $model['running_no']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('D'.$row, $model['cer_date']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('E'.$row, $model['cer_oper_date']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('F'.$row, $model['contract_no']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('G'.$row, $m[0]['prod_code']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('H'.$row, $model['detail']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('I'.$row, $model['size']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('J'.$row, $model['serialno']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('K'.$row, $model['quantity']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('L'.$row, $m[0]['prod_unit']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('M'.$row, $model['cer_name']);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('N'.$row, $model['dept_id']);
+
+				$row++;
+		
+		}			
 
 				// $objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('B'.$row,"รายได้จากกองบริการวิศวกรรมระบบส่ง");
 				// $objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('C'.$row,number_format($tsd_sum,2));

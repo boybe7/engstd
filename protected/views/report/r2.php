@@ -228,7 +228,7 @@ $("#printReport").click(function(e){
 Yii::app()->clientScript->registerScript('exportExcel', '
 $("#exportExcel").click(function(e){
     e.preventDefault();
-    window.location.href = "R2Excel?date_start="+$("#cer_date_begin").val()+"date_end="+$("#cer_date_end").val();
+    window.location.href = "R2Excel?date_start="+$("#cer_date_begin").val()+"&date_end="+$("#cer_date_end").val();
 
 
 

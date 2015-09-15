@@ -148,7 +148,7 @@ class VendorController extends Controller
     public function actionGetVendor(){
             $request=trim($_GET['term']);
                     
-            $models=Vendor::model()->findAll(array("condition"=>"name like '%$request%' OR code like '%$request%'"));
+            $models=Vendor::model()->findAll(array("condition"=>"name like '%$request%' OR code like '%$request%'",'order'=>'name'));
             $data=array();
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;
