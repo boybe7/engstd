@@ -6,7 +6,7 @@ class ReportController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
-	public $layout='//layouts/column2';
+	//public $layout='//layouts/column2';
 
 	public function actions()
 	{
@@ -53,8 +53,8 @@ class ReportController extends Controller
             'display' => 'block',
         ), false, true);
 	}
-        //-----------------------------
-    public function gridGetProd($data,$row){
+
+	public function gridGetProd($data,$row){
 
 	     $id = $data->prod_id;
 	     //do your stuff for finding the username or name with $user
@@ -71,6 +71,7 @@ class ReportController extends Controller
 
 		 return $m[0]['prot_name'];			
 	}
+        //-----------------------------
     public function actionR2()
 	{
 		$criteria = new CDbCriteria();
@@ -307,13 +308,13 @@ class ReportController extends Controller
 		
 
 		
-		$month_th = array("1" => "���Ҥ�", "2" => "����Ҿѹ��", "3" => "�չҤ�","4" => "����¹", "5" => "����Ҥ�", "6" => "�Զع�¹","7" => "�á�Ҥ�", "8" => "�ԧ�Ҥ�", "9" => "�ѹ��¹","10" => "���Ҥ�", "11" => "��Ȩԡ�¹", "12" => "�ѹ�Ҥ�");
+		$month_th = array("1" => "มกราคม", "2" => "กุมภาพันธ์", "3" => "มีนาคม","4" => "เมษายน", "5" => "พฤษภาคม", "6" => "มิถุนายน","7" => "กรกฎาคม", "8" => "สิงหาคม", "9" => "กันยายน","10" => "ตุลาคม", "11" => "พฤศจิกายน", "12" => "ธันวาคม");
 
 	
 
 				$sheet = 0;
 			    $objPHPExcel->createSheet(0);
-				$objPHPExcel->setActiveSheetIndex($sheet)->setTitle("��Ѻ�ͧ");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setTitle("ใบรับรอง");
 				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('A')->setWidth(50);
 				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('B')->setWidth(20);	
 				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('C')->setWidth(20);	
@@ -331,20 +332,20 @@ class ReportController extends Controller
 						   	      
 
 				//$objPHPExcel->setActiveSheetIndex($sheet)->mergeCells("A1:E1");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A1', "����Ե/���Ѵ��");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('B1', "�Ţ���");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A1', "ผู้ผลิต/ผู้จัดส่ง");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('B1', "เลขที่");
 				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('C1', "Running No.");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('D1', "�ѹ�����Թ���");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('E1', "�ѹ��Ǩ�ç�ҹ");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('F1', "�ѭ��");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('G1', "���ʷ��/�ػ�ó�");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('H1', "��������´���/�ػ�ó�");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('I1', "��Ҵ");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('D1', "วันที่ดำเนินการ");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('E1', "วันตรวจโรงงาน");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('F1', "สัญญา");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('G1', "รหัสท่อ/อุปกรณ์");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('H1', "รายละเอียดท่อ/อุปกรณ์");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('I1', "ขนาด");
 				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('J1', "Serial No.");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('K1', "����ҳ");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('L1', "˹��¹Ѻ");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('M1', "����Ǩ�ç�ҹ");
-				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('N1', "˹��§ҹ������ͧ");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('K1', "ปริมาณ");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('L1', "หน่วยนับ");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('M1', "ผู้ตรวจโรงงาน");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('N1', "หน่วยงานต้นเรื่อง");
 
 
 				//$objPHPExcel->setActiveSheetIndex($sheet)->setSharedStyle($header, 'A1:N1');
@@ -420,6 +421,7 @@ class ReportController extends Controller
 				Yii::app()->end(); 
     }    
 
+
         //-----------------------------
         public function actionR3()
 	{
@@ -466,7 +468,7 @@ class ReportController extends Controller
         {
         	
 	    
-	        $date_start = $_GET["date_start"];
+	          $date_start = $_GET["date_start"];
                 $date_end   = $_GET["date_end"];
 
 		$this->renderPartial('_formR4_PDF', array(
@@ -502,25 +504,6 @@ class ReportController extends Controller
             'display' => 'block',
         ), false, true);
 	}
-	public function actionPrintR5()
-        {
-
-
-	        $date_start = $_GET["date_start"];
-                $date_end   = $_GET["date_end"];
-
-		$this->renderPartial('_formR5_PDF', array(
-
-                'date_start'=>$date_start,
-                'date_end'=>$date_end,
-
-            //'model' => $model,
-            'display' => 'block',
-        ), false, true);
-
-
-        }
-
         //-----------------------------
         public function actionR6()
 	{
@@ -536,24 +519,10 @@ class ReportController extends Controller
                 $date_start = $_GET["date_start"];
                 $date_end   = $_GET["date_end"];
 
-                //$vend_id_all   = $_GET["vend_id_all"];
-                $vend_id_sta   = $_GET["vend_id_sta"];
-                $vend_id_end   = $_GET["vend_id_end"];
-
-                //$prot_id_all   = $_GET["prot_id_all"];
-                $prod_id_sta   = $_GET["prod_id_sta"];
-                $prod_id_end   = $_GET["prod_id_end"];
-
 		$this->renderPartial('_formR6', array(
 
                 'date_start'=>$date_start,
                 'date_end'=>$date_end,
-                //'vend_id_all'=>$vend_id_all,
-                'vend_id_sta'=>$vend_id_sta,
-                'vend_id_end'=>$vend_id_end,
-                //'prot_id_all'=>$prot_id_all,
-                'prod_id_sta'=>$prod_id_sta,
-                'prod_id_end'=>$prod_id_end,
 
             //'model' => $model,
             'display' => 'block',
@@ -619,6 +588,11 @@ class ReportController extends Controller
 
 	public function actionGenR9()
 	{
+
+		//$vid = $_GET["r9"];
+		//$modelV = Vendor::model()->findByPk($vid);
+
+		//$model = InspecDoc::model()->findAll(array('order'=>'', 'condition'=>'vend_id="'.$modelV->name.'"', 'params'=>array()));
                 $date_start = $_GET["date_start"];
                 $date_end   = $_GET["date_end"];
 
@@ -631,22 +605,6 @@ class ReportController extends Controller
             'display' => 'block',
         ), false, true);
 	}
-	public function actionPrintR9()
-        {
-
-
-	        $date_start = $_GET["date_start"];
-                $date_end   = $_GET["date_end"];
-
-		$this->renderPartial('_formR4_PDF', array(
-
-                'date_start'=>$date_start,
-                'date_end'=>$date_end,
-
-            //'model' => $model,
-            'display' => 'block',
-        ), false, true);
-        }
 
         //-----------------------------
         public function actionR10()

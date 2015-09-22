@@ -1471,3 +1471,14 @@ Stack trace:
 REQUEST_URI=/engstd/report/R2Excel?date_start=&date_end=
 HTTP_REFERER=http://localhost:8080/engstd/report/r2?cer_date_begin=&cer_date_end=&yt0=
 ---
+2015/09/22 10:45:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "printVendor" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('printVendor')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('printVendor')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/printVen...')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/report/printVendor
+HTTP_REFERER=http://localhost:8080/engstd/report/r5
+---

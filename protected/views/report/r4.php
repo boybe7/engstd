@@ -71,15 +71,7 @@ $this->breadcrumbs = array(
             ?>
         </div>
 
-
-
-
         <!--  แถว 2 //// -->
-
-
-
-
-
         <div class="span5 offset1">
 <?php
             $this->widget('bootstrap.widgets.TbButton', array(

@@ -113,7 +113,7 @@ $this->breadcrumbs=array(
                 $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link',
                     'type' => 'info',
-                    'label' => 'Print',
+                    'label' => '',
                     'icon' => 'print white',
                     'htmlOptions' => array(
                         'class' => 'span3',

@@ -2,19 +2,21 @@
 
 	$(function(){
         //autocomplete search on focus
-	    $("#prot_id,#prot_id2,#vend_id,#vend_id2").autocomplete({
+	    $("#prod_id,#prod_id2,#vend_id,#vend_id2").autocomplete({
 
                 minLength: 0
             }).bind('focus', function () {
                 $(this).autocomplete("search");
             });
-
+        /*
         //--------ผู้ผลิต/จัดส่งทั้งหมด------------
         $('#vend_id_all').click(function() {
             if($('#vend_id_all') .attr( 'checked' ) )
             {
                 $("#vend_id").prop('disabled', true);
                 $("#vend_id2").prop('disabled', true);
+                $("#vend_id").val("");
+                $("#vend_id2").val("");
             }
             else
             {
@@ -37,6 +39,7 @@
                 $("#prot_id2").prop('disabled', false);
             }
         });
+        */
   });
 
 
@@ -73,7 +76,7 @@ $this->breadcrumbs=array(
 <div class="well">
   <div class="row-fluid">
 
-    <div class="span2">
+    <div class="span3">
 			<?php
 
                                 echo CHtml::label('วันที่ออกใบรับรองเริ่มต้น','date_start');
@@ -98,7 +101,7 @@ $this->breadcrumbs=array(
 		      	?>
       </div>
 
-      <div class="span2 offset1">
+      <div class="span3 offset1">
 			<?php
 
                                 echo CHtml::label('วันที่ออกใบรับรองสิ้นสุด','date_end');
@@ -127,15 +130,8 @@ $this->breadcrumbs=array(
 <!--  แถว 2 //// -->
 
 <div class="row-fluid">
-        <div class="span3">
-        <?php
-                        echo CHtml::label('ผู้ผลิต/จัดส่งทั้งหมด','workcat');
-                        echo '<label class="checkbox span5">';
-                        echo '<input type="checkbox" id="vend_id_all" name="mm" value="mm">';
-                        echo '</label>';
-        ?>
-        </div>
-        <div class="span3">
+
+        <div class="span4">
 		<?php
 
 
@@ -182,14 +178,14 @@ $this->breadcrumbs=array(
                                      }',
                             ),
                            'htmlOptions'=>array(
-                                'class'=>'span13'
+                                'class'=>'span12'
                             ),
 
                         ));
 		?>
 
 	</div>
-	<div class="span3">
+	<div class="span4">
 		<?php
 
 //            $vendors = Vendor::model()->findAll();
@@ -244,15 +240,7 @@ $this->breadcrumbs=array(
 
 <div class="row-fluid">
 
-        <div class="span3">
-        <?php
-                        echo CHtml::label('ท่อ/อุปกรณ์ทั้งหมด','workcat');
-                        echo '<label class="checkbox span5">';
-                        echo '<input type="checkbox" id="prot_id_all" name="mm" value="mm">';
-                        echo '</label>';
-        ?>
-        </div>
-        <div class="span3">
+        <div class="span4">
 
                  <?php
 
@@ -275,13 +263,13 @@ $this->breadcrumbs=array(
 
                               echo CHtml::label('รหัสท่อ/อุปกรณ์เริ่มต้น','workcat');
                               $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                                            'name'=>'prot_id',
-                                            'id'=>'prot_id',
+                                            'name'=>'prod_id',
+                                            'id'=>'prod_id',
                                            // 'value'=>$model->prot_id,    //-----------------เปิดเปล่า-----
 
                                            'source'=>'js: function(request, response) {
                                                 $.ajax({
-                                                    url: "'.$this->createUrl('Prodtype/GetType').'",
+                                                    url: "'.$this->createUrl('Product/GetProduct').'",
                                                     dataType: "json",
                                                     data: {
                                                         term: request.term,
@@ -302,7 +290,7 @@ $this->breadcrumbs=array(
 
                                             ),
                                            'htmlOptions'=>array(
-                                                'class'=>'span13'
+                                                'class'=>'span12'
                                             ),
 
                                         ));
@@ -310,7 +298,7 @@ $this->breadcrumbs=array(
 
 	</div>
     
-	<div class="span3">
+	<div class="span4">
 		<?php
 //---------------------------------------------------------
 //            $vendors = Vendor::model()->findAll();
@@ -325,13 +313,13 @@ $this->breadcrumbs=array(
                               echo CHtml::label('รหัสท่อ/อุปกรณ์สิ้นสุด','workcat');
 
                               $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                                            'name'=>'prot_id2',
-                                            'id'=>'prot_id2',
+                                            'name'=>'prod_id2',
+                                            'id'=>'prod_id2',
                                            // 'value'=>$model->prot_id,    //-----------------เปิดเปล่า-----
 
                                            'source'=>'js: function(request, response) {
                                                 $.ajax({
-                                                    url: "'.$this->createUrl('Prodtype/GetType').'",
+                                                    url: "'.$this->createUrl('Product/GetProduct').'",
                                                     dataType: "json",
                                                     data: {
                                                         term: request.term,
@@ -350,38 +338,55 @@ $this->breadcrumbs=array(
                                                      }',
                                             ),
                                            'htmlOptions'=>array(
-                                                'class'=>'span13'
+                                                'class'=>'span12'
                                             ),
                                         ));
 		?>
 
 	</div>
- </div>
 
 
+	<div class="span4">
+            <?php
+            $this->widget('bootstrap.widgets.TbButton', array(
+                  'buttonType'=>'link',
 
-<!--  แถว 4 //// -->
+                  'type'=>'inverse',
+                  'label'=>'view',
+                  'icon'=>'list-alt white',
 
-<div class="row-fluid">
+                  'htmlOptions'=>array(
+                    'class'=>'span4',
+                    'style'=>'margin:25px 10px 0px 0px;',
+                    'id'=>'gentReport'
+                  ),
+              ));
+            ?>
+            <?php
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'success',
+                'label' => 'Excel',
+                'icon' => 'excel',
+                'htmlOptions' => array(
+                    'class' => 'span4',
+                    'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
+                    'id' => 'exportExcel'
+                ),
+            ));
 
-
-
-	<div class="span3">
-      <?php
-        $this->widget('bootstrap.widgets.TbButton', array(
-              'buttonType'=>'link',
-
-              'type'=>'inverse',
-              'label'=>'view',
-              'icon'=>'list-alt white',
-
-              'htmlOptions'=>array(
-                'class'=>'span4',
-                'style'=>'margin:25px 10px 0px 0px;',
-                'id'=>'gentReport'
-              ),
-          ));
-      ?>
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'info',
+                'label' => '',
+                'icon' => 'print white',
+                'htmlOptions' => array(
+                    'class' => 'span3',
+                    'style' => 'margin:25px 0px 0px 0px;',
+                    'id' => 'printReport'
+                ),
+            ));
+            ?>
 
     </div>
   </div>
@@ -403,8 +408,8 @@ $("#gentReport").click(function(e){
         $.ajax({
             url: "GenR6",
             cache:false,
-            data: {vendor: $("#vendor").val(),monthEnd:$("#monthEnd").val(),yearEnd:$("#yearEnd").val(),workcat:$("#workcat").val()
-              },
+                       data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),vend_id_sta:$("#vend_id").val(),vend_id_end:$("#vend_id2").val(),prod_id_sta:$("#prod_id").val(),prod_id_end:$("#prod_id2").val()
+            },
             success:function(response){
                
                $("#printcontent").html(response);                 
