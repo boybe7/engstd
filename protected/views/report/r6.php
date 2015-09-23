@@ -234,116 +234,6 @@ $this->breadcrumbs=array(
 		?>
 
 	</div>
- </div>
-
-<!--  แถว 3 //// -->
-
-<div class="row-fluid">
-
-        <div class="span4">
-
-                 <?php
-
-//--------------------------------------------------
-//
-//
-//
-//            echo CHtml::label('รหัสท่อ/อุปกรณ์เริ่มต้น','workcat');
-//            echo CHtml::dropDownList('workcat', '',
-//                            array(0=>"ผู้ผลิต",1=>"ผู้จัดส่ง"),array('empty' => 'ทั้งหมด','class'=>'span12'
-//                            	,
-//                              	'ajax' => array(
-//  							                'type' => 'POST', //request type
-//  							                'url' => CController::createUrl('ajax/getVendor'), //url to call.
-//  							                'update' => '#vendor', //selector to update
-//  							                'data' => array('workcat_id' => 'js:this.value'),
-//  							                 )
-//                            	));
-//--------------------------------------------------
-
-                              echo CHtml::label('รหัสท่อ/อุปกรณ์เริ่มต้น','workcat');
-                              $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                                            'name'=>'prod_id',
-                                            'id'=>'prod_id',
-                                           // 'value'=>$model->prot_id,    //-----------------เปิดเปล่า-----
-
-                                           'source'=>'js: function(request, response) {
-                                                $.ajax({
-                                                    url: "'.$this->createUrl('Product/GetProduct').'",
-                                                    dataType: "json",
-                                                    data: {
-                                                        term: request.term,
-
-                                                    },
-                                                    success: function (data) {
-                                                            response(data);
-
-                                                    }
-                                                })
-                                             }',
-                                            'options'=>array(
-                                                     'showAnim'=>'fold',
-                                                     'minLength'=>0,
-                                                     'select'=>'js: function(event, ui) {
-
-                                                     }',
-
-                                            ),
-                                           'htmlOptions'=>array(
-                                                'class'=>'span12'
-                                            ),
-
-                                        ));
-                   ?>
-
-	</div>
-    
-	<div class="span4">
-		<?php
-//---------------------------------------------------------
-//            $vendors = Vendor::model()->findAll();
-//            $list = CHtml::listData($vendors,'id','name');
-//
-//            echo CHtml::label('รหัสท่อ/อุปกรณ์สิ้นสุด','vendor');
-//            echo CHtml::dropDownList('vendor', '',
-//                            $list,array('empty' => 'ทั้งหมด','class'=>'span12'
-//                              ));
-//---------------------------------------------------------
-                
-                              echo CHtml::label('รหัสท่อ/อุปกรณ์สิ้นสุด','workcat');
-
-                              $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                                            'name'=>'prod_id2',
-                                            'id'=>'prod_id2',
-                                           // 'value'=>$model->prot_id,    //-----------------เปิดเปล่า-----
-
-                                           'source'=>'js: function(request, response) {
-                                                $.ajax({
-                                                    url: "'.$this->createUrl('Product/GetProduct').'",
-                                                    dataType: "json",
-                                                    data: {
-                                                        term: request.term,
-
-                                                    },
-                                                    success: function (data) {
-                                                            response(data);
-                                                    }
-                                                })
-                                             }',
-                                            'options'=>array(
-                                                     'showAnim'=>'fold',
-                                                     'minLength'=>0,
-                                                     'select'=>'js: function(event, ui) {
-
-                                                     }',
-                                            ),
-                                           'htmlOptions'=>array(
-                                                'class'=>'span12'
-                                            ),
-                                        ));
-		?>
-
-	</div>
 
 
 	<div class="span4">
@@ -363,17 +253,17 @@ $this->breadcrumbs=array(
               ));
             ?>
             <?php
-            $this->widget('bootstrap.widgets.TbButton', array(
-                'buttonType' => 'link',
-                'type' => 'success',
-                'label' => 'Excel',
-                'icon' => 'excel',
-                'htmlOptions' => array(
-                    'class' => 'span4',
-                    'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
-                    'id' => 'exportExcel'
-                ),
-            ));
+            // $this->widget('bootstrap.widgets.TbButton', array(
+            //     'buttonType' => 'link',
+            //     'type' => 'success',
+            //     'label' => 'Excel',
+            //     'icon' => 'excel',
+            //     'htmlOptions' => array(
+            //         'class' => 'span4',
+            //         'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
+            //         'id' => 'exportExcel'
+            //     ),
+            // ));
 
             $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType' => 'link',
@@ -408,7 +298,7 @@ $("#gentReport").click(function(e){
         $.ajax({
             url: "GenR6",
             cache:false,
-                       data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),vend_id_sta:$("#vend_id").val(),vend_id_end:$("#vend_id2").val(),prod_id_sta:$("#prod_id").val(),prod_id_end:$("#prod_id2").val()
+                       data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),vend_id_sta:$("#vend_id").val(),vend_id_end:$("#vend_id2").val()
             },
             success:function(response){
                
@@ -425,11 +315,10 @@ $("#printReport").click(function(e){
     e.preventDefault();
 
     $.ajax({
-        url: "printVendor",
-        data: {fiscalyear:$("#fiscalyear").val(),project: $("#project").val(),monthEnd:$("#monthEnd").val(),yearEnd:$("#yearEnd").val(),workcat:$("#workcat").val()
-              },
+        url: "printR6",
+        data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),vend_id_sta:$("#vend_id").val(),vend_id_end:$("#vend_id2").val()},
         success:function(response){
-            window.open("../tempReport.pdf", "_blank", "fullscreen=yes");              
+            window.open("../print/tempReport.pdf", "_blank", "fullscreen=yes");              
             
         }
 

@@ -1482,3 +1482,324 @@ Stack trace:
 REQUEST_URI=/engstd/report/printVendor
 HTTP_REFERER=http://localhost:8080/engstd/report/r5
 ---
+2015/09/23 10:44:47 [error] [php] Undefined index: prod_id_sta (C:\xampp\htdocs\engstd\protected\controllers\ReportController.php:544)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442979886954
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (544)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 10:45:54 [error] [php] Undefined variable: prod_id_sta (C:\xampp\htdocs\engstd\protected\views\report\_formR6.php:46)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(560): ReportController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionGenR6()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=02%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442979954797
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6.php (46)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (560)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 10:46:02 [error] [php] Undefined variable: prod_id_sta (C:\xampp\htdocs\engstd\protected\views\report\_formR6.php:46)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(560): ReportController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionGenR6()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=02%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442979954797
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6.php (46)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (560)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 10:51:40 [error] [php] Undefined variable: models (C:\xampp\htdocs\engstd\protected\views\report\_formR6.php:178)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(560): ReportController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionGenR6()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=30%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442980300399
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6.php (178)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (560)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 11:55:16 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ct.prod_code' in 'group statement'. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cer_date BETWEEN "2558-09-01" AND "2558-09-23" and cd.vend_id="บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด" 
+GROUP BY `ct`.`prod_code`.
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6.php (122)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (560)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 11:55:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ct.prod_code' in 'group statement'. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cer_date BETWEEN "2558-09-01" AND "2558-09-23" and cd.vend_id="บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด" 
+GROUP BY `ct`.`prod_code`' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\views\report\_formR6.php(122): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(560): CController->renderPartial('_formR6', Array, false, true)
+#6 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionGenR6()
+#7 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GenR6')
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/GenR6')
+#12 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442984115837
+HTTP_REFERER=http://localhost:8080/engstd/report/r6
+---
+2015/09/23 12:03:01 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`.
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6.php (122)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (560)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 12:03:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\views\report\_formR6.php(122): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(560): CController->renderPartial('_formR6', Array, false, true)
+#6 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionGenR6()
+#7 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GenR6')
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/GenR6')
+#12 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442984581060
+HTTP_REFERER=http://localhost:8080/engstd/report/r6
+---
+2015/09/23 12:03:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`.
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6.php (122)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (560)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 12:03:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\views\report\_formR6.php(122): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(560): CController->renderPartial('_formR6', Array, false, true)
+#6 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionGenR6()
+#7 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GenR6')
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/GenR6')
+#12 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442984584574
+HTTP_REFERER=http://localhost:8080/engstd/report/r6
+---
+2015/09/23 12:03:10 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`.
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6.php (122)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (560)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 12:03:10 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\views\report\_formR6.php(122): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(560): CController->renderPartial('_formR6', Array, false, true)
+#6 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionGenR6()
+#7 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GenR6')
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/GenR6')
+#12 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442984590646
+HTTP_REFERER=http://localhost:8080/engstd/report/r6
+---
+2015/09/23 12:03:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`.
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6.php (122)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (560)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 12:03:23 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\views\report\_formR6.php(122): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(560): CController->renderPartial('_formR6', Array, false, true)
+#6 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionGenR6()
+#7 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GenR6')
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/GenR6')
+#12 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442984602838
+HTTP_REFERER=http://localhost:8080/engstd/report/r6
+---
+2015/09/23 12:03:44 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`.
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6.php (122)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (560)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 12:03:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand ล้มเหลวในการดำเนินการเรียกลักษณะของ SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'อุตสาหกรรมท่อสตีมเหล็กกล้า ' at line 5. The SQL statement executed was: SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit
+FROM `c_cer_doc` `cd`
+JOIN `c_cer_detail` `ct` ON cd.cer_id=ct.cer_id
+JOIN `m_product` `p` ON  p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") 
+WHERE cd.vend_id=บริษัท อุตสาหกรรมท่อสตีมเหล็กกล้า จำกัด AND cer_date BETWEEN "2558-09-01" AND "2558-09-23"
+GROUP BY `prod_code`' in C:\xampp\htdocs\engstd\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\engstd\protected\views\report\_formR6.php(122): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\engstd\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(560): CController->renderPartial('_formR6', Array, false, true)
+#6 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionGenR6()
+#7 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('GenR6')
+#11 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/GenR6')
+#12 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/engstd/report/GenR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=&_=1442984602838
+---
+2015/09/23 14:20:56 [warning] [application] Failed to set unsafe attribute "dept_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (417)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 14:20:56 [warning] [application] Failed to set unsafe attribute "contract_no" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (417)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 14:20:56 [warning] [application] Failed to set unsafe attribute "contractor" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (417)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 14:20:56 [warning] [application] Failed to set unsafe attribute "supp_id" of "CerDoc".
+in C:\xampp\htdocs\engstd\protected\controllers\CerDocController.php (417)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 15:49:23 [error] [exception.CException] exception 'CException' with message 'ReportController ไม่สามารถค้นหา "_formR6_PDF" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(590): CController->renderPartial('_formR6_PDF', Array, false, true)
+#1 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR6()
+#2 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('printR6')
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/printR6')
+#7 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/engstd/report/printR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=
+HTTP_REFERER=http://localhost:8080/engstd/report/r6
+---
+2015/09/23 16:27:17 [error] [php] Undefined index: prod_code (C:\xampp\htdocs\engstd\protected\views\report\_formR6_PDF.php:203)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(590): ReportController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR6()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/printR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6_PDF.php (203)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (590)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/23 17:04:12 [error] [php] Undefined variable: thai_mm (C:\xampp\htdocs\engstd\protected\views\report\_formR6_PDF.php:221)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportController.php(590): ReportController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportController->actionPrintR6()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/report/printR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F2558&vend_id_sta=&vend_id_end=
+in C:\xampp\htdocs\engstd\protected\views\report\_formR6_PDF.php (221)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (590)
+in C:\xampp\htdocs\engstd\index.php (13)
