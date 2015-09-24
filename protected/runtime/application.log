@@ -1803,3 +1803,53 @@ REQUEST_URI=/engstd/report/printR6?date_start=01%2F09%2F2558&date_end=23%2F09%2F
 in C:\xampp\htdocs\engstd\protected\views\report\_formR6_PDF.php (221)
 in C:\xampp\htdocs\engstd\protected\controllers\ReportController.php (590)
 in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/24 21:55:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report/r7".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r7')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/report/r7
+HTTP_REFERER=http://localhost/engstd/site/index
+---
+2015/09/24 21:55:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report/r7".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r7')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/report/r7
+HTTP_REFERER=http://localhost/engstd/site/index
+---
+2015/09/24 22:00:40 [error] [php] Undefined index: vend_id (C:\xampp\htdocs\engstd\protected\views\reportb\_formR7_PDF.php:165)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportBController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php(507): ReportBController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportBController->actionPrintR7()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportBController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportBController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportBController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/reportb/printR7?date_start=01%2F09%2F2558&date_end=22%2F09%2F2558&vend_id_sta=&vend_id_end=
+in C:\xampp\htdocs\engstd\protected\views\reportb\_formR7_PDF.php (165)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php (507)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/24 22:00:54 [error] [php] Undefined index: vend_id (C:\xampp\htdocs\engstd\protected\views\reportb\_formR7_PDF.php:165)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportBController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php(507): ReportBController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportBController->actionPrintR7()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportBController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportBController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportBController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/reportb/printR7?date_start=01%2F09%2F2558&date_end=22%2F09%2F2558&vend_id_sta=&vend_id_end=
+in C:\xampp\htdocs\engstd\protected\views\reportb\_formR7_PDF.php (165)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php (507)
+in C:\xampp\htdocs\engstd\index.php (13)

@@ -37,7 +37,7 @@ function renderDate($value)
 		        $this->SetFont('thsarabun', 'B', 20);
 		        // Title
 		        //$this->Cell(0, 5, 'รายงานสรุปยอดรับรองท่อ/อุปกรณ์', 0, false, 'C', 0, '', 0, false, 'M', 'M');
-		        $this->writeHTMLCell(145, 20, 40, 10, 'รายงานผลรวมการผลิตแยกตามผู้ผลิต<br>การประปานครหลวง<div style="font-size:16px;">วันที่ออกใบรับรอง '.renderDate($this->date_start)." ถึง ".renderDate($this->date_end)."</div>", 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(145, 20, 40, 10, 'รายงานผลรวมการผลิตแยกตามคู่สัญญา<br>การประปานครหลวง<div style="font-size:16px;">วันที่ออกใบรับรอง '.renderDate($this->date_start)." ถึง ".renderDate($this->date_end)."</div>", 0, 1, false, true, 'C', false);
 		        $image_file = $_SERVER['DOCUMENT_ROOT'].'/engstd/images/mwa_logo.png';
 		        $this->Image($image_file, 180, 10, 15, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		    }   
@@ -86,23 +86,24 @@ function renderDate($value)
                     //---เลือก-----รหัสผู้ผลิต/จัดส่งเริ่มต้น
                     //echo"รหัสผู้ผลิต/จัดส่งเริ่มต้น----ไม่ว่าง----------<br>";
                     $models_m = Yii::app()->db->createCommand()
-                    ->select('v.code,cd.vend_id,cd.cer_id')
+                    ->select('v.code,cd.contractor,cd.cer_id')
                     ->from('c_cer_doc cd')
-                    ->join('vendor v', 'cd.vend_id=v.name')
-                    ->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND cd.vend_id BETWEEN "'.$vend_id_sta.'" AND "'.$vend_id_end.'"')
+                    ->join('contractor v', 'cd.contractor=v.name')
+                    ->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND cd.contractor BETWEEN "'.$vend_id_sta.'" AND "'.$vend_id_end.'"')
                     ->group('v.code')
                     ->queryAll();
 
                 }else{
                     //echo"รหัสผู้ผลิต/จัดส่งเริ่มต้น----ว่าง------------<br>";
                     $models_m = Yii::app()->db->createCommand()
-                    ->select('v.code,cd.vend_id,cd.cer_id')
+                    ->select('v.code,cd.contractor,cd.cer_id')
                     ->from('c_cer_doc cd')
-                    ->join('vendor v', 'cd.vend_id=v.name')
+                    ->join('contractor v', 'cd.contractor=v.name')
                     ->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
                     ->group('v.code')
                     ->queryAll();
                 }
+
 			
 
 		$pdf->setDate($date_start,$date_end);
@@ -161,17 +162,19 @@ function renderDate($value)
 		$pdf->SetFont('thsarabun', '', 12, '', true);
 		
 		foreach ($models_m as $key => $model_m) {
-                        $vend_id=$model_m["vend_id"];
-
+                        $vend_id=$model_m["contractor"];
+						$cer_id=$model_m["cer_id"];
+                       
 
                         $models = Yii::app()->db->createCommand()
                                     ->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit')
                                     ->from('c_cer_doc cd')
                                     ->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
                                     ->join('m_product p', 'p.prod_name = ct.detail AND p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") ')
-                                    ->where('cd.vend_id="'.$vend_id.'" AND cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
+                                    ->where('cd.cer_id="'.$cer_id.'" AND cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
                                     ->group('prod_code')
                                     ->queryAll();
+
 
 
 						$html .= '<table>';
@@ -212,7 +215,7 @@ function renderDate($value)
 		//$html .= '<div align="center" style="font-size:25px;font-weight:bold">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ </div>';
 		//$html .= '<div align="center" style="font-size:16px;">แนบท้ายหนังสือกมว.ที่.................. </div>';
         
- 		$html .="รายงานผลรวมการผลิตแยกตามผู้ผลิตจำนวน&nbsp;".count($models_m)."&nbsp;รายการ";
+ 		$html .="รายงานผลรวมการผลิตแยกตามคู่สัญญาจำนวน&nbsp;".count($models_m)."&nbsp;รายการ";
 			$t= date('H:i:s', time()); // 10:00:00
 			$m_d = date("d");
 			$m_m = date("m")-1;

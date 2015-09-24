@@ -193,7 +193,7 @@ $vend_id_end = $vend_id_end!="" ? $vend_id_end : $vend_id_sta;
 
 
 <?php
-echo"รายงานผลรวมการผลิตแยกตามผู้ผลิตจำนวน&nbsp;".count($models_m)."&nbsp;รายการ";
+echo"รายงานผลรวมการผลิตแยกตามคู่สัญญาจำนวน&nbsp;".count($models_m)."&nbsp;รายการ";
 $t= date('H:i:s', time()); // 10:00:00
 $m_d = date("d");
 $m_m = date("m")-1;
