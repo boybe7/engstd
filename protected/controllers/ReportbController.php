@@ -1,7 +1,7 @@
 <?php
 
 
-class ReportController extends Controller
+class ReportBController extends Controller
 {
 	/**
 	 * Declares class-based actions.
@@ -26,33 +26,7 @@ class ReportController extends Controller
         
        
 
-	/**
-	 * Displays the progress page
-	 */
-        public function actionR1()
-	{
-		$this->render('r1');
-	}
 
-	public function actionGenR1()
-	{
-
-		//$vid = $_GET["r1"];
-		//$modelV = Vendor::model()->findByPk($vid);
-
-		//$model = InspecDoc::model()->findAll(array('order'=>'', 'condition'=>'vend_id="'.$modelV->name.'"', 'params'=>array()));
-                $date_start = $_GET["date_start"];
-                $date_end   = $_GET["date_end"];
-
-		$this->renderPartial('_formR1', array(
-
-                'date_start'=>$date_start,
-                'date_end'=>$date_end,
-
-            //'model' => $model,
-            'display' => 'block',
-        ), false, true);
-	}
         //-----------------------------
     public function gridGetProd($data,$row){
 
@@ -420,109 +394,9 @@ class ReportController extends Controller
 				Yii::app()->end(); 
     }    
 
-        //-----------------------------
-        public function actionR3()
-	{
-		$this->render('r3');
-	}
-
-	public function actionGenR3()
-	{
-
-		$vid = $_GET["r3"];
-		$modelV = Vendor::model()->findByPk($vid);
-
-		$model = InspecDoc::model()->findAll(array('order'=>'', 'condition'=>'vend_id="'.$modelV->name.'"', 'params'=>array()));
-
-		$this->renderPartial('_formR3', array(
-            'model' => $model,
-            'display' => 'block',
-        ), false, true);
-	}
-
-
-        //-----------------------------
-        public function actionR4()
-	{
-		$this->render('r4');
-	}
-
-	public function actionGenR4()
-	{
-                $date_start = $_GET["date_start"];
-                $date_end   = $_GET["date_end"];
-
-		$this->renderPartial('_formR4', array(
-
-                'date_start'=>$date_start,
-                'date_end'=>$date_end,
-
-            //'model' => $model,
-            'display' => 'block',
-        ), false, true);
-	}
-
-	public function actionPrintR4()
-        {
-        	
-	    
-	        $date_start = $_GET["date_start"];
-                $date_end   = $_GET["date_end"];
-
-		$this->renderPartial('_formR4_PDF', array(
-
-                'date_start'=>$date_start,
-                'date_end'=>$date_end,
-
-            //'model' => $model,
-            'display' => 'block',
-        ), false, true);
-
-        
-        }
-
-
-        //-----------------------------
-        public function actionR5()
-	{
-		$this->render('r5');
-	}
-
-	public function actionGenR5()
-	{
-                $date_start = $_GET["date_start"];
-                $date_end   = $_GET["date_end"];
-
-		$this->renderPartial('_formR5', array(
-
-                'date_start'=>$date_start,
-                'date_end'=>$date_end,
-
-            //'model' => $model,
-            'display' => 'block',
-        ), false, true);
-	}
-	public function actionPrintR5()
-        {
-
-
-	        $date_start = $_GET["date_start"];
-                $date_end   = $_GET["date_end"];
-
-		$this->renderPartial('_formR5_PDF', array(
-
-                'date_start'=>$date_start,
-                'date_end'=>$date_end,
-
-            //'model' => $model,
-            'display' => 'block',
-        ), false, true);
-
-
-        }
-
-        //-----------------------------
-        public function actionR6()
+  
+    //-----------------------------
+    public function actionR6()
 	{
 		$this->render('r6');
 	}
@@ -592,31 +466,48 @@ class ReportController extends Controller
         
     }
         //-----------------------------
-        public function actionR7()
+    public function actionR7()
 	{
 		$this->render('r7');
 	}
 
 	public function actionGenR7()
 	{
+	    $date_start = $_GET["date_start"];
+        $date_end   = $_GET["date_end"];
+        $vend_id_sta   = $_GET["vend_id_sta"];
+        $vend_id_end   = $_GET["vend_id_end"];
 
-
-		//$vid = $_GET["r9"];
-		//$modelV = Vendor::model()->findByPk($vid);
-
-		//$model = InspecDoc::model()->findAll(array('order'=>'', 'condition'=>'vend_id="'.$modelV->name.'"', 'params'=>array()));
-                $date_start = $_GET["date_start"];
-                $date_end   = $_GET["date_end"];
 
 		$this->renderPartial('_formR7', array(
 
-                'date_start'=>$date_start,
-                'date_end'=>$date_end,
-
-            //'model' => $model,
+            'date_start'=>$date_start,
+            'date_end'=>$date_end,
+            'vend_id_sta'=>$vend_id_sta,
+            'vend_id_end'=>$vend_id_end,
             'display' => 'block',
         ), false, true);
 	}
+
+	public function actionPrintR7()
+    {
+        	
+	    $date_start = $_GET["date_start"];
+        $date_end   = $_GET["date_end"];
+        $vend_id_sta   = $_GET["vend_id_sta"];
+        $vend_id_end   = $_GET["vend_id_end"];
+
+		$this->renderPartial('_formR7_PDF', array(
+
+                'date_start'=>$date_start,
+                'date_end'=>$date_end,
+                'vend_id_sta'=>$vend_id_sta,
+                'vend_id_end'=>$vend_id_end,
+            'display' => 'block',
+        ), false, true);
+
+        
+    }
         //-----------------------------
         public function actionR8()
 	{

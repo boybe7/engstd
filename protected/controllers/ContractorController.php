@@ -58,7 +58,7 @@ class ContractorController extends Controller
 	public function actionGetContractor(){
             $request=trim($_GET['term']);
                     
-            $models=Contractor::model()->findAll(array("condition"=>"name like '%$request%' OR code like '%$request%' "));
+            $models=Contractor::model()->findAll(array("condition"=>"name like '%$request%' OR code like '%$request%' order by code"));
             $data=array();
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;
