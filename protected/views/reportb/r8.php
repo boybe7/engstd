@@ -298,7 +298,7 @@ $("#gentReport").click(function(e){
 
        
         $.ajax({
-            url: "GenR7",
+            url: "GenR8",
             cache:false,
                        data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),vend_id_sta:$("#vend_id").val(),vend_id_end:$("#vend_id2").val(),con_id:$("#con_id").val(),con_id2:$("#con_id2").val()
             },
@@ -317,7 +317,7 @@ $("#printReport").click(function(e){
     e.preventDefault();
 
     $.ajax({
-        url: "printR7",
+        url: "printR8",
         data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),vend_id_sta:$("#vend_id").val(),vend_id_end:$("#vend_id2").val(),con_id:$("#con_id").val(),con_id2:$("#con_id2").val()},
         success:function(response){
             window.open("../print/tempReport.pdf", "_blank", "fullscreen=yes");              

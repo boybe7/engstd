@@ -478,6 +478,11 @@ class ReportBController extends Controller
         $vend_id_sta   = $_GET["vend_id_sta"];
         $vend_id_end   = $_GET["vend_id_end"];
 
+        if($_GET["con_id"]=="")
+        	  $vend_id_sta = "";
+
+        if($_GET["con_id2"]=="")
+        	  $vend_id_end = "";	
 
 		$this->renderPartial('_formR7', array(
 
@@ -496,6 +501,12 @@ class ReportBController extends Controller
         $date_end   = $_GET["date_end"];
         $vend_id_sta   = $_GET["vend_id_sta"];
         $vend_id_end   = $_GET["vend_id_end"];
+
+         if($_GET["con_id"]=="")
+        	  $vend_id_sta = "";
+
+        if($_GET["con_id2"]=="")
+        	  $vend_id_end = "";	
 
 		$this->renderPartial('_formR7_PDF', array(
 

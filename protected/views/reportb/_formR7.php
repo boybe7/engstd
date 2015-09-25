@@ -77,7 +77,7 @@ $date_e = new DateTime($date_end);
 $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m')-1]."&nbsp;".($date_e->format('y'));
 
 //echo"เงื่อนไขรายงาน : วันที่ออกใบรับรองจาก&nbsp;".$date_st."&nbsp;ถึง&nbsp;".$date_en."<br><br>";
-
+//echo $vend_id_sta.":".$vend_id_end;
 $vend_id_sta = $vend_id_sta!="" ? $vend_id_sta : $vend_id_end;
 $vend_id_end = $vend_id_end!="" ? $vend_id_end : $vend_id_sta;
 
