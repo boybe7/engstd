@@ -81,7 +81,7 @@ class ContractController extends Controller
 	public function actionGetContract(){
             $request=trim($_GET['term']);
                     
-            $models=Contract::model()->findAll(array("condition"=>"con_number like '%$request%' "));
+            $models=Contract::model()->findAll(array("condition"=>"con_number like '%$request%' order by con_number"));
             $data=array();
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;

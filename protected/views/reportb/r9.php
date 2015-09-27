@@ -72,7 +72,7 @@ $this->breadcrumbs=array(
 <!-- <script type="text/javascript" src="/pea_track/themes/bootstrap/js/compatibility.js"></script> -->
 
 
-<h4>รายงานผลรวมการผลิตแยกตามเลขที่สัญญา</h4>
+<h4>รายงานสรุปท่อ/อุปกรณ์ประปาที่ผ่านการตรวจสอบคุณภาพ</h4>
 <div class="well">
   <div class="row-fluid">
 
@@ -125,95 +125,9 @@ $this->breadcrumbs=array(
 
 		      	?>
      </div>
-  </div>
+  
 
-<!--  แถว 2 //// -->
-
-<div class="row-fluid">
-
-        <div class="span4">
-           <input type="hidden" name="vend_id" id="vend_id" >
-           <input type="hidden" name="vend_id2" id="vend_id2" >
-		<?php
-
-
-            echo CHtml::label('รหัสคู่สัญญาเริ่มต้น','workcat');
-  			    $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                            'name'=>'con_id',
-                            'id'=>'con_id',
-                            //'value'=>$model->vend_id,
-                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
-                            'source'=>'js: function(request, response) {
-                                $.ajax({
-                                    url: "'.$this->createUrl('Contract/GetContract').'",
-                                    dataType: "json",
-                                    data: {
-                                        term: request.term,
-
-                                    },
-                                    success: function (data) {
-                                            response(data);
-
-                                    }
-                                })
-                             }',
-                            'options'=>array(
-                                     'showAnim'=>'fold',
-                                     'minLength'=>0,
-                                     'select'=>'js: function(event, ui) {
-                                          $("#vend_id").val(ui.item.label);
-                                     }',
-                            ),
-                           'htmlOptions'=>array(
-                                'class'=>'span12'
-                            ),
-
-                        ));
-		?>
-
-	</div>
-	<div class="span4">
-		<?php
-
-                            echo CHtml::label('รหัสคู่สัญญาสิ้นสุด','workcat');
-  			    $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                            'name'=>'con_id2',
-                            'id'=>'con_id2',
-                            //'value'=>$model->vend_id,
-                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
-                            'source'=>'js: function(request, response) {
-                                $.ajax({
-                                    url: "'.$this->createUrl('Contract/GetContract').'",
-                                    dataType: "json",
-                                    data: {
-                                        term: request.term,
-
-                                    },
-                                    success: function (data) {
-                                            response(data);
-
-                                    }
-                                })
-                             }',
-                            'options'=>array(
-                                     'showAnim'=>'fold',
-                                     'minLength'=>0,
-                                     'select'=>'js: function(event, ui) {
-                                           $("#vend_id2").val(ui.item.label);
-                                     }',
-                            ),
-                           'htmlOptions'=>array(
-                                'class'=>'span13'
-                            ),
-
-                        ));
-
-		?>
-
-	</div>
-
-
-	<div class="span4">
+	<div class="offset1 span4">
             <?php
             $this->widget('bootstrap.widgets.TbButton', array(
                   'buttonType'=>'link',
@@ -273,9 +187,9 @@ $("#gentReport").click(function(e){
 
        
         $.ajax({
-            url: "GenR8",
+            url: "GenR9",
             cache:false,
-                       data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),vend_id_sta:$("#vend_id").val(),vend_id_end:$("#vend_id2").val(),con_id:$("#con_id").val(),con_id2:$("#con_id2").val()
+                       data: {date_start:$("#date_start").val(),date_end:$("#date_end").val()
             },
             success:function(response){
                
@@ -292,8 +206,8 @@ $("#printReport").click(function(e){
     e.preventDefault();
 
     $.ajax({
-        url: "printR8",
-        data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),vend_id_sta:$("#vend_id").val(),vend_id_end:$("#vend_id2").val(),con_id:$("#con_id").val(),con_id2:$("#con_id2").val()},
+        url: "printR9",
+        data: {date_start:$("#date_start").val(),date_end:$("#date_end").val()},
         success:function(response){
             window.open("../print/tempReport.pdf", "_blank", "fullscreen=yes");              
             

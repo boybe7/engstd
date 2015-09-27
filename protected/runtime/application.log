@@ -1853,3 +1853,170 @@ REQUEST_URI=/engstd/reportb/printR7?date_start=01%2F09%2F2558&date_end=22%2F09%2
 in C:\xampp\htdocs\engstd\protected\views\reportb\_formR7_PDF.php (165)
 in C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php (507)
 in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/27 00:09:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report/r2".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r2')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/report/r2
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:09:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report/r4".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r4')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/report/r4
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:10:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report/r4".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r4')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/report/r4
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:10:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report/r4".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r4')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/report/r4
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report/r4".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r4')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/report/r4
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:10:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report/r4".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r4')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/report/r4
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:10:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "report/r4".' in C:\xampp\htdocs\engstd\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r4')
+#1 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/engstd/report/r4
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:11:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "r4" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('r4')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('r4')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r4')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/report/r4
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:11:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "r4" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('r4')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('r4')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r4')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/report/r4
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:11:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "r2" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('r2')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('r2')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r2')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/report/r2
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 00:12:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "r4" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('r4')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('r4')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r4')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/report/r4
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 01:00:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'ระบบไม่สามารถดำเนินการ "r9" ตามคำสั่งได้' in C:\xampp\htdocs\engstd\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(270): CController->missingAction('r9')
+#1 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): CController->run('r9')
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController('report/r9')
+#3 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\engstd\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/engstd/report/r9
+HTTP_REFERER=http://localhost/engstd/reportb/r8
+---
+2015/09/27 01:21:38 [error] [php] Undefined index: vend_id_sta (C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php:532)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportBController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportBController->runActionWithFilters()
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportBController->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/reportb/GenR8?date_start=01%2F09%2F2558&date_end=27%2F09%2F2558&_=1443291698750
+in C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php (532)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/27 01:21:48 [error] [php] Undefined index: vend_id_sta (C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php:532)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportBController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportBController->runActionWithFilters()
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportBController->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/reportb/GenR8?date_start=01%2F09%2F2558&date_end=27%2F09%2F2558&_=1443291708438
+in C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php (532)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/27 01:21:55 [error] [php] Undefined index: vend_id_sta (C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php:532)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportBController->runAction()
+#1 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportBController->runActionWithFilters()
+#2 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportBController->run()
+#3 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/reportb/GenR8?date_start=01%2F09%2F2558&date_end=27%2F09%2F2558&_=1443291715071
+in C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php (532)
+in C:\xampp\htdocs\engstd\index.php (13)
+2015/09/27 01:26:17 [error] [php] Undefined index: pt.prot_name (C:\xampp\htdocs\engstd\protected\views\reportb\_formR9.php:91)
+Stack trace:
+#0 C:\xampp\htdocs\engstd\framework\web\CController.php(869): ReportBController->renderFile()
+#1 C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php(596): ReportBController->renderPartial()
+#2 C:\xampp\htdocs\engstd\framework\web\actions\CInlineAction.php(49): ReportBController->actionGenR9()
+#3 C:\xampp\htdocs\engstd\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\engstd\framework\web\CController.php(286): ReportBController->runAction()
+#5 C:\xampp\htdocs\engstd\framework\web\CController.php(265): ReportBController->runActionWithFilters()
+#6 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(282): ReportBController->run()
+#7 C:\xampp\htdocs\engstd\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\xampp\htdocs\engstd\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\engstd\index.php(13): CWebApplication->run()
+REQUEST_URI=/engstd/reportb/GenR9?date_start=01%2F09%2F2558&date_end=28%2F09%2F2558&_=1443291977824
+in C:\xampp\htdocs\engstd\protected\views\reportb\_formR9.php (91)
+in C:\xampp\htdocs\engstd\protected\controllers\ReportbController.php (596)
+in C:\xampp\htdocs\engstd\index.php (13)

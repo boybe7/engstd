@@ -527,23 +527,53 @@ class ReportBController extends Controller
 
 	public function actionGenR8()
 	{
+	    $date_start = $_GET["date_start"];
+        $date_end   = $_GET["date_end"];
+        $vend_id_sta   = $_GET["vend_id_sta"];
+        $vend_id_end   = $_GET["vend_id_end"];
 
-		//$vid = $_GET["r9"];
-		//$modelV = Vendor::model()->findByPk($vid);
+        if($_GET["con_id"]=="")
+        	  $vend_id_sta = "";
 
-		//$model = InspecDoc::model()->findAll(array('order'=>'', 'condition'=>'vend_id="'.$modelV->name.'"', 'params'=>array()));
-                $date_start = $_GET["date_start"];
-                $date_end   = $_GET["date_end"];
+        if($_GET["con_id2"]=="")
+        	  $vend_id_end = "";	
 
 		$this->renderPartial('_formR8', array(
 
-                'date_start'=>$date_start,
-                'date_end'=>$date_end,
-
-            //'model' => $model,
+            'date_start'=>$date_start,
+            'date_end'=>$date_end,
+            'vend_id_sta'=>$vend_id_sta,
+            'vend_id_end'=>$vend_id_end,
             'display' => 'block',
         ), false, true);
 	}
+
+	public function actionPrintR8()
+    {
+        	
+	    $date_start = $_GET["date_start"];
+        $date_end   = $_GET["date_end"];
+        $vend_id_sta   = $_GET["vend_id_sta"];
+        $vend_id_end   = $_GET["vend_id_end"];
+
+         if($_GET["con_id"]=="")
+        	  $vend_id_sta = "";
+
+        if($_GET["con_id2"]=="")
+        	  $vend_id_end = "";	
+
+		$this->renderPartial('_formR8_PDF', array(
+
+                'date_start'=>$date_start,
+                'date_end'=>$date_end,
+                'vend_id_sta'=>$vend_id_sta,
+                'vend_id_end'=>$vend_id_end,
+            'display' => 'block',
+        ), false, true);
+
+        
+    }
+   
         //-----------------------------
         
         public function actionR9()
@@ -572,7 +602,7 @@ class ReportBController extends Controller
 	        $date_start = $_GET["date_start"];
                 $date_end   = $_GET["date_end"];
 
-		$this->renderPartial('_formR4_PDF', array(
+		$this->renderPartial('_formR9_PDF', array(
 
                 'date_start'=>$date_start,
                 'date_end'=>$date_end,
