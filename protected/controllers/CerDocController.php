@@ -358,6 +358,8 @@ class CerDocController extends Controller
             $model->vend_id = $_POST["vend_id"];
             $model->supp_id = $_POST["supp_id"];
 
+            $model->cer_oper_dept = Yii::app()->user->getUserDept();
+
 			if($model->save())
 			{	
 				$modelTemps = Yii::app()->db->createCommand()
@@ -423,6 +425,7 @@ class CerDocController extends Controller
             $model->cer_notes = nl2br($text); // insert <br /> before \n 
             $model->vend_id = $_POST["vend_id"];
             $model->supp_id = $_POST["supp_id"];
+            $model->cer_oper_dept = Yii::app()->user->getUserDept();
 
 			if($model->save())
 				$this->redirect(array('index'));
