@@ -126,7 +126,7 @@ $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m'
 
 
 <?php
-echo"รายงานผลรวมการผลิตแยกตามเลขที่สัญญาจำนวน&nbsp;".count($models_m)."&nbsp;รายการ";
+//echo"รายงานผลรวมการผลิตแยกตามเลขที่สัญญาจำนวน&nbsp;".count($models_m)."&nbsp;รายการ";
 $t= date('H:i:s', time()); // 10:00:00
 $m_d = date("d");
 $m_m = date("m")-1;
