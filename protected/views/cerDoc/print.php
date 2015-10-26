@@ -1,7 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Cer Docs'=>array('index'),
-	'Manage',
+
 );
 
 ?>
@@ -24,7 +23,9 @@ $this->breadcrumbs=array(
 
 <h3>ใบรับรองคุณภาพท่อและอุปกรณ์</h3>
 
-<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+<?php 
+
+$form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'search-form',
     'enableAjaxValidation'=>false,
     'type'=>'vertical',

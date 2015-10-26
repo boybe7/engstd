@@ -126,7 +126,7 @@
 			   'type'=>'danger',
 			   'label'=>'ยกเลิก',
          'htmlOptions'=>array('class'=>'pull-right'),               
-          'url'=>array("admin"), 
+          'url'=>array("index"), 
 		  )); 
      $this->widget('bootstrap.widgets.TbButton', array(
          'buttonType'=>'submit',

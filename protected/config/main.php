@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
@@ -12,6 +12,7 @@ return array(
     'theme'=>'bootstrap',
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'ระบบใบรับรองมาตรฐานครุภัณฑ์',
+	//'name'=>'Equipment Specification Certification System - ESCS',
 
 	// preloading 'log' component
 	'preload'=>array('log'),

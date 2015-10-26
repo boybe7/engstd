@@ -64,6 +64,7 @@ class Product extends CActiveRecord
 			'prod_code' => 'รหัส',
 			'prod_name' => 'ชื่อท่อและอุปกรณ์',
 			'prot_id' => 'ชนิดท่อและอุปกรณ์',
+			'prot_sub_id'=>'กลุ่มย่อยท่อและอุปกรณ์',
 			'prod_size' => 'หน่วยวัด',
 			'prod_sizename'=>'ขนาดท่อและอุปกรณ์',
 			'prod_unit' => 'หน่วยนับ',
@@ -104,8 +105,34 @@ class Product extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'pagination' => array( 
+                'pageSize' => 50 ,
+            ),
+        
 		));
 	}
+
+	public function getProdtype($m)
+    {
+        
+        $model = Prodtype::model()->findByPk($m->prot_id);
+         // header('Content-type: text/plain');
+         // print_r($model);                    
+         // exit;
+        $position = !empty($model) ? $model->prot_name: "";
+        return $position;
+    }
+
+    public function getProdsubtype($m)
+    {
+        
+        $model = ProdtypeSubgroup::model()->findByPk($m->prot_sub_id);
+         // header('Content-type: text/plain');
+         // print_r($model);                    
+         // exit;
+        $position = !empty($model) ? $model->name: "";
+        return $position;
+    }
 
 	/**
 	 * Returns the static model of the specified AR class.

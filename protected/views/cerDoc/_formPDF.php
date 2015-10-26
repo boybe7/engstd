@@ -79,24 +79,25 @@
 		        // Set font
 		        //$this->SetFont('thsarabun', '', 18);
 		        $this->SetFont('angsanaupc', '', 18);
-		        $this->writeHTMLCell(145, 20, 40, 35, '<p style="font-weight:bold;">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ '.$this->cer_no, 0, 1, false, true, 'C', false);
-		        $this->writeHTMLCell(145, 20, 40, 43, '<p style="font-weight:bold;font-size:12">แนบท้ายหนังสือกมว.ที่..................</p>', 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(145, 20, 40, 41, '<p style="font-weight:bold;">ใบรับรองคุณภาพท่อและอุปกรณ์ประปาเลขที่ '.$this->cer_no, 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(145, 20, 40, 53, '<p style="font-weight:bold;font-size:12">แนบท้ายหนังสือกมว.ที่..................</p>', 0, 1, false, true, 'C', false);
 		        
-		        $this->writeHTMLCell(150, 20, 47, 43, '<p style="font-weight:bold;font-size:12">'.$this->dept_order.'<br>'.$this->inspec_no.'</p>', 0, 1, false, true, 'R', false);
+		        $this->writeHTMLCell(150, 20, 47, 53, '<p style="font-weight:bold;font-size:12">'.$this->dept_order.'</p>', 0, 1, false, true, 'R', false);
+		        $this->writeHTMLCell(150, 20, 47, 60, '<p style="font-weight:bold;font-size:12">'.$this->inspec_no.'</p>', 0, 1, false, true, 'R', false);
+				
+		        $this->writeHTMLCell(145, 20, 15, 65, '<p style="font-weight:bold;font-size:12">สัญญา </p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 40, 65, '<p style="font-weight:bold;font-size:12">'.$this->contract_no.'</p>', 0, 1, false, true, 'L', false);
 		        
-		        $this->writeHTMLCell(145, 20, 15, 55, '<p style="font-size:12">สัญญา </p>', 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 20, 40, 55, '<p style="font-size:12">'.$this->contract_no.'</p>', 0, 1, false, true, 'L', false);
-		        
-		        $this->writeHTMLCell(145, 20, 15, 60, '<p style="font-size:12">คู่สัญญา </p>', 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 20, 40, 60, '<p style="font-size:12">'.$this->contractor.'</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 110, 60, '<p style="font-size:12">ผู้ผลิต/จัดส่ง</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 135, 60, '<p style="font-size:12">'.$this->vendor.'</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 15, 70, '<p style="font-weight:bold;font-size:12">คู่สัญญา </p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 40, 70, '<p style="font-weight:bold;font-size:12">'.$this->contractor.'</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 110, 70, '<p style="font-weight:bold;font-size:12">ผู้ผลิต/จัดส่ง</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 135, 70, '<p style="font-weight:bold;font-size:12">'.$this->vendor.'</p>', 0, 1, false, true, 'L', false);
 		        		        		        
 
-		        $this->writeHTMLCell(145, 20, 15, 65, '<p style="font-size:12">ท่อ/อุปกรณ์ </p>', 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 20, 40, 65, '<p style="font-size:12">'.$this->prod_type.'</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 110, 65, '<p style="font-size:12">วันที่ดำเนินการ</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 135, 65, '<p style="font-size:12">'.$this->date_op.'</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 15, 75, '<p style="font-weight:bold;font-size:12">ท่อ/อุปกรณ์ </p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 40, 75, '<p style="font-weight:bold;font-size:12">'.$this->prod_type.'</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 110, 75, '<p style="font-weight:bold;font-size:12">วันที่ดำเนินการ</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 135, 75, '<p style="font-weight:bold;font-size:12">'.$this->date_op.'</p>', 0, 1, false, true, 'L', false);
 		        			        
 
 
@@ -112,46 +113,46 @@
 		        //$this->SetFont('thsarabun', '', 11);
 		        $this->SetFont('angsanaupc', '', 10);
 
-		        $this->writeHTMLCell(50, 150, 12, 225,'.................................................................' , 0, 1, false, true, 'C', false);
-		        $this->writeHTMLCell(50, 150, 12, 230,'<p style="font-size:15px;">('.$this->author1.')</p>' , 0, 1, false, true, 'C', false);
-		        $this->writeHTMLCell(50, 150, 12, 235,'<p style="font-size:15px;">เจ้าหน้าที่ผู้ควบคุม</p>' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 12, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 12, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author1.')</p>' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(50, 150, 12, 240,'<p style="font-weight:bold;font-size:14px;">วิศวกรผู้ตรวจสอบ</p>' , 0, 1, false, true, 'C', false);
 
 		        if($this->is_acting2==false)
 		        {	
-		        	$this->writeHTMLCell(50, 150, 80, 225,'.................................................................' , 0, 1, false, true, 'C', false);
-		        	$this->writeHTMLCell(50, 150, 80, 230,'<p style="font-size:15px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
-		        	$this->writeHTMLCell(50, 150, 80, 235,'<p style="font-size:15px;">'.$this->pos_author2.'</p>' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 150, 80, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 150, 80, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 150, 80, 240,'<p style="font-weight:bold;font-size:14px;">'.$this->pos_author2.'</p>' , 0, 1, false, true, 'C', false);
 		        }
 		        else
 		        {
-		        	$this->writeHTMLCell(50, 150, 80, 225,'.................................................................' , 0, 1, false, true, 'C', false);
-		        	$this->writeHTMLCell(50, 150, 80, 230,'<p style="font-size:15px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
-		        	$this->writeHTMLCell(50, 150, 80, 235,'<p style="font-size:15px;">'.$this->pos_author2.' รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
-		        	$this->writeHTMLCell(50, 150, 80, 240,'<p style="font-size:15px;">หัวหน้าส่วนควบคุมคุณภาพท่อและอุปกรณ์' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 170, 80, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 170, 80, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 170, 80, 240,'<p style="font-weight:bold;font-size:14px;">'.$this->pos_author2.' รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 170, 80, 244,'<p style="font-weight:bold;font-size:14px;">หัวหน้าส่วนควบคุมคุณภาพท่อและอุปกรณ์' , 0, 1, false, true, 'C', false);
 		        	
 		        }
 
 		        if($this->is_acting3==false)
 		        {	
-			        $this->writeHTMLCell(50, 150, 147, 225,'.................................................................' , 0, 1, false, true, 'C', false);
-			        $this->writeHTMLCell(50, 150, 147, 230,'<p style="font-size:15px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
-			        $this->writeHTMLCell(50, 150, 147, 235,'<p style="font-size:15px;">'.$this->pos_author3.'</p>' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 147, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 147, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 147, 240,'<p style="font-weight:bold;font-size:14px;">'.$this->pos_author3.'</p>' , 0, 1, false, true, 'C', false);
 			    }
 			    else
 			    {
-			    	$this->writeHTMLCell(50, 150, 147, 225,'.................................................................' , 0, 1, false, true, 'C', false);
-			        $this->writeHTMLCell(50, 150, 147, 230,'<p style="font-size:15px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
-			        $this->writeHTMLCell(50, 150, 147, 235,'<p style="font-size:15px;">หน.สคภ. รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
-			    	$this->writeHTMLCell(50, 150, 147, 240,'<p style="font-size:15px;">ผู้อำนวยการกองมาตรฐานวิศวกรรม' , 0, 1, false, true, 'C', false);
+			    	$this->writeHTMLCell(50, 150, 147, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 147, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 147, 240,'<p style="font-weight:bold;font-size:14px;">หน.สคภ. รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
+			    	$this->writeHTMLCell(50, 150, 147, 244,'<p style="font-weight:bold;font-size:14px;">ผู้อำนวยการกองมาตรฐานวิศวกรรม' , 0, 1, false, true, 'C', false);
 		        	
 			    }
 			        
-		        $this->writeHTMLCell(145, 550, 10, 260,'ข้อควรพึงปฏิบัติ' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(170, 750, 28, 260,'1.ใบรับรองนี้ให้ถือเสมือนหนึ่งเป็นใบกำกับผลิตภัณฑ์ ให้ผู้ผลิตแนบไปพร้อมกับการส่งท่อ/อุปกรณ์ที่ได้ผ่านการตรวจสอบมาตรฐานจากกองมาตรฐานวิศวกรรมแล้วทุกครั้ง' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(170, 750, 28, 265,'2.ท่อ/อุปกรณ์ใดที่ไม่มีใบรับรองฯ หรือมีรายละเอียดผิดไปจากใบรับรองฯ ซึ่งกำกับผลิตภัณฑ์มาด้วยนี้ จะไม่ได้รับการตรวจรับงานจากเจ้าหน้าที่ตรวจรับของการประปานครหลวง' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(170, 750, 28, 270,'3.ใบรับรองฯที่ส่งให้หน่วยงานของกปน. ให้หน่วยงานฯใช้ประกอบในการตรวจสอบ/ตรวจรับ ให้ถูกต้องตรงกับฉบับซึ่งมาพร้อมกับผลิตภัณฑ์จากผู้ผลิตและให้รวบรวมเก็บไว้เป็น<br>  หลักฐานเพื่อตรวจสอบภายหลังได้' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(170, 750, 28, 280,'4.ใบรับรองฯจะต้องไม่มีรอยขูดขีด แก้ ลบใดๆ หากมีการแก้ดังกล่าวต้องมีลายมือชื่อเจ้าหน้าที่ควบคุม กำกับทุกแห่ง ในส่วนที่เป็นอำนาจหน้าที่ของเจ้าหน้าที่นั้นๆ' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 550, 100, 285,'กองมาตรฐานวิศวกรรม<br>โทร 0-2504-0123 ต่อ 774,775' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(145, 550, 10, 253,'<p style="font-weight:bold;">ข้อควรพึงปฏิบัติ</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 750, 28, 253,'<p style="font-weight:bold;">1.ใบรับรองนี้ให้ถือเสมือนหนึ่งเป็นใบกำกับผลิตภัณฑ์ ให้ผู้ผลิตแนบไปพร้อมกับการส่งท่อ/อุปกรณ์ที่ได้ผ่านการตรวจสอบมาตรฐานจากกองมาตรฐานวิศวกรรมแล้วทุกครั้ง</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 750, 28, 258,'<p style="font-weight:bold;">2.ท่อ/อุปกรณ์ใดที่ไม่มีใบรับรองฯ หรือมีรายละเอียดผิดไปจากใบรับรองฯ ซึ่งกำกับผลิตภัณฑ์มาด้วยนี้ จะไม่ได้รับการตรวจรับงานจากเจ้าหน้าที่ตรวจรับของการประปานครหลวง</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 750, 28, 263,'<p style="font-weight:bold;">3.ใบรับรองฯที่ส่งให้หน่วยงานของกปน. ให้หน่วยงานฯใช้ประกอบในการตรวจสอบ/ตรวจรับ ให้ถูกต้องตรงกับฉบับซึ่งมาพร้อมกับผลิตภัณฑ์จากผู้ผลิตและให้รวบรวมเก็บไว้เป็น<br>  หลักฐานเพื่อตรวจสอบภายหลังได้</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 750, 28, 273,'<p style="font-weight:bold;">4.ใบรับรองฯจะต้องไม่มีรอยขูดขีด แก้ ลบใดๆ หากมีการแก้ดังกล่าวต้องมีลายมือชื่อเจ้าหน้าที่ควบคุม กำกับทุกแห่ง ในส่วนที่เป็นอำนาจหน้าที่ของเจ้าหน้าที่นั้นๆ</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 550, 100, 278,'<p style="font-weight:bold;">กองมาตรฐานวิศวกรรม<br>โทร 0-2504-0123 ต่อ 774,775</p>' , 0, 1, false, true, 'C', false);
 			    
 		       
 		    }
@@ -267,7 +268,7 @@
 		for ($n=1; $n < $npages+1 ; $n++) { 
 						# code...
 					
-					$html .= '<div style="text-indent: 10.7mm;">ท่อและอุปกรณ์ตามรายการต่อไปนี้ได้ผ่านการตรวจสอบจากเจ้าหน้าที่การประปานครหลวงแล้ว มีคุณภาพได้มาตรฐาน
+					$html .= '<br><div style="font-weight:bold;text-indent: 10.7mm;">ท่อและอุปกรณ์ตามรายการต่อไปนี้ได้ผ่านการตรวจสอบจากเจ้าหน้าที่การประปานครหลวงแล้ว มีคุณภาพได้มาตรฐาน
 			ตามที่ระบุไว้ในแบบแปลนรายการ ละเอียดของสัญญา และได้ประทับตรารับรองคุณภาพให้ไว้เป็นที่เรียบร้อยแล้ว จึงอนุญาตให้นำส่งท่อและอุปกรณ์ประปาเหล่านี้ไปใช้งานของการประปานครหลวงได้</div>';
 
 					$html .= '<br><table>';
@@ -291,13 +292,13 @@
 			        for ($i=$row-1; $i < 15*$n  ; $i++) { 
 			        			if(!empty($details[$i]))
 			        			{	
-			        	             $html .= ' <tr>';
+			        	             $html .= ' <tr style="font-weight:bold;">';
 				                     $html .= '<td style="text-align:center;border:1px solid black;width:7%"> '.($row++).'</td><td style="border:1px solid black;width:40%"> '.$details[$i]["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$details[$i]["prod_size"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$details[$i]["serialno"].'</td><td style="border:1px solid black;text-align:center;width:13%">'.$details[$i]["quantity"].'</td>';
 				                     $html .= '</tr>';
 				                }
 				                else
 				                {     
-			        				 $html .= ' <tr>';
+			        				 $html .= ' <tr style="font-weight:bold;">';
 				                     $html .= '<td style="border:1px solid black;width:7%"></td><td style="border:1px solid black;width:40%"></td><td style="border:1px solid black;text-align:center;width:20%"></td><td style="border:1px solid black;text-align:center;width:20%"></td><td style="border:1px solid black;text-align:center;width:13%"></td>';
 				                     $html .= '</tr>';
 				                }     
@@ -309,8 +310,8 @@
 				  	if(empty($model->cer_notes))
 				  	   $note = "รวม ".count($details)." รายการ".", จำนวน ".$npages." หน้า";
 				  	else
-				  	   $note = $model->cer_notes."<br>รวม ".count($details)." รายการ ,จำนวน ".$npages." หน้า"; 	
-				  	$html .= '<br><br><table><tr><td width="10%"><u>หมายเหตุ</u>     </td><td>'.$note.'</td></tr></table>';
+				  	   $note = "รวม ".count($details)." รายการ ,จำนวน ".$npages." หน้า <br>".$model->cer_notes; 	
+				  	$html .= '<br><br><table><tr style="font-weight:bold;"><td width="10%"><u>หมายเหตุ</u>     </td><td>'.$note.'</td></tr></table>';
 			        
 			        if($n!=$npages)
 			        {

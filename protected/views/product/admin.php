@@ -22,6 +22,34 @@ $('.search-form form').submit(function(){
 
 <?php 
 
+ $models=Prodtype::model()->findAll();
+        $data = array();
+        foreach ($models as $key => $value) {
+          $data[] = array(
+                          'value'=>$value['prot_id'],
+                          'text'=>$value['prot_name'],
+                       );
+        } 
+        $typelist2 = CHtml::listData($data,'value','text');
+        echo CHtml::dropDownList('prot_id','', $typelist2,array('class'=>'span3','style'=>'margin:0px 0px 0px 0px;','ajax' => 
+                            array(
+                                'type'=>'POST', 
+                                'url'=>CController::createUrl('GetSubgroupByType'),
+                                'data'=>array('id' => 'js:this.value'),
+                                'update'=>'#prot_sub_id', 
+                            ))); 
+        
+        $models=ProdtypeSubgroup::model()->findAll(array('order'=>'', 'condition'=>'prod_id=:id', 'params'=>array('id'=>13)));
+        $data = array();
+        foreach ($models as $key => $value) {
+          $data[] = array(
+                          'value'=>$value['id'],
+                          'text'=>$value['name'],
+                       );
+        } 
+
+        $typelist = CHtml::listData($data,'value','text');
+         echo CHtml::dropDownList('prot_sub_id','', $typelist,array('class'=>'span2','style'=>'margin:0px 10px 0px 10px;')); 
 
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
@@ -32,6 +60,38 @@ $this->widget('bootstrap.widgets.TbButton', array(
     'url'=>array('create'),
     'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 10px 0px 10px;'),
 )); 
+
+$this->widget('bootstrap.widgets.TbButton', array(
+    'buttonType'=>'link',
+    
+    'type'=>'warning',
+    'label'=>'แก้ไขกลุ่มย่อย',
+    'icon'=>'ok-sign',
+    //'url'=>array('delAll'),
+    //'htmlOptions'=>array('id'=>"buttonDel2",'class'=>'pull-right'),
+    'htmlOptions'=>array(
+        //'data-toggle'=>'modal',
+        //'data-target'=>'#myModal',
+        'onclick'=>'      
+    
+                       if($.fn.yiiGridView.getSelection("product-grid").length==0)
+                       		js:bootbox.alert("กรุณาเลือกแถวข้อมูลที่ต้องการแก้ไข?","ตกลง");
+                       else  
+                         
+			                   	 $.ajax({
+										type: "POST",
+										url: "updateSubgroupSelected",
+										data: { selectedID: $.fn.yiiGridView.getSelection("product-grid"),subgroup:$("#prot_sub_id").val()}
+										})
+										.done(function( msg ) {
+											$("#product-grid").yiiGridView("update",{});
+										});
+			                 ',
+        'class'=>''
+    ),
+)); 
+
+
 
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
@@ -73,7 +133,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 	'type'=>'bordered condensed',
 	'filter'=>$model,
 	'selectableRows' =>2,
-	'htmlOptions'=>array('style'=>'padding-top:40px'),
+	'htmlOptions'=>array('style'=>'padding-top:20px'),
     'enablePagination' => true,
     'summaryText'=>'แสดงผล {start} ถึง {end} จากทั้งหมด {count} ข้อมูล',
     'template'=>"{items}<div class='row-fluid'><div class='span6'>{pager}</div><div class='span6'>{summary}</div></div>",
@@ -97,19 +157,35 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 		'prod_name'=>array(
 			    'name' => 'prod_name',
 			    'filter'=>CHtml::activeTextField($model, 'prod_name',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("prod_name"))),
-				'headerHtmlOptions' => array('style' => 'width:40%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'headerHtmlOptions' => array('style' => 'width:29%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:left')
+	  	),
+	  	'prot_id'=>array(
+			    'name' => 'prot_id',
+			    //'filter'=>CHtml::activeTextField($model, 'prot_id',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("prot_id"))),
+				'filter'=>CHtml::activeDropDownList($model, 'prot_id', $typelist2,array('empty'=>'')),
+				'headerHtmlOptions' => array('style' => 'width:12%;text-align:center;background-color: #f5f5f5'),  	
+				'value' => array($model,'getProdtype'),            	  	
+				'htmlOptions'=>array('style'=>'text-align:center')
+	  	),
+	  	'protsub_id'=>array(
+			    'name' => 'prot_sub_id',
+			    'filter'=>false,
+			    //'filter'=>CHtml::activeTextField($model, 'prot_id',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("prot_id"))),
+				'headerHtmlOptions' => array('style' => 'width:12%;text-align:center;background-color: #f5f5f5'),  	
+				'value' => array($model,'getProdsubtype'),            	  	
+				'htmlOptions'=>array('style'=>'text-align:center')
 	  	),
 	  	'prod_sizename'=>array(
 			    'name' => 'prod_sizename',
 			    'filter'=>CHtml::activeTextField($model, 'prod_sizename',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("prod_sizename"))),
-				'headerHtmlOptions' => array('style' => 'width:27%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'headerHtmlOptions' => array('style' => 'width:12%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center')
 	  	),
 	  	'prod_unit'=>array(
 			    'name' => 'prod_unit',
 			    'filter'=>CHtml::activeTextField($model, 'prod_unit',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("prod_unit"))),
-				'headerHtmlOptions' => array('style' => 'width:13%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'headerHtmlOptions' => array('style' => 'width:7%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center')
 	  	),
 		array(

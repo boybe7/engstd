@@ -475,9 +475,11 @@ class CerDocController extends Controller
 		if(isset($_GET['CerDoc']))
 			$model->attributes=$_GET['CerDoc'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+
+		if(Yii::app()->user->name!="guest")
+			$this->render('admin',array(
+				'model'=>$model,
+			));
 	}
 
 	/**

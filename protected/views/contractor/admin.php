@@ -116,7 +116,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'headerHtmlOptions' => array('style' => 'width:7%;text-align:center;background-color: #f5f5f5'),
-			'template' => '{view}  {update}',
+			'template' => '{update}',
 	
 		),
 	),

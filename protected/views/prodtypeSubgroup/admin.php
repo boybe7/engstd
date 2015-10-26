@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Positions'=>array('index'),
+	'ProdtypeSubgroup'=>array('index'),
 	'Manage',
 );
 
@@ -20,16 +20,25 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h3>ตำแหน่ง</h3>
+<h3>กลุ่มย่อยท่อและอุปกรณ์</h3>
 <div class="row-fluid">
  
-	<div class="span6">
-		<?php echo CHtml::textField('newPosition', '',array('class'=>'span12','placeholder'=>'กรอกประเภทตำแหน่งงานใหม่')); ?>
+	<div class="span5">
+		<?php echo CHtml::textField('newPosition', '',array('class'=>'span12','placeholder'=>'กรอกกลุ่มย่อยท่อและอุปกรณ์')); ?>
 	</div>
-	<div class="span2">
-		<?php echo CHtml::dropDownList('level', '', 
-			              array('1' => 'เจ้าหน้าที่', '2' => 'หัวหน้าส่วน','3'=>'ผู้อำนวยการกอง'),
-			              array('class'=>'span12'));
+	<div class="span3">
+		<?php 
+		$models=Prodtype::model()->findAll();
+        $data = array();
+        foreach ($models as $key => $value) {
+          $data[] = array(
+                          'value'=>$value['prot_id'],
+                          'text'=>$value['prot_name'],
+                       );
+        } 
+        $typelist = CHtml::listData($data,'value','text');
+
+		echo CHtml::dropDownList('prot_id', '',$typelist,array('class'=>'span12'));
 
                ?>
 	</div>
@@ -39,14 +48,14 @@ $('.search-form form').submit(function(){
 		    'buttonType'=>'ajaxLink',
 		    
 		    'type'=>'success',
-		    'label'=>'เพิ่มตำแหน่ง',
+		    'label'=>'เพิ่มกลุ่ม',
 		    'icon'=>'plus-sign',
 		    'url'=>array('create'),
 		    'htmlOptions'=>array('class'=>'span12','style'=>''),
 		    'ajaxOptions'=>array(
 		    	    //'url'=>$this->createUrl('create'),
 		     	    'type' => 'POST',
-                	'data' => array('name' => 'js:$("#newPosition").val()','level' => 'js:$("#level").val()'),
+                	'data' => array('name' => 'js:$("#newPosition").val()','prot_id' => 'js:$("#prot_id").val()'),
                 	'success' => 'function(html){ $("#newPosition").val(""); $.fn.yiiGridView.update("position-grid"); }'
                 ) 
 		)); 
@@ -62,7 +71,7 @@ $('.search-form form').submit(function(){
 			    'buttonType'=>'link',
 			    
 			    'type'=>'danger',
-			    'label'=>'ลบตำแหน่ง',
+			    'label'=>'ลบกลุ่ม',
 			    'icon'=>'minus-sign',
 			    //'url'=>array('delAll'),
 			    //'htmlOptions'=>array('id'=>"buttonDel2",'class'=>'pull-right'),
@@ -119,17 +128,17 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 
 	  	            	  		)   	  		
         ),
-		'posi_name'=>array(
-			    'name' => 'posi_name',
+		'name'=>array(
+			    'name' => 'name',
 			    'class' => 'editable.EditableColumn',
 			    //'filter'=>CHtml::activeTextField($model, 'v_name',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("v_name"))),
-				'headerHtmlOptions' => array('style' => 'width:70%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'headerHtmlOptions' => array('style' => 'width:60%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:left;padding-left:10px;'),
 				'editable' => array( //editable section
 					//'apply' => '$data->user_status != 4', //can't edit deleted users
 					//'text'=>'Click',
 					//'tooltip'=>'Click',
-					'title'=>'แก้ไขประเภทงาน',
+					'title'=>'แก้ไขกลุ่มย่อย',
 					'url' => $this->createUrl('update'),
 					'success' => 'js: function(response, newValue) {
 									if(!response.success) return response.msg;
@@ -149,22 +158,21 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 					}'
 				)
 	  	),
-		'level'=>array(
-	  	            	  		'header'=>'ระดับ',
+		'prod_id'=>array(
+	  	            	  		'header'=>'ชนิดท่อ/อุปกรณ์',
 	  	            	  		'class' => 'editable.EditableColumn',
-                                'headerHtmlOptions' => array('style' => 'width:30%;text-align:center;background-color: #f5f5f5'),
-	  	            	  		'name'=> 'posi_level',
+                                'headerHtmlOptions' => array('style' => 'width:40%;text-align:center;background-color: #f5f5f5'),
+	  	            	  		'name'=> 'prod_id',
 	  	            	  		//'value'=>'$data->getGroupName($data->u_group)',
-	  	            	  		'filter'=>CHtml::activeDropDownList($model, 'posi_level',  array('1' => 'เจ้าหน้าที่', '2' => 'หัวหน้าส่วน','3'=>'ผู้อำนวยการกอง'),array('empty'=>'')),
 	  	            	  		'htmlOptions'=>array(
 	  	            	  			'style'=>'text-align:center'
 
 	  	            	  		),
 	  	            	  		 'editable' => array(
 										'type' => 'select',
-										'title'=>'แก้ไขระดับ',
-										'url' => $this->createUrl('position/update'),
-										'source' => $this->createUrl('position/getPositionLevel'),
+										'title'=>'แก้ไขชนิดท่อ/อุปกรณ์',
+										'url' => $this->createUrl('prodtypeSubgroup/update'),
+										'source' => $this->createUrl('prodtypeSubgroup/getType'),
 										'options' => array( //custom display
 											'display' => 'js: function(value, sourceData) {
 

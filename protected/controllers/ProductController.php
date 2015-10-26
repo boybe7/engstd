@@ -31,7 +31,7 @@ class ProductController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GetProduct'),
+				'actions'=>array('create','update','DeleteSelected','GetProduct','GetSubgroupByType','UpdateSubgroupSelected'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -44,6 +44,26 @@ class ProductController extends Controller
 		);
 	}
 
+	public function actionGetSubgroupByType() {        
+    
+        
+       if( $_POST['id']!='') 
+        $data = ProdtypeSubgroup::model()->findAll('prod_id=:id', array(':id' => (int) $_POST['id']));        
+        else    
+        $data = ProdtypeSubgroup::model()->findAll();        
+    
+        
+        $data = CHtml::listData($data, 'id', 'name');
+        
+      
+        echo CHtml::tag('option', array('value' => ''), CHtml::encode("--กรุณาเลือก--"), true);
+  
+        foreach ($data as $value => $name) {            
+            echo CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
+        }
+    }
+
+
 	public function actionDeleteSelected()
     {
     	$autoIdAll = $_POST['selectedID'];
@@ -55,6 +75,22 @@ class ProductController extends Controller
             }
         }    
     }
+
+    public function actionUpdateSubgroupSelected()
+    {
+    	$autoIdAll = $_POST['selectedID'];
+    	$subgroup = isset($_POST['subgroup']) ? $_POST['subgroup']: '';
+        if(count($autoIdAll)>0)
+        {
+            foreach($autoIdAll as $autoId)
+            {
+                $model = $this->loadModel($autoId);
+                $model->prot_sub_id = $subgroup;
+                $model->save();
+            }
+        }    
+    }
+
 
 	/**
 	 * Displays a particular model.
@@ -84,6 +120,7 @@ class ProductController extends Controller
 			$model->prod_size1 = $_POST['Product']['prod_size1'];
 			$model->prod_size2 = $_POST['Product']['prod_size2'];
 			$model->prod_size3 = $_POST['Product']['prod_size3'];
+			$model->prot_sub_id = $_POST['Product']['prot_sub_id'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -111,6 +148,7 @@ class ProductController extends Controller
 			$model->prod_size1 = $_POST['Product']['prod_size1'];
 			$model->prod_size2 = $_POST['Product']['prod_size2'];
 			$model->prod_size3 = $_POST['Product']['prod_size3'];
+			$model->prot_sub_id = $_POST['Product']['prot_sub_id'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}

@@ -28,7 +28,7 @@
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
-			'label'=>$model->isNewRecord ? 'บันทึก' : 'Save',
+			'label'=>'บันทึก',
 		)); ?>
 	</div>
 

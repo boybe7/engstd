@@ -1,22 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "m_contract".
+ * This is the model class for table "m_prodtype_subgroup".
  *
- * The followings are the available columns in table 'm_contract':
- * @property integer $con_id
- * @property string $con_number
- * @property string $con_price
- * @property string $con_budget
+ * The followings are the available columns in table 'm_prodtype_subgroup':
+ * @property integer $id
+ * @property string $name
+ * @property integer $prod_id
  */
-class Contract extends CActiveRecord
+class ProdtypeSubgroup extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'm_contract';
+		return 'm_prodtype_subgroup';
 	}
 
 	/**
@@ -27,13 +26,12 @@ class Contract extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('con_number', 'required'),
-			array('con_id', 'numerical', 'integerOnly'=>true),
-			array('con_number', 'length', 'max'=>20),
-			array('con_price, con_budget', 'length', 'max'=>10),
+			array('name, prod_id', 'required'),
+			array('prod_id', 'numerical', 'integerOnly'=>true),
+			array('name', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('con_id, con_number, con_price, con_budget', 'safe', 'on'=>'search'),
+			array('id, name, prod_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,10 +52,9 @@ class Contract extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'con_id' => 'Con',
-			'con_number' => 'เลขที่สัญญา',
-			'con_price' => 'ค่างาน',
-			'con_budget' => 'งบประมาณโครงการ',
+			'id' => 'ID',
+			'name' => 'กลุ่มย่อย',
+			'prod_id' => 'Prod',
 		);
 	}
 
@@ -79,10 +76,9 @@ class Contract extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('con_id',$this->con_id);
-		$criteria->compare('con_number',$this->con_number,true);
-		$criteria->compare('con_price',$this->con_price,true);
-		$criteria->compare('con_budget',$this->con_budget,true);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('prod_id',$this->prod_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -93,7 +89,7 @@ class Contract extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Contract the static model class
+	 * @return ProdtypeSubgroup the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
