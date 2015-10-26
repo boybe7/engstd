@@ -34,7 +34,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
     
     'type'=>'success',
-    'label'=>'เพิ่มคู่สัญญา',
+    'label'=>'เพิ่มข้อมูล',
     'icon'=>'plus-sign',
     'url'=>array('create'),
     'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 10px 0px 10px;'),
@@ -43,7 +43,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
     'type'=>'danger',
-    'label'=>'ลบคู่สัญญา',
+    'label'=>'ลบข้อมูล',
     'icon'=>'minus-sign',
     'htmlOptions'=>array(
         'onclick'=>'      
@@ -120,7 +120,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'headerHtmlOptions' => array('style' => 'width:7%;text-align:center;background-color: #f5f5f5'),
-			'template' => '{view}  {update}',
+			'template' => '{update}',
 	
 		),
 	),

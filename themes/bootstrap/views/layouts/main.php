@@ -234,6 +234,7 @@ body{
      background-size: cover;
      font: 14px/1.4em 'Boon400',sans-serif;
      font-weight: normal;
+     padding-bottom: 30px;
 }
 
 input, select, textarea {

@@ -47,7 +47,7 @@ class User extends CActiveRecord
 			//array('lastname', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('u_id, username, password, u_group,name,position,position2', 'safe', 'on'=>'search'),
+			array('u_id, username, password, u_group,name,position,position2,dept_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,6 +77,7 @@ class User extends CActiveRecord
 			//'lastname' => 'นามสกุล',
 			'position'=>'ตำแหน่ง',
 			'position2'=>'ตำแหน่งรักษาการ',
+			'dept_id'=>'สังกัด'
 		);
 	}
 
@@ -107,6 +108,7 @@ class User extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('position',$this->position,true);
 		$criteria->compare('position2',$this->position2,true);
+		$criteria->compare('dept_id',$this->dept_id);
 
 		
 		//$user_dept = Yii::app()->user->userdept;

@@ -103,6 +103,18 @@
     </div>
     
   </div>
+
+  <div class="row-fluid">
+   
+    <div class="span12">
+      <?php
+        
+        echo $form->dropDownListRow($model, 'dept_id', array('1' =>'ส่วนควบคุมคุณภาพท่อและอุปกรณ์' ,'2' =>'ส่วนพัฒนาผลิตภัณฑ์ท่อและอุปกรณ์' ),array('class'=>'span12','empty'=>""));
+
+       ?>
+    </div>
+    
+  </div>
   
   <div class="row-fluid">
 	<div class="span12 form-actions ">
@@ -114,7 +126,7 @@
 			   'type'=>'danger',
 			   'label'=>'ยกเลิก',
          'htmlOptions'=>array('class'=>'pull-right'),               
-          'url'=>array("admin"), 
+          'url'=>array("index"), 
 		  )); 
      $this->widget('bootstrap.widgets.TbButton', array(
          'buttonType'=>'submit',

@@ -71,7 +71,7 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			//$model->department_id = Yii::app()->user->userdept;
+			$model->dept_id = $_POST['User']['dept_id'];
 			if($model->save())
                             $this->redirect(array('index'));
 				//$this->redirect(array('view','id'=>$model->staff_id));
@@ -96,7 +96,7 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			//$model->department_id = Yii::app()->user->userdept;
+			$model->dept_id = $_POST['User']['dept_id'];
 
 			if($model->save())
 				$this->redirect(array('index'));

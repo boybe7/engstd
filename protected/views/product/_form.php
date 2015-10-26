@@ -24,7 +24,30 @@
                        );
         } 
         $typelist = CHtml::listData($data,'value','text');
-        echo $form->dropDownListRow($model, 'prot_id', $typelist,array('class'=>'span5','prompt'=>'--กรุณาเลือก--')); 
+        echo $form->dropDownListRow($model, 'prot_id', $typelist,array('class'=>'span5','prompt'=>'--กรุณาเลือก--','ajax' => 
+                            array(
+                                'type'=>'POST', 
+                                'url'=>CController::createUrl('GetSubgroupByType'),
+                                'data'=>array('id' => 'js:this.value'),
+                                'update'=>'#Product_prot_sub_id', 
+                            ))); 
+      
+	
+
+	?>
+
+	<?php 
+
+	    $models=ProdtypeSubgroup::model()->findAll(array('order'=>'', 'condition'=>'prod_id=:id', 'params'=>array('id'=>$model->prot_id)));
+        $data = array();
+        foreach ($models as $key => $value) {
+          $data[] = array(
+                          'value'=>$value['id'],
+                          'text'=>$value['name'],
+                       );
+        } 
+        $typelist = CHtml::listData($data,'value','text');
+        echo $form->dropDownListRow($model, 'prot_sub_id', $typelist,array('class'=>'span5','prompt'=>'--กรุณาเลือก--')); 
       
 	
 
@@ -47,7 +70,7 @@
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
-			'label'=>$model->isNewRecord ? 'บันทึก' : 'Save',
+			'label'=>'บันทึก',
 		)); ?>
 	</div>
 

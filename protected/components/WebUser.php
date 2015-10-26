@@ -41,7 +41,7 @@ function getName(){
 
 function getUserDept(){
     $user = $this->loadUser(Yii::app()->user->id);
-    return $user->department_id;
+    return $user->dept_id;
     
 }
 // access it by Yii::app()->user->usertype
