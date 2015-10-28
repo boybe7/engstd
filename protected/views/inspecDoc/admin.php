@@ -86,6 +86,35 @@ $this->widget('bootstrap.widgets.TbButton', array(
     ),
 )); 
 
+$this->widget('bootstrap.widgets.TbButton', array(
+	    'buttonType'=>'link',
+	    
+	    'type'=>'',
+	    'label'=>'ปิดงาน',
+	    'icon'=>'icon-off',
+	    //'url'=>array('close'),
+	    'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 10px 0px 0px;',
+
+
+					'onclick'=>'      
+	                       if($.fn.yiiGridView.getSelection("inspec-doc-grid").length==0)
+	                       	  js:bootbox.alert("กรุณาเลือกใบรับแจ้งที่ต้องการปิดงาน?","ตกลง");	
+	                       else 
+	                       {  
+	                               	 $.ajax({
+											type: "POST",
+											url: "closeSelected",
+											data: { selectedID: $.fn.yiiGridView.getSelection("inspec-doc-grid")}
+											})
+											.done(function( msg ) {
+												$("#inspec-doc-grid").yiiGridView("update",{});
+											});
+				            }',
+
+
+	    	),
+	)); 
+
 
 if(Yii::app()->user->isExecutive() || Yii::app()->user->isAdmin())
 {
@@ -104,20 +133,42 @@ if(Yii::app()->user->isExecutive() || Yii::app()->user->isAdmin())
 	                       	  js:bootbox.alert("กรุณาเลือกใบรับแจ้งที่ต้องการยกเลิก?","ตกลง");	
 	                       else 
 	                       {  
-	                               	 $.ajax({
-											type: "POST",
-											url: "cancleSelected",
-											data: { selectedID: $.fn.yiiGridView.getSelection("inspec-doc-grid")}
-											})
-											.done(function( msg ) {
-												$("#inspec-doc-grid").yiiGridView("update",{});
-											});
+	          //                      	 $.ajax({
+											// type: "POST",
+											// url: "cancleSelected",
+											// data: { selectedID: $.fn.yiiGridView.getSelection("inspec-doc-grid")}
+											// })
+											// .done(function( msg ) {
+											// 	$("#inspec-doc-grid").yiiGridView("update",{});
+											// });
+
+
+	    							js:bootbox.confirm($("#modal-body2").html(),"ยกเลิก","ตกลง",
+                                       
+
+                                        function(confirmed){
+                                        	if(confirmed)
+                                        	{
+                                        		    
+				                               	 	$.ajax({
+														 type: "POST",
+														 url: "cancel",
+														 data: { selectedID: $.fn.yiiGridView.getSelection("inspec-doc-grid"),data:$(".modal-body #note-form").serialize()}
+													 })
+													 .done(function( msg ) {
+														 	$("#inspec-doc-grid").yiiGridView("update",{});
+													});
+
+                                        	}	
+                                        }
+                                    );      	
 				            }',
 
 
 	    	),
 	)); 
 }
+
 
 
 
@@ -178,3 +229,17 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 
 
 ?>
+
+<div id="modal-content" class="modal hide">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  
+    <div id="modal-body2" class='modal-body'>
+         <div>หมายเหตุ :</div> 
+         <form id="note-form" accept-charset="UTF-8">
+         	
+         <textarea class='span5' rows=4 cols=4 name='comment' id='comment'></textarea>
+        </form>
+    </div>
+  
+</div>
