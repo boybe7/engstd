@@ -330,9 +330,13 @@
 	<?php echo $form->textFieldRow($model,'doc_detail',array('class'=>'span6','maxlength'=>100)); ?>
 
 	<?php
-	echo $form->dropDownListRow($model, 'doc_status', array("1"=>"เปิด","2"=>"ปิด","3"=>"ยกเลิก"),array('class'=>'span2','style'=>'height:30px;'), array('options' => array('pj_work_cat'=>array('selected'=>true)))); 
-	// echo $form->textFieldRow($model,'doc_status',array('class'=>'span5')); 
-
+	
+  if(Yii::app()->user->isExecutive() || Yii::app()->user->isAdmin())
+  {  
+   echo $form->dropDownListRow($model, 'doc_status', array("1"=>"เปิด","2"=>"ปิด","3"=>"ยกเลิก"),array('class'=>'span2','style'=>'height:30px;'), array('options' => array('pj_work_cat'=>array('selected'=>true)))); 
+    
+   echo $form->textFieldRow($model,'cancel_remark',array('class'=>'span6')); 
+  } 
 	 ?>
 
 
@@ -578,7 +582,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 		<?php $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'link',
 			'type'=>'primary',
-			'label'=>$model->isNewRecord ? 'บันทึก' : 'Save',
+			'label'=>'บันทึก',
       'htmlOptions'=>array(
                 'onclick'=>'
                     $("#inspec-doc-form").submit();

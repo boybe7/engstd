@@ -31,7 +31,7 @@ class InspecDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','CancleSelected','addCer','DeleteInspecCer'),
+				'actions'=>array('create','update','cancel','DeleteSelected','CancleSelected','addCer','DeleteInspecCer'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,6 +43,17 @@ class InspecDocController extends Controller
 			),
 		);
 	}
+
+	 public function actionCancel()
+    {
+    	$id = $_POST['selectedID'];
+        $comment = str_replace("comment=&comment=", "", urldecode($_POST['data']));
+        $model=$this->loadModel($id);
+        $model->doc_status = 3;
+        $model->cancel_remark = $comment;
+        $model->save();
+
+    }
 
 	public function actionCancleSelected()
     {
@@ -131,6 +142,7 @@ class InspecDocController extends Controller
 			$model->u_id = Yii::app()->user->ID;
 			$model->cust_id=$_POST['InspecDoc']['cust_id'];
 			$model->doc_date_add = (date("Y")+543).date("-m-d");
+			$model->doc_status = 1;
 
 			if($model->save())
 			{
@@ -194,6 +206,10 @@ class InspecDocController extends Controller
 			$model->dept_id = $_POST['InspecDoc']['dept_id'];
 			$model->cust_id=$_POST['InspecDoc']['cust_id'];
 			$model->vend_id = $_POST['InspecDoc']['vend_id'];
+
+			if(isset($_POST['InspecDoc']['cancel_remark']))
+				$model->cancel_remark = $_POST['InspecDoc']['cancel_remark'];
+
 			if($model->save())
 				$this->redirect(array('index'));
 		}

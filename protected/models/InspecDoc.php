@@ -43,7 +43,7 @@ class InspecDoc extends CActiveRecord
 			array('doc_detail', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('doc_id, doc_no, doc_date, dept_id, doc_refer, con_id, cust_id, vend_id, prot_id, doc_detail, u_id, doc_date_add, doc_status', 'safe', 'on'=>'search'),
+			array('doc_id, doc_no,cancel_remark, doc_date, dept_id, doc_refer, con_id, cust_id, vend_id, prot_id, doc_detail, u_id, doc_date_add, doc_status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,6 +77,7 @@ class InspecDoc extends CActiveRecord
 			'u_id' => 'U',
 			'doc_date_add' => 'Doc Date Add',
 			'doc_status' => 'สถานะ',
+			'cancel_remark'=>'หมายเหตุการยกเลิก'
 		);
 	}
 
