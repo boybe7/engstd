@@ -118,6 +118,26 @@ class CerDocController extends Controller
 	    	$criteria->compare('cer_no',$_GET['cer_no'],true);
 
 
+	    if(isset($_GET['contractor']))
+	    {
+	    	$cons = explode("-", $_GET['contractor']);
+            if(!empty($cons[1]))
+	    	$criteria->compare('contractor',$cons[1],true);
+	    }
+
+	    if(isset($_GET['vend_id']))
+	    {
+	    	//$cons = explode("-", $_GET['vend_id']);
+            //if(!empty($cons[1]))
+	    	$criteria->compare('vend_id',$_GET['vend_id'],true);
+	    }
+
+	    if(isset($_GET['supp_id']))
+	    {
+	    	//$cons = explode("-", $_GET['vend_id']);
+            //if(!empty($cons[1]))
+	    	$criteria->compare('supp_id',$_GET['supp_id'],true);
+	    }
 
 	    $dataProvider=new CActiveDataProvider("CerDoc", array('criteria'=>$criteria,'pagination'=>array('pageSize'=>10)));
 

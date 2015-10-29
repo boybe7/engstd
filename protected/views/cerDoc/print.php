@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 	
 	$(function(){
         //autocomplete search on focus    	
-	    $("#cer_no,#contract_no").autocomplete({
+	    $("#cer_no,#contract_no,#contractor,#vend_id,#supp_id").autocomplete({
        
                 minLength: 0
             }).bind('focus', function () {
@@ -85,13 +85,11 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 		      	?>
 		</div>  
-	   <div class="span2"> 
-        <?php 
-        	
-        			
-        			 echo CHtml::label('เลขที่สัญญา','contract_no');
+	<div class="span2">
+      <?php
+           echo CHtml::label('เลขที่สัญญา','contract_no');
 
-        			$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+              $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'contract_no',
                             'id'=>'contract_no',
                           
@@ -118,7 +116,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                                           
                                             
                                      }',
-                                     //'close'=>'js:function(){$(this).val("");}',
+                                    
                                      
                             ),
                            'htmlOptions'=>array(
@@ -127,10 +125,8 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
                             ),
                                   
                         ));
-						
-
-         ?>
-        </div> 
+      ?>
+      </div>
          <div class="span2"> 
         <?php 
         	
@@ -192,6 +188,143 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
        </div>
         
     </div>
+
+
+     <div class="row-fluid">
+       <div class="span4">
+       		<?php
+       			    echo CHtml::label('ผู้ผลิต','vend_id');
+
+        			$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                            'name'=>'vend_id',
+                            'id'=>'vend_id',
+                          
+                           'source'=>'js: function(request, response) {
+                                $.ajax({
+                                    url: "'.$this->createUrl('Vendor/GetVendor').'",
+                                    dataType: "json",
+                                    data: {
+                                        term: request.term,
+                                       
+                                    },
+                                    success: function (data) {
+                                            response(data);
+
+                                    }
+                                })
+                             }',
+                            // additional javascript options for the autocomplete plugin
+                            'options'=>array(
+                                     'showAnim'=>'fold',
+                                     'minLength'=>0,
+                                     'select'=>'js: function(event, ui) {
+                                        
+                                          
+                                            
+                                     }',
+                                    
+                                     
+                            ),
+                           'htmlOptions'=>array(
+                                'class'=>'span12',
+                                'placeholder'=>""
+                            ),
+                                  
+                        ));
+
+       		?>
+
+       </div>
+       <div class="span4">
+       		<?php
+       			    echo CHtml::label('ผู้จัดส่ง','supp_id');
+
+        			$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                            'name'=>'supp_id',
+                            'id'=>'supp_id',
+                          
+                           'source'=>'js: function(request, response) {
+                                $.ajax({
+                                    url: "'.$this->createUrl('Vendor/GetSupplier').'",
+                                    dataType: "json",
+                                    data: {
+                                        term: request.term,
+                                       
+                                    },
+                                    success: function (data) {
+                                            response(data);
+
+                                    }
+                                })
+                             }',
+                            // additional javascript options for the autocomplete plugin
+                            'options'=>array(
+                                     'showAnim'=>'fold',
+                                     'minLength'=>0,
+                                     'select'=>'js: function(event, ui) {
+                                        
+                                          
+                                            
+                                     }',
+                                    
+                                     
+                            ),
+                           'htmlOptions'=>array(
+                                'class'=>'span12',
+                                'placeholder'=>""
+                            ),
+                                  
+                        ));
+
+       		?>
+
+       </div>
+
+  
+      <div class="span4">
+      <?php
+            echo CHtml::label('คู่สัญญา','contract_no');
+
+              $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                            'name'=>'contractor',
+                            'id'=>'contractor',
+                          
+                           'source'=>'js: function(request, response) {
+                                $.ajax({
+                                    url: "'.$this->createUrl('Contractor/GetContractor').'",
+                                    dataType: "json",
+                                    data: {
+                                        term: request.term,
+                                       
+                                    },
+                                    success: function (data) {
+                                            response(data);
+
+                                    }
+                                })
+                             }',
+                            // additional javascript options for the autocomplete plugin
+                            'options'=>array(
+                                     'showAnim'=>'fold',
+                                     'minLength'=>0,
+                                     'select'=>'js: function(event, ui) {
+                                        
+                                          
+                                            
+                                     }',
+                                    
+                                     
+                            ),
+                           'htmlOptions'=>array(
+                                'class'=>'span12',
+                                'placeholder'=>""
+                            ),
+                                  
+                        ));
+
+      ?>
+      </div>
+    </div>  
     
 <?php $this->endWidget(); ?>
 
@@ -240,19 +373,26 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 				'htmlOptions'=>array('style'=>'text-align:center;')
 	  	),
 	  	'vend_id'=>array(
-			    'header' => 'ผู้ผลิต/ผู้จัดส่ง',
+			    'header' => 'ผู้ผลิต',
 			    'value'=>'$data->vend_id',
 			    //'filter'=>CHtml::activeTextField($model, 'cer_no',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_no"))),
 				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center;')
 	  	),
-	  	'prod_id'=>array(
-			    'header' => 'ประเภทท่อ/อุปกรณ์',
-			    'value'=> array($this,'gridGetProd'),
+	  	'supp_id'=>array(
+			    'header' => 'ผู้จัดส่ง',
+			    'value'=>'$data->supp_id',
 			    //'filter'=>CHtml::activeTextField($model, 'cer_no',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_no"))),
 				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center;')
 	  	),
+	  	// 'prod_id'=>array(
+			 //    'header' => 'ประเภทท่อ/อุปกรณ์',
+			 //    'value'=> array($this,'gridGetProd'),
+			 //    //'filter'=>CHtml::activeTextField($model, 'cer_no',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_no"))),
+				// 'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				// 'htmlOptions'=>array('style'=>'text-align:center;')
+	  	// ),
 	  	'cer_oper_date'=>array(
 			    'header' => 'วันที่ตรวจโรงงาน',
 			    'value'=>'$data->cer_oper_date',
