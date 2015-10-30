@@ -31,7 +31,7 @@ $this->breadcrumbs=array(
 <div class="well">
   <div class="row-fluid">
 
-    <div class="span2">
+    <div class="span3">
 			<?php
 
                                 echo CHtml::label('วันที่ออกใบรับรองเริ่มต้น','date_start');
@@ -56,7 +56,7 @@ $this->breadcrumbs=array(
 		      	?>
       </div>
 
-      <div class="span2 offset1">
+      <div class="span3" style="padding-left:10px;">
 			<?php
 
                                 echo CHtml::label('วันที่ออกใบรับรองสิ้นสุด','date_end');
@@ -82,7 +82,7 @@ $this->breadcrumbs=array(
      </div>
 
         <!------ปุ่ม-------->
-        <div class="span3 offset1">
+        <div class="span5 offset1">
                 <?php
                             $this->widget('bootstrap.widgets.TbButton', array(
                                 'buttonType' => 'link',
@@ -97,17 +97,17 @@ $this->breadcrumbs=array(
                             ));
                 ?>
                 <?php
-                $this->widget('bootstrap.widgets.TbButton', array(
-                    'buttonType' => 'link',
-                    'type' => 'success',
-                    'label' => 'Excel',
-                    'icon' => 'excel',
-                    'htmlOptions' => array(
-                        'class' => 'span4',
-                        'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
-                        'id' => 'exportExcel'
-                    ),
-                ));
+//                $this->widget('bootstrap.widgets.TbButton', array(
+//                    'buttonType' => 'link',
+//                    'type' => 'success',
+//                    'label' => 'Excel',
+//                    'icon' => 'excel',
+//                    'htmlOptions' => array(
+//                        'class' => 'span4',
+//                        'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
+//                        'id' => 'exportExcel'
+//                    ),
+//                ));
 
                 $this->widget('bootstrap.widgets.TbButton', array(
                     'buttonType' => 'link',
@@ -163,7 +163,7 @@ $("#printReport").click(function(e){
         data: {date_start:$("#date_start").val(),date_end:$("#date_end").val()
               },
         success:function(response){
-            window.open("../print/tempReport.pdf", "_blank", "fullscreen=yes");              
+            window.open("../print/tempReport.pdf", "_blank", "fullscreen=yes");
             
         }
 

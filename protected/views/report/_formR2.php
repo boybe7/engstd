@@ -35,8 +35,7 @@
 </style>
 
 <?php
-$thai_mm=array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
-
+//print_r($model);
 $str_date = explode("/", $date_start);
 if(count($str_date)>1)
     $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
@@ -49,12 +48,6 @@ if(empty($date_end))
 	$date_end = $date_start;
 if(empty($date_start))
 	$date_start = $date_end;
-
-$date_s = new DateTime($date_start);
-$date_st =(int)($date_s->format('d'))."&nbsp;".$thai_mm[(int)$date_s->format('m')-1]."&nbsp;".($date_s->format('y'));
-$date_e = new DateTime($date_end);
-$date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m')-1]."&nbsp;".($date_e->format('y'));
-echo"เงื่อนไขรายงาน&nbsp;:&nbsp;วันดำเนินการจาก&nbsp;".$date_st."&nbsp;ถึง&nbsp;".$date_en."<br><br>";
 
 
 //$models=CerDoc::model()->findAll(array("condition"=>"cer_date BETWEEN '$date_start' AND '$date_end'  "));
@@ -69,6 +62,35 @@ $models = Yii::app()->db->createCommand()
 //print_r($m);					
 
 ?>
+
+
+  <!-- <div>
+      
+        <table class="table table-fixed ">
+          <thead style="width:100%;">
+            <tr style="background-color: #f5f5f5;">
+              <th style="width:25%;border-color: #e3e3e3;border-left-style: solid;border-top-style: solid;border-width: thin;">รหัสท่อ/อุปกรณ์</th><th style="width:30%;border-top-style: solid;border-width: thin;border-color: #e3e3e3">รายละเอียดท่อ/อุปกรณ์</th><th style="width:21%;border-top-style: solid;border-width: thin;border-color: #e3e3e3">ขนาด &#8709 มม.</th><th style="width:6%;border-top-style: solid;border-width: thin;border-color: #e3e3e3">จำนวน</th><th style="width:10%;border-top-style: solid;border-width: thin;border-color: #e3e3e3;border-right-style: solid;">หน่วย</th>
+            </tr>
+          </thead>
+          <tbody>
+ -->
+            <?php
+                 
+                  // foreach ($models as $key => $model) {
+                  //     echo "<tr>";
+                  //       echo '<td style="width:25%;">'.$model["prod_code"].'</td><td style="width:30%">'.$model["detail"].'</td><td style="width:21%;text-align:center;">'.$model["size"].'</td><td style="width:6%;text-align:center;">'.$model["sum"].'</td><td style="width:9.3%;text-align:center;">'.$model["prod_unit"].'</td>';
+                  //     echo "</tr>";
+                  // }
+                
+
+            ?> 
+            
+   <!--       
+          </tbody>
+        </table>
+     
+  </div> -->
+
 
   <table class="table">
     <thead>
@@ -95,15 +117,4 @@ $models = Yii::app()->db->createCommand()
      
     </tbody>
   </table>
-<?php
-echo"รายงานสรุปยอดรับรองท่อ/อุปกรณ์จำนวน&nbsp;".count($models)."&nbsp;รายการ";
-$t= date('H:i:s', time()); // 10:00:00
 
-$m_d = date("d");
-$m_m = date("m")-1;
-$m_y = date("Y")+543;
-
-$date_mm =$m_d."&nbsp;".$thai_mm[(int)$m_m]."&nbsp;".$m_y;
-
-echo"<br>ออกเมื่อ&nbsp;:&nbsp;".$date_mm."&nbsp;เวลา&nbsp;".$t."&nbsp;น.";
-?>

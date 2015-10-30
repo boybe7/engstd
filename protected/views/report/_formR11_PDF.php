@@ -41,44 +41,21 @@
 		        //writeHTMLCell ($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=false, $reseth=true, $align='', $autopadding=true)
 		    }
 		}
-/*
-		// create new PDF document
-		//$pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-		$pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-
-		$str_date = explode("/", $date_start);
-		if(count($str_date)>1)
-		    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
-
-		$str_date = explode("/", $date_end);
-		if(count($str_date)>1)
-		    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
-
-		if(empty($date_end))
-			$date_end = $date_start;
-		if(empty($date_start))
-			$date_start = $date_end;
-
-//----------------------------------
-$date_s = new DateTime($date_start);
-$date_st =(int)($date_s->format('d'))."&nbsp;".$thai_mm[(int)$date_s->format('m')-1]."&nbsp;".($date_s->format('Y'));
-$date_e = new DateTime($date_end);
-$date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m')-1]."&nbsp;".($date_e->format('Y'));
-//----------------------------------
-*/
+                            $date_m = $date_end."-".$date_start;
                             $models = Yii::app()->db->createCommand()
 					->select('sum(ct.quantity) as sum,cd.vend_id, detail,prod_code,ct.prod_size as size,prod_unit,t.prot_name')
 					->from('c_cer_doc cd')
 					->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
                                         ->join('m_product p', 'p.prod_name=ct.detail')
                                         ->join('m_prodtype t', 't.prot_id=p.prot_id')
-					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
-                                        ->group('detail')
+					//->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
+                                        ->where('cer_date LIKE "'.$date_m.'%"')
+                                        ->group('vend_id')
 					->queryAll();
 
 		//$pdf->setDate($date_start,$date_end);
-$pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+                $pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		// set document information
 		$pdf->SetCreator(PDF_CREATOR);
 		$pdf->SetAuthor('Boybe');
@@ -133,15 +110,14 @@ $pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 		$pdf->SetFont('thsarabun', '', 12, '', true);
 		
 	    //$html .= 'สรุปผลงานตั้งแต่วันที่&nbsp;'.$date_st.'&nbsp;ถึงวันที่&nbsp;'.$date_en.'<br>';
-            //$html .= $date_start.$date_end;
             //$html .= 'รายละเอียดท่อและอุปกรณ์ประปาที่ผ่านการตรวจสอบควบคุมคุณภาพ&nbsp;ดังนี้<br><br>';
 
-
+            $m="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	    $html .= '<table>';
 	    $html .= '<thead>';
 	    $html .= '  <tr style="line-height: 40px;backg" bgcolor="#f5f5f5">';
-	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:35%">ผู้ผลิต</th>';
-	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:35%">ผลิตภัณฑ์</th>';
+	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:20%">ผู้ผลิต</th>';
+	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:50%">ผลิตภัณฑ์</th>';
 	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:15%">จำนวน</th>';
 	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:15%">หน่วย</th>';
 	    $html .= '  </tr>';
@@ -151,15 +127,25 @@ $pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
             
 	                  foreach ($models as $key => $model) {
                                    $html .= '<tr>';
-                                        $html .= '<td style="border:1px solid white;width:100%">'.$model["vend_id"].'</td>';
+                                        $html .= '<td style="border:1px solid black;width:100%">&nbsp;'.$model["vend_id"].'</td>';
                                    $html .= '</tr>';
-                                   
+
+                                              $models2 = Yii::app()->db->createCommand()
+                                              ->select('sum(ct.quantity) as sum,cd.vend_id, detail,prod_code,ct.prod_size as size,prod_unit,t.prot_name')
+                                              ->from('c_cer_doc cd')
+                                              ->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+                                                                            ->join('m_product p', 'p.prod_name=ct.detail')
+                                                                            ->join('m_prodtype t', 't.prot_id=p.prot_id')
+                                              //->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
+                                                                            ->where('cer_date LIKE "'.$date_m.'%" AND cd.vend_id="'.$model["vend_id"].'"')
+                                                                            ->group('detail')
+                                                                            ->queryAll();
                                               //-----------------------------------
-//                                              foreach ($models as $key => $model) {
-//                                                     $html .= ' <tr>';
-//                                                     $html .= '<td style="border:1px solid white;width:50%">&nbsp;</td><td style="border:1px solid white;width:15%">'.$model["prot_name"]."&nbsp;:&nbsp;".$model["detail"].'</td><td style="border:1px solid white;text-align:center;width:20%">'.$model["sum"].'</td><td style="border:1px solid white;text-align:center;width:15%">'.$model["prod_unit"].'</td>';
-//                                                     $html .= '</tr>';
-//                                              }
+                                              foreach ($models2 as $key => $model2) {
+                                                     $html .= ' <tr>';
+                                                     $html .= '<td style="border:1px solid black;width:70%">'.$m.$model2["prot_name"]."&nbsp;:&nbsp;".$model2["detail"].'</td><td style="border:1px solid black;text-align:center;width:15%">'.$model2["sum"].'</td><td style="border:1px solid black;text-align:center;width:15%">'.$model2["prod_unit"].'</td>';
+                                                     $html .= '</tr>';
+                                              }
                                               //-----------------------------------
 
 	                  }

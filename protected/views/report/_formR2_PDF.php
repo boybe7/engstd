@@ -1,19 +1,28 @@
 <?php
-//-------------------------------
-$thai_mm=array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
-$t= date('H:i:s', time()); // 10:00:00
-$m_d = date("d");
-$m_m = date("m")-1;
-$m_y = date("Y")+543;
-$date_mm =$m_d."&nbsp;".$thai_mm[(int)$m_m]."&nbsp;".$m_y;
-//-------------------------------
+
+function renderDate($value)
+{
+    $th_month = array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+    $dates = explode("-", $value);
+   
+    $renderDate = intval($dates[2])." ".$th_month[intval($dates[1])]." ".substr($dates[0], 2);
+   
+    return $renderDate;               
+}
+
+
 
 	require_once($_SERVER['DOCUMENT_ROOT'].'/engstd/protected/tcpdf/tcpdf.php');
+
+
+
+
+
 
 	class MYPDF extends TCPDF {
 
 		    //Page header
-		    private $date_start;
+			private $date_start;
 		    private $date_end;
 
 
@@ -28,7 +37,7 @@ $date_mm =$m_d."&nbsp;".$thai_mm[(int)$m_m]."&nbsp;".$m_y;
 		        $this->SetFont('thsarabun', 'B', 20);
 		        // Title
 		        //$this->Cell(0, 5, 'รายงานสรุปยอดรับรองท่อ/อุปกรณ์', 0, false, 'C', 0, '', 0, false, 'M', 'M');
-		        $this->writeHTMLCell(145, 20, 40, 10, 'รายงานสรุปยอดรับรองท่อ/อุปกรณ์<br>การประปานครหลวง', 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(145, 20, 40, 10, 'รายงานสรุปยอดรับรองท่อ/อุปกรณ์<br>การประปานครหลวง<div style="font-size:16px;">วันที่ดำเนินการ '.renderDate($this->date_start)." ถึง ".renderDate($this->date_end)."</div>", 0, 1, false, true, 'C', false);
 		        $image_file = $_SERVER['DOCUMENT_ROOT'].'/engstd/images/mwa_logo.png';
 		        $this->Image($image_file, 180, 10, 15, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		    }   
@@ -68,19 +77,12 @@ $date_mm =$m_d."&nbsp;".$thai_mm[(int)$m_m]."&nbsp;".$m_y;
 			$date_end = $date_start;
 		if(empty($date_start))
 			$date_start = $date_end;
-//----------------------------------
-$date_s = new DateTime($date_start);
-$date_st =(int)($date_s->format('d'))."&nbsp;".$thai_mm[(int)$date_s->format('m')-1]."&nbsp;".($date_s->format('y'));
-$date_e = new DateTime($date_end);
-$date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m')-1]."&nbsp;".($date_e->format('y'));
-//----------------------------------
+
 		$models = Yii::app()->db->createCommand()
-					->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit')
-					->from('c_cer_doc cd')	
-					->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
-                                        ->join('m_product p', 'p.prod_name=ct.detail')
-					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')		
-                                        ->group('detail')
+					->select('*')
+					->from('c_cer_doc cd')
+          			->join('m_prodtype p', 'cd.prod_id=p.prot_id')
+					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')		          				                   
 					->queryAll();
 
 		$pdf->setDate($date_start,$date_end);
@@ -138,35 +140,42 @@ $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m'
 		$html = "";
 		$pdf->SetFont('thsarabun', '', 12, '', true);
 		
-	    $html .= 'เงื่อนไขรายงาน&nbsp;:&nbsp;วันดำเนินการจาก&nbsp;'.$date_st.'&nbsp;ถึง&nbsp;'.$date_en.'<br><br>';
-
-	    $html .= '<table>';
+	
+		$html .= '<table>';
 	    $html .= '<thead>';
-	    $html .= '  <tr style="line-height: 40px;backg" bgcolor="#f5f5f5">';
-	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:25%">รหัสท่อ/อุปกรณ์</th>';
-	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:35%">รายละเอียดท่อ/อุปกรณ์</th>';
-	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:20%">ขนาด '.TCPDF_FONTS::unichr(248).' มม.</th>';
-	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:10%">จำนวน</th>';
-	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:10%">หน่วย</th>';
+	    $html .= '  <tr style="line-height: 40px;background-color:#f5f5f5">';
+	    $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:15%">วันที่ออกใบรับรองฯ</th>';
+	    $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:12%">เลขที่</th>';
+	    $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:10%">สัญญา</th>';
+	    $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:20%">คู่สัญญา</th>';
+	    $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:20%">ผู้ผลิต/ผู้จัดส่ง</th>';
+	    $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:10%">ประเภท</th>';
+	    $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:13%">วันที่ตรวจโรงงาน</th>';
 	    $html .= '  </tr>';
 	    $html .= '</thead>';
 	    $html .= '<tbody>';
 	       
 	                  foreach ($models as $key => $model) {
 	                     $html .= ' <tr>';
-	                     $html .= '<td style="border:1px solid black;width:25%"> '.$model["prod_code"].'</td><td style="border:1px solid black;width:35%"> '.$model["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$model["size"].'</td><td style="border:1px solid black;text-align:center;width:10%">'.$model["sum"].'</td><td style="border:1px solid black;text-align:center;width:10%">'.$model["prod_unit"].'</td>';
+	                     $html .= '<td style="text-align:center;border:1px solid black;width:15%"> '.renderDate($model["cer_date"]).'</td>';
+	                     $html .= '<td style="text-align:center;border:1px solid black;width:12%"> '.$model["cer_no"];
+	                     $html .='</td><td style="border:1px solid black;text-align:center;width:10%">'.$model["contract_no"];
+	                     $html .='</td><td style="border:1px solid black;text-align:left;width:20%">'.$model["contractor"];
+	                     $html .='</td><td style="border:1px solid black;text-align:left;width:20%">'.$model["vend_id"];
+	                     $html .='</td><td style="border:1px solid black;text-align:center;width:10%">'.$model["prot_name"];
+	                     $html .='</td><td style="border:1px solid black;text-align:center;width:13%">'.renderDate($model["cer_oper_date"]);
+	                     $html .='</td>';
 	                     $html .= '</tr>';
 	                  }
 	       
 	     
 	    $html .= '</tbody>';
-	    $html .= '</table>';
+	  	$html .= '</table>';
 
-            //---------------------------
-            $html .= '<br><br>รายงานสรุปยอดรับรองท่อ/อุปกรณ์จำนวน&nbsp;'.count($models).'&nbsp;รายการ';
-            $html .= '<br>ออกเมื่อ&nbsp;:&nbsp;'.$date_mm.'&nbsp;เวลา&nbsp;'.$t.'&nbsp;น.';
-            //---------------------------
+	  	$html .= '<div>รวมทั้งหมด '.count($models).' รายการ</div>';
 
+		//$html .= '<div align="center" style="font-size:25px;font-weight:bold">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ </div>';
+		//$html .= '<div align="center" style="font-size:16px;">แนบท้ายหนังสือกมว.ที่.................. </div>';
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
        
