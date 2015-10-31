@@ -14,7 +14,7 @@ $cs->registerScriptFile( $theme->getBaseUrl() . '/js/highcharts.js' );
   <h1>ระบบใบรับรองมาตรฐานครุภัณฑ์</h1>
   <p>ส่วนควบคุมการผลิตท่อและอุปกรณ์ กองมาตรฐานวิศวกรรม</p>
   <p>
-    <a class="btn btn-primary btn-large">
+    <a class="btn btn-primary btn-large" href="ENG_UD_ADMIN_1.0.pdf">
       คู่มือการใช้งาน
     </a>
   </p>

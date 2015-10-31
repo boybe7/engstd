@@ -305,7 +305,31 @@ $this->breadcrumbs = array(
                 ),
             ));
             ?>
+            <?php
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'success',
+                'label' => 'Excel',
+                'icon' => 'excel',
+                'htmlOptions' => array(
+                    'class' => 'span4',
+                    'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
+                    'id' => 'exportExcel'
+                ),
+            ));
 
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'info',
+                'label' => '',
+                'icon' => 'print white',
+                'htmlOptions' => array(
+                    'class' => 'span3',
+                    'style' => 'margin:25px 0px 0px 0px;',
+                    'id' => 'printReport'
+                ),
+            ));
+            ?>
         </div>
     </div>
 
@@ -327,8 +351,8 @@ $("#gentReport").click(function(e){
         $.ajax({
             url: "GenR7",
             cache:false,
-            data: {vendor: $("#vendor").val(),monthEnd:$("#monthEnd").val(),yearEnd:$("#yearEnd").val(),workcat:$("#workcat").val()
-              },
+                        data: {date_start:$("#date_start").val(),date_end:$("#date_end").val()
+            },
             success:function(response){
                
                $("#printcontent").html(response);                 

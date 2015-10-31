@@ -24,36 +24,36 @@ $this->breadcrumbs = array(
 <!-- <script type="text/javascript" src="/pea_track/themes/bootstrap/js/compatibility.js"></script> -->
 
 
-<h4>รายงานท่อและอุปกรณ์ประปาที่ผ่านการตรวจสอบควบคุมคุณภาพ</h4>
+<h4>รายงานสรุปยอดรับรองท่อ / อุปกรณ์</h4>
 
-<div class="well">
+<div class="well ">
     <div class="row-fluid">
 
-        <div class="span2">
-<?php
-echo CHtml::label('เริ่มต้น', 'date_start');
-echo '<div class="input-append" style="margin-top:0px;">'; //ใส่ icon ลงไป
-$this->widget('zii.widgets.jui.CJuiDatePicker',
-        array(
-            'name' => 'date_start',
-            'attribute' => 'date_start',
-            'options' => array(
-                'mode' => 'focus',
-                //'language' => 'th',
-                'format' => 'dd/mm/yyyy', //กำหนด date Format
-                'showAnim' => 'slideDown',
-            ),
-            'htmlOptions' => array('class' => 'span12'), // ใส่ค่าเดิม ในเหตุการ Update
-        )
-);
-echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
-?>
+        <div class="span3">
+                <?php
+                echo CHtml::label('วันที่เริ่มต้น', 'date_start');
+                echo '<div class="input-append" style="margin-top:0px;">'; //ใส่ icon ลงไป
+                $this->widget('zii.widgets.jui.CJuiDatePicker',
+                        array(
+                            'name' => 'date_start',
+                            'attribute' => 'date_start',
+                            'options' => array(
+                                'mode' => 'focus',
+                                //'language' => 'th',
+                                'format' => 'dd/mm/yyyy', //กำหนด date Format
+                                'showAnim' => 'slideDown',
+                            ),
+                            'htmlOptions' => array('class' => 'span12'), // ใส่ค่าเดิม ในเหตุการ Update
+                        )
+                );
+                echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
+                ?>
         </div>
 
-        <div class="span2 offset1">
+        <div class="span3" style="padding-left:10px;">
             <?php
-            echo CHtml::label('วันสิ้นสุด', 'date_end');
-            echo '<div class="input-append" style="margin-top:0px;">'; //ใส่ icon ลงไป
+            echo CHtml::label('วันที่สิ้นสุด', 'date_end');
+            echo '<div class="input-append" style="margin-top:0px; ">'; //ใส่ icon ลงไป
             $this->widget('zii.widgets.jui.CJuiDatePicker',
                     array(
                         'name' => 'date_end',
@@ -71,55 +71,42 @@ echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
             ?>
         </div>
 
-
-        <!------ปุ่ม-------->
-        <div class="span3 offset1">
-                <?php
-                            $this->widget('bootstrap.widgets.TbButton', array(
-                                'buttonType' => 'link',
-                                'type' => 'inverse',
-                                'label' => 'view',
-                                'icon' => 'list-alt white',
-                                'htmlOptions' => array(
-                                    'class' => 'span4',
-                                    'style' => 'margin:25px 10px 0px 0px;',
-                                    'id' => 'gentReport'
-                                ),
-                            ));
-                ?>
-                <?php
-                $this->widget('bootstrap.widgets.TbButton', array(
-                    'buttonType' => 'link',
-                    'type' => 'success',
-                    'label' => 'Excel',
-                    'icon' => 'excel',
-                    'htmlOptions' => array(
-                        'class' => 'span4',
-                        'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
-                        'id' => 'exportExcel'
-                    ),
-                ));
-
-                $this->widget('bootstrap.widgets.TbButton', array(
-                    'buttonType' => 'link',
-                    'type' => 'info',
-                    'label' => '',
-                    'icon' => 'print white',
-                    'htmlOptions' => array(
-                        'class' => 'span3',
-                        'style' => 'margin:25px 0px 0px 0px;',
-                        'id' => 'printReport'
-                    ),
-                ));
-                ?>
+        <!--  แถว 2 //// -->
+        <div class="span5 offset1">
+<?php
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'inverse',
+                'label' => 'view',
+                'icon' => 'list-alt white',
+                'htmlOptions' => array(
+                    'class' => 'span4',
+                    'style' => 'margin:25px 10px 0px 0px;',
+                    'id' => 'gentReport'
+                ),
+            ));
+?>
+            <?php
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'info',
+                'label' => 'Print',
+                'icon' => 'print white',
+                'htmlOptions' => array(
+                    'class' => 'span3',
+                    'style' => 'margin:25px 0px 0px 0px;',
+                    'id' => 'printReport'
+                ),
+            ));
+            ?>
 
         </div>
-        
-</div>
-</div>
 
 
+    </div>
+</div>
 <div id="printcontent" style=""></div>
+
 
 
 <?php
@@ -128,19 +115,19 @@ echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
 $("#gentReport").click(function(e){
     e.preventDefault();
 
-       
+
         $.ajax({
             url: "GenR9",
             cache:false,
-            data: {date_start:$("#date_start").val(),date_end:$("#date_end").val(),workcat:$("#workcat").val()
+            data: {date_start:$("#date_start").val(),date_end:$("#date_end").val()
               },
             success:function(response){
-               
-               $("#printcontent").html(response);                 
+
+               $("#printcontent").html(response);
             }
 
         });
-    
+
 });
 ', CClientScript::POS_END);
 
@@ -149,12 +136,12 @@ $("#printReport").click(function(e){
     e.preventDefault();
 
     $.ajax({
-        url: "printVendor",
-        data: {fiscalyear:$("#fiscalyear").val(),project: $("#project").val(),monthEnd:$("#monthEnd").val(),yearEnd:$("#yearEnd").val(),workcat:$("#workcat").val()
+        url: "printR9",
+        data: {date_start:$("#date_start").val(),date_end:$("#date_end").val()
               },
         success:function(response){
-            window.open("../tempReport.pdf", "_blank", "fullscreen=yes");              
-            
+            window.open("../print/tempReport.pdf", "_blank", "fullscreen=yes");
+
         }
 
     });
@@ -166,7 +153,7 @@ $("#printReport").click(function(e){
 $("#exportExcel").click(function(e){
     e.preventDefault();
     window.location.href = "genVendorExcel?fiscalyear="+$("#fiscalyear").val()+"&project="+$("#project").val()+"&monthEnd="+$("#monthEnd").val()+"&yearEnd="+$("#yearEnd").val()+"&workcat="+$("#workcat").val();
-              
+
 
 
 });

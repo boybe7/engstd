@@ -58,7 +58,7 @@ $models = Yii::app()->db->createCommand()
 //print_r($m);
 
 
-echo count($models);          
+//echo count($models);
 
 ?>
 

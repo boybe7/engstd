@@ -65,7 +65,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
     'label'=>'ยกเลิก',
     'icon'=>'remove-sign',
     //'url'=>array('close'),
-    'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 10px 0px 10px;',
+    'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 0px 0px 10px;',
 
 
 				'onclick'=>'      

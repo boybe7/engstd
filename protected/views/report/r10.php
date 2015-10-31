@@ -34,8 +34,8 @@ $this->breadcrumbs=array(
                
               <?php
                 echo CHtml::label('ณ เดือน','monthEnd');  
-                $list = array("1" => "ม.ค.", "2" => "ก.พ.", "3" => "มี.ค.","4" => "เม.ย.", "5" => "พ.ค.", "6" => "มิ.ย.","7" => "ก.ค.", "8" => "ส.ค.", "9" => "ก.ย.","10" => "ต.ค.", "11" => "พ.ย.", "12" => "ธ.ค.");
-                $mm = date("n");
+                $list = array("01" => "ม.ค.", "02" => "ก.พ.", "03" => "มี.ค.","04" => "เม.ย.", "05" => "พ.ค.", "06" => "มิ.ย.","07" => "ก.ค.", "08" => "ส.ค.", "09" => "ก.ย.","10" => "ต.ค.", "11" => "พ.ย.", "12" => "ธ.ค.");
+                $mm = date("m");
                 echo CHtml::dropDownList('monthEnd', '', 
                         $list,array('class'=>'span12',"options"=>array($mm=>array("selected"=>true))
                     ));
@@ -56,60 +56,35 @@ $this->breadcrumbs=array(
 
               ?>
     </div>
-      
-    <div class="span3">
-      <?php
-        $this->widget('bootstrap.widgets.TbButton', array(
-              'buttonType'=>'link',
-              
-              'type'=>'inverse',
-              'label'=>'view',
-              'icon'=>'list-alt white',
-              
-              'htmlOptions'=>array(
-                'class'=>'span4',
-                'style'=>'margin:25px 10px 0px 0px;',
-                'id'=>'gentReport'
-              ),
-          ));
-      ?>
-    <!-- </div> -->
-    <!-- <div class="span1"> -->
+      <div class="span5 offset1">
+<?php
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'inverse',
+                'label' => 'view',
+                'icon' => 'list-alt white',
+                'htmlOptions' => array(
+                    'class' => 'span4',
+                    'style' => 'margin:25px 10px 0px 0px;',
+                    'id' => 'gentReport'
+                ),
+            ));
 
-      <?php
-      /*
-        $this->widget('bootstrap.widgets.TbButton', array(
-              'buttonType'=>'link',
-              
-              'type'=>'success',
-              'label'=>'Excel',
-              'icon'=>'excel',
-              
-              'htmlOptions'=>array(
-                'class'=>'span4',
-                'style'=>'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
-                'id'=>'exportExcel'
-              ),
-          ));
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'info',
+                'label' => 'Print',
+                'icon' => 'print white',
+                'htmlOptions' => array(
+                    'class' => 'span3',
+                    'style' => 'margin:25px 0px 0px 0px;',
+                    'id' => 'printReport'
+                ),
+            ));
+            ?>
 
-    $this->widget('bootstrap.widgets.TbButton', array(
-              'buttonType'=>'link',
-              
-              'type'=>'info',
-              'label'=>'',
-              'icon'=>'print white',
-              
-              'htmlOptions'=>array(
-                'class'=>'span3',
-                'style'=>'margin:25px 0px 0px 0px;',
-                'id'=>'printReport'
-              ),
-          ));
-        */
-      ?>
-
-
-    </div>
+        </div>
+  
   </div>
 
 
@@ -147,12 +122,12 @@ $("#printReport").click(function(e){
     e.preventDefault();
 
     $.ajax({
-        url: "printVendor",
-        data: {fiscalyear:$("#fiscalyear").val(),project: $("#project").val(),monthEnd:$("#monthEnd").val(),yearEnd:$("#yearEnd").val(),workcat:$("#workcat").val()
+        url: "printR10",
+        data: {monthEnd:$("#monthEnd").val(),yearEnd:$("#yearEnd").val()
               },
         success:function(response){
-            window.open("../tempReport.pdf", "_blank", "fullscreen=yes");              
-            
+            window.open("../print/tempReport.pdf", "_blank", "fullscreen=yes");
+
         }
 
     });
