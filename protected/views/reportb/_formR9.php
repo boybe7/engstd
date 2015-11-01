@@ -64,20 +64,40 @@ $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m'
                     ->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
                     ->group('p.prot_id')
                     ->queryAll();
+              $models = Yii::app()->db->createCommand()
+                          ->select('sub.name as subname,sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit,t.prot_name')
+                          ->from('c_cer_doc cd')  
+                          ->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+                          ->join('m_product p', 'p.prod_name = ct.detail AND p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") ')                                    
+                          ->join('m_prodtype t', 't.prot_id=p.prot_id')
+                          ->join('m_prodtype_subgroup sub', 'sub.id = p.prot_sub_id')
+                          ->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')   
+                          ->group('sub.id')
+                          ->order('t.prot_id')
+                          ->queryAll();      
+              
+              //echo "<pre>";
+              //print_r($models);
+              //echo "</pre>";
+              echo "<table width='80%'>";            
+              echo "<tr style='font-weight:bold;border-bottom: thin double #000000;'><td style='text-align:left;width:50%'>ผลิตภัณฑ์</td><td style='text-align:right;width:40%'>จำนวน</td><td style='text-align:center;width:10%'>หน่วย</td></tr>";
+              
+              foreach ($models as $key => $m) {
+                  echo "<tr><td style='text-align:left;width:50%'>".$m["prot_name"].":".$m["subname"]."</td><td style='text-align:right;width:40%'>".$m["sum"]."</td><td style='text-align:center;width:10%'>".$m["prod_unit"]."</td></tr>";
+              }            
+              echo "</table>";
 
-              //print_r($models_m);
-
-                  foreach ($models_m as $key => $model_m) {
-                        $type_id = $model_m['prot_id'];
-                        $models = Yii::app()->db->createCommand()
-                                    ->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit,pt.prot_name')
-                                    ->from('c_cer_doc cd')
-                                    ->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
-                                    ->join('m_product p', 'p.prod_name = ct.detail AND p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") ')
-                                    ->join('m_prodtype pt', 'p.prot_id=pt.prot_id')
-                                    ->where('p.prot_id="'.$type_id.'" AND cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
-                                    ->group('prod_code')
-                                    ->queryAll();
+                  // foreach ($models_m as $key => $model_m) {
+                  //       $type_id = $model_m['prot_id'];
+                  //       $models = Yii::app()->db->createCommand()
+                  //                   ->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit,pt.prot_name')
+                  //                   ->from('c_cer_doc cd')
+                  //                   ->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+                  //                   ->join('m_product p', 'p.prod_name = ct.detail AND p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") ')
+                  //                   ->join('m_prodtype pt', 'p.prot_id=pt.prot_id')
+                  //                   ->where('p.prot_id="'.$type_id.'" AND cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
+                  //                   ->group('prod_code')
+                  //                   ->queryAll();
 
 
 
@@ -85,10 +105,10 @@ $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m'
 
                                     ?>
 
-                                      <table class="table">
+                                      <!-- <table class="table">
                                         <thead>
                                           <tr style="background-color:#AAADAD">
-                                            <th style="text-align:left" colspan="5"><?php echo $models[0]["prot_name"];?></th>
+                                            <th style="text-align:left" colspan="5"><?php //echo $models[0]["prot_name"];?></th>
                                              
                                           </tr>
                                           <tr style="background-color:#D5DADB">
@@ -99,29 +119,29 @@ $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m'
                                             <th style="text-align:center;width:10%">หน่วย</th>
                                           </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody> -->
                                               <?php
 
-                                                      foreach ($models as $key => $model) {
-                                                          echo "<tr>";
-                                                            echo '<td style="">'.$model["prod_code"].'</td><td style="">'.$model["detail"].'</td><td style="text-align:center;">'.$model["size"].'</td><td style="text-align:center;">'.$model["sum"].'</td><td style="text-align:center;">'.$model["prod_unit"].'</td>';
-                                                          echo "</tr>";
-                                                      }
+                                                      // foreach ($models as $key => $model) {
+                                                      //     echo "<tr>";
+                                                      //       echo '<td style="">'.$model["prod_code"].'</td><td style="">'.$model["detail"].'</td><td style="text-align:center;">'.$model["size"].'</td><td style="text-align:center;">'.$model["sum"].'</td><td style="text-align:center;">'.$model["prod_unit"].'</td>';
+                                                      //     echo "</tr>";
+                                                      // }
 
-                                                echo '<tr style="background-color:#F5F7F7;font-weight:bold">';
-                                                            echo '<td style="text-align:center;" colspan=3>รวม</td><td style="text-align:center;">'.count($models).'</td><td style="text-align:center;">รายการ</td>';
-                                                echo "</tr>";      
-                                                ?>
-                                        </tbody>
+                                                // echo '<tr style="background-color:#F5F7F7;font-weight:bold">';
+                                                //             echo '<td style="text-align:center;" colspan=3>รวม</td><td style="text-align:center;">'.count($models).'</td><td style="text-align:center;">รายการ</td>';
+                                                // echo "</tr>";      
+                                                // ?>
+                                       <!--  </tbody>
                                       </table>
-
+ -->
 
 
 
 
 
             <?php
-                  }
+                  // }
             ?>
 
 
