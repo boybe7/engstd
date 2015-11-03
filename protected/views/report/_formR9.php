@@ -76,6 +76,8 @@ $models = Yii::app()->db->createCommand()
 // LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
 // LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
 // GROUP BY sub.id
+echo "xxx:";
+print_r($models);          
 ?>
 
   <table class="table">
