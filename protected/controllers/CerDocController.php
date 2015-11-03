@@ -361,6 +361,7 @@ class CerDocController extends Controller
 
 		$model->cer_date = date("d")."/".date("m")."/".(date("Y")+543);//"11/07/2526";
         $model->running_no = $runNo;
+        $model->cer_name = Yii::app()->user->name;
 
 		if(isset($_POST['CerDoc']))
 		{
