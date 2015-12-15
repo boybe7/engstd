@@ -71,6 +71,8 @@ class Product extends CActiveRecord
 			'prod_size1' => 'ขนาด 1',
 			'prod_size2' => 'ขนาด 2',
 			'prod_size3' => 'ขนาด 3',
+			'price'=>'ราคา',
+			'factor'=>'factor'
 		);
 	}
 
@@ -102,6 +104,8 @@ class Product extends CActiveRecord
 		$criteria->compare('prod_size1',$this->prod_size1,true);
 		$criteria->compare('prod_size2',$this->prod_size2,true);
 		$criteria->compare('prod_size3',$this->prod_size3,true);
+		$criteria->compare('price',$this->price);
+		$criteria->compare('factor',$this->factor);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

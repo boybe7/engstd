@@ -35,10 +35,10 @@ class CerDoc extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cer_no, vend_id,user_update,running_no, cer_date, cer_oper_date, cer_name, cer_ct_name, cer_di_name, cer_status, cer_date_add', 'required'),
+			array('prod_id,dept_id,contract_no,contractor,cer_no, vend_id,user_update,running_no, cer_date, cer_oper_date, cer_name, cer_ct_name, cer_di_name, cer_status, cer_date_add', 'required'),
 			array('cer_status,prod_id', 'numerical', 'integerOnly'=>true),
 			array('cer_no', 'length', 'max'=>20),
-			array('cer_name, cer_ct_name, cer_di_name, cer_notes', 'length', 'max'=>100),
+			array('cer_name, cer_ct_name, cer_di_name', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('cer_id, cer_no,user_update,running_no, dept_id, vend_id,supp_id, cer_date, cer_oper_date, cer_name,contract_no,contractor,prod_id, cer_ct_name, cer_di_name, cer_notes, cer_status, cer_date_add', 'safe', 'on'=>'search'),
@@ -69,8 +69,8 @@ class CerDoc extends CActiveRecord
 			'supp_id' => 'ผู้จัดส่ง',
 			'cer_date' => 'วันที่ออกใบรับรอง',
 			'cer_oper_date' => 'วันที่ตรวจโรงงาน',
-			'cer_name' => 'เจ้าหน้าที่ผู้ควบคุมการผลิต',
-			'cer_ct_name' => 'หัวหน้าส่วนควบคุมการผลิต',
+			'cer_name' => 'วิศวกรผู้ตรวจสอบ',
+			'cer_ct_name' => 'หัวหน้าส่วนควบคุมคุณภาพท่อและอุปกรณ์',
 			'cer_di_name' => 'ผู้อำนวยการกองมาตรฐานวิศวกรรม',
 			'cer_notes' => 'หมายเหตุ',
 			'cer_status' => 'สถานะ',
@@ -115,7 +115,7 @@ class CerDoc extends CActiveRecord
 		$criteria->compare('cer_status',$this->cer_status);
 		$criteria->compare('prod_id',$this->prod_id);
 		$criteria->compare('cer_date_add',$this->cer_date_add,true);
-
+		$criteria->order = 'cer_id DESC';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -143,11 +143,12 @@ class CerDoc extends CActiveRecord
 		$criteria->compare('cer_status',$this->cer_status);
 		$criteria->compare('prod_id',$this->prod_id);
 		$criteria->compare('cer_date_add',$this->cer_date_add,true);
+		$criteria->order = 'cer_id DESC';
 
 		if(Yii::app()->user->isUser())
 		{
 			
-			$criteria->addCondition('cer_name="'.$id.'"');
+			$criteria->addCondition('cer_uid="'.Yii::app()->user->id.'"');
 		}	
 
 		return new CActiveDataProvider($this, array(

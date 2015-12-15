@@ -168,7 +168,7 @@ class VendorController extends Controller
     public function actionGetVendor2(){
             $request=trim($_GET['term']);
                     
-            $models=Vendor::model()->findAll(array("condition"=>"(name like '%$request%' OR code like '%$request%') AND type=0 "));
+            $models=Vendor::model()->findAll(array("condition"=>"(name like '%$request%' OR code like '%$request%') AND type=0 ",'order'=>'name'));
             $data=array();
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;
@@ -188,7 +188,7 @@ class VendorController extends Controller
     public function actionGetSupplier(){
             $request=trim($_GET['term']);
                     
-            $models=Vendor::model()->findAll(array("condition"=>"(name like '%$request%' OR code like '%$request%') AND type=1 "));
+            $models=Vendor::model()->findAll(array("condition"=>"(name like '%$request%' OR code like '%$request%') AND type=1 ",'order'=>'name'));
             $data=array();
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;

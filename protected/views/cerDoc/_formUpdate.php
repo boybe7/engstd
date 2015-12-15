@@ -55,7 +55,45 @@
 		<div class="span3">
 			<?php echo $form->textFieldRow($model,'cer_no',array('class'=>'span12','maxlength'=>20,'readonly'=>true)); ?>
 		</div>
-		<div class="span6">
+        <div class="span1">
+            <?php 
+
+              //   $this->widget('bootstrap.widgets.TbButton', array(
+              //     'buttonType'=>'link',
+                  
+              //     'type'=>'warning',
+              //     'label'=>'',
+              //     'icon'=>'icon-repeat',
+                  
+              //     'htmlOptions'=>array(
+              //       'class'=>'',
+              //       'style'=>'margin:25px 0px 0px 0px;',
+              //       //'onclick'=>'createApprove(' . $index . ')'
+                 
+              //        'onclick'=>'
+                                 
+              //                                   $.ajax({
+              //                                       type: "POST",
+              //                                       url: "../ReCheck/' . $model->cer_id . '",
+              //                                       dataType:"json",
+                                                    
+              //                                       })                                  
+              //                                       .done(function( msg ) {
+                                                     
+              //                                           console.log(msg)
+              //                                           $("#CerDoc_cer_no").val(msg);
+              //                                       });
+                                             
+                                    
+              //                           ',
+                            
+              //     ),
+              // ));
+
+
+             ?>
+        </div>
+		<div class="span5">
 			 <?php echo $form->labelEx($model,'cer_date',array('class'=>'span12','style'=>'text-align:left;padding-right:10px;'));?>
     					
     			<?php 
@@ -98,7 +136,7 @@
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
-                                    url: "'.$this->createUrl('DeptOrder/GetDept').'",
+                                    url: "'.$this->createUrl('Deptorder/GetDept').'",
                                     dataType: "json",
                                     data: {
                                         term: request.term,
@@ -265,16 +303,20 @@
                                      'minLength'=>0,
                                      'select'=>'js: function(event, ui) {
                                         
-                                           //console.log($("#supp_id").val())
-                                            //$("#CerDoc_vend_id").val(ui.item.id);
-
-                                            if($("#supp_id").val()=="" && $("#CerDoc_vend_id").val()!=ui.item.id)
+                                            
+                                            
+                                              //console.log($("#supp_id").val()+"|"+$("#CerDoc_vend_id").val()+"="+ui.item.id)   
+                                            
+                                            //if($("#supp_id").val()=="")   
+                                            if($("#supp_id").val()=="" && "'.$model->vend_id.'"!=ui.item.id) 
                                             {
+                                                //console.log("load")
                                                 $.ajax({
                                                     url: "'.$this->createUrl('cerDoc/GenCerNo').'",
                                                     dataType: "json",
                                                     data: {
                                                         id: ui.item.id,
+                                                        cid: "'.$model->cer_id.'"
                                                        
                                                     },
                                                     success: function (data) {
@@ -287,6 +329,7 @@
                                             {
                                                 $("#CerDoc_cer_no").val($("#old_cer_no").val());
                                             }
+                                            $("#CerDoc_vend_id").val(ui.item.id);
 
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
@@ -338,8 +381,8 @@
                                      'select'=>'js: function(event, ui) {
                                         
                                            //console.log(ui.item.id)
-                                            //$("#CerDoc_supp_id").val(ui.item.id);
-                                            if($("#CerDoc_supp_id").val()!=ui.item.id){
+                                            $("#CerDoc_supp_id").val(ui.item.id);
+                                            if("'.$model->supp_id.'"!=ui.item.id){
                                                    $.ajax({
                                                     url: "'.$this->createUrl('cerDoc/GenCerNo2').'",
                                                     dataType: "json",
@@ -458,7 +501,12 @@
 				
 	
 	
-                        $models=User::model()->findAll(array('order'=>'', 'condition'=>'position=1', 'params'=>array()));
+                        $models=User::model()->with(array(
+                                      'position' => array(
+                                        //'join' => 'JOIN m_position ON m_position.id = user.position', 
+                                        'condition' => "posi_level = 1 OR posi_level = 2",
+                                      )
+                                    ))->findAll(array('order'=>'name', 'condition'=>'', 'params'=>array()));
                         $data = array();
                         foreach ($models as $key => $value) {
                           $data[] = array(
@@ -468,15 +516,20 @@
                         } 
                         $typelist = CHtml::listData($data,'value','text');
                         echo $form->dropDownListRow($model, 'cer_name', $typelist,array('class'=>'span12','prompt'=>'--กรุณาเลือก--')); 
-                          
+                                
 	 ?>
 	 </div>
 	</div>	
 
 	<div class="row-fluid">
 		<div class="span8">	
-	<?php 
-						$models=User::model()->findAll(array('order'=>'', 'condition'=>'position=2', 'params'=>array()));
+	<?php
+    $models=User::model()->with(array(
+                                      'position' => array(
+                                        //'join' => 'JOIN m_position ON m_position.id = user.position', 
+                                        'condition' => "posi_level = 2",
+                                      )
+                                    ))->findAll(array('order'=>'', 'condition'=>'', 'params'=>array()));
                         $data = array();
                         foreach ($models as $key => $value) {
                           $data[] = array(
@@ -528,12 +581,25 @@
 	 ?>
 	 </div>
 	</div>
+
     <div class="row-fluid">
         <div class="span8"> 
 	       <?php echo $form->textAreaRow($model,'cer_notes',array('class'=>'span12','rows'=>4,'wrap'=>"physical")); ?>
         </div>
     </div>
+    <div class="row-fluid">
+        <div class="span12"> 
+           <?php 
+           if(Yii::app()->user->isExecutive() || Yii::app()->user->isAdmin())
+            {  
+                echo $form->dropDownListRow($model, 'cer_status', array("1"=>"เปิด","2"=>"ปิด","3"=>"ยกเลิก"),array('class'=>'span2','style'=>'height:30px;'), array('options' => array('pj_work_cat'=>array('selected'=>true)))); 
+    
+            }  
 
+
+            ?>
+        </div>
+    </div>
 
         <fieldset class="well the-fieldset">
             <legend class="the-legend">รายละเอียดท่อ/อุปกรณ์</legend>

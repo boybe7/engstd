@@ -274,7 +274,6 @@ table tr .tr_white {
  //echo Yii::app()->theme->getBaseUrl(); 
 
 
-
 if(!Yii::app()->user->isGuest)
 {
   
@@ -303,7 +302,7 @@ if(!Yii::app()->user->isGuest)
                     array('label'=>Yii::app()->user->name,'icon'=>Yii::app()->user->usertype, 'url'=>'#'),
                     //array('label'=>Yii::app()->user->username,'icon'=>Yii::app()->user->usertype, 'url'=>'#'),
                     array('items'=>array(
-                        array('label'=>'เปลี่ยนรหัสผ่าน','icon'=>'cog', 'url'=>array('/user/password/'.Yii::app()->user->ID), 'visible'=>!Yii::app()->user->isGuest),
+                        array('label'=>'เปลี่ยนรหัสผ่าน','icon'=>'cog', 'url'=>array('/user/password/'.Yii::app()->user->ID), 'visible'=>!Yii::app()->user->isGuest()),
                         '---',
                         array('label'=>'ออกจากระบบ','icon'=>'off', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
                     )),
@@ -367,7 +366,11 @@ else{
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
 
-	<?php echo $content; ?>
+	<?php echo $content; 
+
+// if(Yii::app()->user->isGuest())
+// echo "guest";
+  ?>
 
 	<div class="clear"></div>
 

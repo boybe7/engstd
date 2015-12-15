@@ -9,11 +9,14 @@
 	<?php echo $form->errorSummary($model); ?>
 
 
-	<?php echo $form->textFieldRow($model,'con_number',array('class'=>'span5','maxlength'=>20)); ?>
+	<?php echo $form->textFieldRow($model,'con_number',array('class'=>'span5','maxlength'=>500)); ?>
 
-	<?php echo $form->textFieldRow($model,'con_price',array('class'=>'span5','maxlength'=>10)); ?>
+	<?php echo $form->textFieldRow($model,'con_price',array('class'=>'span5','maxlength'=>50)); ?>
 
-	<?php echo $form->textFieldRow($model,'con_budget',array('class'=>'span5','maxlength'=>10)); ?>
+	<?php echo $form->textFieldRow($model,'con_budget',array('class'=>'span5','maxlength'=>50));
+       echo $form->dropDownListRow($model, 'con_status', array("0"=>"เปิด","1"=>"ปิด"),array('class'=>'span2','style'=>'height:30px;'), array('options' => array('con_status'=>array('selected'=>true)))); 
+	
+	 ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

@@ -10,12 +10,20 @@ $cs->registerScriptFile( $theme->getBaseUrl() . '/js/highcharts.js' );
 
 ?>
 <div class="hero-unit">
-  <h2>ยินดีต้อนรับเข้าสู่</h2>
-  <h1>ระบบใบรับรองมาตรฐานครุภัณฑ์</h1>
-  <p>ส่วนควบคุมการผลิตท่อและอุปกรณ์ กองมาตรฐานวิศวกรรม</p>
+  <h3>ยินดีต้อนรับเข้าสู่</h3>
+  <h2><?php echo Yii::app()->name; ?></h2>
+  <p>ส่วนควบคุมคุณภาพท่อและอุปกรณ์ กองมาตรฐานวิศวกรรม ฝ่ายมาตรฐานวิศวกรรมและสารสนเทศภูมิศาสตร์ </p>
   <p>
-    <a class="btn btn-primary btn-large" href="../ENG_UD_ADMIN_1.0.pdf">
-      คู่มือการใช้งาน
+  <?php
+    $link = "http://172.16.184.93/engstd/ENG_UD_ADMIN_1.0.pdf";
+    if(Yii::app()->user->isGuest())
+        $link = "http://172.16.184.93/engstd/ENG_UD_GUEST_1.0.pdf";
+
+       echo '<a class="btn btn-primary btn-large" href="'.$link.'">';
+    
+  
+  ?>
+       <span class="icon-book white" aria-hidden="true"></span>  คู่มือการใช้งาน
     </a>
   </p>
 </div>

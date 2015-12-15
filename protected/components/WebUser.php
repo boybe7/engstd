@@ -66,11 +66,15 @@ function getUsertype(){
 
 function isSuperUser(){
     $user = $this->loadUser(Yii::app()->user->id);
-    return $user->u_group == "3";
+    return $user->u_group == "3" OR $user->u_group == "1";
 }
 function isUser(){
     $user = $this->loadUser(Yii::app()->user->id);
     return $user->u_group == "2";
+}
+function isGuest(){
+    $user = $this->loadUser(Yii::app()->user->id);
+    return $user->u_group == "4";
 }
 function isExecutive(){
     $user = $this->loadUser(Yii::app()->user->id);

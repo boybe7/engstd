@@ -12,7 +12,10 @@
 
 	<?php echo $form->textFieldRow($model,'code',array('class'=>'span5','maxlength'=>10)); ?>
 
-	<?php echo $form->textAreaRow($model,'address',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); ?>
+	<?php echo $form->textAreaRow($model,'address',array('rows'=>6, 'cols'=>50, 'class'=>'span8')); 
+
+
+	?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

@@ -138,7 +138,8 @@
 		</div>
 	</div>		
 
-
+  <div class="row-fluid">
+        <div class="span6">
 	<?php 
 
   //echo $form->textFieldRow($model,'con_id',array('class'=>'span3'));
@@ -172,30 +173,35 @@
                                      'select'=>'js: function(event, ui) {
                                         
                                            //console.log(ui.item.id)
-                                            $("#InspecDoc_con_id").val(ui.item.id);
+                                            $("#InspecDoc_con_id").val(ui.item.label);
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
                                      
                             ),
                            'htmlOptions'=>array(
-                                'class'=>'span3'
+                                'class'=>'span12'
                             ),
                                   
                         ));
 
 
    ?>
+    </div>
+        <div class="span2">
+            <?php echo $form->textFieldRow($model,'con_no',array('class'=>'span12','maxlength'=>10)); ?>
+        </div>
+    </div> 
 
   <?php 
     //echo $form->textFieldRow($model,'cust_id',array('class'=>'span6')); 
               echo $form->hiddenField($model,'cust_id');
               echo $form->labelEx($model,'cust_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:0px'));
               $m =  Contractor::model()->findByPk($model->cust_id);
-              $contract = !empty($m) ?  $m->name : "" ; 
+              $contractor = !empty($m) ?  $m->name : "" ; 
               $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'cust_id',
                             'id'=>'cust_id',
-                            'value'=>$contract, 
+                            'value'=>$contractor, 
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
@@ -455,10 +461,12 @@ $this->widget('bootstrap.widgets.TbGridView',array(
                             'value'=>'',                      
                            'source'=>'js: function(request, response) {
                                 $.ajax({
-                                    url: "'.$this->createUrl('CerDoc/GetCerNo').'",
+                                    url: "'.$this->createUrl('CerDoc/InspecGetCerNo').'",
                                     dataType: "json",
                                     data: {
                                         term: request.term,
+                                        con_id: $("#InspecDoc_con_id").val(),
+                                        cust_id:"'.$contractor.'"
                                        
                                     },
                                     success: function (data) {

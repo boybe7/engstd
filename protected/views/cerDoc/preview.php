@@ -5,7 +5,7 @@
 	echo '<script type="text/javascript">
 		window.onload = function (){
 
-									$.ajax({
+									 $.ajax({
 	                                    url: "../genPDF",
 	                                    dataType: "json",
 	                                    data: {
@@ -24,5 +24,16 @@
 	        
 	   }; 
 	</script>';
+
+	// $details = Yii::app()->db->createCommand()
+	// 				->select('*')
+	// 				->from('c_cer_detail ct')	
+	// 				//->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+ //          			->join('m_product p', 'p.prod_id=ct.prod_id')
+	// 				->where('ct.cer_id='.$model->cer_id)		
+ //          			//->group('detail')			                   
+	// 				->queryAll();
+	// 	print_r($details);
 ?>
+
 <div id="printcontent" style="" ></div>

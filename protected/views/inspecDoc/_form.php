@@ -109,52 +109,58 @@
 		</div>
 	</div>		
 
+    <div class="row-fluid">
+        <div class="span6">
+            	<?php 
 
-	<?php 
+              //echo $form->textFieldRow($model,'con_id',array('class'=>'span3'));
+                          echo $form->hiddenField($model,'con_id');
+                          echo $form->labelEx($model,'con_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:0px'));
+                           
+                          $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                                        'name'=>'con_id',
+                                        'id'=>'con_id',
+                                        'value'=>$model->con_id,
+                                       // 'source'=>$this->createUrl('Ajax/GetDrug'),
+                                       'source'=>'js: function(request, response) {
+                                            $.ajax({
+                                                url: "'.$this->createUrl('Contract/GetContract').'",
+                                                dataType: "json",
+                                                data: {
+                                                    term: request.term,
+                                                   
+                                                },
+                                                success: function (data) {
+                                                        response(data);
 
-  //echo $form->textFieldRow($model,'con_id',array('class'=>'span3'));
-              echo $form->hiddenField($model,'con_id');
-              echo $form->labelEx($model,'con_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:0px'));
-               
-              $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                            'name'=>'con_id',
-                            'id'=>'con_id',
-                            'value'=>$model->con_id,
-                           // 'source'=>$this->createUrl('Ajax/GetDrug'),
-                           'source'=>'js: function(request, response) {
-                                $.ajax({
-                                    url: "'.$this->createUrl('Contract/GetContract').'",
-                                    dataType: "json",
-                                    data: {
-                                        term: request.term,
-                                       
-                                    },
-                                    success: function (data) {
-                                            response(data);
-
-                                    }
-                                })
-                             }',
-                            // additional javascript options for the autocomplete plugin
-                            'options'=>array(
-                                     'showAnim'=>'fold',
-                                     'minLength'=>0,
-                                     'select'=>'js: function(event, ui) {
-                                        
-                                           //console.log(ui.item.id)
-                                            $("#InspecDoc_con_id").val(ui.item.id);
-                                     }',
-                                     //'close'=>'js:function(){$(this).val("");}',
-                                     
-                            ),
-                           'htmlOptions'=>array(
-                                'class'=>'span3'
-                            ),
-                                  
-                        ));
+                                                }
+                                            })
+                                         }',
+                                        // additional javascript options for the autocomplete plugin
+                                        'options'=>array(
+                                                 'showAnim'=>'fold',
+                                                 'minLength'=>0,
+                                                 'select'=>'js: function(event, ui) {
+                                                    
+                                                       //console.log(ui.item.id)
+                                                        $("#InspecDoc_con_id").val(ui.item.id);
+                                                 }',
+                                                 //'close'=>'js:function(){$(this).val("");}',
+                                                 
+                                        ),
+                                       'htmlOptions'=>array(
+                                            'class'=>'span12'
+                                        ),
+                                              
+                                    ));
 
 
-   ?>
+               ?>
+        </div>
+        <div class="span2">
+            <?php echo $form->textFieldRow($model,'con_no',array('class'=>'span12','maxlength'=>10)); ?>
+        </div>
+    </div>           
 
 	<?php 
     //echo $form->textFieldRow($model,'cust_id',array('class'=>'span6')); 

@@ -31,7 +31,7 @@ class InspecDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','cancel','DeleteSelected','CancleSelected','addCer','DeleteInspecCer'),
+				'actions'=>array('create','update','cancel','DeleteSelected','CancleSelected','CloseSelected','addCer','DeleteInspecCer'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -64,6 +64,20 @@ class InspecDocController extends Controller
             {
                 $pjModel = $this->loadModel($autoId);
                 $pjModel->doc_status = 3;
+                $pjModel->save();
+            }
+        }    
+    }
+
+    public function actionCloseSelected()
+    {
+    	$autoIdAll = $_POST['selectedID'];
+        if(count($autoIdAll)>0)
+        {
+            foreach($autoIdAll as $autoId)
+            {
+                $pjModel = $this->loadModel($autoId);
+                $pjModel->doc_status = 2;
                 $pjModel->save();
             }
         }    
@@ -140,9 +154,14 @@ class InspecDocController extends Controller
 		{
 			$model->attributes=$_POST['InspecDoc'];
 			$model->u_id = Yii::app()->user->ID;
-			$model->cust_id=$_POST['InspecDoc']['cust_id'];
 			$model->doc_date_add = (date("Y")+543).date("-m-d");
 			$model->doc_status = 1;
+			$model->dept_id = $_POST['InspecDoc']['dept_id'];
+			$model->cust_id=$_POST['InspecDoc']['cust_id'];
+			$model->vend_id = $_POST['InspecDoc']['vend_id'];
+			$model->con_no = $_POST['InspecDoc']['con_no'];
+
+			     
 
 			if($model->save())
 			{
@@ -171,6 +190,10 @@ class InspecDocController extends Controller
                    	 
 
 				}
+				//header('Content-type: text/plain');
+      
+				//	print_r($model);                    
+				//	exit;
 
 				$this->redirect(array('index'));
 			}	
@@ -182,6 +205,7 @@ class InspecDocController extends Controller
 			Yii::app()->db->createCommand('DELETE FROM c_inspec_file_temp WHERE user_id='.Yii::app()->user->ID)->execute();
 			  
 		}
+
 
 		$this->render('create',array(
 			'model'=>$model,
@@ -195,6 +219,8 @@ class InspecDocController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+		
+
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
@@ -206,6 +232,7 @@ class InspecDocController extends Controller
 			$model->dept_id = $_POST['InspecDoc']['dept_id'];
 			$model->cust_id=$_POST['InspecDoc']['cust_id'];
 			$model->vend_id = $_POST['InspecDoc']['vend_id'];
+			$model->con_no = $_POST['InspecDoc']['con_no'];
 
 			if(isset($_POST['InspecDoc']['cancel_remark']))
 				$model->cancel_remark = $_POST['InspecDoc']['cancel_remark'];
@@ -229,6 +256,15 @@ class InspecDocController extends Controller
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
+
+			Yii::app()->db->createCommand("delete * from inspec_cer where inspec_id=".$id)->query();
+
+			$models = InspecFile::model()->findAll('doc_id=:id', array(':id' => $id)); 
+
+			foreach ($models as $key => $model) {
+				$model->delete();
+			}
+
 			$this->loadModel($id)->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

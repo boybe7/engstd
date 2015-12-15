@@ -43,7 +43,10 @@ $this->pageTitle=Yii::app()->name . ' - Login';
                     <?php 
                     echo "<span style='display: block;margin-bottom: 5px;text-align:left'><i class='icon-lock'></i>  รหัสผ่าน</span>";
                     echo $form->passwordFieldRow($model, 'password', array('class'=>'span12','labelOptions' => array('label' => false))); ?>
+
                     <div style="font-size:10px">ผู้ใช้งานทั่วไปสามารถเข้าระบบด้วย username = guest และ password = guest</div>
+                    <div style="font-size:10px">คำแนะนำ : เพื่อการใช้งานที่สมบูรณ์ แนะนำให้เปิดใช้งานด้วย Google Chrome <img src="../images/chrome.ico" width="20px"></div>
+              
                     <?php $this->widget('bootstrap.widgets.TbButton', array('htmlOptions'=>array('class'=>'pull-right'),'buttonType'=>'submit','type'=>'primary', 'label'=>'Login')); ?>
 
 

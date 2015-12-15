@@ -58,7 +58,7 @@ class ProdtypeController extends Controller
     public function actionGetType(){
             $request=trim($_GET['term']);
                     
-            $models=Prodtype::model()->findAll(array("condition"=>"prot_code like '%$request%' OR prot_name like '%$request%'  "));
+            $models=Prodtype::model()->findAll(array("condition"=>"prot_code like '%$request%' OR prot_name like '%$request%'  ",'order'=>'prot_name'));
             $data=array();
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;

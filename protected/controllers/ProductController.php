@@ -121,6 +121,8 @@ class ProductController extends Controller
 			$model->prod_size2 = $_POST['Product']['prod_size2'];
 			$model->prod_size3 = $_POST['Product']['prod_size3'];
 			$model->prot_sub_id = $_POST['Product']['prot_sub_id'];
+			$model->price = $_POST['Product']['price'];
+			$model->factor = $_POST['Product']['factor'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -149,6 +151,8 @@ class ProductController extends Controller
 			$model->prod_size2 = $_POST['Product']['prod_size2'];
 			$model->prod_size3 = $_POST['Product']['prod_size3'];
 			$model->prot_sub_id = $_POST['Product']['prot_sub_id'];
+			$model->price = $_POST['Product']['price'];
+			$model->factor = $_POST['Product']['factor'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -181,7 +185,7 @@ class ProductController extends Controller
 	public function actionGetProduct(){
             $request=trim($_GET['term']);
                     
-            $models=Product::model()->findAll(array("condition"=>"prod_code like '%$request%' OR prod_name like '%$request%'  "));
+            $models=Product::model()->findAll(array("condition"=>"prod_code like '%$request%' OR prod_name like '%$request%'  ",'order'=>'prod_name ASC,prod_size1*1 ASC'));
             $data=array();
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;

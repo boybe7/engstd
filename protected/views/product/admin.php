@@ -160,21 +160,33 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 				'headerHtmlOptions' => array('style' => 'width:29%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:left')
 	  	),
-	  	'prot_id'=>array(
-			    'name' => 'prot_id',
-			    //'filter'=>CHtml::activeTextField($model, 'prot_id',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("prot_id"))),
-				'filter'=>CHtml::activeDropDownList($model, 'prot_id', $typelist2,array('empty'=>'')),
-				'headerHtmlOptions' => array('style' => 'width:12%;text-align:center;background-color: #f5f5f5'),  	
-				'value' => array($model,'getProdtype'),            	  	
-				'htmlOptions'=>array('style'=>'text-align:center')
+	  	// 'prot_id'=>array(
+			 //    'name' => 'prot_id',
+			 //    //'filter'=>CHtml::activeTextField($model, 'prot_id',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("prot_id"))),
+				// 'filter'=>CHtml::activeDropDownList($model, 'prot_id', $typelist2,array('empty'=>'')),
+				// 'headerHtmlOptions' => array('style' => 'width:12%;text-align:center;background-color: #f5f5f5'),  	
+				// 'value' => array($model,'getProdtype'),            	  	
+				// 'htmlOptions'=>array('style'=>'text-align:center')
+	  	// ),
+	  	// 'protsub_id'=>array(
+			 //    'name' => 'prot_sub_id',
+			 //    'filter'=>false,
+			 //    //'filter'=>CHtml::activeTextField($model, 'prot_id',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("prot_id"))),
+				// 'headerHtmlOptions' => array('style' => 'width:12%;text-align:center;background-color: #f5f5f5'),  	
+				// 'value' => array($model,'getProdsubtype'),            	  	
+				// 'htmlOptions'=>array('style'=>'text-align:center')
+	  	// ),
+	  	'price'=>array(
+			    'name' => 'price',
+			    'filter'=>CHtml::activeTextField($model, 'price',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("price"))),
+				'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'htmlOptions'=>array('style'=>'text-align:right;')
 	  	),
-	  	'protsub_id'=>array(
-			    'name' => 'prot_sub_id',
-			    'filter'=>false,
-			    //'filter'=>CHtml::activeTextField($model, 'prot_id',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("prot_id"))),
-				'headerHtmlOptions' => array('style' => 'width:12%;text-align:center;background-color: #f5f5f5'),  	
-				'value' => array($model,'getProdsubtype'),            	  	
-				'htmlOptions'=>array('style'=>'text-align:center')
+	  	'factor'=>array(
+			    'name' => 'factor',
+			    'filter'=>CHtml::activeTextField($model, 'factor',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("factor"))),
+				'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'htmlOptions'=>array('style'=>'text-align:center;')
 	  	),
 	  	'prod_sizename'=>array(
 			    'name' => 'prod_sizename',

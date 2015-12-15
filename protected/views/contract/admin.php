@@ -106,7 +106,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 			
 				'name' => 'con_price',
 				 'value' => 'number_format($data->con_price,2)',
-				'headerHtmlOptions' => array('style' => 'width:20%;text-align:center;background-color: #f5f5f5'),  	            	  		
+				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  		
 				//'headerHtmlOptions' => array('style' => 'width: 110px'),
 				'htmlOptions'=>array(
 	  	            	  			'style'=>'text-align:right'
@@ -116,12 +116,19 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 			
 				'name' => 'con_budget',
 				 'value' => 'number_format($data->con_budget,2)',
-				'headerHtmlOptions' => array('style' => 'width:30%;text-align:center;background-color: #f5f5f5'),  	            	  		
+				'headerHtmlOptions' => array('style' => 'width:25%;text-align:center;background-color: #f5f5f5'),  	            	  		
 				//'headerHtmlOptions' => array('style' => 'width: 110px'),
 				'htmlOptions'=>array(
 	  	            	  			'style'=>'text-align:right'
 
 	  	        )	),
+		'status'=>array(
+			    'name' => 'con_status',
+			    'value' => array($this,'gridStatus'),
+			    'filter'=>CHtml::activeDropDownList($model, 'con_status', array('0' => 'เปิด', '1' => 'ปิด'),array('empty'=>'')),
+				'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'htmlOptions'=>array('style'=>'text-align:center')
+	  	),
 		array(
 							'class'=>'bootstrap.widgets.TbButtonColumn',
 							'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #f5f5f5'),

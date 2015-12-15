@@ -69,6 +69,7 @@ class ContractController extends Controller
 		if(isset($_POST['Contract']))
 		{
 			$model->attributes=$_POST['Contract'];
+			$model->con_status = $_POST['Contract']['con_status'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -112,6 +113,7 @@ class ContractController extends Controller
 		if(isset($_POST['Contract']))
 		{
 			$model->attributes=$_POST['Contract'];
+			$model->con_status = $_POST['Contract']['con_status'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -195,6 +197,12 @@ class ContractController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
+
+	protected function gridStatus($data,$row) 
+    {
+        $data->con_status =  $data->con_status==0 ? "เปิด" : "ปิด";
+        return  CHtml::encode($data->con_status);
+    }
 
 	/**
 	 * Performs the AJAX validation.

@@ -16,14 +16,30 @@ $this->breadcrumbs=array(
                 $(this).autocomplete("search");
       });
 
+      //$("#cer_date_begin").val("02/11/2558");    
+
+
   });
 
-
+function clearSearch(){
+        $("#cer_date_begin").val("");
+        $("#cer_date_end").val("");
+        $("#contract_no").val("");
+        $("#cer_no").val("");
+        $("#vend_id").val("");
+        $("#supp_id").val("");
+        $("#contractor").val("");
+}  
 </script>
 
 <h3>ใบรับรองคุณภาพท่อและอุปกรณ์</h3>
 
 <?php 
+
+//if(isset($_GET["cer_date_begin"]))
+//        echo  "date_begin : ".$_GET["cer_date_begin"];
+
+
 
 $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'search-form',
@@ -37,7 +53,10 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     <div class="row-fluid">
        <div class="span3">
 			 <?php 
-
+              //$date_begin = isset($_GET["cer_date_begin"]) ? $_GET["cer_date_begin"] : "";
+              //if(isset($_REQUEST["cer_date_begin"]))
+              //echo  "date_begin : ".$_REQUEST["cer_date_begin"];
+              $model = new CerDoc();
 			        echo CHtml::label('วันที่ออกใบรับรองเริ่มต้น','cer_date_begin');
       			 
 		                echo '<div class="input-append" style="margin-top:0px;">'; //ใส่ icon ลงไป
@@ -45,15 +64,15 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 		                    array(
 		                        'name'=>'cer_date_begin',
-		                        //'attribute'=>'cer_date',
-		                        //'model'=>$model,
+		                        'attribute'=>'cer_date_begin',
+		                        'model'=>$model,
 		                        'options' => array(
 		                                          'mode'=>'focus',
 		                                          //'language' => 'th',
 		                                          'format'=>'dd/mm/yyyy', //กำหนด date Format
 		                                          'showAnim' => 'slideDown',
 		                                          ),
-		                        'htmlOptions'=>array('class'=>'span10'),  // ใส่ค่าเดิม ในเหตุการ Update 
+		                        'htmlOptions'=>array('class'=>'span10','value'=>$date_begin2),  // ใส่ค่าเดิม ในเหตุการ Update 
 		                     )
 		                );
 		                echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
@@ -62,7 +81,7 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 		</div>  
 		<div class="span3">
 			 <?php 
-
+              //$date_end = isset($_GET["cer_date_end"]) ? $_GET["cer_date_end"] : "";
 			        echo CHtml::label('วันที่ออกใบรับรองสิ้นสุด','cer_date_end');
       			 
 		                echo '<div class="input-append" style="margin-top:0px;">'; //ใส่ icon ลงไป
@@ -70,15 +89,15 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
 		                    array(
 		                        'name'=>'cer_date_end',
-		                        //'attribute'=>'cer_date',
-		                        //'model'=>$model,
+		                        'attribute'=>'cer_date_end',
+		                        'model'=>$model,
 		                        'options' => array(
 		                                          'mode'=>'focus',
 		                                          //'language' => 'th',
 		                                          'format'=>'dd/mm/yyyy', //กำหนด date Format
 		                                          'showAnim' => 'slideDown',
 		                                          ),
-		                        'htmlOptions'=>array('class'=>'span10'),  // ใส่ค่าเดิม ในเหตุการ Update 
+		                        'htmlOptions'=>array('class'=>'span10','value'=>$date_end2),  // ใส่ค่าเดิม ในเหตุการ Update 
 		                     )
 		                );
 		                echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
@@ -88,11 +107,11 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	<div class="span2">
       <?php
            echo CHtml::label('เลขที่สัญญา','contract_no');
-
+            $contract_no = isset($_GET["contract_no"]) ? $_GET["contract_no"] : "";
               $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'contract_no',
                             'id'=>'contract_no',
-                          
+                             'value'=>$contract_no,
                            'source'=>'js: function(request, response) {
                                 $.ajax({
                                     url: "'.$this->createUrl('Contract/GetContract').'",
@@ -132,11 +151,12 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         	
         			
         			 echo CHtml::label('เลขที่ใบรับรองคุณภาพ','cer_no');
+               $cerno = isset($_GET["cer_no"]) ? $_GET["cer_no"] : "";
 
         			$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'cer_no',
                             'id'=>'cer_no',
-                          
+                            'value'=>$cerno,
                            'source'=>'js: function(request, response) {
                                 $.ajax({
                                     url: "'.$this->createUrl('cerDoc/GetCerNO').'",
@@ -186,19 +206,20 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 				)); 
           ?>
        </div>
-        
+      
     </div>
 
 
      <div class="row-fluid">
-       <div class="span4">
+       <div class="span3">
        		<?php
        			    echo CHtml::label('ผู้ผลิต','vend_id');
-
+                 $vend_id = isset($_GET["vend_id"]) ? $_GET["vend_id"] : "";
+  
         			$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'vend_id',
                             'id'=>'vend_id',
-                          
+                            'value'=>$vend_id,
                            'source'=>'js: function(request, response) {
                                 $.ajax({
                                     url: "'.$this->createUrl('Vendor/GetVendor').'",
@@ -235,14 +256,14 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
        		?>
 
        </div>
-       <div class="span4">
+       <div class="span3">
        		<?php
        			    echo CHtml::label('ผู้จัดส่ง','supp_id');
-
+                $supp_id = isset($_GET["supp_id"]) ? $_GET["supp_id"] : "";
         			$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'supp_id',
                             'id'=>'supp_id',
-                          
+                           'value'=>$supp_id,
                            'source'=>'js: function(request, response) {
                                 $.ajax({
                                     url: "'.$this->createUrl('Vendor/GetSupplier').'",
@@ -283,12 +304,12 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
   
       <div class="span4">
       <?php
-            echo CHtml::label('คู่สัญญา','contract_no');
-
+            echo CHtml::label('คู่สัญญา','contractor');
+               $contractor = isset($_GET["contractor"]) ? $_GET["contractor"] : "";
               $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'contractor',
                             'id'=>'contractor',
-                          
+                            'value'=>$contractor,
                            'source'=>'js: function(request, response) {
                                 $.ajax({
                                     url: "'.$this->createUrl('Contractor/GetContractor').'",
@@ -324,6 +345,18 @@ $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 
       ?>
       </div>
+       <div class="span2"> 
+          <?php
+              $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType'=>'button',
+            
+            'type'=>'info',
+            'label'=>'clear',
+            'icon'=>'icon-refresh',
+            'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:22px 10px 0px 10px;','onclick' => 'clearSearch()'),
+        )); 
+          ?>
+       </div> 
     </div>  
     
 <?php $this->endWidget(); ?>

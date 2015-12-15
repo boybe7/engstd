@@ -11,7 +11,7 @@ Yii::setPathOfAlias('editable', dirname(__FILE__).'/../extensions/x-editable');
 return array(
     'theme'=>'bootstrap',
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'ระบบใบรับรองมาตรฐานครุภัณฑ์',
+	'name'=>'ระบบใบรับรองคุณภาพท่อและอุปกรณ์',
 	//'name'=>'Equipment Specification Certification System - ESCS',
 
 	// preloading 'log' component

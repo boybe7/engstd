@@ -31,7 +31,7 @@ class CerDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GenCerNo','GenCerNo2','close','cancel','genPDF','print','getCerNO','preview'),
+				'actions'=>array('create','update','DeleteSelected','ReCheck','GenCerNo','InspecGetCerNo','GenCerNo2','close','cancel','genPDF','print','getCerNO','preview'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -47,7 +47,22 @@ class CerDocController extends Controller
 	public function actionPreview($id){
 
 
-		$this->render('preview',array('id'=>$id));
+		$this->render('preview',array('id'=>$id,'model'=>$this->loadModel($id)));
+
+		//$this->renderPartial('_formPDF',array('model'=>$this->loadModel($id),'filename'=>""));
+
+		// $model=$this->loadModel($id);
+		// $details = Yii::app()->db->createCommand()
+		// 			->select('*')
+		// 			->from('c_cer_detail ct')	
+		// 			//->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+  //         			->join('m_product p', 'p.prod_id=ct.prod_id')
+		// 			->where('ct.cer_id='.$model->cer_id)		
+  //         			//->group('detail')			                   
+		// 			->queryAll();
+		// header('Content-type: text/plain charset=utf-8');					
+		// print_r($details[0]["prod_sizename"]);
+		// exit;
 
 	}
 
@@ -83,28 +98,35 @@ class CerDocController extends Controller
 	public function actionPrint(){
 
 		$criteria = new CDbCriteria();
+		$date_begin = "";
+		$date_end = "";
+		//$date_begin = $_REQUEST['CerDoc']['cer_date_begin']; 
 
-	    if(!empty($_GET['cer_date_begin'])  && !empty($_GET['cer_date_end']))
+	    if(!empty($_REQUEST['CerDoc']['cer_date_begin'])  && !empty($_REQUEST['CerDoc']['cer_date_end']))
 	    {
-	      $begin = $_GET['cer_date_begin'];
+	      $begin = $_REQUEST['CerDoc']['cer_date_begin'];
+	      $date_begin = $_REQUEST['CerDoc']['cer_date_begin']; 
 	      $str_date = explode("/", $begin);
           $begin= $str_date[2]."-".$str_date[1]."-".$str_date[0];
 
-	      $end = $_GET['cer_date_end'];
+	      $end = $_REQUEST['CerDoc']['cer_date_end'];
+	      $date_end = $_REQUEST['CerDoc']['cer_date_end'];
 	      $str_date = explode("/", $end);
           $end= $str_date[2]."-".$str_date[1]."-".$str_date[0];
 
 	      $criteria->addBetweenCondition('cer_date', $begin, $end, 'OR');
 	    }
-	    else if(!empty($_GET['cer_date_begin'])){
-	      $begin = $_GET['cer_date_begin'];
+	    else if(!empty($_REQUEST['CerDoc']['cer_date_begin'])){
+	      $begin = $_REQUEST['CerDoc']['cer_date_begin'];
+	      $date_begin = $_REQUEST['CerDoc']['cer_date_begin']; 
 	      $str_date = explode("/", $begin);
           $begin= $str_date[2]."-".$str_date[1]."-".$str_date[0];
 
           $criteria->compare('cer_date',$begin,true);
 	    }
-	    else if(!empty($_GET['cer_date_end'])){
-	      $begin = $_GET['cer_date_end'];
+	    else if(!empty($_REQUEST['CerDoc']['cer_date_end'])){
+	      $begin = $_REQUEST['CerDoc']['cer_date_end'];
+	      $date_end = $_REQUEST['CerDoc']['cer_date_end'];
 	      $str_date = explode("/", $begin);
           $begin= $str_date[2]."-".$str_date[1]."-".$str_date[0];
 
@@ -142,19 +164,23 @@ class CerDocController extends Controller
 	    $dataProvider=new CActiveDataProvider("CerDoc", array('criteria'=>$criteria,'pagination'=>array('pageSize'=>10)));
 
 		$this->render('print',array(
-			'dataProvider'=>$dataProvider
+			'dataProvider'=>$dataProvider,'date_begin2'=>$date_begin,'date_end2'=>$date_end
 		));
 	}	
 
 	 public function actionGenCerNo(){
        
-            $id = $_GET['id'];        
+            $id = $_GET['id']; 
+           
             $fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
 			$m = Yii::app()->db->createCommand()
 					->select('max(strSplit(cer_no,"/", 1)) as max')
 					->from('c_cer_doc')	
-					->where('strSplit(strSplit(cer_no,".", 2),"/",2)='.$fiscalyear.' AND vend_id="'.$id.'"')					                   
+					->where('strSplit(strSplit(cer_no,".", 2),"/",2)='.$fiscalyear.' AND vend_id="'.$id.'" ')					                   
 					->queryAll();
+			//header('Content-type: text/plain charset=utf-8');		
+			//echo 'strSplit(strSplit(cer_no,".", 2),"/",2)='.$fiscalyear.' AND vend_id="'.$id.'" and cer_id!='.$cid;		
+			//exit;
 
 			$v = Yii::app()->db->createCommand()
 					->select('shortname')
@@ -251,7 +277,7 @@ class CerDocController extends Controller
         $model=$this->loadModel($id);
         $model->cer_status = 3;
         $model->cer_notes .= " ยกเลิก (".$comment.")";
-         $model->save();
+        $model->save();
 
    //        header('Content-type: text/plain charset=utf-8');
     
@@ -272,7 +298,50 @@ class CerDocController extends Controller
     public function actionGetCerNO(){
             $request=trim($_GET['term']);
                     
-            $models=CerDoc::model()->findAll(array("condition"=>"cer_no like '%$request%'"));
+            $models=CerDoc::model()->findAll(array("condition"=>"cer_no like '%$request%' order by cer_no"));
+            $data=array();
+            foreach($models as $model){
+                //$data[]["label"]=$get->v_name;
+                //$data[]["id"]=$get->v_id;
+                $data[] = array(
+                        'id'=>$model['cer_no'],
+                        'label'=>$model['cer_no']
+
+                );
+
+            }
+            $this->layout='empty';
+            echo json_encode($data);
+        
+    }
+
+     public function actionReCheck($id){
+            
+            $model = $this->loadModel($id);
+            $cer_old = explode(".", $model->cer_no);
+            if($model->supp_id!="")
+            {
+            	$supp = Vendor::model()->findAll(array("condition"=>"type=1 AND name='".$model->supp_id."'"));
+            	$cernew = $supp[0]->shortname.".".$cer_old[1];
+            }	               	
+            else
+            {
+            	$vendor = Vendor::model()->findAll(array("condition"=>"type=0 AND name='".$model->vend_id."'"));
+            	$cernew = $vendor[0]->shortname.".".$cer_old[1];
+            }	
+               
+
+            $this->layout='empty';
+            echo json_encode($cernew);
+        
+    }
+
+    public function actionInspecGetCerNo(){
+            $request=trim($_GET['term']);
+            $con_id=trim($_GET['con_id']);
+            $cust_id=trim($_GET['cust_id']);
+                    
+            $models=CerDoc::model()->findAll(array("condition"=>"cer_no like '%$request%' AND contract_no='".$con_id."' AND contractor='".$cust_id."' order by cer_no"));
             $data=array();
             foreach($models as $model){
                 //$data[]["label"]=$get->v_name;
@@ -299,6 +368,10 @@ class CerDocController extends Controller
                 $model=$this->loadModel($id);
                 $model->cer_status = 2;
                 $model->save();
+
+                $m_contract = Contract::model()->findAll(array("condition"=>"con_number = '".$model->contract_no."' "));
+                $m_contract[0]->con_status = 1;
+                $m_contract[0]->save();
             }
         }    
     }
@@ -322,7 +395,10 @@ class CerDocController extends Controller
 	{
 		$model=new CerDoc;
 
-
+		//get last manager
+		$m_last = CerDoc::model()->findAll(array('order' => 'cer_id DESC','limit' => 1));
+		$model->cer_ct_name = $m_last[0]->cer_ct_name;
+		$model->cer_di_name = $m_last[0]->cer_di_name;
 
 		//auto gen running_no
 		 $fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
@@ -363,11 +439,14 @@ class CerDocController extends Controller
         $model->running_no = $runNo;
         $model->cer_name = Yii::app()->user->name;
 
+
 		if(isset($_POST['CerDoc']))
 		{
 			$model->attributes=$_POST['CerDoc'];
 
+
 			$model->user_update = Yii::app()->user->name;
+			$model->cer_uid = Yii::app()->user->id;
 			$model->cer_status = 1;
 			$model->cer_date_add = (date("Y")+543).date("-m-d");
 			$model->contractor = $_POST['CerDoc']['contractor'];
@@ -376,8 +455,8 @@ class CerDocController extends Controller
 			$text = trim($_POST['CerDoc']['cer_notes']); // remove the last \n or whitespace character
             $model->cer_notes = nl2br($text); // insert <br /> before \n 
             $model->running_no = $runNo;
-            $model->vend_id = $_POST["vend_id"];
-            $model->supp_id = $_POST["supp_id"];
+            $model->vend_id = $_POST["vend_id"]==$_POST['CerDoc']['vend_id'] ? $_POST["vend_id"] : '';
+            $model->supp_id = $_POST["supp_id"]==$_POST['CerDoc']['supp_id'] ? $_POST["supp_id"] : '';
 
             $model->cer_oper_dept = Yii::app()->user->getUserDept();
 
@@ -444,8 +523,9 @@ class CerDocController extends Controller
 			$model->dept_id = $_POST['CerDoc']['dept_id'];
 			$text = trim($_POST['CerDoc']['cer_notes']); // remove the last \n or whitespace character
             $model->cer_notes = nl2br($text); // insert <br /> before \n 
-            $model->vend_id = $_POST["vend_id"];
-            $model->supp_id = $_POST["supp_id"];
+            $model->vend_id = $_POST["vend_id"]==$_POST['CerDoc']['vend_id'] ? $_POST["vend_id"] : '';
+            $model->supp_id = $_POST['CerDoc']['supp_id'];
+
             $model->cer_oper_dept = Yii::app()->user->getUserDept();
 
 			if($model->save())

@@ -147,12 +147,12 @@
 		        	
 			    }
 			        
-		        $this->writeHTMLCell(145, 550, 10, 253,'<p style="font-weight:bold;">ข้อควรพึงปฏิบัติ</p>' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(170, 750, 28, 253,'<p style="font-weight:bold;">1.ใบรับรองนี้ให้ถือเสมือนหนึ่งเป็นใบกำกับผลิตภัณฑ์ ให้ผู้ผลิตแนบไปพร้อมกับการส่งท่อ/อุปกรณ์ที่ได้ผ่านการตรวจสอบมาตรฐานจากกองมาตรฐานวิศวกรรมแล้วทุกครั้ง</p>' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(170, 750, 28, 258,'<p style="font-weight:bold;">2.ท่อ/อุปกรณ์ใดที่ไม่มีใบรับรองฯ หรือมีรายละเอียดผิดไปจากใบรับรองฯ ซึ่งกำกับผลิตภัณฑ์มาด้วยนี้ จะไม่ได้รับการตรวจรับงานจากเจ้าหน้าที่ตรวจรับของการประปานครหลวง</p>' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(170, 750, 28, 263,'<p style="font-weight:bold;">3.ใบรับรองฯที่ส่งให้หน่วยงานของกปน. ให้หน่วยงานฯใช้ประกอบในการตรวจสอบ/ตรวจรับ ให้ถูกต้องตรงกับฉบับซึ่งมาพร้อมกับผลิตภัณฑ์จากผู้ผลิตและให้รวบรวมเก็บไว้เป็น<br>  หลักฐานเพื่อตรวจสอบภายหลังได้</p>' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(170, 750, 28, 273,'<p style="font-weight:bold;">4.ใบรับรองฯจะต้องไม่มีรอยขูดขีด แก้ ลบใดๆ หากมีการแก้ดังกล่าวต้องมีลายมือชื่อเจ้าหน้าที่ควบคุม กำกับทุกแห่ง ในส่วนที่เป็นอำนาจหน้าที่ของเจ้าหน้าที่นั้นๆ</p>' , 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 550, 100, 278,'<p style="font-weight:bold;">กองมาตรฐานวิศวกรรม<br>โทร 0-2504-0123 ต่อ 774,775</p>' , 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(145, 550, 10, 258,'<p style="font-weight:bold;">ข้อควรพึงปฏิบัติ</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 750, 28, 258,'<p style="font-weight:bold;">1.ใบรับรองนี้ให้ถือเสมือนหนึ่งเป็นใบกำกับผลิตภัณฑ์ ให้ผู้ผลิตแนบไปพร้อมกับการส่งท่อ/อุปกรณ์ที่ได้ผ่านการตรวจสอบมาตรฐานจากกองมาตรฐานวิศวกรรมแล้วทุกครั้ง</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 750, 28, 263,'<p style="font-weight:bold;">2.ท่อ/อุปกรณ์ใดที่ไม่มีใบรับรองฯ หรือมีรายละเอียดผิดไปจากใบรับรองฯ ซึ่งกำกับผลิตภัณฑ์มาด้วยนี้ จะไม่ได้รับการตรวจรับงานจากเจ้าหน้าที่ตรวจรับของการประปานครหลวง</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 750, 28, 268,'<p style="font-weight:bold;">3.ใบรับรองฯที่ส่งให้หน่วยงานของกปน. ให้หน่วยงานฯใช้ประกอบในการตรวจสอบ/ตรวจรับ ให้ถูกต้องตรงกับฉบับซึ่งมาพร้อมกับผลิตภัณฑ์จากผู้ผลิตและให้รวบรวมเก็บไว้เป็น<br>  หลักฐานเพื่อตรวจสอบภายหลังได้</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(170, 750, 28, 278,'<p style="font-weight:bold;">4.ใบรับรองฯจะต้องไม่มีรอยขูดขีด แก้ ลบใดๆ หากมีการแก้ดังกล่าวต้องมีลายมือชื่อเจ้าหน้าที่ควบคุม กำกับทุกแห่ง ในส่วนที่เป็นอำนาจหน้าที่ของเจ้าหน้าที่นั้นๆ</p>' , 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 550, 100, 283,'<p style="font-weight:bold;">กองมาตรฐานวิศวกรรม</p>' , 0, 1, false, true, 'C', false);
 			    
 		       
 		    }
@@ -246,18 +246,17 @@
 		// helvetica or times to reduce file size.
 		
 		$pdf->AddPage();
-
-
+       
 		
 		$details = Yii::app()->db->createCommand()
 					->select('*')
 					->from('c_cer_detail ct')	
 					//->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
-          			//->join('m_product p', 'p.prod_name=ct.detail')
+          			->join('m_product p', 'p.prod_id=ct.prod_id')
 					->where('ct.cer_id='.$model->cer_id)		
           			//->group('detail')			                   
 					->queryAll();
-		//print_r($model);
+		//print_r($details);
 		$npages = ceil(count($details)/15.0);			
 		$html = "";
 
@@ -293,7 +292,7 @@
 			        			if(!empty($details[$i]))
 			        			{	
 			        	             $html .= ' <tr style="font-weight:bold;">';
-				                     $html .= '<td style="text-align:center;border:1px solid black;width:7%"> '.($row++).'</td><td style="border:1px solid black;width:40%"> '.$details[$i]["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$details[$i]["prod_size"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$details[$i]["serialno"].'</td><td style="border:1px solid black;text-align:center;width:13%">'.$details[$i]["quantity"].'</td>';
+				                     $html .= '<td style="text-align:center;border:1px solid black;width:7%"> '.($row++).'</td><td style="border:1px solid black;width:40%"> '.$details[$i]["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%"> '.$details[$i]["prod_sizename"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$details[$i]["serialno"].'</td><td style="border:1px solid black;text-align:center;width:13%">'.$details[$i]["quantity"].' '.$details[$i]["prod_unit"].'</td>';
 				                     $html .= '</tr>';
 				                }
 				                else
@@ -323,6 +322,32 @@
 
         }
 		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+
+		//--------watermark--------------------//
+		if($model->cer_status==3)
+		{
+				$width = $pdf->GetStringWidth(trim("ยกเลิก"), "angsanaupc", "B", 90, false );
+				$factor = round(($width * sin(deg2rad(45))) / 2 ,0);
+				// Get the page width/height
+				$myPageWidth = $pdf->getPageWidth();
+				$myPageHeight = $pdf->getPageHeight();
+				// Find the middle of the page and adjust.
+				$myX = ( $myPageWidth / 2 ) - $factor;
+				$myY = ( $myPageHeight / 2 ) + $factor;
+				// Set the transparency of the text to really light
+				$pdf->SetAlpha(0.09);
+				// Rotate 45 degrees and write the watermarking text
+				$pdf->StartTransform();
+				$pdf->Rotate(45, $myX-20, $myY);
+				$pdf->SetFont("angsanaupc", "B", 90);
+				$pdf->Text($myX, $myY ,trim("ยกเลิก"));
+				$pdf->StopTransform();
+				// Reset the transparency to default
+				$pdf->SetAlpha(1); 
+		}
+
+		//---------end--------------------------//
 
         $pdf->Output($_SERVER['DOCUMENT_ROOT'].'/engstd/print/'.$filename,'F');
         ob_end_clean() ;

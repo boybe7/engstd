@@ -64,7 +64,8 @@
 	<?php echo $form->textFieldRow($model,'prod_size',array('class'=>'span2','maxlength'=>200)); ?>
 
 	<?php echo $form->textFieldRow($model,'prod_unit',array('class'=>'span2','maxlength'=>200)); ?>
-
+	<?php echo $form->textFieldRow($model,'price',array('class'=>'span2','maxlength'=>20)); ?>
+	<?php echo $form->textFieldRow($model,'factor',array('class'=>'span2')); ?>
 
 	<div class="form-actions">
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

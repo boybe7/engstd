@@ -331,7 +331,7 @@
                                            //console.log(ui.item.id)
                                             $("#CerDoc_supp_id").val(ui.item.id);
                                             $.ajax({
-                                                url: "'.$this->createUrl('cerDoc/GenCerNo').'",
+                                                url: "'.$this->createUrl('cerDoc/GenCerNo2').'",
                                                 dataType: "json",
                                                 data: {
                                                     id: ui.item.id,
@@ -440,7 +440,12 @@
 				
 	
 	
-                        $models=User::model()->findAll(array('order'=>'', 'condition'=>'position=1', 'params'=>array()));
+                        $models=User::model()->with(array(
+                                      'position' => array(
+                                        //'join' => 'JOIN m_position ON m_position.id = user.position', 
+                                        'condition' => "posi_level = 1 OR posi_level = 2",
+                                      )
+                                    ))->findAll(array('order'=>'name', 'condition'=>'', 'params'=>array()));
                         $data = array();
                         foreach ($models as $key => $value) {
                           $data[] = array(
@@ -458,7 +463,12 @@
 	<div class="row-fluid">
 		<div class="span8">	
 	<?php 
-						$models=User::model()->findAll(array('order'=>'', 'condition'=>'position=2', 'params'=>array()));
+						$models=$models=User::model()->with(array(
+                                      'position' => array(
+                                        //'join' => 'JOIN m_position ON m_position.id = user.position', 
+                                        'condition' => "posi_level = 2",
+                                      )
+                                    ))->findAll(array('order'=>'', 'condition'=>'', 'params'=>array()));
                         $data = array();
                         foreach ($models as $key => $value) {
                           $data[] = array(

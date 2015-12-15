@@ -31,13 +31,13 @@ class UserController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','password'),
+				'actions'=>array('create','update','password','delete','deleteSelected'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','updateuser','getusergroup','getuserposition','deleteSelected','resetPassword'),
+				'actions'=>array('admin','updateuser','getusergroup','getuserposition','resetPassword'),
 				//'expression'=>'Yii::app()->user->isAdmin()',
-				'expression'=>'Yii::app()->user->isAdmin()',
+				'expression'=>'Yii::app()->user->isSuperUser()',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
