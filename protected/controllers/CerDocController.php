@@ -172,7 +172,17 @@ class CerDocController extends Controller
        
             $id = $_GET['id']; 
            
-            $fiscalyear = date("n")<10 ? date("Y")+543 : date("Y")+544;
+            $fiscalyear = 	date("Y")+543;//date("n")<10 ? date("Y")+543 : date("Y")+544;
+
+            // $ms = CerDoc::model()->findAll();
+            // foreach ($ms as $key => $m) {
+            // 	$no =  explode("/", $m->cer_no);
+            // 	$m->cer_no = $no[0]."/2558";
+            // 	$m->save();
+
+            // }
+
+
 			$m = Yii::app()->db->createCommand()
 					->select('max(strSplit(cer_no,"/", 1)) as max')
 					->from('c_cer_doc')	
