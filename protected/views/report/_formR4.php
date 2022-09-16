@@ -39,11 +39,11 @@ $thai_mm=array("มกราคม", "กุมภาพันธ์", "มี�
 
 $str_date = explode("/", $date_start);
 if(count($str_date)>1)
-    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+    $date_start = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 $str_date = explode("/", $date_end);
 if(count($str_date)>1)
-    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+    $date_end = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 if(empty($date_end))
 	$date_end = $date_start;
@@ -59,14 +59,24 @@ echo"เงื่อนไขรายงาน&nbsp;:&nbsp;วันดำเ�
 
 //$models=CerDoc::model()->findAll(array("condition"=>"cer_date BETWEEN '$date_start' AND '$date_end'  "));
 $models = Yii::app()->db->createCommand()
-					->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit')
+					->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit,prot_id,prot_sub_id')
 					->from('c_cer_doc cd')	
 					->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
           ->join('m_product p', 'p.prod_name=ct.detail')
 					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')		
-          ->group('detail')			                   
+          ->group('detail')
+          ->order("prot_id desc")			                   
 					->queryAll();
-//print_r($m);					
+//print_r($m);		
+
+$models = Yii::app()->db->createCommand('SELECT sub.name AS subname, SUM( ct.quantity ) AS sum, detail, prod_code, ct.prod_size AS size, prod_unit, t.prot_name,factor,p.prot_id,p.prot_sub_id
+                        FROM c_cer_doc cd
+                        LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+                        LEFT JOIN m_product p ON p.prod_id = ct.prod_id 
+                        LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
+                        LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"
+                        GROUP BY  p.prod_id ORDER BY p.prod_name ASC')->queryAll();    			
 
 ?>
 
@@ -84,8 +94,14 @@ $models = Yii::app()->db->createCommand()
           <?php
                  
                   foreach ($models as $key => $model) {
+
+                      $m = Prodtype::model()->findByPk($model["prot_id"]);
+                      $protname = empty($m) ? "none" : $m->prot_name;
+                      $m = ProdtypeSubgroup::model()->findByPk($model["prot_sub_id"]);
+                      $protsubname = empty($m) ? "none" : $m->name;
+
                       echo "<tr>";
-                        echo '<td style="">'.$model["prod_code"].'</td><td style="">'.$model["detail"].'</td><td style="text-align:center;">'.$model["size"].'</td><td style="text-align:center;">'.$model["sum"].'</td><td style="text-align:center;">'.$model["prod_unit"].'</td>';
+                        echo '<td style="">'.$model["prod_code"].'</td><td style="">'.$model["detail"]." | ".$protname.":".$protsubname."|".$model["factor"].'</td><td style="text-align:center;">'.$model["size"].'</td><td style="text-align:center;">'.$model["sum"].'</td><td style="text-align:center;">'.$model["prod_unit"].'</td>';
                       echo "</tr>";
                   }
                 

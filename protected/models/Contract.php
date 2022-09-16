@@ -30,10 +30,10 @@ class Contract extends CActiveRecord
 			array('con_number', 'required'),
 			array('con_id', 'numerical', 'integerOnly'=>true),
 			array('con_number', 'length', 'max'=>500),
-			array('con_price, con_budget', 'length', 'max'=>50),
+			//array('con_price, con_budget', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('con_id, con_number,con_status, con_price, con_budget', 'safe', 'on'=>'search'),
+			array('con_id,con_detail, con_number,con_status, con_price, con_budget', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,7 +57,9 @@ class Contract extends CActiveRecord
 			'con_id' => 'Con',
 			'con_number' => 'เลขที่สัญญา',
 			'con_price' => 'ค่างาน',
-			'con_budget' => 'งบประมาณโครงการ',
+			'con_detail' => 'เลขมาตรฐาน',
+			// 'con_price' => 'ค่างาน',
+			// 'con_budget' => 'งบประมาณโครงการ',
 			'con_status' => 'สถานะ'
 		);
 	}
@@ -82,8 +84,9 @@ class Contract extends CActiveRecord
 
 		$criteria->compare('con_id',$this->con_id);
 		$criteria->compare('con_number',$this->con_number,true);
-		$criteria->compare('con_price',$this->con_price,true);
-		$criteria->compare('con_budget',$this->con_budget,true);
+		$criteria->compare('con_detail',$this->con_detail,true);
+		// $criteria->compare('con_price',$this->con_price,true);
+		// $criteria->compare('con_budget',$this->con_budget,true);
 		$criteria->compare('con_status',$this->con_status,true);
 		$criteria->order = 'con_id DESC';
 		return new CActiveDataProvider($this, array(

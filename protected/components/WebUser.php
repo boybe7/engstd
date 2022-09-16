@@ -44,6 +44,20 @@ function getUserDept(){
     return $user->dept_id;
     
 }
+
+function getLevel(){
+    $user = $this->loadUser(Yii::app()->user->id);
+    $position = Position::model()->findByPk($user->position);
+    $position2 = Position::model()->findByPk($user->position2);
+    $level = 0;
+    if((!empty($position) && $position->posi_level==2) || (!empty($position2) && $position2->posi_level==2))
+        $level = 1;
+    if((!empty($position) && $position->posi_level==3) || (!empty($position2) && $position2->posi_level==3))
+        $level = 2;
+    
+    return $level;
+    
+}
 // access it by Yii::app()->user->usertype
 function getUsertype(){
     $user = $this->loadUser(Yii::app()->user->id);

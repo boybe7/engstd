@@ -58,11 +58,11 @@ $date_mm =$m_d."&nbsp;".$thai_mm[(int)$m_m]."&nbsp;".$m_y;
 
 		$str_date = explode("/", $date_start);
 		if(count($str_date)>1)
-		    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+		    $date_start = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 		$str_date = explode("/", $date_end);
 		if(count($str_date)>1)
-		    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+		    $date_end =($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 		if(empty($date_end))
 			$date_end = $date_start;

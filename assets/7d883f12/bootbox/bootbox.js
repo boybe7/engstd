@@ -475,6 +475,7 @@ var bootbox = window.bootbox || (function(document, $) {
                         $("#CerDetailTemp_prod_size").val(ui.item.size);
                         $("#CerDetailTemp_detail").val(ui.item.name);
                         $("#CerDetailTemp_prod_id").val(ui.item.id);
+                        $("#CerDetailTemp_unit").val(ui.item.unit);
                       }
                     });
             }
@@ -511,6 +512,7 @@ var bootbox = window.bootbox || (function(document, $) {
                         $("#CerDetail_prod_size").val(ui.item.size);
                         $("#CerDetail_detail").val(ui.item.name);
                         $("#CerDetail_prod_id").val(ui.item.id);
+                        $("#CerDetail_unit").val(ui.item.unit);
                         //$("#detail2").val(ui.item.name);
                       }
                     });

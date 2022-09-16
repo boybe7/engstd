@@ -76,10 +76,10 @@ $this->breadcrumbs=array(
 <div class="well">
   <div class="row-fluid">
 
-    <div class="span3">
+    <div class="span2">
 			<?php
 
-                                echo CHtml::label('วันที่ออกใบรับรองเริ่มต้น','date_start');
+                                echo CHtml::label('วันที่เริ่มต้น','date_start');
 		                echo '<div class="input-append" style="margin-top:0px;">'; //ใส่ icon ลงไป
 		                    $this->widget('zii.widgets.jui.CJuiDatePicker',
 
@@ -93,7 +93,7 @@ $this->breadcrumbs=array(
 		                                          'format'=>'dd/mm/yyyy', //กำหนด date Format
 		                                          'showAnim' => 'slideDown',
 		                                          ),
-		                        'htmlOptions'=>array('class'=>'span12'),  // ใส่ค่าเดิม ในเหตุการ Update
+		                        'htmlOptions'=>array('class'=>'span10'),  // ใส่ค่าเดิม ในเหตุการ Update
 		                     )
 		                );
 		                echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
@@ -101,10 +101,10 @@ $this->breadcrumbs=array(
 		      	?>
       </div>
 
-      <div class="span3 offset1">
+      <div class="span2">
 			<?php
 
-                                echo CHtml::label('วันที่ออกใบรับรองสิ้นสุด','date_end');
+                                echo CHtml::label('วันที่สิ้นสุด','date_end');
 		                echo '<div class="input-append" style="margin-top:0px;">'; //ใส่ icon ลงไป
 		                    $this->widget('zii.widgets.jui.CJuiDatePicker',
 
@@ -118,7 +118,7 @@ $this->breadcrumbs=array(
 		                                          'format'=>'dd/mm/yyyy', //กำหนด date Format
 		                                          'showAnim' => 'slideDown',
 		                                          ),
-		                        'htmlOptions'=>array('class'=>'span12'),  // ใส่ค่าเดิม ในเหตุการ Update
+		                        'htmlOptions'=>array('class'=>'span10'),  // ใส่ค่าเดิม ในเหตุการ Update
 		                     )
 		                );
 		                echo '<span class="add-on"><i class="icon-calendar"></i></span></div>';
@@ -127,7 +127,7 @@ $this->breadcrumbs=array(
      </div>
   
 
-	<div class="offset1 span4">
+	<div class="span7">
             <?php
             $this->widget('bootstrap.widgets.TbButton', array(
                   'buttonType'=>'link',
@@ -137,24 +137,36 @@ $this->breadcrumbs=array(
                   'icon'=>'list-alt white',
 
                   'htmlOptions'=>array(
-                    'class'=>'span4',
+                    'class'=>'span3',
                     'style'=>'margin:25px 10px 0px 0px;',
                     'id'=>'gentReport'
                   ),
               ));
             ?>
             <?php
-            // $this->widget('bootstrap.widgets.TbButton', array(
-            //     'buttonType' => 'link',
-            //     'type' => 'success',
-            //     'label' => 'Excel',
-            //     'icon' => 'excel',
-            //     'htmlOptions' => array(
-            //         'class' => 'span4',
-            //         'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
-            //         'id' => 'exportExcel'
-            //     ),
-            // ));
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'success',
+                'label' => 'Excel',
+                'icon' => 'excel',
+                'htmlOptions' => array(
+                    'class' => 'span3',
+                    'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
+                    'id' => 'exportExcel'
+                ),
+            ));
+
+             $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType' => 'link',
+                'type' => 'warning',
+                'label' => 'รายงานประจำเดือน',
+                'icon' => 'excel',
+                'htmlOptions' => array(
+                    'class' => 'span4',
+                    'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
+                    'id' => 'exportMonthlyExcel'
+                ),
+            ));
 
             $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType' => 'link',
@@ -162,7 +174,7 @@ $this->breadcrumbs=array(
                 'label' => '',
                 'icon' => 'print white',
                 'htmlOptions' => array(
-                    'class' => 'span3',
+                    'class' => 'span2',
                     'style' => 'margin:25px 0px 0px 0px;',
                     'id' => 'printReport'
                 ),
@@ -221,8 +233,16 @@ $("#printReport").click(function(e){
 Yii::app()->clientScript->registerScript('exportExcel', '
 $("#exportExcel").click(function(e){
     e.preventDefault();
-    window.location.href = "genVendorExcel?fiscalyear="+$("#fiscalyear").val()+"&project="+$("#project").val()+"&monthEnd="+$("#monthEnd").val()+"&yearEnd="+$("#yearEnd").val()+"&workcat="+$("#workcat").val();
-              
+    window.location.href = "R9Excel?date_start="+$("#date_start").val()+"&date_end="+$("#date_end").val();
+
+
+});
+', CClientScript::POS_END);
+
+Yii::app()->clientScript->registerScript('exportMonthlyExcel', '
+$("#exportMonthlyExcel").click(function(e){
+    e.preventDefault();
+    window.location.href = "R9MonthlyExcel?date_start="+$("#date_start").val()+"&date_end="+$("#date_end").val();
 
 
 });

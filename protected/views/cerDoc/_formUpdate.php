@@ -53,7 +53,15 @@
     <div class="pull-right"><?php echo $model->running_no;?></div>
 	<div class="row-fluid">
 		<div class="span3">
-			<?php echo $form->textFieldRow($model,'cer_no',array('class'=>'span12','maxlength'=>20,'readonly'=>true)); ?>
+			<?php 
+
+         if(Yii::app()->user->isExecutive() || Yii::app()->user->isAdmin())
+           echo $form->textFieldRow($model,'cer_no',array('class'=>'span12','maxlength'=>20)); 
+         else 
+           echo $form->textFieldRow($model,'cer_no',array('class'=>'span12','maxlength'=>20,'readonly'=>true)); 
+
+
+      ?>
 		</div>
         <div class="span1">
             <?php 
@@ -422,13 +430,14 @@
                   
                         echo $form->hiddenField($model,'prod_id');
                         echo $form->labelEx($model,'prod_id',array('class'=>'span12','style'=>'text-align:left;margin-left:-1px;margin-bottom:-5px'));
-                        $m = Prodtype::model()->findByPK($model->prod_id);
+                        //$m = Prodtype::model()->findByPK($model->prod_id);
+                        //$m = Prodtype::model()->findAll(array('order'=>'', 'condition'=>'prot_name=:name', 'params'=>array('name'=>$model->prod_id)));
                         //print_r($m);
-                        $value = empty($model->prod_id) ? "" : $m->prot_code."-".$m->prot_name;  
+                        //$value = empty($model->prod_id) ? "" : $m->prot_code."-".$m->prot_name;  
                         $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
                             'name'=>'prod_id',
                             'id'=>'prod_id',
-                            'value'=>$value,
+                            'value'=>$model->prod_id,
                            // 'source'=>$this->createUrl('Ajax/GetDrug'),
                            'source'=>'js: function(request, response) {
                                 $.ajax({
@@ -451,7 +460,7 @@
                                      'select'=>'js: function(event, ui) {
                                         
                                            //console.log(ui.item.id)
-                                            $("#CerDoc_prod_id").val(ui.item.id);
+                                            $("#CerDoc_prod_id").val(ui.item.label);
                                           
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
@@ -583,7 +592,7 @@
 	</div>
 
     <div class="row-fluid">
-        <div class="span8"> 
+        <div class="span12"> 
 	       <?php echo $form->textAreaRow($model,'cer_notes',array('class'=>'span12','rows'=>4,'wrap'=>"physical")); ?>
         </div>
     </div>
@@ -791,13 +800,214 @@
            
         </fieldset>
 
+     <div class="row-fluid">
+        <div class="span12"> 
+           <?php echo $form->textAreaRow($model,'approve_comment',array('class'=>'span12','rows'=>4,'wrap'=>"physical")); ?>
+        </div>
+    </div>
 
 	<div class="form-actions">
-		<?php $this->widget('bootstrap.widgets.TbButton', array(
+		<?php 
+         if(Yii::app()->user->getLevel()==0)
+        $this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
 			'label'=>'บันทึก',
-		)); ?>
+		));
+
+        if(Yii::app()->user->getLevel()==1  && $model->approve_status==1)
+        {
+
+           
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'link',
+                'type'=>'danger',
+                'label'=>'ส่งกลับแก้ไข',
+                'htmlOptions'=>array(
+                    'style'=>'margin-right:10px;',
+                    'onclick'=>'
+                                   
+                                $.ajax({
+                                        type: "POST",
+                                        url: "' .CController::createUrl('cerDoc/approve'). '",                                        
+                                        data: {
+                                            id: '.$model->cer_id.',
+                                            status: 3, 
+                                            comment: $("#CerDoc_approve_comment").val()                                         
+                                       
+                                        }
+                                    })                                  
+                                    .done(function( msg ) {
+                                                                                           
+                                                                             
+                                    })  
+                                                    
+                            ',
+                    ),
+            ));
+
+            
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'link',
+                'type'=>'primary',
+                'label'=>'อนุมัติ',
+                'htmlOptions'=>array(
+        
+                    'onclick'=>'
+                                   
+                                $.ajax({
+                                        type: "POST",
+                                        url: "' .CController::createUrl('cerDoc/approve'). '",                                        
+                                        data: {
+                                            id: '.$model->cer_id.',
+                                            status: 2,                                          
+                                            comment: $("#CerDoc_approve_comment").val()  
+                                        }
+                                    })                                  
+                                    .done(function( msg ) {
+                                                                                           
+                                            location.reload();                                 
+                                    })  
+                                                    
+                            ',
+                    ),
+            ));
+        }  
+
+         if(Yii::app()->user->getLevel()==2 && $model->approve_status==2)
+        {
+
+         
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'link',
+                'type'=>'danger',
+                'label'=>'ส่งกลับแก้ไข',
+                'htmlOptions'=>array(
+                    'style'=>'margin-right:10px;',
+                    'onclick'=>'
+                                   
+                                $.ajax({
+                                        type: "POST",
+                                        url: "' .CController::createUrl('cerDoc/approve'). '",                                        
+                                        data: {
+                                            id: '.$model->cer_id.',
+                                            status: 5, 
+                                            comment: $("#CerDoc_approve_comment").val()                                         
+                                       
+                                        }
+                                    })                                  
+                                    .done(function( msg ) {
+                                                                                           
+                                                                             
+                                    })  
+                                                    
+                            ',
+                    ),
+            ));
+
+            
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'link',
+                'type'=>'primary',
+                'label'=>'อนุมัติ',
+                'htmlOptions'=>array(
+        
+                    'onclick'=>'
+                                   
+                                $.ajax({
+                                        type: "POST",
+                                        url: "' .CController::createUrl('cerDoc/approve'). '",                                        
+                                        data: {
+                                            id: '.$model->cer_id.',
+                                            status: 3,                                          
+                                            comment: $("#CerDoc_approve_comment").val()  
+                                        }
+                                    })                                  
+                                    .done(function( msg ) {
+                                                                                           
+                                            location.reload();                                 
+                                    })  
+                                                    
+                            ',
+                    ),
+            ));
+        }   
+
+        switch ($model->approve_status) {
+            case 1:
+                $label = "รอหัวหน้าอนุมัติ";
+                $disbut = true;
+                break;
+
+            case 2:
+                $label = "รอ ผอ.อนุมัติ";
+                $disbut = false;
+                break; 
+
+            case 3:
+                $label = "แก้ไข แล้วส่งหัวหน้าอนุมัติ";
+                $disbut = false;
+                break;    
+
+            case 4:
+                $label = "ผอ. อนุมัติแล้ว";
+                $disbut = false;
+                break;      
+            case 5:
+                $label = "แก้ไข แล้วส่งหัวหน้าอนุมัติ";
+                $disbut = false;
+                break;
+
+            default:
+                // code...
+                break;
+        }
+       
+       
+        if(Yii::app()->user->getLevel()==0)
+        $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType'=>'link',
+            'type'=>'inverse',
+            'label'=>$label,
+            'disabled' => $disbut,
+            'htmlOptions'=>array(
+         
+                'style'=>'margin-left:10px;',
+                'onclick'=>'
+                                   
+                                $.ajax({
+                                        type: "POST",
+                                        url: "' .CController::createUrl('cerDoc/approve'). '",                                        
+                                        data: {
+                                            id: '.$model->cer_id.',
+                                            status: 1,                                          
+                                       
+                                        }
+                                    })                                  
+                                    .done(function( msg ) {
+                                                                                           
+                                            location.reload();                                 
+                                    })  
+                                                    
+                            ',
+              ),
+        ));
+
+        // if(Yii::app()->user->getLevel()==1)
+        // $this->widget('bootstrap.widgets.TbButton', array(
+        //     'buttonType'=>'link',
+        //     'type'=>'inverse',
+        //     'label'=>'ส่ง ผอ. อนุมัติ',
+        //     'htmlOptions'=>array(
+         
+        //         'style'=>'margin-left:10px;',
+             
+        //       ),
+        // ));
+
+
+
+         ?>
 	</div>
 
 <?php $this->endWidget(); ?>

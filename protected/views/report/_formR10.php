@@ -41,14 +41,14 @@ $thai_mm=array("มกราคม", "กุมภาพันธ์", "มี�
 $m_month=$thai_mm[(int)$month-1];
 //.$thai_mm[(int)$m_m]
 
-echo"<h4>สรุปผลการดำเนินการประจำเดือน&nbsp;".$m_month."&nbsp;".$year."</h4>";
+echo"<h4>สรุปผลการดำเนินการประจำเดือน&nbsp;".$m_month."&nbsp;".($year+543)."</h4>";
 echo"<h4>ผลการดำเนินงานรายบุคคล"."</h4><br>";
 
 $date_m = $year."-".$month;
 
 //$models=CerDoc::model()->findAll(array("condition"=>"cer_date BETWEEN '$date_start' AND '$date_end'  "));
 $models = Yii::app()->db->createCommand()
-					->select("count(cer_no) as sum,cer_name,SUM(TOTAL_WEEKDAYS(CONCAT( DATE_FORMAT( cer_date,  '%Y' ) -543,  '-', DATE_FORMAT( cer_date,  '%m-%d' ) ) , CONCAT( DATE_FORMAT( cer_oper_date,  '%Y' ) -543,  '-', DATE_FORMAT( cer_oper_date,  '%m-%d' ) ) )) as date_oper")
+					->select("count(cer_no) as sum,cer_name,SUM(workDay(TOTAL_WEEKDAYS(CONCAT( DATE_FORMAT( cer_date,  '%Y' ),  '-', DATE_FORMAT( cer_date,  '%m-%d' ) ) , CONCAT( DATE_FORMAT( cer_oper_date,  '%Y' ),  '-', DATE_FORMAT( cer_oper_date,  '%m-%d' ) ) ))) as date_oper")
 					->from('c_cer_doc cd')
 					//->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
 					->where('cer_date like "'.$date_m.'%"')

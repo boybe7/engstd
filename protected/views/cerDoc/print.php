@@ -426,13 +426,22 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 				// 'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				// 'htmlOptions'=>array('style'=>'text-align:center;')
 	  	// ),
-	  	'cer_oper_date'=>array(
+      'cer_sign'=>array(
+          'header' => 'ใบรับรองที่มีลายเซ็นต์',
+          'type'  => 'raw',
+           'value' => array($model,'getCerSign'),
+           //'value' => 'CHtml::link($data->cer_no, Yii::app()->createUrl("cerDoc/download",array("id"=>$data->cer_id)))',
+          //'filter'=>CHtml::activeTextField($model, 'cer_no',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_no"))),
+        'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),                     
+        'htmlOptions'=>array('style'=>'text-align:center;')
+      ),
+	  	/*'cer_oper_date'=>array(
 			    'header' => 'วันที่ตรวจโรงงาน',
 			    'value'=>'$data->cer_oper_date',
 			    //'filter'=>CHtml::activeTextField($model, 'cer_no',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_no"))),
 				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center;')
-	  	),
+	  	),*/
 	),
 ));
 

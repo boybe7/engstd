@@ -11,15 +11,9 @@ function renderDate($value)
 }
 
 
+require_once($_SERVER['DOCUMENT_ROOT'].'/engstd/protected/tcpdf/tcpdf.php');
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/engstd/protected/tcpdf/tcpdf.php');
-
-
-
-
-
-
-	class MYPDF extends TCPDF {
+class MYPDF extends TCPDF {
 
 		    //Page header
 			private $date_start;
@@ -37,7 +31,7 @@ function renderDate($value)
 		        $this->SetFont('thsarabun', 'B', 20);
 		        // Title
 		        //$this->Cell(0, 5, 'รายงานสรุปยอดรับรองท่อ/อุปกรณ์', 0, false, 'C', 0, '', 0, false, 'M', 'M');
-		        $this->writeHTMLCell(145, 20, 40, 10, 'รายงานผลรวมการผลิตแยกตามเลขที่สัญญา<br>การประปานครหลวง<div style="font-size:16px;">วันที่ออกใบรับรอง '.renderDate($this->date_start)." ถึง ".renderDate($this->date_end)."</div>", 0, 1, false, true, 'C', false);
+		        $this->writeHTMLCell(145, 20, 40, 10, 'รายงานสรุปท่อ/อุปกรณ์ประปาที่ผ่านการตรวจสอบคุณภาพ<br>การประปานครหลวง<div style="font-size:16px;">วันที่ออกใบรับรอง '.renderDate($this->date_start)." ถึง ".renderDate($this->date_end)."</div>", 0, 1, false, true, 'C', false);
 		        $image_file = $_SERVER['DOCUMENT_ROOT'].'/engstd/images/mwa_logo.png';
 		        $this->Image($image_file, 180, 10, 15, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		    }   
@@ -67,46 +61,18 @@ function renderDate($value)
 
 		$str_date = explode("/", $date_start);
 		if(count($str_date)>1)
-		    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+		    $date_start = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 		$str_date = explode("/", $date_end);
 		if(count($str_date)>1)
-		    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+		    $date_end = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 		if(empty($date_end))
 			$date_end = $date_start;
 		if(empty($date_start))
 			$date_start = $date_end;
 
-		
-		$vend_id_sta = $vend_id_sta!="" ? $vend_id_sta : $vend_id_end;
-		$vend_id_end = $vend_id_end!="" ? $vend_id_end : $vend_id_sta;
-
-              
-               if(($vend_id_sta!="")||($vend_id_end!="")){
-                    //---เลือก-----รหัสผู้ผลิต/จัดส่งเริ่มต้น
-                    //echo"รหัสผู้ผลิต/จัดส่งเริ่มต้น----ไม่ว่าง----------<br>";
-                    $models_m = Yii::app()->db->createCommand()
-                    ->select('cd.contract_no,cd.cer_id')
-                    ->from('c_cer_doc cd')
-                    //->join('contractor v', 'cd.contractor=v.name')
-                    ->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND cd.contract_no BETWEEN "'.$vend_id_sta.'" AND "'.$vend_id_end.'"')
-                    //->group('v.code')
-                    ->queryAll();
-
-                }else{
-                    //echo"รหัสผู้ผลิต/จัดส่งเริ่มต้น----ว่าง------------<br>";
-                    $models_m = Yii::app()->db->createCommand()
-                    ->select('cd.contract_no,cd.cer_id')
-                    ->from('c_cer_doc cd')
-                    //->join('contractor v', 'cd.contractor=v.name')
-                    ->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
-                    //->group('v.code')
-                    ->queryAll();
-                }
-
-			
-
+	
 		$pdf->setDate($date_start,$date_end);
 
 		// set document information
@@ -157,68 +123,127 @@ function renderDate($value)
 		
 		$pdf->AddPage();
 
+		 $models_m = Yii::app()->db->createCommand('SELECT p.prot_id
+                        FROM c_cer_doc cd
+                        LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+                        LEFT JOIN m_product p ON p.prod_id = ct.prod_id                         
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"
+                        GROUP BY p.prot_id ORDER BY cd.cer_id ')->queryAll();     
 
+		 $test = Yii::app()->db->createCommand('SELECT sub.name AS subname, SUM( ct.quantity ) AS sum, detail, prod_code, ct.prod_size AS size, prod_unit, t.prot_name,factor,p.prot_id,p.prot_sub_id
+                        FROM c_cer_doc cd
+                        LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+                        LEFT JOIN m_product p ON p.prod_id = ct.prod_id 
+                        LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
+                        LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"
+                        GROUP BY  IFNULL( sub.id, t.prot_name )  ORDER BY t.prot_name ')->queryAll();    
 		
 		$html = "";
 		$pdf->SetFont('thsarabun', '', 12, '', true);
-		
-		foreach ($models_m as $key => $model_m) {
-                         $vend_id=$model_m["contract_no"];
-                        $cer_id=$model_m["cer_id"];
-                       
-                       
 
-                         $models = Yii::app()->db->createCommand()
-                                    ->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit')
+
+		$html .= '<table width="100%" border="1">';            
+        $html .= '<tr style="font-weight:bold;border-bottom: 1px solid black;"><td style="text-align:center;width:50%">ผลิตภัณฑ์</td><td style="text-align:center;width:30%">จำนวน</td><td style="text-align:center;width:20%">หน่วย</td></tr>';
+              
+        foreach ($test as $key => $m) {
+
+
+
+                   $test2 = Yii::app()->db->createCommand('SELECT detail, prod_unit, t.prot_name
+                        FROM c_cer_doc cd
+                        LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+                        LEFT JOIN m_product p ON p.prod_id = ct.prod_id
+                        LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
+                        LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND p.prot_id="'.$m["prot_id"].'" AND p.prot_sub_id="'.$m["prot_sub_id"].'"
+                        GROUP BY prod_unit')->queryAll();          
+              
+               //echo "<br>";
+               //print_r($test2);
+               //echo "<br>";
+                  $unit = "";
+                  $i = 0;        
+                  foreach ($test2 as $key => $m2) {
+                      if($i==0)
+                         $unit = $m2["prod_unit"];
+                      else 
+                         $unit .= "/".$m2["prod_unit"]; 
+
+                      $i++;        
+                  }
+
+                  $sum = $m["sum"];
+              
+
+                  if($m["subname"]=="ท่อ") 
+                  {    
+                      $unit = "เมตร";  
+                       $models = Yii::app()->db->createCommand('SELECT sub.name AS subname, SUM( ct.quantity ) AS sum, detail, prod_code, ct.prod_size AS size, prod_unit, t.prot_name,factor,p.prot_id,p.prot_sub_id
+                        FROM c_cer_doc cd
+                        LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+                        LEFT JOIN m_product p ON p.prod_id = ct.prod_id 
+                        LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
+                        LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND p.prot_id="'.$m["prot_id"].'" AND p.prot_sub_id="'.$m["prot_sub_id"].'"
+                        GROUP BY  p.prod_id ORDER BY p.prod_name ASC')->queryAll();      
+                        //echo "<br>".$m["prot_name"].":".$m["subname"];
+                        $sum2 = 0;
+                        foreach ($models as $key => $m2) {
+                          //echo "<br>".$m2["sum"]."*".$m2["factor"]."=".$m2["sum"]*$m2["factor"];   
+                           $sum2 += $m2["sum"]*$m2["factor"]; 
+
+                        }  
+                        //echo "<br>sum=".$sum2;  
+                        $sum = $sum2; 
+                        
+                      
+                  }    
+                  $html .= '<tr><td style="text-align:left;width:50%">   '.$m["prot_name"].':'.$m["subname"].'</td><td style="text-align:right;width:30%;padding-right:20px;">'.number_format($sum,0).'&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="text-align:center;width:20%">'.$unit.'</td></tr>';
+              }            
+              $html .= '</table>';
+
+              //calculate cost
+              $sumCost = 0;
+                  foreach ($models_m as $key => $model_m) {
+                        $type_id = $model_m['prot_id'];
+                        /*$models = Yii::app()->db->createCommand()
+                                    ->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit,pt.prot_name,price,factor')
                                     ->from('c_cer_doc cd')
                                     ->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
                                     ->join('m_product p', 'p.prod_name = ct.detail AND p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") ')
-                                    ->where('cd.cer_id="'.$cer_id.'" AND cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
+                                    ->join('m_prodtype pt', 'p.prot_id=pt.prot_id')
+                                    ->where('p.prot_id="'.$type_id.'" AND cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
                                     ->group('prod_code')
-                                    ->queryAll();
+                                    ->queryAll();*/
 
+                         $models = Yii::app()->db->createCommand('SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit,t.prot_name,price,factor
+                        FROM c_cer_doc cd
+                        LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+                        LEFT JOIN m_product p ON p.prod_id = ct.prod_id
+                        LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
+                        LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND p.prot_id="'.$type_id.'"
+                        GROUP BY prod_code')->queryAll();                   
+                           
+                        foreach ($models as $key => $mm) {
+                           
+                       
 
+                           $price = $mm["sum"]*$mm["price"];
+                            $sumCost += $price;
 
+                           //echo $mm["detail"]." | ".$mm["size"]." |จำนวน: ".$mm["sum"]." |ราคา ".$mm["price"]." = ".number_format($price)."<br>";  
+                        }            
+                                  
+                        
+                        //$sumCost += $models[0]["sum"]*      
+                  }   
+                   $html .= '<table width="100%">';
+                  $html .= '<tr><td style="text-align:right;"><b>มูลค่างาน '.number_format($sumCost,0)." บาท</b></td></tr>";               
+                      
+                   $html .= '</table>';
 
-						$html .= '<table>';
-					    $html .= '<thead>';
-					    $html .= '  <tr style="line-height: 30px;background-color:#f5f5f5">';
-					    $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:left;width:100%" colspan="5">เลขที่สัญญา   '.$model_m["contract_no"].'</th>';
-					    
-					    
-					    $html .= '  </tr>'; 
-					    $html .= '  <tr style="line-height: 30px;background-color:#f5f5f5">';
-					    $html .= '	  <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:20%">รหัสท่อ/อุปกรณ์</th>';
-                        $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:40%">รายละเอียดท่อ/อุปกรณ์</th>';
-                        $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:20%">ขนาด '.TCPDF_FONTS::unichr(248).' มม.</th>';
-                        $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:10%">จำนวน</th>';
-                        $html .= '    <th style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;width:10%">หน่วย</th>';
-					    $html .= '  </tr>';
-					  
-					    $html .= '</thead>';
-					    $html .= '<tbody>';
-					       
-					                 
-					                  foreach ($models as $key => $model) {
-                                           $html .= "<tr>";
-                                           $html .='<td style="font-size:15px;border:1px solid black;text-align:center;width:20%">'.$model["prod_code"].'</td><td style="font-size:15px;border:1px solid black;text-align:left;width:40%">  '.$model["detail"].'</td><td style="font-size:15px;border:1px solid black;text-align:center;width:20%">'.$model["size"].'</td><td style="font-size:15px;border:1px solid black;text-align:center;width:10%">'.$model["sum"].'</td><td style="font-size:15px;border:1px solid black;text-align:center;width:10%">'.$model["prod_unit"].'</td>';
-                                           $html .="</tr>";
-                                      }
-
-                                      $html .='<tr style="background-color:#F5F7F7;font-weight:bold">';
-                                      $html .='  <td style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;" colspan="3">รวม</td><td style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;">'.count($models).'</td><td style="font-size:15px;font-weight:bold;border:1px solid black;text-align:center;">รายการ</td>';
-                                     $html .= "</tr>";      
-					       			
-					     
-					    $html .= '</tbody>';
-					  	$html .= '</table>';
-
-					  	$html .= '<br><br>';
- 		}					  	
-		//$html .= '<div align="center" style="font-size:25px;font-weight:bold">ใบรับรองท่อและอุปกรณ์ประปาเลขที่ </div>';
-		//$html .= '<div align="center" style="font-size:16px;">แนบท้ายหนังสือกมว.ที่.................. </div>';
-        
- 		$html .="รายงานผลรวมการผลิตแยกตามเลขที่สัญญาจำนวน&nbsp;".count($models_m)."&nbsp;รายการ";
 			$t= date('H:i:s', time()); // 10:00:00
 			$m_d = date("d");
 			$m_m = date("m")-1;

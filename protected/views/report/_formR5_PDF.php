@@ -58,11 +58,11 @@ $date_mm =$m_d."&nbsp;".$thai_mm[(int)$m_m]."&nbsp;".$m_y;
 
 		$str_date = explode("/", $date_start);
 		if(count($str_date)>1)
-		    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+		    $date_start = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 		$str_date = explode("/", $date_end);
 		if(count($str_date)>1)
-		    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+		    $date_end = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 		if(empty($date_end))
 			$date_end = $date_start;
@@ -148,13 +148,22 @@ $models_m = Yii::app()->db->createCommand()
 	            $html .= '</u><br>';
 
 
-                              $models = Yii::app()->db->createCommand()
-					->select('sum(ct.quantity) as sum,cd.cer_no,cd.contract_no,running_no,vend_id')
+     //                          $models = Yii::app()->db->createCommand()
+					// ->select('sum(ct.quantity) as sum,cd.cer_no,cd.contract_no,running_no,vend_id')
+					// ->from('c_cer_doc cd')
+					// ->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+     //                                    ->join('m_product p', 'p.prod_name=ct.detail')
+					// ->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
+     //                                    ->group('detail')
+					// ->queryAll();
+
+					 $models = Yii::app()->db->createCommand()
+					->select('cd.cer_no,cd.contract_no,running_no,vend_id')
 					->from('c_cer_doc cd')
-					->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
-                                        ->join('m_product p', 'p.prod_name=ct.detail')
-					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
-                                        ->group('detail')
+					//->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+          //->join('m_product p', 'p.prod_name=ct.detail')
+					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND cer_name="'.$model_m["cer_name"].'"')
+          //->group('detail')
 					->queryAll();
             //}
 

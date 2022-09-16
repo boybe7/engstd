@@ -36,13 +36,25 @@ class CerDoc extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('prod_id,dept_id,contract_no,contractor,cer_no, vend_id,user_update,running_no, cer_date, cer_oper_date, cer_name, cer_ct_name, cer_di_name, cer_status, cer_date_add', 'required'),
-			array('cer_status,prod_id', 'numerical', 'integerOnly'=>true),
-			array('cer_no', 'length', 'max'=>20),
+			array('cer_status', 'numerical', 'integerOnly'=>true),
+			array('cer_no', 'unique','message'=>'เลขที่ใบรับรองซ้ำ'),
+			//array('cer_no', 'matchName','message'=>'เลขที่ใบรับรองไม่ตรงตามผู้ผลิต/ผู้จัดส่ง'),
 			array('cer_name, cer_ct_name, cer_di_name', 'length', 'max'=>100),
 			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('cer_id, cer_no,user_update,running_no, dept_id, vend_id,supp_id, cer_date, cer_oper_date, cer_name,contract_no,contractor,prod_id, cer_ct_name, cer_di_name, cer_notes, cer_status, cer_date_add', 'safe', 'on'=>'search'),
+			// @todo Please remove those attributes that should not be searhced.
+			array('cer_id, cer_no,user_update,running_no, dept_id, vend_id,supp_id, cer_date, cer_oper_date, cer_name,contract_no,contractor,prod_id, cer_ct_name, cer_di_name, cer_notes, cer_status, cer_date_add,approve_comment,approve_status', 'safe', 'on'=>'search'),
 		);
+	}
+
+	public function matchName($attribute,$params)
+	{
+	    if ($params['strength'] === self::WEAK)
+	        $pattern = '/^(?=.*[a-zA-Z0-9]).{5,}$/';  
+	    elseif ($params['strength'] === self::STRONG)
+	        $pattern = '/^(?=.*\d(?=.*\d))(?=.*[a-zA-Z](?=.*[a-zA-Z])).{5,}$/';  
+	 
+	    if(!preg_match($pattern, $this->$attribute))
+	      $this->addError($attribute, 'your password is not strong enough!');
 	}
 
 	/**
@@ -77,6 +89,8 @@ class CerDoc extends CActiveRecord
 			'contract_no' => 'เลขที่สัญญา',
 			'contractor' => 'คู่สัญญา',
 			'prod_id' => 'ชนิดท่อ/อุปกรณ์',
+			'approve_comment'=>'ความคิดเห็นจากผู้อนุมัติ',
+			'approve_status'=>'สถานะอนุมัติ',
 			'cer_date_add' => 'Cer Date Add',
 		);
 	}
@@ -127,6 +141,19 @@ class CerDoc extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$str_date = explode("/", $this->cer_date);
+        if(count($str_date)>1)
+        	$this->cer_date= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
+        
+        $str_date = explode("/", $this->cer_oper_date);
+        if(count($str_date)>1)
+        	$this->cer_oper_date= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
+
+        $str_date = explode("/", $this->cer_date_add);
+        if(count($str_date)>1)
+        	$this->cer_date_add= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
+        
+
 		$criteria->compare('cer_id',$this->cer_id);
 		$criteria->compare('cer_no',$this->cer_no,true);
 		$criteria->compare('dept_id',$this->dept_id,true);
@@ -143,7 +170,11 @@ class CerDoc extends CActiveRecord
 		$criteria->compare('cer_status',$this->cer_status);
 		$criteria->compare('prod_id',$this->prod_id);
 		$criteria->compare('cer_date_add',$this->cer_date_add,true);
-		$criteria->order = 'cer_id DESC';
+		//$criteria->order = 'cer_id DESC';
+
+		//header('Content-type: text/plain charset=utf-8');					
+		 //print_r($details[0]["prod_sizename"]);
+		 //exit;
 
 		if(Yii::app()->user->isUser())
 		{
@@ -153,6 +184,57 @@ class CerDoc extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort' => array(
+		        'defaultOrder' => 'cer_id DESC',
+		    ),
+		));
+	}
+
+	public function searchByUserApprove($level)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$str_date = explode("/", $this->cer_date);
+        if(count($str_date)>1)
+        	$this->cer_date= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
+        
+        $str_date = explode("/", $this->cer_oper_date);
+        if(count($str_date)>1)
+        	$this->cer_oper_date= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
+
+        $str_date = explode("/", $this->cer_date_add);
+        if(count($str_date)>1)
+        	$this->cer_date_add= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
+        
+
+		$criteria->compare('cer_id',$this->cer_id);
+		$criteria->compare('cer_no',$this->cer_no,true);
+		$criteria->compare('dept_id',$this->dept_id,true);
+		$criteria->compare('vend_id',$this->vend_id,true);
+		$criteria->compare('supp_id',$this->supp_id,true);
+		$criteria->compare('cer_date',$this->cer_date,true);
+		$criteria->compare('cer_oper_date',$this->cer_oper_date,true);
+		$criteria->compare('cer_name',$this->cer_name,true);
+		$criteria->compare('cer_ct_name',$this->cer_ct_name,true);
+		$criteria->compare('cer_di_name',$this->cer_di_name,true);
+		$criteria->compare('cer_notes',$this->cer_notes,true);
+		$criteria->compare('contract_no',$this->contract_no,true);
+		$criteria->compare('contractor',$this->contractor,true);
+		$criteria->compare('cer_status',$this->cer_status);
+		$criteria->compare('prod_id',$this->prod_id);
+		$criteria->compare('approve_status',$level);
+		$criteria->compare('cer_date_add',$this->cer_date_add,true);
+		//$criteria->order = 'cer_id DESC';
+
+		
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+			'sort' => array(
+		        'defaultOrder' => 'cer_id DESC',
+		    ),
 		));
 	}
 
@@ -187,21 +269,34 @@ class CerDoc extends CActiveRecord
         return $status;
     }
 
+    public function getCerSign($m)
+    {
+        $status = '';
+        $cer_id = $m->cer_no;
+        $model2 = CerFile::model()->findAll(array("condition"=>"cer_id ='$cer_id'"));
+        if(empty($model2))
+        	$status = '';
+        else
+        	$status = CHtml::link("download", Yii::app()->createUrl("cerFile/download",array("id"=>$model2[0]->id)));
+       
+        return $status;
+    }
+
     public function beforeSave()
     {
       
 
         $str_date = explode("/", $this->cer_date);
         if(count($str_date)>1)
-        	$this->cer_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        	$this->cer_date= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
         
         $str_date = explode("/", $this->cer_oper_date);
         if(count($str_date)>1)
-        	$this->cer_oper_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        	$this->cer_oper_date= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
         $str_date = explode("/", $this->cer_date_add);
         if(count($str_date)>1)
-        	$this->cer_date_add= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        	$this->cer_date_add= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
         
         return parent::beforeSave();
    }
@@ -210,15 +305,15 @@ class CerDoc extends CActiveRecord
             parent::afterSave();
             $str_date = explode("-", $this->cer_date);
             if(count($str_date)>1)
-            	$this->cer_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            	$this->cer_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]+543);
             
             $str_date = explode("-", $this->cer_oper_date);
             if(count($str_date)>1)
-            	$this->cer_oper_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            	$this->cer_oper_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]+543);
 
             $str_date = explode("-", $this->cer_date_add);
             if(count($str_date)>1)
-            	$this->cer_date_add = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            	$this->cer_date_add = $str_date[2]."/".$str_date[1]."/".($str_date[0]+543);
             //$this->visit_date=date('Y/m/d', strtotime(str_replace("-", "", $this->visit_date)));       
     }
 
@@ -228,15 +323,15 @@ class CerDoc extends CActiveRecord
 
         $str_date = explode("/", $this->cer_date);
         if(count($str_date)>1)
-        	$this->cer_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        	$this->cer_date= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
         
         $str_date = explode("/", $this->cer_oper_date);
         if(count($str_date)>1)
-        	$this->cer_oper_date= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        	$this->cer_oper_date= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
         
         $str_date = explode("/", $this->cer_date_add);
         if(count($str_date)>1)
-        	$this->cer_date_add= $str_date[2]."-".$str_date[1]."-".$str_date[0];
+        	$this->cer_date_add= ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
         return parent::beforeSave();
    }
@@ -249,19 +344,19 @@ class CerDoc extends CActiveRecord
             if($this->cer_date=='0000-00-00')
             	$this->cer_date = '';
             else if(count($str_date)>1)
-            	$this->cer_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            	$this->cer_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]+543);
             
             $str_date = explode("-", $this->cer_oper_date);
             if($this->cer_oper_date=='0000-00-00')
             	$this->cer_oper_date = '';
             else if(count($str_date)>1)
-            	$this->cer_oper_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            	$this->cer_oper_date = $str_date[2]."/".$str_date[1]."/".($str_date[0]+543);
 
             $str_date = explode("-", $this->cer_date_add);
             if($this->cer_date_add=='0000-00-00')
             	$this->cer_date_add = '';
             else if(count($str_date)>1)
-            	$this->cer_date_add = $str_date[2]."/".$str_date[1]."/".($str_date[0]);
+            	$this->cer_date_add = $str_date[2]."/".$str_date[1]."/".($str_date[0]+543);
 
            
      }

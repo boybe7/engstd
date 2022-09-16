@@ -87,7 +87,7 @@ $this->breadcrumbs = array(
             ));
 ?>
             <?php
-            $this->widget('bootstrap.widgets.TbButton', array(
+         /*   $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType' => 'link',
                 'type' => 'success',
                 'label' => 'Excel',
@@ -97,7 +97,7 @@ $this->breadcrumbs = array(
                     'style' => 'margin:25px 10px 0px 0px;padding-left:0px;padding-right:0px',
                     'id' => 'exportExcel'
                 ),
-            ));
+            ));*/
 
             $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType' => 'link',

@@ -163,7 +163,15 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 			     'type'  => 'raw',
 			    'filter'=>CHtml::activeTextField($model, 'cer_no',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_no"))),
 				'value' => 'CHtml::link($data->cer_no, Yii::app()->createUrl("cerDoc/preview",array("id"=>$data->cer_id)))',
-				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'htmlOptions'=>array('style'=>'text-align:center;')
+	  	),
+	  	'cer_no2'=>array(
+			    //'name' => 'cer_no',
+			     'type'  => 'raw',
+			    //'filter'=>CHtml::activeTextField($model, 'cer_no',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_no"))),
+				'value' =>'CHtml::link("excel", Yii::app()->createUrl("cerDoc/previewExcel",array("id"=>$data->cer_id)))',
+				'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center;')
 	  	),
 	  	'contract_no'=>array(
@@ -177,12 +185,18 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 		'vend_id'=>array(
 			    'name' => 'vend_id',
 			    'filter'=>CHtml::activeTextField($model, 'vend_id',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("vend_id"))),
-				'headerHtmlOptions' => array('style' => 'width:40%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'headerHtmlOptions' => array('style' => 'width:25%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:left')
 	  	),
 	  	'cer_name'=>array(
 			    'name' => 'cer_name',
 			    'filter'=>CHtml::activeTextField($model, 'cer_name',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_name"))),
+				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'htmlOptions'=>array('style'=>'text-align:center')
+	  	),
+	  	'cer_oper_date'=>array(
+			    'name' => 'cer_oper_date',
+			    'filter'=>CHtml::activeTextField($model, 'cer_oper_date',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_oper_date"))),
 				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center')
 	  	),
@@ -192,6 +206,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center')
 	  	),
+	  	
 	  	'cer_status'=>array(
 			    'name' => 'cer_status',
 			    'value' => array($model,'getStatus'),

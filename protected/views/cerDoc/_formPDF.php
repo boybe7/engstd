@@ -78,7 +78,13 @@
 		        
 		        // Set font
 		        //$this->SetFont('thsarabun', '', 18);
+
+		        $this->Image(Yii::app()->baseUrl.'/images/mwa_logo.png', 7, 11, 26, 26, 'PNG', 'http://www.tcpdf.org', '', true, 300, '', false, false, 1, false, false, false);
 		        $this->SetFont('angsanaupc', '', 18);
+		        $this->writeHTMLCell(180, 20, 40, 10, '<p style="font-weight:bold;font-size:18">กองมาตรฐานวิศวกรรม ฝ่ายมาตรฐานวิศวกรรมและสารสนเทศภูมิศาสตร์ การประปานครหลวง</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(180, 20, 40, 18, '<p style="font-weight:bold;font-size:16">400 ถนนประชาชื่น แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพฯ 10210</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(180, 20, 40, 25, '<p style="font-weight:bold;font-size:16">ENGINEERING STANDARD DIVISION METROPOLITAN WATERWORK AUTHORITY</p>', 0, 1, false, true, 'L', false);
+
 		        $this->writeHTMLCell(145, 20, 40, 41, '<p style="font-weight:bold;">ใบรับรองคุณภาพท่อและอุปกรณ์ประปาเลขที่ '.$this->cer_no, 0, 1, false, true, 'C', false);
 		        $this->writeHTMLCell(145, 20, 40, 53, '<p style="font-weight:bold;font-size:12">แนบท้ายหนังสือกมว.ที่..................</p>', 0, 1, false, true, 'C', false);
 		        
@@ -86,18 +92,18 @@
 		        $this->writeHTMLCell(150, 20, 47, 60, '<p style="font-weight:bold;font-size:12">'.$this->inspec_no.'</p>', 0, 1, false, true, 'R', false);
 				
 		        $this->writeHTMLCell(145, 20, 15, 65, '<p style="font-weight:bold;font-size:12">สัญญา </p>', 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 20, 40, 65, '<p style="font-weight:bold;font-size:12">'.$this->contract_no.'</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 30, 65, '<p style="font-weight:bold;font-size:12">'.$this->contract_no.'</p>', 0, 1, false, true, 'L', false);
 		        
 		        $this->writeHTMLCell(145, 20, 15, 70, '<p style="font-weight:bold;font-size:12">คู่สัญญา </p>', 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 20, 40, 70, '<p style="font-weight:bold;font-size:12">'.$this->contractor.'</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 30, 70, '<p style="font-weight:bold;font-size:12">'.$this->contractor.'</p>', 0, 1, false, true, 'L', false);
 				$this->writeHTMLCell(145, 20, 110, 70, '<p style="font-weight:bold;font-size:12">ผู้ผลิต/จัดส่ง</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 135, 70, '<p style="font-weight:bold;font-size:12">'.$this->vendor.'</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 129, 70, '<p style="font-weight:bold;font-size:12">'.$this->vendor.'</p>', 0, 1, false, true, 'L', false);
 		        		        		        
 
 		        $this->writeHTMLCell(145, 20, 15, 75, '<p style="font-weight:bold;font-size:12">ท่อ/อุปกรณ์ </p>', 0, 1, false, true, 'L', false);
-		        $this->writeHTMLCell(145, 20, 40, 75, '<p style="font-weight:bold;font-size:12">'.$this->prod_type.'</p>', 0, 1, false, true, 'L', false);
+		        $this->writeHTMLCell(145, 20, 30, 75, '<p style="font-weight:bold;font-size:12">'.$this->prod_type.'</p>', 0, 1, false, true, 'L', false);
 				$this->writeHTMLCell(145, 20, 110, 75, '<p style="font-weight:bold;font-size:12">วันที่ดำเนินการ</p>', 0, 1, false, true, 'L', false);
-				$this->writeHTMLCell(145, 20, 135, 75, '<p style="font-weight:bold;font-size:12">'.$this->date_op.'</p>', 0, 1, false, true, 'L', false);
+				$this->writeHTMLCell(145, 20, 129, 75, '<p style="font-weight:bold;font-size:12">'.$this->date_op.'</p>', 0, 1, false, true, 'L', false);
 		        			        
 
 
@@ -121,13 +127,13 @@
 		        {	
 		        	$this->writeHTMLCell(50, 150, 80, 230,'.................................................................' , 0, 1, false, true, 'C', false);
 		        	$this->writeHTMLCell(50, 150, 80, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
-		        	$this->writeHTMLCell(50, 150, 80, 240,'<p style="font-weight:bold;font-size:14px;">'.$this->pos_author2.'</p>' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 150, 80, 240,'<p style="font-weight:bold;font-size:14px;">หัวหน้าส่วนควบคุมคุณภาพท่อและอุปกรณ์</p>' , 0, 1, false, true, 'C', false);
 		        }
 		        else
 		        {
 		        	$this->writeHTMLCell(50, 170, 80, 230,'.................................................................' , 0, 1, false, true, 'C', false);
 		        	$this->writeHTMLCell(50, 170, 80, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
-		        	$this->writeHTMLCell(50, 170, 80, 240,'<p style="font-weight:bold;font-size:14px;">'.$this->pos_author2.' รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
+		        	$this->writeHTMLCell(50, 170, 80, 240,'<p style="font-weight:bold;font-size:14px;">'.$this->pos_author2.'  รน.</p>' , 0, 1, false, true, 'C', false);
 		        	$this->writeHTMLCell(50, 170, 80, 244,'<p style="font-weight:bold;font-size:14px;">หัวหน้าส่วนควบคุมคุณภาพท่อและอุปกรณ์' , 0, 1, false, true, 'C', false);
 		        	
 		        }
@@ -136,13 +142,13 @@
 		        {	
 			        $this->writeHTMLCell(50, 150, 147, 230,'.................................................................' , 0, 1, false, true, 'C', false);
 			        $this->writeHTMLCell(50, 150, 147, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
-			        $this->writeHTMLCell(50, 150, 147, 240,'<p style="font-weight:bold;font-size:14px;">'.$this->pos_author3.'</p>' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 147, 240,'<p style="font-weight:bold;font-size:14px;"> ผู้อำนวยการกองมาตรฐานวิศวกรรม</p>' , 0, 1, false, true, 'C', false);
 			    }
 			    else
 			    {
 			    	$this->writeHTMLCell(50, 150, 147, 230,'.................................................................' , 0, 1, false, true, 'C', false);
 			        $this->writeHTMLCell(50, 150, 147, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
-			        $this->writeHTMLCell(50, 150, 147, 240,'<p style="font-weight:bold;font-size:14px;">หน.สคภ. รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
+			        $this->writeHTMLCell(50, 150, 147, 240,'<p style="font-weight:bold;font-size:14px;">วิศวกร 7 รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
 			    	$this->writeHTMLCell(50, 150, 147, 244,'<p style="font-weight:bold;font-size:14px;">ผู้อำนวยการกองมาตรฐานวิศวกรรม' , 0, 1, false, true, 'C', false);
 		        	
 			    }
@@ -153,6 +159,9 @@
 		        $this->writeHTMLCell(170, 750, 28, 268,'<p style="font-weight:bold;">3.ใบรับรองฯที่ส่งให้หน่วยงานของกปน. ให้หน่วยงานฯใช้ประกอบในการตรวจสอบ/ตรวจรับ ให้ถูกต้องตรงกับฉบับซึ่งมาพร้อมกับผลิตภัณฑ์จากผู้ผลิตและให้รวบรวมเก็บไว้เป็น<br>  หลักฐานเพื่อตรวจสอบภายหลังได้</p>' , 0, 1, false, true, 'L', false);
 		        $this->writeHTMLCell(170, 750, 28, 278,'<p style="font-weight:bold;">4.ใบรับรองฯจะต้องไม่มีรอยขูดขีด แก้ ลบใดๆ หากมีการแก้ดังกล่าวต้องมีลายมือชื่อเจ้าหน้าที่ควบคุม กำกับทุกแห่ง ในส่วนที่เป็นอำนาจหน้าที่ของเจ้าหน้าที่นั้นๆ</p>' , 0, 1, false, true, 'L', false);
 		        $this->writeHTMLCell(145, 550, 100, 283,'<p style="font-weight:bold;">กองมาตรฐานวิศวกรรม</p>' , 0, 1, false, true, 'C', false);
+
+
+		        $this->writeHTMLCell(145, 550, 15, 293,'<p style="font-weight:bold;">กองมาตรฐานวิศวกรรม โทร 0 2504 0123 ต่อ 1773, 2701</p>' , 0, 1, false, true, 'L', false);
 			    
 		       
 		    }
@@ -160,19 +169,25 @@
 
 		// create new PDF document
 		//$pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-		$pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$width = 210;
+		$height = 305 ;
+		$pagelayout = array($width, $height); //  or array($height, $width) 
+        //new TCPDF('p', 'pt', $pageLayout, true, 'UTF-8', false);
+		//$pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		$pdf = new MYPDF('P', PDF_UNIT, $pagelayout, true, 'UTF-8', false);	
+
 
 		//set info header   
 		//$prod = ProdType::model()->findByPk($model->prod_id); 
-		$m = Yii::app()->db->createCommand()
+		/*$m = Yii::app()->db->createCommand()
 					->select('prot_name')
 					->from('m_prodtype')	
 					->where('prot_id="'.$model->prod_id.'"')					                   
-					->queryAll();
+					->queryAll();*/
 					
 		$inspec_no = $model->running_no;
 		$date_oper = renderDate($model->cer_oper_date);
-		$pdf->setHeaderInfo($model->cer_no, $model->contract_no,$model->contractor,$model->vend_id,$inspec_no,$model->dept_id,$m[0]['prot_name'],$date_oper);
+		$pdf->setHeaderInfo($model->cer_no, $model->contract_no,$model->contractor,$model->vend_id,$inspec_no,$model->dept_id,$model->prod_id,$date_oper);
 
 
 		//set info footer   
@@ -245,19 +260,25 @@
 		// print standard ASCII chars, you can use core fonts like
 		// helvetica or times to reduce file size.
 		
-		$pdf->AddPage();
+		
        
 		
 		$details = Yii::app()->db->createCommand()
 					->select('*')
 					->from('c_cer_detail ct')	
 					//->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
-          			->join('m_product p', 'p.prod_id=ct.prod_id')
+          			//->join('m_product p', 'p.prod_id=ct.prod_id')
 					->where('ct.cer_id='.$model->cer_id)		
           			//->group('detail')			                   
 					->queryAll();
 		//print_r($details);
-		$npages = ceil(count($details)/15.0);			
+		$npages = ceil(count($details)/15.0);	
+
+
+		 $pdf->AddPage();
+
+
+
 		$html = "";
 
 
@@ -266,7 +287,8 @@
 		$row = 1;
 		for ($n=1; $n < $npages+1 ; $n++) { 
 						# code...
-					
+					// $pdf->AddPage();
+			
 					$html .= '<br><div style="font-weight:bold;text-indent: 10.7mm;">ท่อและอุปกรณ์ตามรายการต่อไปนี้ได้ผ่านการตรวจสอบจากเจ้าหน้าที่การประปานครหลวงแล้ว มีคุณภาพได้มาตรฐาน
 			ตามที่ระบุไว้ในแบบแปลนรายการ ละเอียดของสัญญา และได้ประทับตรารับรองคุณภาพให้ไว้เป็นที่เรียบร้อยแล้ว จึงอนุญาตให้นำส่งท่อและอุปกรณ์ประปาเหล่านี้ไปใช้งานของการประปานครหลวงได้</div>';
 
@@ -292,7 +314,7 @@
 			        			if(!empty($details[$i]))
 			        			{	
 			        	             $html .= ' <tr style="font-weight:bold;">';
-				                     $html .= '<td style="text-align:center;border:1px solid black;width:7%"> '.($row++).'</td><td style="border:1px solid black;width:40%"> '.$details[$i]["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%"> '.$details[$i]["prod_sizename"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$details[$i]["serialno"].'</td><td style="border:1px solid black;text-align:center;width:13%">'.$details[$i]["quantity"].' '.$details[$i]["prod_unit"].'</td>';
+				                     $html .= '<td style="text-align:center;border:1px solid black;width:7%"> '.($row++).'</td><td style="border:1px solid black;width:40%"> '.$details[$i]["detail"].'</td><td style="border:1px solid black;text-align:center;width:20%"> '.$details[$i]["prod_size"].'</td><td style="border:1px solid black;text-align:center;width:20%">'.$details[$i]["serialno"].'</td><td style="border:1px solid black;text-align:center;width:13%">'.$details[$i]["quantity"].' '.$details[$i]["unit"].'</td>';
 				                     $html .= '</tr>';
 				                }
 				                else
@@ -309,18 +331,23 @@
 				  	if(empty($model->cer_notes))
 				  	   $note = "รวม ".count($details)." รายการ".", จำนวน ".$npages." หน้า";
 				  	else
-				  	   $note = "รวม ".count($details)." รายการ ,จำนวน ".$npages." หน้า <br>".$model->cer_notes; 	
-				  	$html .= '<br><br><table><tr style="font-weight:bold;"><td width="10%"><u>หมายเหตุ</u>     </td><td>'.$note.'</td></tr></table>';
+				  	   $note = "รวม ".count($details)." รายการ, จำนวน ".$npages." หน้า <br>".$model->cer_notes; 	
+				  	$html .= '<br><br><table width="100%"><tr style="font-weight:bold;"><td width="10%"><u>หมายเหตุ</u>     </td><td width="90%">'.$note.'</td></tr></table>';
 			        
+			        //$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+			        //$pdf->AddPage();
+					//$pdf->setPage($pdf->getPage());  
+
 			        if($n!=$npages)
 			        {
 			           
 			           $html .='<br pagebreak="true" />';	
-			           if($n!=1)
-			           $pdf->AddPage();
+			           //if($n!=1 )
+			           //$pdf->AddPage();
 			        }
 
         }
+        
 		$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
 

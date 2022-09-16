@@ -31,7 +31,7 @@ class VendorController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','DeleteSelected','GetVendor','GetVendor2','GetSupplier'),
+				'actions'=>array('create','update','DeleteSelected','GetVendor','GetVendor2','GetSupplier','excel'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -245,6 +245,67 @@ class VendorController extends Controller
             }
         }
     }
+
+    public function actionExcel()
+    {
+			
+
+	
+		Yii::import('ext.phpexcel.XPHPExcel');    
+		$objPHPExcel= XPHPExcel::createPHPExcel();
+
+        $header = new PHPExcel_Style();
+
+				$sheet = 0;
+			    $objPHPExcel->createSheet(0);
+				$objPHPExcel->setActiveSheetIndex($sheet)->setTitle("sheet1");
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('A')->setWidth(50);
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('B')->setWidth(20);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('C')->setWidth(120);	
+				$objPHPExcel->setActiveSheetIndex($sheet)->getColumnDimension('D')->setWidth(30);	
+
+
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A1', "ผู้ผลิต/ผู้จัดส่ง");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('B1', "รหัส");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('C1', "ที่อยู่");
+				$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('D1', "ประเภท");
+
+
+				$row = 2;
+
+				$model = Vendor::model()->findAll();
+
+				foreach ($model as $key => $value) {
+
+					$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('A'.$row, $value->name);
+					$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('B'.$row, $value->code);
+					$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('C'.$row, $value->address);
+					$type = $value->type==0 ? "ผู้ผลิต" : "ผู้จัดส่ง" ;
+					$objPHPExcel->setActiveSheetIndex($sheet)->setCellValue('D'.$row, $type);
+
+					$row++;
+				}
+		
+	
+				ob_end_clean();
+				ob_start();
+
+				header('Content-Type: application/vnd.ms-excel');
+				header('Content-Disposition: attachment;filename="vendor_export.xls"');
+				header('Cache-Control: max-age=0');
+				// If you're serving to IE 9, then the following may be needed
+				header('Cache-Control: max-age=1');
+
+				// If you're serving to IE over SSL, then the following may be needed
+				header ('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+				header ('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT'); // always modified
+				header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+				header ('Pragma: public'); // HTTP/1.0
+		        
+				$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+				$objWriter->save('php://output');  //
+				Yii::app()->end(); 
+    }    
 
 	/**
 	 * Performs the AJAX validation.

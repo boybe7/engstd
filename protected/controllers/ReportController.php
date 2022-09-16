@@ -653,7 +653,7 @@ class ReportController extends Controller
 	public function actionGenR10()
 	{
                 $month = $_GET["monthEnd"];
-                $year = $_GET["yearEnd"];
+                $year = $_GET["yearEnd"]-543;
 
 		
 		$this->renderPartial('_formR10', array(
@@ -667,7 +667,7 @@ class ReportController extends Controller
         public function actionPrintR10()
         {
 	        $month = $_GET["monthEnd"];
-                $year  = $_GET["yearEnd"];
+                $year  = $_GET["yearEnd"]-543;
 
 		$this->renderPartial('_formR10_PDF', array(
 
@@ -688,7 +688,7 @@ class ReportController extends Controller
 	public function actionGenR11()
 	{
                 $month = $_GET["monthEnd"];
-                $year  = $_GET["yearEnd"];
+                $year  = $_GET["yearEnd"]-543;
 
 
 		$this->renderPartial('_formR11', array(
@@ -702,7 +702,7 @@ class ReportController extends Controller
         public function actionPrintR11()
         {
 	        $month = $_GET["monthEnd"];
-                $year  = $_GET["yearEnd"];
+                $year  = $_GET["yearEnd"]-543;
 
 		$this->renderPartial('_formR11_PDF', array(
 

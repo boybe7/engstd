@@ -4,7 +4,7 @@
         //autocomplete search on focus      
         $("#detail").autocomplete({
        
-                minLength: 0
+                minLength: 3
             }).bind('focus', function () {
                  
                 $(this).autocomplete("search");
@@ -27,6 +27,7 @@
 	//echo $form->textFieldRow($model,'detail',array('class'=>'span5','maxlength'=>500));
 	          echo $form->hiddenField($model,'detail');
               echo $form->hiddenField($model,'prod_id');
+             // echo $form->hiddenField($model,'unit');
               echo $form->labelEx($model,'detail',array('class'=>'span5','style'=>'text-align:left;margin-left:-1px;margin-bottom:0px'));
               
              
@@ -56,10 +57,11 @@
                                      'minLength'=>0,
                                      'select'=>'js: function(event, ui) {
                                         
-                                           //console.log(ui.item.id)
                                             $("#CerDetailTemp_prod_id").val(ui.item.id);
                                             $("#CerDetailTemp_detail").val(ui.item.name);
                                             $("#CerDetailTemp_prod_size").val(ui.item.size);
+                                            $("#CerDetailTemp_unit").val(ui.item.size);
+                                           
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
                                      
@@ -80,5 +82,6 @@
 	<?php echo $form->textFieldRow($model,'serialno',array('class'=>'span5','maxlength'=>100)); ?>
 
 	<?php echo $form->textFieldRow($model,'prod_size',array('class'=>'span5')); ?>
+    <?php echo $form->textFieldRow($model,'unit',array('class'=>'span5')); ?>
 
 <?php $this->endWidget(); ?>

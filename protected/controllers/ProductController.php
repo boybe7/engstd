@@ -195,6 +195,7 @@ class ProductController extends Controller
                         'label'=>$model['prod_code'].'-'.$model['prod_name'],
                         'name'=>$model['prod_name'],
                         'size'=>$model['prod_sizename'],
+                        'unit'=>$model['prod_unit'],
                         
                 );
 

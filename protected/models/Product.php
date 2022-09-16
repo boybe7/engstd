@@ -39,7 +39,7 @@ class Product extends CActiveRecord
 			array('prod_name, prod_size,prod_sizename, prod_unit', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('prod_id, prod_code, prod_name, prot_id, prod_size, prod_unit,prod_sizename, prod_size1, prod_size2, prod_size3', 'safe', 'on'=>'search'),
+			array('prod_id, prod_code, prod_name, prot_id, prod_size, prod_unit,prod_sizename, prod_size1, prod_size2, prod_size3,factor', 'safe', 'on'=>'search'),
 		);
 	}
 

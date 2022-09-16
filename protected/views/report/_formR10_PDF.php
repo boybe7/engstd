@@ -19,9 +19,9 @@
 		        $this->SetFont('thsarabun', 'B', 20);
 		        // Title
 		        //$this->Cell(0, 5, 'รายงานสรุปยอดรับรองท่อ/อุปกรณ์', 0, false, 'C', 0, '', 0, false, 'M', 'M');
-		        $this->writeHTMLCell(145, 20, 40, 10, 'การประปานครหลวง<br>ภาคผนวกหมายเลข&nbsp;6', 0, 1, false, true, 'C', false);
-		        $image_file = $_SERVER['DOCUMENT_ROOT'].'/engstd/images/mwa_logo.png';
-		        $this->Image($image_file, 180, 10, 15, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+		       // $this->writeHTMLCell(145, 20, 40, 10, 'การประปานครหลวง<br>', 0, 1, false, true, 'C', false);
+		        //$image_file = $_SERVER['DOCUMENT_ROOT'].'/engstd/images/mwa_logo.png';
+		        //$this->Image($image_file, 180, 10, 15, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		    }   
 
 		    // Page footer
@@ -37,14 +37,14 @@
 		        //$this->Image($image_file, 170, 270, 25, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		        $this->Cell(0, 5, date("d/m/Y"), 0, false, 'R', 0, '', 0, false, 'T', 'M');
 
-		        $this->writeHTMLCell(145, 550, 40, 287, '-'.$this->getAliasNumPage().'/'.$this->getAliasNbPages().'-', 0, 1, false, true, 'C', false);
+		        //$this->writeHTMLCell(145, 550, 40, 287, '-'.$this->getAliasNumPage().'/'.$this->getAliasNbPages().'-', 0, 1, false, true, 'C', false);
 		        //writeHTMLCell ($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=false, $reseth=true, $align='', $autopadding=true)
 		    }
 		}
 
                             $date_m = $date_end."-".$date_start;
         $models = Yii::app()->db->createCommand()
-					->select("count(cer_no) as sum,cer_name,SUM(TOTAL_WEEKDAYS(CONCAT( DATE_FORMAT( cer_date,  '%Y' ) -543,  '-', DATE_FORMAT( cer_date,  '%m-%d' ) ) , CONCAT( DATE_FORMAT( cer_oper_date,  '%Y' ) -543,  '-', DATE_FORMAT( cer_oper_date,  '%m-%d' ) ) )) as date_oper")
+					->select("count(cer_no) as sum,cer_name,SUM(workDay(TOTAL_WEEKDAYS(CONCAT( DATE_FORMAT( cer_date,  '%Y' ),  '-', DATE_FORMAT( cer_date,  '%m-%d' ) ) , CONCAT( DATE_FORMAT( cer_oper_date,  '%Y' ),  '-', DATE_FORMAT( cer_oper_date,  '%m-%d' ) ) ))) as date_oper")
 					->from('c_cer_doc cd')
 					//->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
 					->where('cer_date like "'.$date_m.'%"')
@@ -73,7 +73,7 @@
 		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 		// set margins
-		$pdf->SetMargins(PDF_MARGIN_LEFT, 40, 10);
+		$pdf->SetMargins(PDF_MARGIN_LEFT, 15, 10);
 		//$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -104,15 +104,17 @@
 
 		
 		$html = "";
-		$pdf->SetFont('thsarabun', '', 12, '', true);
-		
-	    //$html .= 'สรุปผลงานตั้งแต่วันที่&nbsp;'.$date_st.'&nbsp;ถึงวันที่&nbsp;'.$date_en.'<br>';
-            //$html .= 'รายละเอียดท่อและอุปกรณ์ประปาที่ผ่านการตรวจสอบควบคุมคุณภาพ&nbsp;ดังนี้<br><br>';
+		$pdf->SetFont('thsarabun', '', 14, '', true);
+
+		$thai_mm=array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+		$m_month=$thai_mm[(int)$date_start-1];
+	    $html .= '<div style="font-weight:bold;font-size:16;text-align:center;">สรุปผลการดำเนินการประจำเดือน &nbsp;'.$m_month."&nbsp;".($date_end+543).'</div><br>';
+        $html .= '<b>สรุปผลการดำเนินงาน รายบุคคล</b><br>';
 
             $m="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	    $html .= '<table>';
 	    $html .= '<thead>';
-	    $html .= '  <tr style="line-height: 40px;" bgcolor="#f5f5f5">';
+	    $html .= '  <tr style="line-height: 40px;background-color:lightblue">';
 	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:55%">ผู้ตรวจโรงงาน</th>';
 	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:15%">ใบรับรอง</th>';
 	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:15%">วันดำเนินการ</th>';
@@ -124,8 +126,8 @@
                           $sumAll=0;
                           $dateAll = 0;
 	                  foreach ($models as $key => $model) {
-                                   $html .= '<tr>';
-                                        $html .= '<td style="text-align:center;border:1px solid black;width:55%">&nbsp;'.$model["cer_name"].'</td>';
+                                   $html .= '<tr style="line-height: 30px;" >';
+                                        $html .= '<td style="text-align:left;border:1px solid black;width:55%">&nbsp;'.$model["cer_name"].'</td>';
                                         $html .= '<td style="text-align:center;border:1px solid black;width:15%">&nbsp;'.$model["sum"].'</td>';
                                         $html .= '<td style="text-align:center;border:1px solid black;width:15%">&nbsp;'.$model["date_oper"].'</td>';
                                         $html .= '<td style="text-align:center;border:1px solid black;width:15%">&nbsp;'.number_format($model["date_oper"]/$model["sum"],2).'</td>';
@@ -134,11 +136,34 @@
                           $dateAll=$dateAll+$model["date_oper"];
 	                  }
 
-	                   $html .= '<tr style="font-weight:bold" bgcolor="#f5f5f5">';
-                                        $html .= '<td style="text-align:center;border:1px solid black;width:55%">&nbsp;รวม</td>';
-                                        $html .= '<td style="text-align:center;border:1px solid black;width:15%">&nbsp;'.$sumAll.'</td>';
-                                        $html .= '<td style="text-align:center;border:1px solid black;width:15%">&nbsp;'.$dateAll.'</td>';
-                                        $html .= '<td style="text-align:center;border:1px solid black;width:15%">&nbsp;'.number_format($dateAll/$sumAll,2).'</td>';
+	                   // $html .= '<tr style="font-weight:bold;line-height: 30px;" bgcolor="#f5f5f5">';
+                    //                     $html .= '<td style="text-align:center;border:1px solid black;width:55%">&nbsp;รวม</td>';
+                    //                     $html .= '<td style="text-align:center;border:1px solid black;width:15%">&nbsp;'.$sumAll.'</td>';
+                    //                     $html .= '<td style="text-align:center;border:1px solid black;width:15%">&nbsp;'.$dateAll.'</td>';
+                    //                     $html .= '<td style="text-align:center;border:1px solid black;width:15%">&nbsp;'.number_format($dateAll/$sumAll,2).'</td>';
+                    //     $html .= '</tr>';
+	   
+	    $html .= '</tbody>';
+	    $html .= '</table><br><br>';
+
+	     $html .= '<b>สรุปผลการดำเนินงาน กมว.ฝมส.</b><br>';
+	     $html .= '<table>';
+	    $html .= '<thead>';
+	    $html .= '  <tr style="line-height: 40px; background-color:lightblue">';
+	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:35%">รวมใบรับรอง</th>';	  
+	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:35%">รวมวันดำเนินการ</th>';
+	    $html .= '    <th style="font-size:18px;font-weight:bold;border:1px solid black;text-align:center;width:30%">วัน/ใบรับรอง</th>';
+	    $html .= '  </tr>';
+	    $html .= '</thead>';
+	    $html .= '<tbody>';
+
+                
+
+	                   $html .= '<tr style="font-weight:bold;line-height: 30px;" bgcolor="#f5f5f5">';
+                   
+                                        $html .= '<td style="text-align:center;border:1px solid black;width:35%">&nbsp;'.$sumAll.'</td>';
+                                        $html .= '<td style="text-align:center;border:1px solid black;width:35%">&nbsp;'.$dateAll.'</td>';
+                                        $html .= '<td style="text-align:center;border:1px solid black;width:30%">&nbsp;'.number_format($dateAll/$sumAll,2).'</td>';
                         $html .= '</tr>';
 	   
 	    $html .= '</tbody>';

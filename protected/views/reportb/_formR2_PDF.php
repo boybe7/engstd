@@ -67,23 +67,34 @@ function renderDate($value)
 
 		$str_date = explode("/", $date_start);
 		if(count($str_date)>1)
-		    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+		    $date_start = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 		$str_date = explode("/", $date_end);
 		if(count($str_date)>1)
-		    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+		    $date_end = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 		if(empty($date_end))
 			$date_end = $date_start;
 		if(empty($date_start))
 			$date_start = $date_end;
 
-		$models = Yii::app()->db->createCommand()
+		//echo 'cer_date BETWEEN "'.$date_start.'" AND "'.$date_end;
+
+		/*$models = Yii::app()->db->createCommand()
 					->select('*')
 					->from('c_cer_doc cd')
           			->join('m_prodtype p', 'cd.prod_id=p.prot_id')
 					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')		          				                   
-					->queryAll();
+					->queryAll();*/
+
+		$models = Yii::app()->db->createCommand('SELECT *
+                        FROM c_cer_doc cd
+                        LEFT JOIN m_prodtype p ON cd.prod_id=p.prot_id                        
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"
+                        ORDER BY cd.cer_id ')->queryAll();     
+			
+
+		//print_r($models);			
 
 		$pdf->setDate($date_start,$date_end);
 
@@ -162,7 +173,7 @@ function renderDate($value)
 	                     $html .='</td><td style="border:1px solid black;text-align:center;width:10%">'.$model["contract_no"];
 	                     $html .='</td><td style="border:1px solid black;text-align:left;width:20%">'.$model["contractor"];
 	                     $html .='</td><td style="border:1px solid black;text-align:left;width:20%">'.$model["vend_id"];
-	                     $html .='</td><td style="border:1px solid black;text-align:center;width:10%">'.$model["prot_name"];
+	                     $html .='</td><td style="border:1px solid black;text-align:center;width:10%">'.$model["prod_id"];
 	                     $html .='</td><td style="border:1px solid black;text-align:center;width:13%">'.renderDate($model["cer_oper_date"]);
 	                     $html .='</td>';
 	                     $html .= '</tr>';

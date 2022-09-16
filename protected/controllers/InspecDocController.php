@@ -194,6 +194,7 @@ class InspecDocController extends Controller
       
 				//	print_r($model);                    
 				//	exit;
+				Yii::app()->db->createCommand('DELETE FROM c_inspec_file_temp WHERE user_id='.Yii::app()->user->ID)->execute();
 
 				$this->redirect(array('index'));
 			}	

@@ -70,6 +70,7 @@ class ContractController extends Controller
 		{
 			$model->attributes=$_POST['Contract'];
 			$model->con_status = $_POST['Contract']['con_status'];
+			$model->con_detail = $_POST['Contract']['con_detail'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
@@ -113,6 +114,7 @@ class ContractController extends Controller
 		if(isset($_POST['Contract']))
 		{
 			$model->attributes=$_POST['Contract'];
+			$model->con_detail = $_POST['Contract']['con_detail'];
 			$model->con_status = $_POST['Contract']['con_status'];
 			if($model->save())
 				$this->redirect(array('index'));

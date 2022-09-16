@@ -40,21 +40,21 @@ $thai_mm=array("มกราคม", "กุมภาพันธ์", "มี�
 //print_r($model);
 $str_date = explode("/", $date_start);
 if(count($str_date)>1)
-    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+    $date_start = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 $str_date = explode("/", $date_end);
 if(count($str_date)>1)
-    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+    $date_end = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 if(empty($date_end))
 	$date_end = $date_start;
 if(empty($date_start))
 	$date_start = $date_end;
 
-$date_s = new DateTime($date_start);
-$date_st =(int)($date_s->format('d'))."&nbsp;".$thai_mm[(int)$date_s->format('m')-1]."&nbsp;".($date_s->format('y'));
-$date_e = new DateTime($date_end);
-$date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m')-1]."&nbsp;".($date_e->format('y'));
+// $date_s = new DateTime($date_start);
+// $date_st =(int)($date_s->format('d'))."&nbsp;".$thai_mm[(int)$date_s->format('m')-1]."&nbsp;".($date_s->format('y'));
+// $date_e = new DateTime($date_end);
+// $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m')-1]."&nbsp;".($date_e->format('y'));
 
               /*$models_m = Yii::app()->db->createCommand()
                     ->select('p.prot_id')
@@ -84,14 +84,14 @@ $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m'
                           ->queryAll(); */
 
 
-               $test = Yii::app()->db->createCommand('SELECT sub.name AS subname, SUM( ct.quantity ) AS sum, detail, prod_code, ct.prod_size AS size, prod_unit, t.prot_name
+               $test = Yii::app()->db->createCommand('SELECT sub.name AS subname, SUM( ct.quantity ) AS sum, detail, prod_code, ct.prod_size AS size, prod_unit, t.prot_name,factor,p.prot_id,p.prot_sub_id
                         FROM c_cer_doc cd
                         LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
                         LEFT JOIN m_product p ON p.prod_id = ct.prod_id 
                         LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
                         LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
                         WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"
-                        GROUP BY sub.id')->queryAll();                 
+                        GROUP BY  IFNULL( sub.id, t.prot_name ) ORDER BY t.prot_name ')->queryAll();                 
               
               //echo "<pre>";
               //print_r($models_m);
@@ -114,14 +114,17 @@ $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m'
                           ->order('t.prot_id')
                           ->queryAll();  */    
 
+                  
+
+
                    $test2 = Yii::app()->db->createCommand('SELECT detail, prod_unit, t.prot_name
                         FROM c_cer_doc cd
                         LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
                         LEFT JOIN m_product p ON p.prod_id = ct.prod_id
                         LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
                         LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
-                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND t.prot_name="'.$m["prot_name"].'"
-                        GROUP BY prod_unit')->queryAll();          
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND p.prot_id="'.$m["prot_id"].'" AND p.prot_sub_id="'.$m["prot_sub_id"].'"
+                         GROUP BY prod_unit')->queryAll();          
               
                //echo "<br>";
                //print_r($test2);
@@ -135,9 +138,55 @@ $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m'
                          $unit .= "/".$m2["prod_unit"]; 
 
                       $i++;        
-                  }        
+                  }
 
-                  echo "<tr><td style='text-align:left;width:50%'>".$m["prot_name"].":".$m["subname"]."</td><td style='text-align:right;width:30%'>".$m["sum"]."</td><td style='text-align:center;width:20%'>".$unit."</td></tr>";
+                  $sum = $m["sum"];
+                  /*if($m["factor"]>1) 
+                  { 
+                     $unit = "เมตร";
+                     $sum = $m["sum"]*$m["factor"];
+                    
+
+                  } */ 
+
+                  if($m["subname"]=="ท่อ") 
+                  {    
+                      $unit = "เมตร";  
+                       $models = Yii::app()->db->createCommand('SELECT sub.name AS subname, SUM( ct.quantity ) AS sum, detail, prod_code, ct.prod_size AS size, prod_unit, t.prot_name,factor,p.prot_id,p.prot_sub_id
+                        FROM c_cer_doc cd
+                        LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+                        LEFT JOIN m_product p ON p.prod_id = ct.prod_id 
+                        LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
+                        LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND p.prot_id="'.$m["prot_id"].'" AND p.prot_sub_id="'.$m["prot_sub_id"].'"
+                        GROUP BY  p.prod_id ORDER BY p.prod_name ASC')->queryAll();      
+                        echo "<br>".$m["prot_name"].":".$m["subname"];
+                        $sum2 = 0;
+                        foreach ($models as $key => $m2) {
+                          echo "<br>".$m2["sum"]."*".$m2["factor"]."=".$m2["sum"]*$m2["factor"];   
+                           $sum2 += $m2["sum"]*$m2["factor"]; 
+
+                        }  
+                        echo "<br>sum=".$sum2;  
+                        $sum = $sum2; 
+                        
+                      
+                  }    
+                  
+                  if(empty($m["prot_name"]))
+                  {
+                     echo "SUM = ".$sum;
+                     echo   'SELECT detail, prod_unit, t.prot_name
+                        FROM c_cer_doc cd
+                        LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+                        LEFT JOIN m_product p ON p.prod_id = ct.prod_id
+                        LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
+                        LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
+                        WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND p.prot_id="'.$m["prot_id"].'" AND p.prot_sub_id="'.$m["prot_sub_id"].'"
+                         GROUP BY prod_unit';  
+                  }
+
+                  echo "<tr><td style='text-align:left;width:50%'>".$m["prot_name"].":".$m["subname"]."</td><td style='text-align:right;width:30%'>".number_format($sum,0)."</td><td style='text-align:center;width:20%'>".$unit."</td></tr>";
               }            
               echo "</table><hr>";
 
@@ -155,41 +204,37 @@ $date_en =(int)($date_e->format('d'))."&nbsp;".$thai_mm[(int)$date_e->format('m'
                                     ->group('prod_code')
                                     ->queryAll();*/
 
-                         $models = Yii::app()->db->createCommand('SELECT sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit,t.prot_name,price,factor
+                         $models = Yii::app()->db->createCommand('SELECT sub.name AS subname,t.prot_name,sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit,t.prot_name,price,factor
                         FROM c_cer_doc cd
                         LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
                         LEFT JOIN m_product p ON p.prod_id = ct.prod_id
                         LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
                         LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
                         WHERE cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND p.prot_id="'.$type_id.'"
-                        GROUP BY prod_code')->queryAll();                   
-                           
+                        GROUP BY prod_code ORDER BY p.prot_id,prot_sub_id')->queryAll();                   
+                        $olddata = "";   
+                        $sumOld = 0;
                         foreach ($models as $key => $mm) {
                            
-                           //print_r($mm);
-                           $size = explode("*", $mm["size"]);
-                           if($mm["factor"]!=0)
-                           { 
-                              //
-                              $price = 0;
-                              if($mm["prod_unit"]!="เมตร")
-                              {
-                                  $price = $mm["sum"]*$mm["price"];
-                              }  
-                              else{
-                                  $price = $mm["sum"]*$size[count($size)-1]*$mm["price"]/$mm["factor"];
-                              }  
-                              
-                              $sumCost += $price;
-                              
-                           }
-                           else
-                           {
-                              $price = $mm["sum"]*$mm["price"];
-                              $sumCost += $price;
-                           }
+                       
 
-                           echo $mm["detail"]." | ".$mm["size"]." |จำนวน: ".$mm["sum"]." |ราคา ".$mm["price"]." |factor: ".$mm["factor"]." = ".number_format($price)."<br>";  
+                          $price = $mm["sum"]*$mm["price"];
+                          $sumCost += $price;
+
+                          /*if($olddata!=$mm["prot_name"].":".$mm["subname"])
+                          {
+                             $olddata =$mm["prot_name"].":".$mm["subname"];
+                            $sumOld = 0;
+
+                          }
+                          else
+                          {
+                             $sumOld += $price;
+                              echo "<br>sum = ".$sumOld."<br>";
+                            
+                          }*/
+
+                           echo $mm["prot_name"].":".$mm["subname"]."|".$mm["detail"]." | ".$mm["size"]." |จำนวน: ".$mm["sum"]." |ราคา ".$mm["price"]." = ".number_format($price)."<br>";  
                         }            
                                   
                         

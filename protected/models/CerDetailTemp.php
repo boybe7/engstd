@@ -36,7 +36,7 @@ class CerDetailTemp extends CActiveRecord
 			array('serialno', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('detail_id, cer_id, detail, prod_size, quantity, serialno, user_id,prod_id', 'safe', 'on'=>'search'),
+			array('detail_id, cer_id, detail, prod_size, quantity, serialno, user_id,prod_id,unit', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,6 +64,7 @@ class CerDetailTemp extends CActiveRecord
 			'quantity' => 'จำนวน',
 			'serialno' => 'หมายเลข',
 			'user_id' => 'User',
+			'unit'=>'หน่วยนับ'
 		);
 	}
 

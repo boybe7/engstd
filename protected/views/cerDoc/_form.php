@@ -390,7 +390,7 @@
                                      'select'=>'js: function(event, ui) {
                                         
                                            //console.log(ui.item.id)
-                                            $("#CerDoc_prod_id").val(ui.item.id);
+                                            $("#CerDoc_prod_id").val(ui.item.label);
                                           
                                      }',
                                      //'close'=>'js:function(){$(this).val("");}',
@@ -521,7 +521,7 @@
 	 </div>
 	</div>
     <div class="row-fluid">
-        <div class="span8"> 
+        <div class="span12"> 
 	       <?php echo $form->textAreaRow($model,'cer_notes',array('class'=>'span12','rows'=>4)); ?>
         </div>
     </div>
@@ -748,13 +748,179 @@
            
         </fieldset>
 
+        <fieldset class="well the-fieldset">
+            <legend class="the-legend">เอกสารแนบ</legend>
+
+            <?php
+
+                    $urlUpload = $this->createUrl('cerDoc/uploadFileTemp/');
+                    $this->widget('bootstrap.widgets.TbButton', array(
+                            'buttonType'=>'link',
+                            
+                            'type'=>'success',
+                            'label'=>'เพิ่มเอกสารแนบ',
+                            'icon'=>'plus-sign',
+                            'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:-20px 10px 10px 10px;',
+                                'onclick'=>'
+                                    
+                                    $.ajax({
+                                            url: "' . $urlUpload . '",
+                                            type: "POST",
+                                            success: function (data) {
+                            
+
+                                                    bootbox.dialog(data,[{
+                                                        "label" : "ปิด",
+                                                        "class" : "btn-danger",
+                                                        "callback": function() {}
+                                                            
+                                                        },
+                                                        {
+                                                                label: "บันทึก",
+                                                                class: "btn-info",
+                                                                callback: function(){
+                                                                    var form = $(".modal-body #upload-form")[0];
+                                                                    var formData = new FormData(form);
+                                                                     $.ajax({
+                                                                              type: "POST",
+                                                                              url: "' . $urlUpload . '",
+                                                                              dataType:"json",
+                                                                              data: formData,
+                                                                              processData: false,
+                                                                              contentType: false,
+                                                                              
+                                                                              success: function (data) {
+
+                                                                                 $("#attachfile-grid").yiiGridView("update",{});
+                                                                              }
+                                                                          });
+                                                                    
+                                                                }
+                                                        },
+                                                           
+                                                        
+                                                    ]);
+                                            }           
+                                    });                 
+
+
+                                '   
+
+                            ),
+                        ));
+
+
+                $this->widget('bootstrap.widgets.TbGridView',array(
+                    'id'=>'attachfile-grid',
+                    
+                    'type'=>'bordered condensed',
+                    'dataProvider'=>AttachFileTemp::model()->search(),
+                    //'filter'=>$model,
+                    'selectableRows' => 2,
+                    'enableSorting' => false,
+                    'rowCssClassExpression'=>'"tr_white"',
+
+                    // 'template'=>"{summary}{items}{pager}",
+                    'htmlOptions'=>array('style'=>'padding-top:10px;'),
+                    'enablePagination' => true,
+                    'summaryText'=>'',//'Displaying {start}-{end} of {count} results.',
+                    'columns'=>array(
+                            'No.'=>array(
+                                'header'=>'ลำดับ',
+                                'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),                            
+                                'htmlOptions'=>array(
+                                    'style'=>'text-align:center'
+
+                                ),
+                                'value'=>'$this->grid->dataProvider->pagination->currentPage * $this->grid->dataProvider->pagination->pageSize + ($row+1)',
+                              ),
+                            'detail'=>array(
+                                // 'header'=>'', 
+                                
+                                'name' => 'name',
+
+                                'headerHtmlOptions' => array('style' => 'width:45%;text-align:center;background-color: #eeeeee'),                           
+                                //'headerHtmlOptions' => array('style' => 'width: 110px'),
+                                'htmlOptions'=>array(
+                                                    'style'=>'text-align:left'
+
+                                ),
+                               
+                            ),
+                           
+                            'export'=>array(
+                                        'name' => 'filename',
+                                        'header' => 'Export',
+                                        'type'=> 'raw',
+                                        'value'=>'CHtml::link(CHtml::image(Yii::app()->request->baseUrl."/images/download.png"),"'.Yii::app()->createUrl('/AttachFileTemp/download').'/$data->id",array("target"=>"_blank"))',
+                                        'filter'=>false,
+                                        'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #f5f5f5'),                        
+                                        'htmlOptions'=>array('style'=>'text-align:center;')
+                                ),
+                              
+                            array(
+                                'class'=>'bootstrap.widgets.TbButtonColumn',
+                                'headerHtmlOptions' => array('style' => 'width:5%;text-align:center;background-color: #eeeeee'),
+                                'template' => '{delete}',
+                                // 'deleteConfirmation'=>'js:bootbox.confirm("Are you sure to want to delete")',
+                                'buttons'=>array(
+                                        'delete'=>array(
+                                            'url'=>'Yii::app()->createUrl("AttachFileTemp/deleteFile", array("id"=>$data->id))',    
+                                            
+                                        ),
+
+                                    )
+
+                                
+                            ),
+                        )
+
+                    )); 
+
+            ?>
+        </fieldset>    
 
 	<div class="form-actions">
-		<?php $this->widget('bootstrap.widgets.TbButton', array(
-			'buttonType'=>'submit',
+		<?php 
+
+        $this->widget('bootstrap.widgets.TbButton', array(
+			'buttonType'=>'link',
 			'type'=>'primary',
-			'label'=>$model->isNewRecord ? 'บันทึก' : 'Save',
-		)); ?>
+			'label'=>'บันทึก'
+		));
+
+        $approve_label = '';
+
+        $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType'=>'link',
+            'type'=>'primary',
+            'label'=>'อนุมัติ'
+        ));
+
+        $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType'=>'link',
+            'type'=>'inverse',
+            'label'=>'ส่งหัวหน้าอนุมัติ',
+            'htmlOptions'=>array(
+         
+                'style'=>'margin-left:10px;',
+             
+              ),
+        ));
+
+        $this->widget('bootstrap.widgets.TbButton', array(
+            'buttonType'=>'link',
+            'type'=>'inverse',
+            'label'=>'ส่ง ผอ. อนุมัติ',
+            'htmlOptions'=>array(
+         
+                'style'=>'margin-left:10px;',
+             
+              ),
+        ));
+
+
+         ?>
 	</div>
 
 <?php $this->endWidget(); ?>

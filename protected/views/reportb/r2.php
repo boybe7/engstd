@@ -186,14 +186,14 @@ $this->widget('bootstrap.widgets.TbGridView',array(
                 'header' => 'ผู้ผลิต/ผู้จัดส่ง',
                 'value'=>'$data->vend_id',
                 //'filter'=>CHtml::activeTextField($model, 'cer_no',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_no"))),
-                'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),                       
+                'headerHtmlOptions' => array('style' => 'width:20%;text-align:center;background-color: #f5f5f5'),                       
                 'htmlOptions'=>array('style'=>'text-align:left;')
         ),
         'prod_id'=>array(
                 'header' => 'ประเภท',
-                'value'=> array($this,'gridGetProd'),
+                'value'=> '$data->prod_id',//array($this,'gridGetProd'),
                 //'filter'=>CHtml::activeTextField($model, 'cer_no',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_no"))),
-                'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),                       
+                'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #f5f5f5'),                       
                 'htmlOptions'=>array('style'=>'text-align:center;')
         ),
         'cer_oper_date'=>array(

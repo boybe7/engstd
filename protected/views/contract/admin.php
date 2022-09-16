@@ -102,26 +102,36 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 	  	            	  			'style'=>'text-align:center'
 
 	  	        )	),
-		'con_price'=>array(
+		'con_detail'=>array(
 			
-				'name' => 'con_price',
-				 'value' => 'number_format($data->con_price,2)',
-				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  		
+				'name' => 'con_detail',
+				
+				'headerHtmlOptions' => array('style' => 'width:40%;text-align:center;background-color: #f5f5f5'),  	            	  		
 				//'headerHtmlOptions' => array('style' => 'width: 110px'),
 				'htmlOptions'=>array(
-	  	            	  			'style'=>'text-align:right'
+	  	            	  			'style'=>'text-align:left'
 
 	  	        )	),
-		'con_budget'=>array(
+		// 'con_price'=>array(
 			
-				'name' => 'con_budget',
-				 'value' => 'number_format($data->con_budget,2)',
-				'headerHtmlOptions' => array('style' => 'width:25%;text-align:center;background-color: #f5f5f5'),  	            	  		
-				//'headerHtmlOptions' => array('style' => 'width: 110px'),
-				'htmlOptions'=>array(
-	  	            	  			'style'=>'text-align:right'
+		// 		'name' => 'con_price',
+		// 		 'value' => 'number_format($data->con_price,2)',
+		// 		'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  		
+		// 		//'headerHtmlOptions' => array('style' => 'width: 110px'),
+		// 		'htmlOptions'=>array(
+	 //  	            	  			'style'=>'text-align:right'
 
-	  	        )	),
+	 //  	        )	),
+		// 'con_budget'=>array(
+			
+		// 		'name' => 'con_budget',
+		// 		 'value' => 'number_format($data->con_budget,2)',
+		// 		'headerHtmlOptions' => array('style' => 'width:25%;text-align:center;background-color: #f5f5f5'),  	            	  		
+		// 		//'headerHtmlOptions' => array('style' => 'width: 110px'),
+		// 		'htmlOptions'=>array(
+	 //  	            	  			'style'=>'text-align:right'
+
+	 //  	        )	),
 		'status'=>array(
 			    'name' => 'con_status',
 			    'value' => array($this,'gridStatus'),

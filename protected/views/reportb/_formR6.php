@@ -60,11 +60,11 @@ $thai_mm=array("มกราคม", "กุมภาพันธ์", "มี�
 //print_r($model);
 $str_date = explode("/", $date_start);
 if(count($str_date)>1)
-    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+    $date_start = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 $str_date = explode("/", $date_end);
 if(count($str_date)>1)
-    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+    $date_end = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 if(empty($date_end))
 	$date_end = $date_start;
@@ -108,7 +108,7 @@ $vend_id_end = $vend_id_end!="" ? $vend_id_end : $vend_id_sta;
                        
 
                         $models = Yii::app()->db->createCommand()
-                                    ->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit')
+                                    ->select('sum(ct.quantity) as sum, detail,prod_code,ct.prod_size as size,prod_unit,prot_id,prot_sub_id')
                                     ->from('c_cer_doc cd')
                                     ->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
                                     ->join('m_product p', 'p.prod_name = ct.detail AND p.prod_sizename LIKE CONCAT("%",ct.prod_size,"%") ')
@@ -167,8 +167,16 @@ $vend_id_end = $vend_id_end!="" ? $vend_id_end : $vend_id_sta;
                                               <?php
 
                                                       foreach ($models as $key => $model) {
+
+
+                                                         //test
+
+                                                         //$m = Prodtype::model()->findByPk($model["prot_id"]);
+                                                         //$protname = empty($m) ? "none" : $m->prot_name;
+                                                         $protname = "";
+
                                                           echo "<tr>";
-                                                            echo '<td style="">'.$model["prod_code"].'</td><td style="">'.$model["detail"].'</td><td style="text-align:center;">'.$model["size"].'</td><td style="text-align:center;">'.$model["sum"].'</td><td style="text-align:center;">'.$model["prod_unit"].'</td>';
+                                                            echo '<td style="">'.$model["prod_code"].'</td><td style="">'.$model["detail"]."|".$protname.'</td><td style="text-align:center;">'.$model["size"].'</td><td style="text-align:center;">'.$model["sum"].'</td><td style="text-align:center;">'.$model["prod_unit"].'</td>';
                                                           echo "</tr>";
                                                       }
 

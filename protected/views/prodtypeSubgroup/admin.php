@@ -67,6 +67,9 @@ $('.search-form form').submit(function(){
 	</div>	
 	<div class="span2">	
 		<?php
+
+		if(Yii::app()->user->isSuperUser() || Yii::app()->user->isAdmin())
+		{
 		   $this->widget('bootstrap.widgets.TbButton', array(
 			    'buttonType'=>'link',
 			    
@@ -99,6 +102,7 @@ $('.search-form form').submit(function(){
 			        'class'=>'span12'
 			    ),
 			)); 
+		}   
 		?>
 	</div>	
 </div>

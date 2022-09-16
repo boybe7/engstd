@@ -4,7 +4,7 @@
         //autocomplete search on focus      
         $("#detail2").autocomplete({
        
-                minLength: 0
+                minLength: 3
             }).bind('focus', function () {
                  
                 $(this).autocomplete("search");
@@ -80,5 +80,7 @@
 	<?php echo $form->textFieldRow($model,'serialno',array('class'=>'span5','maxlength'=>100)); ?>
 
 	<?php echo $form->textFieldRow($model,'prod_size',array('class'=>'span5')); ?>
+
+    <?php echo $form->textFieldRow($model,'unit',array('class'=>'span5')); ?>
 
 <?php $this->endWidget(); ?>

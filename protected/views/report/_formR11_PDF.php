@@ -43,16 +43,7 @@
 		}
 
                             $date_m = $date_end."-".$date_start;
-                            $models = Yii::app()->db->createCommand()
-					->select('sum(ct.quantity) as sum,cd.vend_id, detail,prod_code,ct.prod_size as size,prod_unit,t.prot_name')
-					->from('c_cer_doc cd')
-					->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
-                                        ->join('m_product p', 'p.prod_name=ct.detail')
-                                        ->join('m_prodtype t', 't.prot_id=p.prot_id')
-					//->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
-                                        ->where('cer_date LIKE "'.$date_m.'%"')
-                                        ->group('vend_id')
-					->queryAll();
+        
 
 		//$pdf->setDate($date_start,$date_end);
                 $pdf = new MYPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -124,29 +115,75 @@
 	    $html .= '</thead>';
 	    $html .= '<tbody>';
 
+
+	    $models = Yii::app()->db->createCommand()
+					->select('sum(ct.quantity) as sum,cd.vend_id, detail,prod_code,ct.prod_size as size,prod_unit,t.prot_name')
+					->from('c_cer_doc cd')
+					->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+                                        ->join('m_product p', 'p.prod_name=ct.detail')
+                                        ->join('m_prodtype t', 't.prot_id=p.prot_id')
+					//->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
+                                        ->where('cer_date LIKE "'.$date_m.'%"')
+                                        ->group('vend_id')
+					->queryAll();
             
 	                  foreach ($models as $key => $model) {
                                    $html .= '<tr>';
                                         $html .= '<td style="border:1px solid black;width:100%">&nbsp;'.$model["vend_id"].'</td>';
                                    $html .= '</tr>';
 
-                                              $models2 = Yii::app()->db->createCommand()
-                                              ->select('sum(ct.quantity) as sum,cd.vend_id, detail,prod_code,ct.prod_size as size,prod_unit,t.prot_name')
-                                              ->from('c_cer_doc cd')
-                                              ->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
-                                                                            ->join('m_product p', 'p.prod_name=ct.detail')
-                                                                            ->join('m_prodtype t', 't.prot_id=p.prot_id')
-                                              //->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
-                                                                            ->where('cer_date LIKE "'.$date_m.'%" AND cd.vend_id="'.$model["vend_id"].'"')
-                                                                            ->group('detail')
-                                                                            ->queryAll();
-                                              //-----------------------------------
-                                              foreach ($models2 as $key => $model2) {
-                                                     $html .= ' <tr>';
-                                                     $html .= '<td style="border:1px solid black;width:70%">'.$m.$model2["prot_name"]."&nbsp;:&nbsp;".$model2["detail"].'</td><td style="border:1px solid black;text-align:center;width:15%">'.$model2["sum"].'</td><td style="border:1px solid black;text-align:center;width:15%">'.$model2["prod_unit"].'</td>';
-                                                     $html .= '</tr>';
-                                              }
-                                              //-----------------------------------
+                                            
+
+                                              $models2 = Yii::app()->db->createCommand('SELECT sub.name AS subname, SUM( ct.quantity ) AS sum, detail, prod_code, ct.prod_size AS size, prod_unit, t.prot_name,factor
+					                                  FROM c_cer_doc cd
+					                                  LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+					                                  LEFT JOIN m_product p ON p.prod_id = ct.prod_id 
+					                                  LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
+					                                  LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
+					                                  WHERE cer_date LIKE "'.$date_m.'%"  AND cd.vend_id="'.$model["vend_id"].'"
+					                                  GROUP BY IFNULL( sub.id, t.prot_name ) ')->queryAll();                                  
+
+					                         
+					                          foreach ($models2 as $key => $model2) {
+
+					                               
+					                                 $test2 = Yii::app()->db->createCommand('SELECT detail, prod_unit, t.prot_name
+					                                      FROM c_cer_doc cd
+					                                      LEFT JOIN c_cer_detail ct ON cd.cer_id = ct.cer_id
+					                                      LEFT JOIN m_product p ON p.prod_id = ct.prod_id
+					                                      LEFT JOIN m_prodtype t ON t.prot_id = p.prot_id
+					                                      LEFT JOIN m_prodtype_subgroup sub ON sub.id = p.prot_sub_id
+					                                      WHERE cer_date LIKE "'.$date_m.'%" AND t.prot_name="'.$model2["prot_name"].'" AND cd.vend_id="'.$model["vend_id"].'"
+					                                      GROUP BY prod_unit')->queryAll();          
+					                             //echo "<br>";
+					                             //print_r($test2);
+					                             //echo "<br>";
+					                             
+					                                $unit = "";
+					                                $i = 0;        
+					                                foreach ($test2 as $key => $m2) {
+					                                    if($i==0)
+					                                       $unit = $m2["prod_unit"];
+					                                    else 
+					                                       $unit .= "/".$m2["prod_unit"]; 
+
+					                                    $i++;        
+					                                }
+
+					                               $sum = $model2["sum"];
+					                                if($model2["factor"]>1) 
+					                                { 
+					                                   $unit = "เมตร";
+					                                   $sum = $model2["sum"]*$model2["factor"];
+
+					                                }      
+
+					                                 $html .= ' <tr>';
+                                                     $html .= '<td style="border:1px solid black;width:70%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$model2["prot_name"].":".$model2["subname"].'</td><td style="border:1px solid black;text-align:center;width:15%">'.$sum.'</td><td style="border:1px solid black;text-align:center;width:15%">'.$unit.'</td>';
+                                                     $html .= '</tr>';   
+
+					                               
+					                          }
 
 	                  }
 	    

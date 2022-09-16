@@ -92,7 +92,8 @@ $this->widget('bootstrap.widgets.TbButton', array(
 )); 
 
 
-
+if(Yii::app()->user->isSuperUser() || Yii::app()->user->isAdmin())
+{
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
     
@@ -125,7 +126,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
         'class'=>'pull-right'
     ),
 )); 
-
+}
 
 $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'product-grid',

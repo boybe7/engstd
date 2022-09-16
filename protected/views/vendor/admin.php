@@ -28,7 +28,15 @@ $('.search-form form').submit(function(){
 <?php 
 
 
-
+$this->widget('bootstrap.widgets.TbButton', array(
+    'buttonType'=>'link',
+    
+    'type'=>'info',
+    'label'=>'Export',
+    'icon'=>'excel',
+    'url'=>array('excel'),
+    'htmlOptions'=>array('id' => 'exportExcel','class'=>'pull-right','style'=>''),
+)); 
 
 $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
@@ -125,5 +133,7 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 		),
 	),
 ));
+
+
 
 ?>

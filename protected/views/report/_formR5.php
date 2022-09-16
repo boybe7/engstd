@@ -41,11 +41,11 @@ $thai_mm=array("มกราคม", "กุมภาพันธ์", "มี�
 //print_r($model);
 $str_date = explode("/", $date_start);
 if(count($str_date)>1)
-    $date_start = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+    $date_start = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 $str_date = explode("/", $date_end);
 if(count($str_date)>1)
-    $date_end = $str_date[2]."-".$str_date[1]."-".$str_date[0];
+    $date_end = ($str_date[2]-543)."-".$str_date[1]."-".$str_date[0];
 
 if(empty($date_end))
 	$date_end = $date_start;
@@ -66,17 +66,19 @@ $models_m = Yii::app()->db->createCommand()
 					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
                                         ->group('cer_name')
 					->queryAll();
+
+$ncer = 0;          
 foreach ($models_m as $key => $model_m) {
         echo"<u>";
         echo $model_m["cer_name"]."</u><br>";
         //------------------------------
-                              $models = Yii::app()->db->createCommand()
-					->select('sum(ct.quantity) as sum,cd.cer_no,cd.contract_no,running_no,vend_id')
+      $models = Yii::app()->db->createCommand()
+					->select('cd.cer_no,cd.contract_no,running_no,vend_id')
 					->from('c_cer_doc cd')
-					->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
-                                        ->join('m_product p', 'p.prod_name=ct.detail')
-					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'"')
-                                        ->group('detail')
+					//->join('c_cer_detail ct', 'cd.cer_id=ct.cer_id')
+          //->join('m_product p', 'p.prod_name=ct.detail')
+					->where('cer_date BETWEEN "'.$date_start.'" AND "'.$date_end.'" AND cer_name="'.$model_m["cer_name"].'"')
+          //->group('detail')
 					->queryAll();
 ?>
   <table class="table">
@@ -97,6 +99,8 @@ foreach ($models_m as $key => $model_m) {
                         echo '<td style="">'.$model["cer_no"].'</td><td style="">'.$model["contract_no"].'</td><td style="text-align:center;">'.$model["running_no"].'</td><td style="text-align:center;">'.$model["vend_id"].'</td><td style="text-align:center;">'.$model["vend_id"].'</td>';
                       echo "</tr>";
                   }
+
+                  $ncer += count($models);
                       echo "<tr>";
                         echo '<td style="text-align:right" colspan="5">รวม&nbsp;&nbsp;'.count($models).'&nbsp;&nbsp;ฉบับ&nbsp;&nbsp;</td>';
                       echo "</tr>";
@@ -109,7 +113,7 @@ foreach ($models_m as $key => $model_m) {
 //-----------------------
 
 
-echo"รายงานสรุปใบรับรองคุณภาพแยกตามผู้ออกใบรับรองจำนวน&nbsp;".count($models)."&nbsp;รายการ";
+echo"รายงานสรุปใบรับรองคุณภาพแยกตามผู้ออกใบรับรองจำนวน&nbsp;".$ncer."&nbsp;รายการ";
 $t= date('H:i:s', time()); // 10:00:00
 $m_d = date("d");
 $m_m = date("m")-1;
