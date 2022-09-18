@@ -808,17 +808,12 @@
 
 	<div class="form-actions">
 		<?php 
-         if(Yii::app()->user->getLevel()==0)
-        $this->widget('bootstrap.widgets.TbButton', array(
-			'buttonType'=>'submit',
-			'type'=>'primary',
-			'label'=>'บันทึก',
-		));
+         
 
         if(Yii::app()->user->getLevel()==1  && $model->approve_status==1)
         {
 
-           
+            $url = CController::createUrl('cerDoc/waitApprove');
             $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'link',
                 'type'=>'danger',
@@ -839,7 +834,7 @@
                                     })                                  
                                     .done(function( msg ) {
                                                                                            
-                                                                             
+                                         window.location.href = '.$url.'                                    
                                     })  
                                                     
                             ',
@@ -963,9 +958,22 @@
                 break;
         }
        
-       
-        if(Yii::app()->user->getLevel()==0)
-        $this->widget('bootstrap.widgets.TbButton', array(
+
+       if(Yii::app()->user->getLevel()==0)
+         if($model->approve_status==3 || $model->approve_status==5)
+         {
+
+            echo "<input type='hidden' name='CerDoc[approve_status]' value=1>";
+            $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'submit',
+                'type'=>'primary',
+                'label'=>$label,
+            ));
+         }
+         else if($model->approve_status>0) 
+         {
+           
+            $this->widget('bootstrap.widgets.TbButton', array(
             'buttonType'=>'link',
             'type'=>'inverse',
             'label'=>$label,
@@ -980,7 +988,8 @@
                                         url: "' .CController::createUrl('cerDoc/approve'). '",                                        
                                         data: {
                                             id: '.$model->cer_id.',
-                                            status: 1,                                          
+                                            status: 1,
+
                                        
                                         }
                                     })                                  
@@ -991,8 +1000,46 @@
                                                     
                             ',
               ),
-        ));
+            ));
+        }  
+        else
+        {
 
+                $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'submit',
+                'type'=>'primary',
+                'label'=>'บันทึก',
+                ));
+
+                $this->widget('bootstrap.widgets.TbButton', array(
+                    'buttonType'=>'link',
+                    'type'=>'inverse',
+                    'label'=>'ส่งหัวหน้าอนุมัติ',
+                    'htmlOptions'=>array(
+                 
+                        'style'=>'margin-left:10px;',
+                        'onclick'=>'
+                                           
+                                        $.ajax({
+                                                type: "POST",
+                                                url: "' .CController::createUrl('cerDoc/approve'). '",                                        
+                                                data: {
+                                                    id: '.$model->cer_id.',
+                                                    status: 1,
+                                                    comment : ""
+                                               
+                                                }
+                                            })                                  
+                                            .done(function( msg ) {
+                                                                                                   
+                                                    location.reload();                                 
+                                            })  
+                                                            
+                                    ',
+                      ),
+                    ));
+        
+        }  
         // if(Yii::app()->user->getLevel()==1)
         // $this->widget('bootstrap.widgets.TbButton', array(
         //     'buttonType'=>'link',

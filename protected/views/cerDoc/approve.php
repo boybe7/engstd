@@ -16,7 +16,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'link',
     
     'type'=>'info',
-    'label'=>'ปิดงาน',
+    'label'=>'อนุมัติ',
     'icon'=>'icon-ok-sign',
     //'url'=>array('close'),
     'htmlOptions'=>array('class'=>'pull-right','style'=>'margin:0px 0px 0px 10px;',
@@ -24,12 +24,12 @@ $this->widget('bootstrap.widgets.TbButton', array(
 
 				'onclick'=>'      
                        if($.fn.yiiGridView.getSelection("cer-doc-grid").length==0)
-                       	  js:bootbox.alert("กรุณาเลือกใบรับแจ้งที่ต้องการปิด?","ตกลง");	
+                       	  js:bootbox.alert("กรุณาเลือกใบรับแจ้งที่ต้องการอนุมัติ?","ตกลง");	
                        else 
                        {  
                                	 $.ajax({
 										type: "POST",
-										url: "close",
+										url: "approveSelected",
 										data: { selectedID: $.fn.yiiGridView.getSelection("cer-doc-grid")}
 										})
 										.done(function( msg ) {
@@ -96,13 +96,54 @@ $this->widget('bootstrap.widgets.TbGridView',array(
 	  	'cer_oper_date'=>array(
 			    'name' => 'cer_oper_date',
 			    'filter'=>CHtml::activeTextField($model, 'cer_oper_date',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_oper_date"))),
-				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center')
 	  	),
 	  	'cer_date'=>array(
 			    'name' => 'cer_date',
 			    'filter'=>CHtml::activeTextField($model, 'cer_date',array("placeholder"=>"ค้นหาตาม".$model->getAttributeLabel("cer_date"))),
-				'headerHtmlOptions' => array('style' => 'width:15%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #f5f5f5'),  	            	  	
+				'htmlOptions'=>array('style'=>'text-align:center')
+	  	),
+	  	'approve_status'=>array(
+			    'name' => 'approve_status',
+			    'value' => function($model){
+					$label = "";
+					switch ($model->approve_status) {
+						case 1:
+			                $label = "รอหัวหน้าอนุมัติ";
+			                $disbut = true;
+			                break;
+
+			            case 2:
+			                $label = "รอ ผอ.อนุมัติ";
+			                $disbut = false;
+			                break; 
+
+			            case 3:
+			                $label = "หน. ส่งแก้ไข";
+			                $disbut = false;
+			                break;    
+
+			            case 4:
+			                $label = "ผอ. อนุมัติแล้ว";
+			                $disbut = false;
+			                break;      
+			            case 5:
+			                $label = "ผอ. ส่งแก้ไข";
+			                $disbut = false;
+			                break;
+
+			            default:
+			                // code...
+			                break;
+					}
+
+					return $label;
+					
+				 },
+			    'filter'=>CHtml::activeDropDownList($model, 'approve_status', array('1' => 'รอ หน.อนุมัติ', '2' => 'รอ ผอ.อนุมัติ','3'=>'หน. ส่งแก้ไข', '5' => 'ผอ. ส่งแก้ไข','4'=>'ผอ.อนุมัติแล้ว'),array('empty'=>'')),
+				'headerHtmlOptions' => array('style' => 'width:10%;text-align:center;background-color: #f5f5f5'),  	            	  	
 				'htmlOptions'=>array('style'=>'text-align:center')
 	  	),
 	

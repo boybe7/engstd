@@ -31,7 +31,7 @@ class CerDocController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('DeleteSelected','ReCheck','GenCerNo','InspecGetCerNo','GenCerNo2','close','cancel','genPDF','genPDF2','print','getCerNO','preview','preview2','previewExcel','previewExcelTest','uploadFile','updateFile','deleteFile','uploadFileTemp','updateFileTemp','deleteFileTemp','approve'),
+				'actions'=>array('DeleteSelected','ReCheck','GenCerNo','InspecGetCerNo','GenCerNo2','close','cancel','genPDF','genPDF2','print','getCerNO','preview','preview2','previewExcel','previewExcelTest','uploadFile','updateFile','deleteFile','uploadFileTemp','updateFileTemp','deleteFileTemp','approve','approveSelected'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -957,6 +957,24 @@ class CerDocController extends Controller
         }    
     }
 
+    public function actionApproveSelected()
+    {
+    	$autoIdAll = $_POST['selectedID'];
+        if(count($autoIdAll)>0)
+        {
+            foreach($autoIdAll as $autoId)
+            {
+             
+                $model = $this->loadModel($autoId);
+                if(Yii::app()->user->getLevel()==1)
+                	$model->approve_status = 2;
+                if(Yii::app()->user->getLevel()==2)
+                	$model->approve_status = 4;
+                $model->save();
+            }
+        }    
+    }
+
     public function actionCancel()
     {
     	$id = $_POST['selectedID'];
@@ -1256,6 +1274,7 @@ class CerDocController extends Controller
             $model->cer_notes = nl2br($text); // insert <br /> before \n 
             $model->vend_id = $_POST["vend_id"]==$_POST['CerDoc']['vend_id'] ? $_POST["vend_id"] : '';
             $model->supp_id = $_POST['CerDoc']['supp_id'];
+            $model->approve_status = $_POST['CerDoc']['approve_status'];
             //$model->cer_date =  date("d")."/".date("m")."/".(date("Y")+543);
             $model->cer_oper_dept = Yii::app()->user->getUserDept();
 
@@ -1265,8 +1284,9 @@ class CerDocController extends Controller
             if(!empty($type[1]))
             	$model->prod_id = $type[1]; 
 
-			if($model->save())
-			     $this->redirect(array('CerDoc/preview/'.$id));
+            $model->save();
+			//if($model->save())
+			//     $this->redirect(array('CerDoc/preview/'.$id));
 		
 
 			//	$this->redirect(array('index'));

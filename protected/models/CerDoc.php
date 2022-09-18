@@ -168,6 +168,7 @@ class CerDoc extends CActiveRecord
 		$criteria->compare('contract_no',$this->contract_no,true);
 		$criteria->compare('contractor',$this->contractor,true);
 		$criteria->compare('cer_status',$this->cer_status);
+		$criteria->compare('approve_status',$this->approve_status);
 		$criteria->compare('prod_id',$this->prod_id);
 		$criteria->compare('cer_date_add',$this->cer_date_add,true);
 		//$criteria->order = 'cer_id DESC';
@@ -224,7 +225,11 @@ class CerDoc extends CActiveRecord
 		$criteria->compare('contractor',$this->contractor,true);
 		$criteria->compare('cer_status',$this->cer_status);
 		$criteria->compare('prod_id',$this->prod_id);
-		$criteria->compare('approve_status',$level);
+		if($level>0)
+		   $criteria->compare('approve_status',$level);
+		else
+			$criteria->compare('approve_status',$this->approve_status);
+
 		$criteria->compare('cer_date_add',$this->cer_date_add,true);
 		//$criteria->order = 'cer_id DESC';
 
