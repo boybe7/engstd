@@ -239,7 +239,7 @@
 					->from('user')
 					->where('name="'.$model->cer_name.'"')	                   
 					->queryAll();
-				$sign1 = $author[0]['signature'];	
+				$sign1 = ($model->approve_status>=1) ?  $author[0]['signature'] : "";	
 
 				$author = Yii::app()->db->createCommand()
 					->select('signature')
