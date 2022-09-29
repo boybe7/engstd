@@ -191,11 +191,14 @@ class CerDoc extends CActiveRecord
 		));
 	}
 
-	public function searchByUserApprove($level)
+	public function searchByUserApprove()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+
+		$level = Yii::app()->user->getLevel();
+		$name = Yii::app()->user->getName();
 
 		$str_date = explode("/", $this->cer_date);
         if(count($str_date)>1)
@@ -218,8 +221,10 @@ class CerDoc extends CActiveRecord
 		$criteria->compare('cer_date',$this->cer_date,true);
 		$criteria->compare('cer_oper_date',$this->cer_oper_date,true);
 		$criteria->compare('cer_name',$this->cer_name,true);
-		$criteria->compare('cer_ct_name',$this->cer_ct_name,true);
-		$criteria->compare('cer_di_name',$this->cer_di_name,true);
+		if($level==1)
+			$criteria->compare('cer_ct_name',$name,true);
+		if($level==2)
+			$criteria->compare('cer_di_name',$name,true);
 		$criteria->compare('cer_notes',$this->cer_notes,true);
 		$criteria->compare('contract_no',$this->contract_no,true);
 		$criteria->compare('contractor',$this->contractor,true);

@@ -39,7 +39,7 @@ class User extends CActiveRecord
 		return array(
 			array('username, password, u_group,name,position', 'required'),
 			array('u_group,position,position2', 'numerical', 'integerOnly'=>true),
-			array('username', 'length', 'max'=>200),
+			array('username,signature', 'length', 'max'=>200),
 			array('password', 'length', 'max'=>15),
 			array('username','unique', 'message'=>'username นี้มีผู้ใช้งานแล้ว'),
 			//array('title', 'length', 'max'=>10),
@@ -47,7 +47,7 @@ class User extends CActiveRecord
 			//array('lastname', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('u_id, username, password, u_group,name,position,position2,dept_id', 'safe', 'on'=>'search'),
+			array('u_id, username, password, u_group,name,position,position2,dept_id,signature', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,7 +78,8 @@ class User extends CActiveRecord
 			//'lastname' => 'นามสกุล',
 			'position'=>'ตำแหน่ง',
 			'position2'=>'ตำแหน่งรักษาการ',
-			'dept_id'=>'สังกัด'
+			'dept_id'=>'สังกัด',
+			'signature'=>'ลายเซ็นต์'
 		);
 	}
 

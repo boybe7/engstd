@@ -1407,6 +1407,8 @@ class CerDocController extends Controller
 			$model->approve_status = $_POST['status'];
 			$model->approve_comment = $_POST['comment'];
 			$model->save();
+
+			//print_r($model);
 		}
 	}
 }

@@ -61,8 +61,11 @@
 			private $pos_author3;
 			private $is_acting2;
 			private $is_acting3;
+			private $sign1;
+			private $sign2;
+			private $sign3;
 
-			public function setFooterInfo($author1, $author2,$author3,$pos_author2,$pos_author3,$is_acting2,$is_acting3){
+			public function setFooterInfo($author1, $author2,$author3,$pos_author2,$pos_author3,$is_acting2,$is_acting3,$sign1,$sign2,$sign3){
 				$this->author1 = $author1;
 		        $this->author2 = $author2;
 		        $this->author3 = $author3;
@@ -70,6 +73,13 @@
 		        $this->pos_author3 = $pos_author3;
 		        $this->is_acting2 = $is_acting2;
 		        $this->is_acting3 = $is_acting3;
+		        $this->sign1 = $sign1;
+		        $this->sign2 = $sign2;
+		        $this->sign3 = $sign3;
+
+
+		  
+
 			}
 
 
@@ -79,7 +89,7 @@
 		        // Set font
 		        //$this->SetFont('thsarabun', '', 18);
 
-		        $this->Image(Yii::app()->baseUrl.'/images/mwa_logo.png', 7, 11, 26, 26, 'PNG', 'http://www.tcpdf.org', '', true, 300, '', false, false, 1, false, false, false);
+		        $this->Image($_SERVER['DOCUMENT_ROOT'].'/'.Yii::app()->baseUrl.'/images/mwa_logo.png', 7, 11, 26, 26, 'PNG', '', '', true, 300, '', false, false, 0, false, false, false);
 		        $this->SetFont('angsanaupc', '', 18);
 		        $this->writeHTMLCell(180, 20, 40, 10, '<p style="font-weight:bold;font-size:18">กองมาตรฐานวิศวกรรม ฝ่ายมาตรฐานวิศวกรรมและสารสนเทศภูมิศาสตร์ การประปานครหลวง</p>', 0, 1, false, true, 'L', false);
 		        $this->writeHTMLCell(180, 20, 40, 18, '<p style="font-weight:bold;font-size:16">400 ถนนประชาชื่น แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพฯ 10210</p>', 0, 1, false, true, 'L', false);
@@ -120,18 +130,24 @@
 		        $this->SetFont('angsanaupc', '', 10);
 
 		        $this->writeHTMLCell(50, 150, 12, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+		        if(!empty($this->sign1))
+		        $this->Image($_SERVER['DOCUMENT_ROOT'].'/'.Yii::app()->baseUrl.'/images/'.$this->sign1, 25, 228,20,5, 'PNG', '', '', true, 300, '', false, false, 0, false, false, false);
 		        $this->writeHTMLCell(50, 150, 12, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author1.')</p>' , 0, 1, false, true, 'C', false);
 		        $this->writeHTMLCell(50, 150, 12, 240,'<p style="font-weight:bold;font-size:14px;">วิศวกรผู้ตรวจสอบ</p>' , 0, 1, false, true, 'C', false);
 
 		        if($this->is_acting2==false)
 		        {	
 		        	$this->writeHTMLCell(50, 150, 80, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+		        	if(!empty($this->sign2))
+		        	$this->Image($_SERVER['DOCUMENT_ROOT'].'/'.Yii::app()->baseUrl.'/images/'.$this->sign2, 80+10, 228,20,5, 'PNG', '', '', true, 300, '', false, false, 0, false, false, false);
 		        	$this->writeHTMLCell(50, 150, 80, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
 		        	$this->writeHTMLCell(50, 150, 80, 240,'<p style="font-weight:bold;font-size:14px;">หัวหน้าส่วนควบคุมคุณภาพท่อและอุปกรณ์</p>' , 0, 1, false, true, 'C', false);
 		        }
 		        else
 		        {
 		        	$this->writeHTMLCell(50, 170, 80, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+		        	if(!empty($this->sign2))
+		        	$this->Image($_SERVER['DOCUMENT_ROOT'].'/'.Yii::app()->baseUrl.'/images/'.$this->sign2, 80+10, 228,20,5, 'PNG', '', '', true, 300, '', false, false, 0, false, false, false);
 		        	$this->writeHTMLCell(50, 170, 80, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author2.')</p>' , 0, 1, false, true, 'C', false);
 		        	$this->writeHTMLCell(50, 170, 80, 240,'<p style="font-weight:bold;font-size:14px;">'.$this->pos_author2.'  รน.</p>' , 0, 1, false, true, 'C', false);
 		        	$this->writeHTMLCell(50, 170, 80, 244,'<p style="font-weight:bold;font-size:14px;">หัวหน้าส่วนควบคุมคุณภาพท่อและอุปกรณ์' , 0, 1, false, true, 'C', false);
@@ -141,12 +157,16 @@
 		        if($this->is_acting3==false)
 		        {	
 			        $this->writeHTMLCell(50, 150, 147, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+			        if(!empty($this->sign3))
+			        $this->Image($_SERVER['DOCUMENT_ROOT'].'/'.Yii::app()->baseUrl.'/images/'.$this->sign3, 147+10, 228,20,5, 'PNG', '', '', true, 300, '', false, false, 0, 'CM', false, false);
 			        $this->writeHTMLCell(50, 150, 147, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
 			        $this->writeHTMLCell(50, 150, 147, 240,'<p style="font-weight:bold;font-size:14px;"> ผู้อำนวยการกองมาตรฐานวิศวกรรม</p>' , 0, 1, false, true, 'C', false);
 			    }
 			    else
 			    {
 			    	$this->writeHTMLCell(50, 150, 147, 230,'.................................................................' , 0, 1, false, true, 'C', false);
+			    	if(!empty($this->sign3))
+			    	$this->Image($_SERVER['DOCUMENT_ROOT'].'/'.Yii::app()->baseUrl.'/images/'.$this->sign3, 147+10, 228,20,5, 'PNG', '', '', true, 300, 'C', false, false, 0, false, false, false);
 			        $this->writeHTMLCell(50, 150, 147, 235,'<p style="font-weight:bold;font-size:14px;">('.$this->author3.')</p>' , 0, 1, false, true, 'C', false);
 			        $this->writeHTMLCell(50, 150, 147, 240,'<p style="font-weight:bold;font-size:14px;">วิศวกร 7 รักษาการแทน</p>' , 0, 1, false, true, 'C', false);
 			    	$this->writeHTMLCell(50, 150, 147, 244,'<p style="font-weight:bold;font-size:14px;">ผู้อำนวยการกองมาตรฐานวิศวกรรม' , 0, 1, false, true, 'C', false);
@@ -212,7 +232,30 @@
 					->queryAll();
 		//$pos_author3 = "ผู้อำนวยการกองมาตรฐานวิศวกรรม";
 		$pos_author3 = $author[0]['posi_name'];					
-		$pdf->setFooterInfo($model->cer_name, $name2,$name3,$pos_author2,$pos_author3,$is_acting2,$is_acting3);
+		//$pdf->setFooterInfo($model->cer_name, $name2,$name3,$pos_author2,$pos_author3,$is_acting2,$is_acting3);
+
+		      $author = Yii::app()->db->createCommand()
+					->select('signature')
+					->from('user')
+					->where('name="'.$model->cer_name.'"')	                   
+					->queryAll();
+				$sign1 = $author[0]['signature'];	
+
+				$author = Yii::app()->db->createCommand()
+					->select('signature')
+					->from('user')
+					->where('name="'.$name2.'"')	                   
+					->queryAll();
+				
+				$sign2 = ($model->approve_status==2 || $model->approve_status==4) ?  $author[0]['signature'] : "";	
+
+				$author = Yii::app()->db->createCommand()
+					->select('signature')
+					->from('user')
+					->where('name="'.$name3.'"')	                   
+					->queryAll();
+				$sign3 =  ($model->approve_status==4) ?  $author[0]['signature'] : "";		
+		$pdf->setFooterInfo($model->cer_name, $name2,$name3,$pos_author2,$pos_author3,$is_acting2,$is_acting3,$sign1,$sign2,$sign3);
 
 		// set document information
 		$pdf->SetCreator(PDF_CREATOR);

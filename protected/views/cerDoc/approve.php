@@ -45,7 +45,7 @@ $this->widget('bootstrap.widgets.TbButton', array(
 
 $this->widget('bootstrap.widgets.TbGridView',array(
 	'id'=>'cer-doc-grid',
-	'dataProvider'=>$model->searchByUserApprove(Yii::app()->user->getLevel()),
+	'dataProvider'=>$model->searchByUserApprove(),
 	'type'=>'bordered condensed',
 	'filter'=>$model,
 	'selectableRows' =>2,
